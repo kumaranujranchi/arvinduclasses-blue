@@ -105,7 +105,7 @@ h5,
 h6 {
   font-family: "Exo", sans-serif;
   font-weight: 700;
-  color: #07294D;
+  color: #01228D;
   margin: 0px;
 }
 
@@ -170,7 +170,7 @@ a:focus {
 
 a:hover {
   text-decoration: none;
-  color: #07294D;
+  color: #01228D;
 }
 
 button, input[type=submit] {
@@ -220,7 +220,7 @@ button, input[type=submit] {
   z-index: 5;
   -webkit-transition: all 0.4s linear;
   transition: all 0.4s linear;
-  background-color: #07294D;
+  background-color: #01228D;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .main-btn {
@@ -247,7 +247,7 @@ button, input[type=submit] {
   color: #fff;
 }
 .main-btn.main-btn-2:hover {
-  background-color: #07294D;
+  background-color: #01228D;
 }
 
 /*===== All Slick Slide Outline Style =====*/
@@ -325,7 +325,7 @@ button, input[type=submit] {
   content: "";
   width: 2px;
   height: 65%;
-  background-color: #07294D;
+  background-color: #01228D;
   top: 50%;
   right: 0px;
   -webkit-transform: translateY(-50%);
@@ -359,7 +359,7 @@ button, input[type=submit] {
   font-weight: 500;
   font-size: 18px;
   line-height: 30px;
-  color: #07294D;
+  color: #01228D;
   padding-left: 60px;
   -moz-flex: 1;
   -ms-flex: 1;
@@ -415,14 +415,14 @@ button, input[type=submit] {
 .section-title-2 .line {
   width: 150px;
   background: transparent;
-  border: 1px solid #07294D;
+  border: 1px solid #01228D;
   margin-top: 25px;
 }
 .section-title-2 p {
   font-weight: 500;
   font-size: 18px;
   line-height: 30px;
-  color: #07294D;
+  color: #01228D;
   margin-top: 25px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -523,7 +523,7 @@ button, input[type=submit] {
   height: 100%;
   top: 0px;
   left: 0;
-  background-color: #07294D;
+  background-color: #01228D;
   border-radius: 50%;
   -webkit-transform: scale(0.7);
   transform: scale(0.7);
@@ -533,7 +533,7 @@ button, input[type=submit] {
   transition: all 0.3s linear;
 }
 .form-radio input[type=radio]:checked + label span {
-  border-color: #07294D;
+  border-color: #01228D;
 }
 .form-radio input[type=radio]:checked + label span::before {
   opacity: 1;
@@ -593,8 +593,8 @@ button, input[type=submit] {
   }
 }
 .checkbox input[type=checkbox]:checked + label span {
-  background-color: #07294D;
-  border-color: #07294D;
+  background-color: #01228D;
+  border-color: #01228D;
 }
 .checkbox input[type=checkbox]:checked + label span::before {
   color: #fff;
@@ -669,8 +669,8 @@ button, input[type=submit] {
   content: "";
   width: 8px;
   height: 8px;
-  border-bottom: 1px solid #07294D;
-  border-right: 1px solid #07294D;
+  border-bottom: 1px solid #01228D;
+  border-right: 1px solid #01228D;
   position: absolute;
   top: 50%;
   right: 6px;
@@ -710,7 +710,7 @@ button, input[type=submit] {
   color: #151515;
 }
 .options li:hover {
-  background-color: #07294D;
+  background-color: #01228D;
   color: #fff;
 }
 
@@ -765,7 +765,7 @@ button, input[type=submit] {
 }
 
 .header-top {
-  background: #07294D;
+  background: #01228D;
   padding-bottom: 15px;
 }
 
@@ -849,7 +849,7 @@ button, input[type=submit] {
     top: 0;
     left: -400px;
     position: fixed;
-    background-color: #07294D;
+    background-color: #01228D;
     z-index: 9999;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
@@ -866,7 +866,7 @@ button, input[type=submit] {
     top: 0;
     left: -400px;
     position: fixed;
-    background-color: #07294D;
+    background-color: #01228D;
     z-index: 9999;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
@@ -951,7 +951,7 @@ button, input[type=submit] {
   font-weight: 600;
   font-size: 16px;
   padding: 43px 0;
-  color: #07294D;
+  color: #01228D;
   -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
   display: block;
@@ -986,7 +986,7 @@ button, input[type=submit] {
   position: absolute;
   width: 215px;
   background-color: #fff;
-  border-top: 2px solid #07294D;
+  border-top: 2px solid #01228D;
   padding: 10px 0px;
   -webkit-box-shadow: 2px 2px 20px rgba(7, 41, 77, 0.1);
   box-shadow: 2px 2px 20px rgba(7, 41, 77, 0.1);
@@ -1096,7 +1096,7 @@ button, input[type=submit] {
   display: block;
   border-style: solid;
   border-width: 0 1px 1px 0;
-  border-color: transparent #07294D #07294D transparent;
+  border-color: transparent #01228D #01228D transparent;
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
   -webkit-transition: all 0.3s linear;
@@ -1151,10 +1151,10 @@ button, input[type=submit] {
   position: absolute;
   width: 24px;
   height: 2px;
-  background-color: #07294D;
+  background-color: #01228D;
   border-radius: 10px;
-  -webkit-box-shadow: 0 0.5em 0 0 #07294D, 0 1em 0 0 #07294D;
-          box-shadow: 0 0.5em 0 0 #07294D, 0 1em 0 0 #07294D;
+  -webkit-box-shadow: 0 0.5em 0 0 #01228D, 0 1em 0 0 #01228D;
+          box-shadow: 0 0.5em 0 0 #01228D, 0 1em 0 0 #01228D;
 }
 .navigation .nav-menus-wrapper-close-button {
   width: 30px;
@@ -1198,7 +1198,7 @@ button, input[type=submit] {
 .navigation .header-search input {
   width: 100%;
   border: 0;
-  border-bottom: 1px solid #07294D;
+  border-bottom: 1px solid #01228D;
   font-size: 13px;
   letter-spacing: 0.08em;
   color: #8d8d8d;
@@ -1338,7 +1338,7 @@ button, input[type=submit] {
 
 .single-slider {
   height: 775px;
-  background: #07294D;
+  background: #01228D;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .single-slider {
@@ -1518,7 +1518,7 @@ button, input[type=submit] {
   font-size: 46px;
   line-height: 54px;
   text-align: center;
-  color: #07294D;
+  color: #01228D;
 }
 @media (max-width: 767px) {
   .features-title {
@@ -1649,7 +1649,7 @@ button, input[type=submit] {
 .features-image-2::before {
   position: absolute;
   content: "";
-  background-color: #07294D;
+  background-color: #01228D;
   width: 80%;
   height: 70%;
   bottom: 0;
@@ -1720,7 +1720,7 @@ button, input[type=submit] {
   }
 }
 .features-items .features-items-wrapper .single-features-item .item-content p {
-  color: #07294D;
+  color: #01228D;
   font-weight: 600;
   font-size: 24px;
   line-height: 32px;
@@ -1772,10 +1772,10 @@ button, input[type=submit] {
   padding-top: 10px;
 }
 .courses-wrapper .courses-col:nth-child(8n+1) .single-courses-2, .courses-wrapper .courses-col:nth-child(8n+1) .single-courses {
-  background-color: #07294D;
+  background-color: #01228D;
 }
 .courses-wrapper .courses-col:nth-child(8n+1) .single-courses-2 .courses-content .duration-rating, .courses-wrapper .courses-col:nth-child(8n+1) .single-courses .courses-content .duration-rating {
-  background-color: #07294D;
+  background-color: #01228D;
 }
 .courses-wrapper .courses-col:nth-child(8n+2) .single-courses-2, .courses-wrapper .courses-col:nth-child(8n+2) .single-courses {
   background-color: #0C8B51;
@@ -2305,7 +2305,7 @@ button, input[type=submit] {
   text-align: center;
   font-weight: 600;
   font-size: 18px;
-  color: #07294D;
+  color: #01228D;
   border: 1px solid #DBDBDB;
   -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
@@ -2523,7 +2523,7 @@ button, input[type=submit] {
   color: #DFDFDF;
 }
 .courses-tab .nav li a.active {
-  color: #07294D;
+  color: #01228D;
 }
 .courses-tab p {
   font-size: 14px;
@@ -2749,7 +2749,7 @@ button, input[type=submit] {
   font-weight: 600;
   font-size: 20px;
   line-height: 32px;
-  color: #07294D;
+  color: #01228D;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .single-specialty .specialty-box .box-content p {
@@ -2808,7 +2808,7 @@ button, input[type=submit] {
   content: "";
   width: 40%;
   height: 100%;
-  background-color: #07294D;
+  background-color: #01228D;
   top: 0;
   left: 0;
   z-index: -1;
@@ -2852,14 +2852,14 @@ button, input[type=submit] {
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .campus-visit-wrapper .campus-image-col {
-    background-color: #07294D;
+    background-color: #01228D;
     width: 100%;
     padding: 80px;
   }
 }
 @media (max-width: 767px) {
   .campus-visit-wrapper .campus-image-col {
-    background-color: #07294D;
+    background-color: #01228D;
     width: 100%;
     padding: 20px;
   }
@@ -2954,7 +2954,7 @@ button, input[type=submit] {
   font-weight: 700;
   font-size: 46px;
   line-height: 54px;
-  color: #07294D;
+  color: #01228D;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .campus-content .campus-title {
@@ -2971,7 +2971,7 @@ button, input[type=submit] {
 .campus-content .line {
   width: 150px;
   background: transparent;
-  border: 1px solid #07294d;
+  border: 1px solid #01228D;
   margin-top: 30px;
 }
 @media (max-width: 767px) {
@@ -2983,7 +2983,7 @@ button, input[type=submit] {
   font-weight: 500;
   font-size: 18px;
   line-height: 30px;
-  color: #07294D;
+  color: #01228D;
   margin-top: 25px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -3003,7 +3003,7 @@ button, input[type=submit] {
   font-weight: 700;
   font-size: 46px;
   line-height: 54px;
-  color: #07294D;
+  color: #01228D;
   margin-top: 35px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -3023,7 +3023,7 @@ button, input[type=submit] {
   font-weight: 600;
   font-size: 24px;
   line-height: 54px;
-  color: #07294D;
+  color: #01228D;
   margin-top: 15px;
   -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
@@ -3236,7 +3236,7 @@ button, input[type=submit] {
   content: "";
   bottom: 2px;
   right: 2px;
-  background-color: #07294D;
+  background-color: #01228D;
   width: 150px;
   height: 40px;
   z-index: 5;
@@ -3338,7 +3338,7 @@ button, input[type=submit] {
   content: "";
   width: 2px;
   height: 65%;
-  background-color: #07294D;
+  background-color: #01228D;
   top: 50%;
   right: 0px;
   -webkit-transform: translateY(-50%);
@@ -3415,7 +3415,7 @@ button, input[type=submit] {
   font-weight: 600;
   font-size: 18px;
   text-align: left;
-  color: #07294D;
+  color: #01228D;
   border: 1px solid #DBDBDB;
   padding: 0 30px;
   height: 45px;
@@ -3478,7 +3478,7 @@ button, input[type=submit] {
   transition: all 0.3s linear;
 }
 .event-tab-items .view-btn .view-more:hover {
-  color: #07294D;
+  color: #01228D;
 }
 
 .single-event {
@@ -3543,7 +3543,7 @@ button, input[type=submit] {
   font-size: 24px;
   letter-spacing: 0.02em;
   line-height: 30px;
-  color: #07294D;
+  color: #01228D;
   margin-top: 11px;
   -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
@@ -3601,7 +3601,7 @@ button, input[type=submit] {
   margin-left: 3px;
 }
 .single-event:hover {
-  background-color: #07294D;
+  background-color: #01228D;
 }
 .single-event:hover .time {
   color: #fff;
@@ -3680,7 +3680,7 @@ button, input[type=submit] {
   font-size: 24px;
   letter-spacing: 0.05em;
   line-height: 32px;
-  color: #07294D;
+  color: #01228D;
   -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
 }
@@ -3712,7 +3712,7 @@ button, input[type=submit] {
   font-size: 24px;
   letter-spacing: 0.02em;
   line-height: 30px;
-  color: #07294D;
+  color: #01228D;
   -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
 }
@@ -3801,7 +3801,7 @@ button, input[type=submit] {
   text-align: center;
   font-weight: 600;
   font-size: 18px;
-  color: #07294D;
+  color: #01228D;
   border: 1px solid #DBDBDB;
   -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
@@ -3892,7 +3892,7 @@ button, input[type=submit] {
   font-weight: bold;
   font-size: 46px;
   line-height: 54px;
-  color: #07294D;
+  color: #01228D;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .testimonials-title .title {
@@ -3909,14 +3909,14 @@ button, input[type=submit] {
 .testimonials-title .line {
   width: 150px;
   background: transparent;
-  border: 1px solid #07294D;
+  border: 1px solid #01228D;
   margin-top: 25px;
 }
 .testimonials-title p {
   font-weight: 500;
   font-size: 18px;
   line-height: 30px;
-  color: #07294D;
+  color: #01228D;
   margin-top: 25px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -4125,7 +4125,7 @@ button, input[type=submit] {
   font-weight: 600;
   font-size: 16px;
   line-height: 32px;
-  color: #07294D;
+  color: #01228D;
   position: relative;
   display: inline-block;
   margin-right: 13px;
@@ -4284,7 +4284,7 @@ button, input[type=submit] {
   font-weight: 600;
   font-size: 16px;
   line-height: 32px;
-  color: #07294D;
+  color: #01228D;
   position: relative;
   display: inline-block;
   margin-right: 13px;
@@ -4680,7 +4680,7 @@ button, input[type=submit] {
   right: 170px;
   font-weight: 600;
   font-size: 18px;
-  color: #07294D;
+  color: #01228D;
   border-bottom: 1px solid #707070;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -4802,7 +4802,7 @@ button, input[type=submit] {
   font-size: 24px;
   line-height: 32px;
   text-align: left;
-  color: #07294D;
+  color: #01228D;
   margin-top: 10px;
   -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
@@ -5178,7 +5178,7 @@ button, input[type=submit] {
   }
 }
 .footer-copyright .copyright p span {
-  color: #07294D;
+  color: #01228D;
 }
 .footer-copyright .copyright p i {
   color: #ff0000;
@@ -5189,7 +5189,7 @@ button, input[type=submit] {
   transition: all 0.3s linear;
 }
 .footer-copyright .copyright p a:hover {
-  color: #07294D;
+  color: #01228D;
 }
 
 /*===== Back To Top =====*/
@@ -5210,7 +5210,7 @@ button, input[type=submit] {
   -webkit-transition: all 0.4s linear;
   transition: all 0.4s linear;
   color: #fff;
-  background-color: #07294D;
+  background-color: #01228D;
 }
 .back-to-top:hover {
   color: #fff;
@@ -5241,7 +5241,7 @@ button, input[type=submit] {
   font-weight: bold;
   font-size: 46px;
   line-height: 54px;
-  color: #07294D;
+  color: #01228D;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .about-content .about-title {
@@ -5261,14 +5261,14 @@ button, input[type=submit] {
 .about-content .line {
   width: 150px;
   background: transparent;
-  border: 1px solid #07294D;
+  border: 1px solid #01228D;
   margin-top: 25px;
 }
 .about-content p {
   font-weight: 500;
   font-size: 18px;
   line-height: 30px;
-  color: #07294D;
+  color: #01228D;
   margin-top: 25px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -5378,7 +5378,7 @@ button, input[type=submit] {
 .about-image .single-image.image-1::before {
   right: -14px;
   top: -14px;
-  background-color: #07294D;
+  background-color: #01228D;
 }
 .about-image .single-image.image-2 {
   top: 56%;
@@ -5580,7 +5580,7 @@ button, input[type=submit] {
 .single-library .library-content .library-title a {
   font-weight: 600;
   font-size: 18px;
-  color: #07294D;
+  color: #01228D;
   -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
 }
@@ -5723,7 +5723,7 @@ button, input[type=submit] {
 ===========================*/
 .page-banner {
   padding-top: 155px;
-  background: #07294D;
+  background: #01228D;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .page-banner {
@@ -5891,7 +5891,7 @@ button, input[type=submit] {
 .single-teacher .teacher-content .name a {
   font-size: 18px;
   font-weight: 600;
-  color: #07294D;
+  color: #01228D;
   -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
 }
@@ -5930,7 +5930,7 @@ button, input[type=submit] {
 .courses-sidebar .sidebar-title .title {
   font-weight: 500;
   font-size: 24px;
-  color: #07294D;
+  color: #01228D;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .courses-sidebar .sidebar-title .title {
@@ -6048,7 +6048,7 @@ button, input[type=submit] {
 .courses-details-content .title {
   font-weight: 700;
   font-size: 46px;
-  color: #07294D;
+  color: #01228D;
   margin-top: 30px;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -6087,7 +6087,7 @@ button, input[type=submit] {
 .courses-details-content .sub-title {
   font-weight: 700;
   font-size: 24px;
-  color: #07294D;
+  color: #01228D;
   position: relative;
   padding-bottom: 10px;
   margin-top: 40px;
@@ -6107,7 +6107,7 @@ button, input[type=submit] {
   content: "";
   width: 150px;
   height: 2px;
-  background-color: #07294D;
+  background-color: #01228D;
   left: 0;
   bottom: 0;
 }
@@ -6149,7 +6149,7 @@ button, input[type=submit] {
 }
 .courses-details-tab .nav li a {
   display: block;
-  background-color: #07294D;
+  background-color: #01228D;
   color: #fff;
   text-align: center;
   height: 70px;
@@ -6223,7 +6223,7 @@ button, input[type=submit] {
   font-weight: 700;
   font-size: 18px;
   letter-spacing: 0.05em;
-  color: #07294D;
+  color: #01228D;
 }
 .courses-details-tab .curriculum-content .single-curriculum .curriculum-list {
   padding-left: 10px;
@@ -6378,7 +6378,7 @@ button, input[type=submit] {
   font-weight: bold;
   font-size: 70px;
   line-height: 80px;
-  color: #07294D;
+  color: #01228D;
 }
 .courses-details-tab .courses-reviews .review-form {
   margin-top: 50px;
@@ -6386,7 +6386,7 @@ button, input[type=submit] {
 .courses-details-tab .courses-reviews .review-form .review-rating .title {
   font-weight: 700;
   font-size: 18px;
-  color: #07294D;
+  color: #01228D;
 }
 .courses-details-tab .courses-reviews .review-form .review-rating ul {
   margin-top: 20px;
@@ -6419,7 +6419,7 @@ button, input[type=submit] {
 .event-details-content .title {
   font-weight: 700;
   font-size: 46px;
-  color: #07294D;
+  color: #01228D;
   margin-top: 30px;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -6458,7 +6458,7 @@ button, input[type=submit] {
 .event-details-content .sub-title {
   font-weight: 700;
   font-size: 24px;
-  color: #07294D;
+  color: #01228D;
   position: relative;
   padding-bottom: 10px;
   margin-top: 40px;
@@ -6478,7 +6478,7 @@ button, input[type=submit] {
   content: "";
   width: 150px;
   height: 2px;
-  background-color: #07294D;
+  background-color: #01228D;
   left: 0;
   bottom: 0;
 }
@@ -6585,7 +6585,7 @@ button, input[type=submit] {
 .event-sidebar .sidebar-title .title {
   font-weight: 500;
   font-size: 24px;
-  color: #07294D;
+  color: #01228D;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .event-sidebar .sidebar-title .title {
@@ -6752,7 +6752,7 @@ button, input[type=submit] {
 .teacher-details-content .teacher-name {
   font-weight: 700;
   font-size: 46px;
-  color: #07294D;
+  color: #01228D;
   position: relative;
   padding-bottom: 10px;
 }
@@ -6766,7 +6766,7 @@ button, input[type=submit] {
   content: "";
   width: 150px;
   height: 2px;
-  background-color: #07294D;
+  background-color: #01228D;
   bottom: 0;
   left: 0;
 }
@@ -6778,7 +6778,7 @@ button, input[type=submit] {
 .teacher-details-content .designation {
   font-weight: 600;
   font-size: 24px;
-  color: #07294D;
+  color: #01228D;
   margin-top: 14px;
 }
 @media (max-width: 767px) {
@@ -6859,7 +6859,7 @@ button, input[type=submit] {
 }
 .teacher-details-tab .nav li a {
   display: block;
-  background-color: #07294D;
+  background-color: #01228D;
   color: #fff;
   text-align: center;
   height: 70px;
@@ -6895,7 +6895,7 @@ button, input[type=submit] {
   font-weight: 700;
   font-size: 18px;
   letter-spacing: 0.01em;
-  color: #07294D;
+  color: #01228D;
   padding-bottom: 10px;
 }
 .teacher-details-tab .single-content-tab p {
@@ -6910,7 +6910,7 @@ button, input[type=submit] {
 .shop-sidebar .sidebar-title .title {
   font-weight: 500;
   font-size: 24px;
-  color: #07294D;
+  color: #01228D;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .shop-sidebar .sidebar-title .title {
@@ -6999,7 +6999,7 @@ button, input[type=submit] {
 .shop-sidebar-tags .tags-items li a {
   font-weight: 500;
   font-size: 14px;
-  color: #07294D;
+  color: #01228D;
   -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
 }
@@ -7044,7 +7044,7 @@ button, input[type=submit] {
 .product-details-content .details-content .product-title {
   font-weight: 700;
   font-size: 46px;
-  color: #07294D;
+  color: #01228D;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .product-details-content .details-content .product-title {
@@ -7100,7 +7100,7 @@ button, input[type=submit] {
 .product-details-content .details-content .product-content-wrapper p, .product-details-content .details-content .product-content-wrapper span {
   font-weight: 500;
   font-size: 18px;
-  color: #07294D;
+  color: #01228D;
 }
 @media (max-width: 767px) {
   .product-details-content .details-content .product-content-wrapper p, .product-details-content .details-content .product-content-wrapper span {
@@ -7201,7 +7201,7 @@ button, input[type=submit] {
   margin-left: 15px;
 }
 .product-details-content .details-content .product-content-wrapper .size .product-size li span {
-  color: #07294D;
+  color: #01228D;
   font-weight: 500;
   font-size: 14px;
   cursor: pointer;
@@ -7237,7 +7237,7 @@ button, input[type=submit] {
   height: 26px;
   font-weight: 500;
   font-size: 14px;
-  color: #07294D;
+  color: #01228D;
   border: 0;
   background-color: #F1F1F1;
   text-align: center;
@@ -7297,8 +7297,8 @@ button, input[type=submit] {
   }
 }
 .product-details-content .details-content .product-btn .compare:hover, .product-details-content .details-content .product-btn .wishlist:hover {
-  background-color: #07294D;
-  border-color: #07294D;
+  background-color: #01228D;
+  border-color: #01228D;
   color: #fff;
 }
 .product-details-tab {
@@ -7323,7 +7323,7 @@ button, input[type=submit] {
 }
 .product-details-tab .nav li a {
   display: block;
-  background-color: #07294D;
+  background-color: #01228D;
   color: #fff;
   text-align: center;
   height: 70px;
@@ -7519,7 +7519,7 @@ button, input[type=submit] {
   font-weight: bold;
   font-size: 70px;
   line-height: 80px;
-  color: #07294D;
+  color: #01228D;
 }
 .product-details-tab .product-reviews .review-form {
   margin-top: 50px;
@@ -7527,7 +7527,7 @@ button, input[type=submit] {
 .product-details-tab .product-reviews .review-form .review-rating .title {
   font-weight: 700;
   font-size: 18px;
-  color: #07294D;
+  color: #01228D;
 }
 .product-details-tab .product-reviews .review-form .review-rating ul {
   margin-top: 20px;
@@ -7583,7 +7583,7 @@ button, input[type=submit] {
 .blog-sidebar .sidebar-title .title {
   font-weight: 500;
   font-size: 24px;
-  color: #07294D;
+  color: #01228D;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .blog-sidebar .sidebar-title .title {
@@ -7664,7 +7664,7 @@ button, input[type=submit] {
 .blog-sidebar-post .post-items li .single-post .post-content .post-title a {
   font-weight: 600;
   font-size: 16px;
-  color: #07294D;
+  color: #01228D;
   -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
 }
@@ -7716,7 +7716,7 @@ button, input[type=submit] {
 .blog-sidebar-tags .tags-items li a {
   font-weight: 500;
   font-size: 14px;
-  color: #07294D;
+  color: #01228D;
   -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
 }
@@ -7814,7 +7814,7 @@ button, input[type=submit] {
 .blog-details-content .details-content .title {
   font-weight: 700;
   font-size: 46px;
-  color: #07294D;
+  color: #01228D;
   margin-top: 20px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -7919,7 +7919,7 @@ button, input[type=submit] {
 .blog-details-content .blog-comment .comment-title {
   font-weight: 700;
   font-size: 24px;
-  color: #07294D;
+  color: #01228D;
   position: relative;
   padding-bottom: 8px;
 }
@@ -7931,7 +7931,7 @@ button, input[type=submit] {
 .blog-details-content .blog-comment .comment-title::before {
   width: 100px;
   height: 2px;
-  background-color: #07294D;
+  background-color: #01228D;
   position: absolute;
   content: "";
   bottom: 0;
@@ -8097,7 +8097,7 @@ button, input[type=submit] {
 }
 .single-contact-info .info-icon i {
   font-size: 24px;
-  color: #07294D;
+  color: #01228D;
   width: 50px;
   height: 50px;
   line-height: 48px;
@@ -8145,7 +8145,7 @@ button, input[type=submit] {
 
 .form-message.success, .form-message.error {
   font-size: 16px;
-  color: #07294D;
+  color: #01228D;
   background: #ddd;
   padding: 10px 15px;
   margin-left: 15px;
@@ -8158,7 +8158,7 @@ button, input[type=submit] {
 .contact-title .title {
   font-weight: 700;
   font-size: 24px;
-  color: #07294D;
+  color: #01228D;
   position: relative;
   padding-bottom: 21px;
 }
@@ -8172,7 +8172,7 @@ button, input[type=submit] {
   content: "";
   width: 150px;
   height: 2px;
-  background-color: #07294D;
+  background-color: #01228D;
   bottom: 0;
   left: 0;
   right: 0;
@@ -8236,7 +8236,7 @@ button, input[type=submit] {
   font-weight: 600;
   font-size: 28px;
   line-height: 30px;
-  color: #07294D;
+  color: #01228D;
   position: absolute;
   top: 0;
   left: 0;
@@ -8298,7 +8298,7 @@ button, input[type=submit] {
   font-weight: 600;
   font-size: 24px;
   line-height: 36px;
-  color: #07294D;
+  color: #01228D;
   position: absolute;
   top: 0;
   left: 0;
@@ -8364,7 +8364,7 @@ button, input[type=submit] {
 .login-register-content .title {
   font-weight: 700;
   font-size: 24px;
-  color: #07294D;
+  color: #01228D;
   position: relative;
   padding-bottom: 10px;
 }
@@ -8378,7 +8378,7 @@ button, input[type=submit] {
   content: "";
   width: 150px;
   height: 2px;
-  background-color: #07294D;
+  background-color: #01228D;
   bottom: 0;
   left: 0;
 }
@@ -8396,7 +8396,7 @@ button, input[type=submit] {
   }
 }
 .login-register-form .single-form .forget a:hover {
-  color: #07294D;
+  color: #01228D;
 }
 .login-register-form .single-form .main-btn {
   height: 60px;
@@ -8450,7 +8450,7 @@ button, input[type=submit] {
   font-weight: 600;
   font-size: 24px;
   line-height: 30px;
-  color: #07294D;
+  color: #01228D;
   position: absolute;
   top: 0;
   left: 0;
