@@ -8528,3 +8528,14 @@ button, input[type=submit] {
     margin: 0 !important;
     padding: 0 !important;
 }
+
+/* Constrain Header Primary Navigation Links */
+.navigation .nav-menus-wrapper .nav-menu > li > a {
+    padding: 10px 0 !important;
+}
+
+/* Constrain overall header padding */
+.header-area .row {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
