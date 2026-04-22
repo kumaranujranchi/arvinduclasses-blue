@@ -1,14 +1,25 @@
+"use client";
+
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Link from "next/link";
+import { useEffect } from "react";
 
 export default function AboutPage() {
+  useEffect(() => {
+    // Initialize WOW.js if needed, or other client-side logic
+  }, []);
+
   return (
     <>
       <Header />
-      
+
       {/* ====== Page Banner Start ====== */}
       <section className="page-banner">
-        <div className="page-banner-bg bg_cover" style={{ backgroundImage: "url(/assets/images/page-banner.webp)" }}>
+        <div
+          className="page-banner-bg bg_cover"
+          style={{ backgroundImage: "url(/assets/images/page-banner.webp)" }}
+        >
           <div className="container">
             <div className="banner-content text-center">
               <h2 className="title">About Us</h2>
@@ -18,37 +29,605 @@ export default function AboutPage() {
       </section>
       {/* ====== Page Banner Ends ====== */}
 
-      {/* ====== About Start ====== */}
+      {/* ====== About Section Start ====== */}
       <section className="about-area pt-80 pb-80">
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-6">
               <div className="about-content mt-40">
-                <h2 className="about-title">Best <span>Educational</span> Environment</h2>
+                <h2 className="about-title">
+                  Our <span>Story</span>
+                </h2>
                 <span className="line"></span>
                 <p className="mt-20">
-                  Arvindu Classes is dedicated to providing the highest quality education and 
-                  creating a supportive learning environment for all our students. 
-                  We believe in empowering humanity through knowledge.
+                  Arvindu Classes was started with a clear purpose — to change
+                  the way students learn and understand academics.
                 </p>
                 <p className="mt-15">
-                   Our mission is to guide students towards excellence and help them 
-                   achieve their academic and career goals with expert mentorship.
+                  We observed that many students struggle not because they lack
+                  ability, but because their fundamentals are weak and they do
+                  not receive the right guidance at the right time. Most
+                  traditional coaching focuses only on completing the syllabus,
+                  leaving students confused and underprepared.
                 </p>
-                <a href="/courses" className="main-btn mt-30">Our Courses</a>
+                <p className="mt-15">
+                  This gap in learning inspired us to build something different.
+                </p>
+                <p className="mt-15">
+                  At Arvindu Classes, we focus on building strong concepts from
+                  the ground up. Whether it is a student in Class 6 starting
+                  their academic journey, or a Commerce student preparing for
+                  board exams and graduation, our approach remains the same —
+                  clarity, consistency, and structured guidance.
+                </p>
+                <p className="mt-15 font-weight-bold" style={{ fontWeight: 600 }}>
+                  We believe that when a student understands the basics clearly,
+                  confidence automatically follows, and results improve
+                  naturally.
+                </p>
               </div>
             </div>
             <div className="col-lg-6">
               <div className="about-image mt-50">
-                <img src="/assets/images/about/about-1.webp" className="img-fluid rounded shadow" alt="About Arvindu Classes" />
+                <div className="single-image image-1">
+                  <img
+                    src="/assets/images/about/about-1.webp"
+                    width="290"
+                    height="290"
+                    alt="about"
+                  />
+                </div>
+                <div className="single-image image-2">
+                  <img
+                    src="/assets/images/about/about-2.webp"
+                    width="225"
+                    height="225"
+                    alt="about"
+                  />
+                </div>
+                <div className="single-image image-3">
+                  <img
+                    src="/assets/images/about/about-3.webp"
+                    width="190"
+                    height="190"
+                    alt="about"
+                  />
+                </div>
+                <div className="single-image image-4">
+                  <img
+                    src="/assets/images/about/about-4.webp"
+                    width="140"
+                    height="140"
+                    alt="about"
+                  />
+                </div>
+
+                <div className="about-icon icon-1">
+                  <img
+                    src="/assets/images/about/icon/icon-1.webp"
+                    width="46"
+                    height="46"
+                    alt="icon"
+                  />
+                </div>
+                <div className="about-icon icon-2">
+                  <img
+                    src="/assets/images/about/icon/icon-2.webp"
+                    width="46"
+                    height="46"
+                    alt="icon"
+                  />
+                </div>
+                <div className="about-icon icon-3">
+                  <img
+                    src="/assets/images/about/icon/icon-3.webp"
+                    width="46"
+                    height="46"
+                    alt="icon"
+                  />
+                </div>
+                <div className="about-icon icon-4">
+                  <img
+                    src="/assets/images/about/icon/icon-4.webp"
+                    width="46"
+                    height="46"
+                    alt="icon"
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-      {/* ====== About Ends ====== */}
+      {/* ====== About Section Ends ====== */}
+
+      {/* ====== Problem & Mission Section Start ====== */}
+      <section className="problem-mission-area pb-80">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-6">
+              <div className="problem-solving mt-40">
+                <h3 className="sub-title">The Problem We Are Solving</h3>
+                <span className="line"></span>
+                <p className="mt-20">Many students face common challenges:</p>
+                <ul className="problem-list mt-20">
+                  <li className="d-flex align-items-center mb-10">
+                    <i
+                      className="fas fa-check-circle me-2"
+                      style={{ color: "#ffc600" }}
+                    ></i>
+                    <span>Weak foundational concepts</span>
+                  </li>
+                  <li className="d-flex align-items-center mb-10">
+                    <i
+                      className="fas fa-check-circle me-2"
+                      style={{ color: "#ffc600" }}
+                    ></i>
+                    <span>Lack of personal attention in crowded classrooms</span>
+                  </li>
+                  <li className="d-flex align-items-center mb-10">
+                    <i
+                      className="fas fa-check-circle me-2"
+                      style={{ color: "#ffc600" }}
+                    ></i>
+                    <span>No proper system for testing and performance tracking</span>
+                  </li>
+                  <li className="d-flex align-items-center mb-10">
+                    <i
+                      className="fas fa-check-circle me-2"
+                      style={{ color: "#ffc600" }}
+                    ></i>
+                    <span>Fear of subjects like Maths, Science, or Accounts</span>
+                  </li>
+                </ul>
+                <p className="mt-20">
+                  We are solving this by creating a system where every student
+                  is guided step-by-step, their performance is monitored
+                  regularly, and their doubts are addressed without delay.
+                </p>
+              </div>
+            </div>
+            <div className="col-lg-6">
+              <div
+                className="our-mission mt-40 p-4 rounded shadow-sm"
+                style={{ backgroundColor: "#07294d", color: "#fff" }}
+              >
+                <h3 className="sub-title text-white">Our Mission</h3>
+                <span
+                  className="line"
+                  style={{ backgroundColor: "#fff" }}
+                ></span>
+                <p className="mt-20 text-white">
+                  To provide structured, concept-driven education in both
+                  Science and Commerce streams, helping students build strong
+                  foundations and achieve long-term academic success.
+                </p>
+                <img
+                  src="/assets/images/features-2.webp"
+                  alt="Mission"
+                  className="img-fluid mt-30 rounded"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* ====== Problem & Mission Section Ends ====== */}
+
+      {/* ====== Features Start ====== */}
+      <div className="features-area-2 ">
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-lg-4">
+              <div className="features-image-2">
+                <img
+                  src="/assets/images/features-2.webp"
+                  width="342"
+                  height="524"
+                  alt="Features"
+                />
+              </div>
+            </div>
+            <div className="col-lg-8">
+              <div className="features-items">
+                <div className="features-items-wrapper">
+                  <div
+                    className="single-features-item d-flex align-items-center wow fadeInUpBig"
+                    data-wow-duration="1s"
+                    data-wow-delay="0.2s"
+                  >
+                    <div className="item-icon">
+                      <img
+                        src="/assets/images/icon/icon-2-1.webp"
+                        width="70"
+                        height="70"
+                        alt="Icon"
+                      />
+                    </div>
+                    <div className="item-content media-body">
+                      <p>
+                        250+ <br /> Courses
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    className="single-features-item d-flex align-items-center wow fadeInUpBig"
+                    data-wow-duration="1s"
+                    data-wow-delay="0.4s"
+                  >
+                    <div className="item-icon">
+                      <img
+                        src="/assets/images/icon/icon-2-2.webp"
+                        width="70"
+                        height="70"
+                        alt="Icon"
+                      />
+                    </div>
+                    <div className="item-content media-body">
+                      <p>
+                        Skill Based <br /> Scholarships
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    className="single-features-item d-flex align-items-center wow fadeInUpBig"
+                    data-wow-duration="1s"
+                    data-wow-delay="0.6s"
+                  >
+                    <div className="item-icon">
+                      <img
+                        src="/assets/images/icon/icon-2-3.webp"
+                        width="70"
+                        height="70"
+                        alt="Icon"
+                      />
+                    </div>
+                    <div className="item-content media-body">
+                      <p>
+                        Online <br /> Education
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="features-items-wrapper">
+                  <div
+                    className="single-features-item d-flex align-items-center wow fadeInUpBig"
+                    data-wow-duration="1s"
+                    data-wow-delay="0.2s"
+                  >
+                    <div className="item-icon">
+                      <img
+                        src="/assets/images/icon/icon-2-4.webp"
+                        width="70"
+                        height="70"
+                        alt="Icon"
+                      />
+                    </div>
+                    <div className="item-content media-body">
+                      <p>
+                        Expert <br /> Teachers
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    className="single-features-item d-flex align-items-center wow fadeInUpBig"
+                    data-wow-duration="1s"
+                    data-wow-delay="0.4s"
+                  >
+                    <div className="item-icon">
+                      <img
+                        src="/assets/images/icon/icon-2-5.webp"
+                        width="70"
+                        height="70"
+                        alt="Icon"
+                      />
+                    </div>
+                    <div className="item-content media-body">
+                      <p>
+                        After Course <br /> Certification
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    className="single-features-item d-flex align-items-center wow fadeInUpBig"
+                    data-wow-duration="1s"
+                    data-wow-delay="0.6s"
+                  >
+                    <div className="item-icon">
+                      <img
+                        src="/assets/images/icon/icon-2-6.webp"
+                        width="70"
+                        height="70"
+                        alt="Icon"
+                      />
+                    </div>
+                    <div className="item-content media-body">
+                      <p>
+                        Download <br /> Prospectus
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* ====== Features Ends ====== */}
+
+      {/* ====== Campus Visit Start ====== */}
+      <section className="campus-visit-area-3 pt-120">
+        <div className="container">
+          <div className="campus-visit-wrapper">
+            <div className="campus-content-col">
+              <div className="campus-content">
+                <h2 className="campus-title">
+                  Visit our Campus with image gallery
+                </h2>
+                <span className="line"></span>
+                <p>
+                  Experience the vibrant learning environment at Arvindu
+                  Classes.
+                </p>
+                <h3 className="video-title">or watch video</h3>
+                <a
+                  className="play video-popup"
+                  href="https://www.youtube.com/watch?v=0qHWub21h5c"
+                >
+                  <i className="fas fa-play"></i> <span>Play now</span>
+                </a>
+              </div>
+            </div>
+            <div className="campus-image-col">
+              <div className="campus-image">
+                <div className=" single-campus">
+                  <img
+                    src="/assets/images/campus-1.webp"
+                    width="585"
+                    height="392"
+                    alt="Campus"
+                  />
+                </div>
+                <div className="single-campus">
+                  <img
+                    src="/assets/images/campus-2.webp"
+                    width="585"
+                    height="392"
+                    alt="Campus"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* ====== Campus Visit Ends ====== */}
+
+      {/* ====== Counter Start ====== */}
+      <div className="counter-area-2 pt-80">
+        <div className="container">
+          <div
+            className="counter-wrapper-2 bg_cover"
+            style={{ backgroundImage: "url(/assets/images/counter-bg-2.webp)" }}
+          >
+            <div className="row">
+              <div className="col-sm-3 col-6 counter-col">
+                <div className="single-counter mt-30">
+                  <span className="counter-count">
+                    <span className="count" data-count="3652">
+                      0
+                    </span>{" "}
+                    +
+                  </span>
+                  <p>Students</p>
+                </div>
+              </div>
+              <div className="col-sm-3 col-6 counter-col">
+                <div className="single-counter mt-30">
+                  <span className="counter-count">
+                    <span className="count" data-count="105">
+                      0
+                    </span>{" "}
+                    +
+                  </span>
+                  <p>Faculties</p>
+                </div>
+              </div>
+              <div className="col-sm-3 col-6 counter-col">
+                <div className="single-counter mt-30">
+                  <span className="counter-count">
+                    <span className="count" data-count="120">
+                      0
+                    </span>{" "}
+                    +
+                  </span>
+                  <p>Branches</p>
+                </div>
+              </div>
+              <div className="col-sm-3 col-6 counter-col">
+                <div className="single-counter mt-30">
+                  <span className="counter-count">
+                    <span className="count" data-count="30">
+                      0
+                    </span>{" "}
+                    +
+                  </span>
+                  <p>Awards win</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* ====== Counter Ends ====== */}
+
+      {/* ====== Teachers Start ====== */}
+      <section className="teachers-area pt-80">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-8">
+              <div className="section-title mt-40">
+                <h2 className="title">Meet our Teachers</h2>
+                <p>
+                  Our expert faculty is committed to providing best-in-class
+                  education.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="teachers-wrapper">
+            <div className="row teachers-row">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="col-md-4 col-sm-6 teachers-col">
+                  <div className="single-teacher mt-30 text-center">
+                    <div className="teacher-social">
+                      <ul className="social">
+                        <li>
+                          <a href="#">
+                            <i className="fab fa-facebook-f"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#">
+                            <i className="fab fa-twitter"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#">
+                            <i className="fab fa-instagram"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#">
+                            <i className="fab fa-linkedin-in"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div className="teacher-image">
+                      <a href="#">
+                        <img
+                          src={`/assets/images/teachers/teacher-${i}.webp`}
+                          width="266"
+                          height="359"
+                          alt="teacher"
+                        />
+                      </a>
+                    </div>
+                    <div className="teacher-content">
+                      <h4 className="name">
+                        <a href="#">Expert Teacher {i}</a>
+                      </h4>
+                      <span className="designation">Science/Commerce</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* ====== Teachers Ends ====== */}
+
+      {/* ====== Testimonials Start ====== */}
+      <section className="testimonials-area pt-80 pb-80">
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-lg-4">
+              <div className="testimonials-title">
+                <h2 className="title">Our Students Review</h2>
+                <span className="line"></span>
+                <p>
+                  Hear what our students have to say about their experience at
+                  Arvindu Classes.
+                </p>
+              </div>
+            </div>
+            <div className="col-lg-8">
+              <div className="testimonials-wrapper">
+                <div className="testimonials-shape shape-1"></div>
+                <div className="testimonials-shape shape-2"></div>
+                <div className="testimonials-shape shape-3"></div>
+
+                <div className="row no-gutters">
+                  <div className="col-lg-6 col-md-5">
+                    <div className="testimonials-image">
+                      <div className="single-testimonial-image">
+                        <img
+                          src="/assets/images/testimonials-1.webp"
+                          width="313"
+                          height="579"
+                          alt="testimonials"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-lg-6 col-md-7">
+                    <div className="testimonials-content">
+                      <div className="single-testimonial-content">
+                        <div className="content-text">
+                          <i className="fas fa-quote-right"></i>
+                          <p>
+                            "Arvindu Classes has completely changed my
+                            perspective on studies. The concepts are so clear
+                            now."
+                          </p>
+                        </div>
+                        <div className="content-meta">
+                          <p className="name">Rahul Sharma</p>
+                          <p className="designation">Grade 12 Student</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* ====== Testimonials Ends ====== */}
+
+      {/* ====== Newsletter Start ====== */}
+      <section className="newsletter-area-3 pb-80">
+        <div className="container">
+          <div
+            className="newsletter-wrapper bg_cover"
+            style={{
+              backgroundImage: "url(/assets/images/newsletter-bg-1.webp)",
+            }}
+          >
+            <div className="row align-items-center">
+              <div className="col-lg-5">
+                <div className="section-title-2 mt-25">
+                  <h2 className="title">Subscribe our Newsletter</h2>
+                  <span className="line"></span>
+                  <p>Stay updated with our latest workshops and study tips.</p>
+                </div>
+              </div>
+              <div className="col-lg-7">
+                <div className="newsletter-form mt-30">
+                  <form action="#">
+                    <input type="text" placeholder="Enter your email here" />
+                    <button className="main-btn main-btn-2">
+                      Subscribe now
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* ====== Newsletter Ends ====== */}
 
       <Footer />
+
+      {/* ====== Back To Top ====== */}
+      <a href="#" className="back-to-top">
+        <i className="fa fa-chevron-up"></i>
+      </a>
     </>
   );
 }
