@@ -60,11 +60,10 @@ export default function Footer() {
                 <h4 className="footer-title">Contact Info</h4>
                 <ul className="link-list">
                   <li>
-                    <p>245, New Town, Marklen Street North City, New York, USA</p>
+                    <p>2nd Floor, Nasib Market, Ashiana - Digha Rd, Ashiana, Ram Nagari, More, Patna, Bihar 800025</p>
                   </li>
                   <li>
-                    <p><a href="tel:+01254659874">+01254 659 874</a></p>
-                    <p><a href="tel:+32145857458">+32145 857 458</a></p>
+                    <p><a href="tel:+918051696333">+91 80516 96333</a></p>
                   </li>
                   <li>
                     <p><a href="mailto:info@arvindclasses.in">info@arvindclasses.in</a></p>

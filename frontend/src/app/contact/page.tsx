@@ -78,7 +78,7 @@ export default function ContactPage() {
                     </div>
                     <div className="info-content media-body">
                       <h5>Address</h5>
-                      <p>245, New Town, Marklen Street, North City, New York, USA</p>
+                      <p>2nd Floor, Nasib Market, Ashiana - Digha Rd, Ashiana, Ram Nagari, More, Patna, Bihar 800025</p>
                     </div>
                   </li>
                   <li className="d-flex mt-30">
@@ -87,8 +87,7 @@ export default function ContactPage() {
                     </div>
                     <div className="info-content media-body">
                       <h5>Phone</h5>
-                      <p><a href="tel:+01254659874">+01254 659 874</a></p>
-                      <p><a href="tel:+32145857458">+32145 857 458</a></p>
+                      <p><a href="tel:+918051696333">+91 80516 96333</a></p>
                     </div>
                   </li>
                   <li className="d-flex mt-30">
