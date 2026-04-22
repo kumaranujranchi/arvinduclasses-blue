@@ -24,7 +24,7 @@ export default function CoursesPage() {
       <section className="page-banner">
         <div
           className="page-banner-bg bg_cover"
-          style={{ backgroundImage: "url(/assets/images/page-banner.webp)" }}
+          style={{ backgroundImage: "url(/assets/images/course-banner.png)" }}
         >
           <div className="container">
             <div className="banner-content text-center">
