@@ -100,7 +100,7 @@ export default function HomePage() {
                   <img src="/assets/images/icon/icon-2.webp" width="46" height="46" alt="Icon" />
                 </div>
                 <div className="item-content media-body">
-                  <h5 className="title">Online Education</h5>
+                  <h5 className="title">Monthly Test</h5>
                   <p>Learn from anywhere at your own pace.</p>
                 </div>
               </div>
