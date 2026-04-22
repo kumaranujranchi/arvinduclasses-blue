@@ -71,7 +71,7 @@ export default function AboutPage() {
               <div className="about-image mt-50">
                 <div className="single-image image-1">
                   <img
-                    src="/assets/images/about/about-1.webp"
+                    src="/assets/images/about/about-1.png"
                     width="290"
                     height="290"
                     alt="about"
@@ -79,7 +79,7 @@ export default function AboutPage() {
                 </div>
                 <div className="single-image image-2">
                   <img
-                    src="/assets/images/about/about-2.webp"
+                    src="/assets/images/about/about-2.png"
                     width="225"
                     height="225"
                     alt="about"
@@ -87,7 +87,7 @@ export default function AboutPage() {
                 </div>
                 <div className="single-image image-3">
                   <img
-                    src="/assets/images/about/about-3.webp"
+                    src="/assets/images/about/about-3.png"
                     width="190"
                     height="190"
                     alt="about"
@@ -95,7 +95,7 @@ export default function AboutPage() {
                 </div>
                 <div className="single-image image-4">
                   <img
-                    src="/assets/images/about/about-4.webp"
+                    src="/assets/images/about/about-4.png"
                     width="140"
                     height="140"
                     alt="about"
