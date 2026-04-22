@@ -144,7 +144,7 @@ export default function AboutPage() {
       {/* ====== Problem & Mission Section Start ====== */}
       <section className="problem-mission-area pb-80">
         <div className="container">
-          <div className="row">
+          <div className="row align-items-center">
             <div className="col-lg-6">
               <div className="problem-solving mt-40">
                 <h3 className="sub-title">The Problem We Are Solving</h3>
@@ -190,7 +190,10 @@ export default function AboutPage() {
             <div className="col-lg-6">
               <div
                 className="our-mission mt-40 p-4 rounded shadow-sm"
-                style={{ backgroundColor: "#07294d", color: "#fff" }}
+                style={{
+                  background: "linear-gradient(145deg, #07294d 0%, #004d99 100%)",
+                  color: "#fff",
+                }}
               >
                 <h3 className="sub-title text-white">Our Mission</h3>
                 <span
@@ -202,11 +205,14 @@ export default function AboutPage() {
                   Science and Commerce streams, helping students build strong
                   foundations and achieve long-term academic success.
                 </p>
-                <img
-                  src="/assets/images/features-2.webp"
-                  alt="Mission"
-                  className="img-fluid mt-30 rounded"
-                />
+                <div className="mission-image mt-30 shadow-lg rounded overflow-hidden">
+                  <img
+                    src="/assets/images/about/mission.png"
+                    alt="Mission"
+                    className="img-fluid"
+                    style={{ transition: "transform 0.3s ease" }}
+                  />
+                </div>
               </div>
             </div>
           </div>
