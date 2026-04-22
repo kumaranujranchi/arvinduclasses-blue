@@ -8515,3 +8515,16 @@ button, input[type=submit] {
     line-height: 26px;
   }
 }
+/* Custom Logo Constraint */
+.header-logo img {
+    max-height: 40px !important;
+    width: auto !important;
+}
+
+/* Custom Logo Constraint */
+.header-logo img {
+    max-height: 40px !important;
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
