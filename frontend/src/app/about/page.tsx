@@ -210,7 +210,12 @@ export default function AboutPage() {
                     src="/assets/images/about/mission.png"
                     alt="Mission"
                     className="img-fluid"
-                    style={{ transition: "transform 0.3s ease" }}
+                      style={{
+                        transition: "transform 0.3s ease",
+                        height: "250px",
+                        objectFit: "cover",
+                        width: "100%",
+                      }}
                   />
                 </div>
               </div>
