@@ -421,13 +421,43 @@ export default function AboutPage() {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-4">
-              <div className="features-image-2">
-                <img
-                  src="/assets/images/features-student.png"
-                  width="342"
-                  height="524"
-                  alt="Features"
-                />
+              <div
+                className="features-image-wrapper relative"
+                style={{ position: "relative", zIndex: 1, padding: "20px 20px" }}
+              >
+                {/* Blue Background Layer (Bottom Left) */}
+                <div
+                  style={{
+                    position: "absolute",
+                    backgroundColor: "#01228D",
+                    width: "80%",
+                    height: "80%",
+                    bottom: 0,
+                    left: 0,
+                    zIndex: -1,
+                  }}
+                ></div>
+                
+                {/* Grey Background Layer (Top Right) */}
+                <div
+                  style={{
+                    position: "absolute",
+                    backgroundColor: "#F1F1F1",
+                    width: "80%",
+                    height: "80%",
+                    top: 0,
+                    right: 0,
+                    zIndex: -1,
+                  }}
+                ></div>
+
+                <div style={{ position: "relative", zIndex: 5, boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.1)" }}>
+                  <img
+                    src="/assets/images/features-student.png"
+                    alt="Features"
+                    style={{ width: "100%", height: "auto", display: "block" }}
+                  />
+                </div>
               </div>
             </div>
             <div className="col-lg-8">
