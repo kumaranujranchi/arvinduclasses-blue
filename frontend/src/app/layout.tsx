@@ -18,7 +18,7 @@ export default function RootLayout({
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="shortcut icon" href="/assets/images/favicon.webp" type="image/webp" />
+        <link rel="shortcut icon" href="/assets/images/arvindu-favicon.png" type="image/png" />
 
         {/* Vendor CSS */}
         <link rel="stylesheet" href="/assets/css/plugins/bootstrap.min.css" />
