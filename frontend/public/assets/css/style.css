@@ -5353,8 +5353,8 @@ button, input[type=submit] {
   z-index: -1;
 }
 .about-image .single-image.image-1 {
-  top: 72px;
-  right: 63px;
+  top: 40px;
+  right: 10px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .about-image .single-image.image-1 {
@@ -5381,8 +5381,8 @@ button, input[type=submit] {
   background-color: #01228D;
 }
 .about-image .single-image.image-2 {
-  top: 56%;
-  left: 29%;
+  top: 70%;
+  left: 15%;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .about-image .single-image.image-2 {
@@ -5408,8 +5408,8 @@ button, input[type=submit] {
   background-color: #27B8A7;
 }
 .about-image .single-image.image-3 {
-  top: 31%;
-  left: 49px;
+  top: 35%;
+  left: -20px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .about-image .single-image.image-3 {
@@ -5435,8 +5435,8 @@ button, input[type=submit] {
   background-color: #0C8B51;
 }
 .about-image .single-image.image-4 {
-  top: 38px;
-  left: 24%;
+  top: -10px;
+  left: 20%;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .about-image .single-image.image-4 {
