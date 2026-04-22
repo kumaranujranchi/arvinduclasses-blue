@@ -32,42 +32,45 @@ export default function AboutPage() {
       {/* ====== About Section Start ====== */}
       <section className="about-area pt-80 pb-80">
         <div className="container">
-          <div className="row align-items-center">
-            <div className="col-lg-6">
+          <div className="row align-items-center gx-lg-5">
+            <div className="col-lg-7">
               <div className="about-content mt-40">
                 <h2 className="about-title">
                   Our <span>Story</span>
                 </h2>
                 <span className="line"></span>
-                <p className="mt-20">
+                <p className="mt-20" style={{ textAlign: "justify" }}>
                   Arvindu Classes was started with a clear purpose — to change
                   the way students learn and understand academics.
                 </p>
-                <p className="mt-15">
+                <p className="mt-15" style={{ textAlign: "justify" }}>
                   We observed that many students struggle not because they lack
                   ability, but because their fundamentals are weak and they do
                   not receive the right guidance at the right time. Most
                   traditional coaching focuses only on completing the syllabus,
                   leaving students confused and underprepared.
                 </p>
-                <p className="mt-15">
+                <p className="mt-15" style={{ textAlign: "justify" }}>
                   This gap in learning inspired us to build something different.
                 </p>
-                <p className="mt-15">
+                <p className="mt-15" style={{ textAlign: "justify" }}>
                   At Arvindu Classes, we focus on building strong concepts from
                   the ground up. Whether it is a student in Class 6 starting
                   their academic journey, or a Commerce student preparing for
                   board exams and graduation, our approach remains the same —
                   clarity, consistency, and structured guidance.
                 </p>
-                <p className="mt-15 font-weight-bold" style={{ fontWeight: 600 }}>
+                <p
+                  className="mt-15 font-weight-bold"
+                  style={{ fontWeight: 600, textAlign: "justify" }}
+                >
                   We believe that when a student understands the basics clearly,
                   confidence automatically follows, and results improve
                   naturally.
                 </p>
               </div>
             </div>
-            <div className="col-lg-6">
+            <div className="col-lg-5">
               <div className="about-image mt-50">
                 <div className="single-image image-1">
                   <img
