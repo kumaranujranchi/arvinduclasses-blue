@@ -70,7 +70,7 @@ export default function AboutPage() {
       <section className="page-banner">
         <div
           className="page-banner-bg bg_cover"
-          style={{ backgroundImage: "url(/assets/images/page-banner.webp)" }}
+          style={{ backgroundImage: "url(/assets/images/aboutus-banner.png)" }}
         >
           <div className="container">
             <div className="banner-content text-center">
