@@ -26,80 +26,82 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form */}
-      <section className="contact-area">
+      <section className="premium-contact-area pt-100">
         <div className="container">
-          <div className="row">
-            <div className="col-lg-7">
-              <div className="contact-form mt-50">
-                <h3 className="contact-title">Send us a Message</h3>
-                <form action="#" className="contact-form wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+          <div className="row align-items-stretch">
+            <div className="col-lg-7 mb-50">
+              <div className="premium-card">
+                <h3 className="premium-title">Send us a Message</h3>
+                <form action="#" className="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
                   <div className="row">
                     <div className="col-md-6">
-                      <div className="input-box mt-20">
-                        <input type="text" name="name" placeholder="Full Name" />
+                      <div className="premium-input-box">
+                        <input type="text" name="name" className="premium-input" placeholder="Full Name" />
                       </div>
                     </div>
                     <div className="col-md-6">
-                      <div className="input-box mt-20">
-                        <input type="email" name="email" placeholder="Email Address" />
+                      <div className="premium-input-box">
+                        <input type="email" name="email" className="premium-input" placeholder="Email Address" />
                       </div>
                     </div>
                     <div className="col-md-6">
-                      <div className="input-box mt-20">
-                        <input type="text" name="phone" placeholder="Phone Number" />
+                      <div className="premium-input-box">
+                        <input type="text" name="phone" className="premium-input" placeholder="Phone Number" />
                       </div>
                     </div>
                     <div className="col-md-6">
-                      <div className="input-box mt-20">
-                        <input type="text" name="subject" placeholder="Subject" />
+                      <div className="premium-input-box">
+                        <input type="text" name="subject" className="premium-input" placeholder="Subject" />
                       </div>
                     </div>
                     <div className="col-md-12">
-                      <div className="input-box mt-20">
-                        <textarea name="message" placeholder="Your Message"></textarea>
+                      <div className="premium-input-box">
+                        <textarea name="message" className="premium-textarea" placeholder="Your Message"></textarea>
                       </div>
                     </div>
                     <div className="col-md-12">
-                      <div className="contact-btn mt-20">
-                        <button type="submit" className="main-btn">Send Message</button>
-                      </div>
+                      <button type="submit" className="premium-btn">Send Message</button>
                     </div>
                   </div>
                 </form>
               </div>
             </div>
-            <div className="col-lg-5">
-              <div className="contact-info mt-50">
-                <h3 className="contact-title">Contact Information</h3>
-                <ul className="contact-info-list">
-                  <li className="d-flex mt-30">
-                    <div className="info-icon">
+            <div className="col-lg-5 mb-50">
+              <div className="premium-card">
+                <h3 className="premium-title">Contact Info</h3>
+                <div className="contact-info-wrapper">
+                  
+                  <div className="premium-info-item wow fadeInUp" data-wow-delay="0.2s">
+                    <div className="premium-icon-wrapper">
                       <i className="fas fa-map-marker-alt"></i>
                     </div>
-                    <div className="info-content media-body">
+                    <div className="premium-info-content">
                       <h5>Address</h5>
                       <p>2nd Floor, Nasib Market, Ashiana - Digha Rd, Ashiana, Ram Nagari, More, Patna, Bihar 800025</p>
                     </div>
-                  </li>
-                  <li className="d-flex mt-30">
-                    <div className="info-icon">
+                  </div>
+
+                  <div className="premium-info-item wow fadeInUp" data-wow-delay="0.4s">
+                    <div className="premium-icon-wrapper">
                       <i className="fas fa-phone-alt"></i>
                     </div>
-                    <div className="info-content media-body">
+                    <div className="premium-info-content">
                       <h5>Phone</h5>
                       <p><a href="tel:+918051696333">+91 80516 96333</a></p>
                     </div>
-                  </li>
-                  <li className="d-flex mt-30">
-                    <div className="info-icon">
+                  </div>
+
+                  <div className="premium-info-item wow fadeInUp" data-wow-delay="0.6s">
+                    <div className="premium-icon-wrapper">
                       <i className="fas fa-envelope"></i>
                     </div>
-                    <div className="info-content media-body">
+                    <div className="premium-info-content">
                       <h5>Email</h5>
                       <p><a href="mailto:info@arvindclasses.in">info@arvindclasses.in</a></p>
                     </div>
-                  </li>
-                </ul>
+                  </div>
+
+                </div>
               </div>
             </div>
           </div>
