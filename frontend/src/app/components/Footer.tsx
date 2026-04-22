@@ -42,7 +42,7 @@ export default function Footer() {
               <div className="footer-link mt-45">
                 <h4 className="footer-title">Pages</h4>
                 <ul className="link-list">
-                  <li><a href="#">About Us</a></li>
+                  <li><Link href="/about">About Us</Link></li>
                   <li><a href="#">Teacher Details</a></li>
                   <li><a href="#">Gallery</a></li>
                   <li><a href="#">Gallery Masonry</a></li>
@@ -86,7 +86,7 @@ export default function Footer() {
             <div className="footer-menu">
               <ul className="menu">
                 <li><Link href="/">Home</Link></li>
-                <li><a href="#">About</a></li>
+                <li><Link href="/about">About</Link></li>
                 <li><Link href="/courses">Courses</Link></li>
                 <li><Link href="/notice">Notice Board</Link></li>
                 <li><a href="#">Offers</a></li>
