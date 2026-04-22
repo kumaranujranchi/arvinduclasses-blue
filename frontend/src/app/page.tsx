@@ -1,7 +1,64 @@
+"use client";
+
+import { useEffect } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 export default function HomePage() {
+  useEffect(() => {
+    const initSlick = () => {
+      // @ts-ignore
+      if (typeof window !== "undefined" && window.$ && window.$.fn && window.$.fn.slick) {
+        // @ts-ignore
+        const $ = window.$;
+
+        if ($(".slider-active").length && !$(".slider-active").hasClass("slick-initialized")) {
+          function doAnimations(elements: any) {
+            var animationEndEvents = "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend";
+            elements.each(function () {
+              var $this = $(this);
+              var $animationDelay = $this.data("delay");
+              var $animationType = "animated " + $this.data("animation");
+              $this.css({
+                "animation-delay": $animationDelay,
+                "-webkit-animation-delay": $animationDelay,
+              });
+              $this.addClass($animationType).one(animationEndEvents, function () {
+                $this.removeClass($animationType);
+              });
+            });
+          }
+
+          var BasicSlider = $(".slider-active");
+
+          BasicSlider.on("init", function (e: any, slick: any) {
+            var $firstAnimatingElements = $(".single-slider:first-child").find("[data-animation]");
+            doAnimations($firstAnimatingElements);
+          });
+
+          BasicSlider.on("beforeChange", function (e: any, slick: any, currentSlide: any, nextSlide: any) {
+            var $animatingElements = $('.single-slider[data-slick-index="' + nextSlide + '"]').find("[data-animation]");
+            doAnimations($animatingElements);
+          });
+
+          BasicSlider.slick({
+            autoplay: true,
+            autoplaySpeed: 10000,
+            pauseOnHover: false,
+            dots: false,
+            fade: true,
+            arrows: true,
+            prevArrow: '<span class="prev"><i class="fas fa-chevron-left"></i></span>',
+            nextArrow: '<span class="next"><i class="fas fa-chevron-right"></i></span>',
+            responsive: [{ breakpoint: 767, settings: {} }],
+          });
+        }
+      } else {
+        setTimeout(initSlick, 50);
+      }
+    };
+    initSlick();
+  }, []);
   return (
     <>
       {/* ====== Header ====== */}
