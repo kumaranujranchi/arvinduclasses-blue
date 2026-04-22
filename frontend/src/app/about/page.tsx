@@ -288,7 +288,7 @@ export default function AboutPage() {
                 </h2>
                 <span className="line"></span>
                 <p>
-                  Even slightly believable. If you are going use passage of Lorem Ipsum need desire to obtain pain of itself, because it is pain de sires many pain of itself occur for your study <br /> <br /> Even slightly believable. If you are going use passage of Lorem Ipsum need desir
+                  At Arvindu Classes, we provide a focused and inspiring atmosphere designed for comprehensive academic preparation. Our campus is equipped with modern facilities, distraction-free study zones, and interactive classrooms to maximize your learning potential. <br /> <br /> We ensure every student feels motivated to excel and achieve their career goals under the guidance of our expert educators.
                 </p>
                 <Link href="/courses" className="main-btn">
                   Explore
@@ -299,13 +299,13 @@ export default function AboutPage() {
               <div className="campus-image-2 mt-50">
                 <h4 className="campus-title-2">Image Gallery</h4>
                 <div className="image-1">
-                  <img src="/assets/images/campus-2-1.webp" width="585" height="308" alt="campus" />
+                  <img src="/assets/images/about/about-1.png" style={{ objectFit: 'cover' }} width="585" height="308" alt="campus gallery" />
                 </div>
                 <div className="image-2">
-                  <img src="/assets/images/campus-2-2.webp" width="253" height="220" alt="campus" />
+                  <img src="/assets/images/about/about-2.png" style={{ objectFit: 'cover' }} width="253" height="220" alt="campus gallery" />
                 </div>
                 <div className="image-3">
-                  <img src="/assets/images/campus-2-3.webp" width="412" height="270" alt="campus" />
+                  <img src="/assets/images/about/about-3.png" style={{ objectFit: 'cover' }} width="412" height="270" alt="campus gallery" />
                 </div>
                 <Link href="#" className="more">
                   View more <i className="fal fa-long-arrow-right"></i>
