@@ -5338,6 +5338,8 @@ button, input[type=submit] {
 }
 .about-image .single-image img {
   border-radius: 30px;
+  -webkit-transform: rotate(-45deg) scale(1.42);
+  transform: rotate(-45deg) scale(1.42);
 }
 @media (max-width: 767px) {
   .about-image .single-image img {

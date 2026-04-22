@@ -53,13 +53,7 @@ export default function AboutPage() {
                 <p className="mt-15" style={{ textAlign: "justify" }}>
                   This gap in learning inspired us to build something different.
                 </p>
-                <p className="mt-15" style={{ textAlign: "justify" }}>
-                  At Arvindu Classes, we focus on building strong concepts from
-                  the ground up. Whether it is a student in Class 6 starting
-                  their academic journey, or a Commerce student preparing for
-                  board exams and graduation, our approach remains the same —
-                  clarity, consistency, and structured guidance.
-                </p>
+
                 <p
                   className="mt-15 font-weight-bold"
                   style={{ fontWeight: 600, textAlign: "justify" }}
@@ -68,6 +62,9 @@ export default function AboutPage() {
                   confidence automatically follows, and results improve
                   naturally.
                 </p>
+                <Link href="/courses" className="main-btn mt-30">
+                  Explore
+                </Link>
               </div>
             </div>
             <div className="col-lg-7">
