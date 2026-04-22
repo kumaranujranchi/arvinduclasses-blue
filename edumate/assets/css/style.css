@@ -8539,3 +8539,13 @@ button, input[type=submit] {
     padding-top: 0px !important;
     padding-bottom: 0px !important;
 }
+
+/* Remove massive white gap below compressed header */
+.slider-area, .page-banner {
+    padding-top: 105px !important;
+}
+@media (max-width: 767px) {
+    .slider-area, .page-banner {
+        padding-top: 120px !important;
+    }
+}
