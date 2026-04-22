@@ -225,6 +225,145 @@ export default function AboutPage() {
       </section>
       {/* ====== Problem & Mission Section Ends ====== */}
 
+      {/* ====== Best Educational Environment Start ====== */}
+      <section className="campus-visit-area-2">
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-lg-5">
+              <div className="about-content mt-40">
+                <h2 className="about-title">
+                  Best Educational <span>Environment</span>
+                </h2>
+                <span className="line"></span>
+                <p>
+                  Even slightly believable. If you are going use passage of Lorem Ipsum need desire to obtain pain of itself, because it is pain de sires many pain of itself occur for your study <br /> <br /> Even slightly believable. If you are going use passage of Lorem Ipsum need desir
+                </p>
+                <Link href="/courses" className="main-btn">
+                  Explore
+                </Link>
+              </div>
+            </div>
+            <div className="col-lg-7">
+              <div className="campus-image-2 mt-50">
+                <h4 className="campus-title-2">Image Gallery</h4>
+                <div className="image-1">
+                  <img src="/assets/images/campus-2-1.webp" width="585" height="308" alt="campus" />
+                </div>
+                <div className="image-2">
+                  <img src="/assets/images/campus-2-2.webp" width="253" height="220" alt="campus" />
+                </div>
+                <div className="image-3">
+                  <img src="/assets/images/campus-2-3.webp" width="412" height="270" alt="campus" />
+                </div>
+                <Link href="#" className="more">
+                  View more <i className="fal fa-long-arrow-right"></i>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* ====== Best Educational Environment Ends ====== */}
+
+      {/* ====== Top Course Start ====== */}
+      <section className="top-courses-area pt-120 pb-120">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-8">
+              <div className="section-title mt-40">
+                <h2 className="title">
+                  Here is our <br /> Top Courses
+                </h2>
+                <p>
+                  Even slightly believable. If you are going use a passage of Lorem Ipsum need
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="courses-wrapper">
+            <div className="row">
+              <div className="col-lg-3 col-sm-6 courses-col">
+                <div className="single-courses-2 mt-30">
+                  <div className="courses-image">
+                    <Link href="/courses">
+                      <img src="/assets/images/courses/courses-1.webp" width="270" height="170" alt="courses" />
+                    </Link>
+                  </div>
+                  <div className="courses-content">
+                    <Link href="#" className="category">#Science</Link>
+                    <h4 className="courses-title">
+                      <Link href="/courses">Computer Science & Engineering</Link>
+                    </h4>
+                    <div className="courses-link">
+                      <Link className="apply" href="/courses">Online Apply</Link>
+                      <Link className="more" href="/courses">Read more <i className="fas fa-chevron-right"></i></Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-3 col-sm-6 courses-col">
+                <div className="single-courses-2 mt-30">
+                  <div className="courses-image">
+                    <Link href="/courses">
+                      <img src="/assets/images/courses/courses-2.webp" width="270" height="170" alt="courses" />
+                    </Link>
+                  </div>
+                  <div className="courses-content">
+                    <Link href="#" className="category">#Science</Link>
+                    <h4 className="courses-title">
+                      <Link href="/courses">Bachelor of Business Administration</Link>
+                    </h4>
+                    <div className="courses-link">
+                      <Link className="apply" href="/courses">Online Apply</Link>
+                      <Link className="more" href="/courses">Read more <i className="fas fa-chevron-right"></i></Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-3 col-sm-6 courses-col">
+                <div className="single-courses-2 mt-30">
+                  <div className="courses-image">
+                    <Link href="/courses">
+                      <img src="/assets/images/courses/courses-3.webp" width="270" height="170" alt="courses" />
+                    </Link>
+                  </div>
+                  <div className="courses-content">
+                    <Link href="#" className="category">#Science</Link>
+                    <h4 className="courses-title">
+                      <Link href="/courses">Social & Digital Marketing</Link>
+                    </h4>
+                    <div className="courses-link">
+                      <Link className="apply" href="/courses">Online Apply</Link>
+                      <Link className="more" href="/courses">Read more <i className="fas fa-chevron-right"></i></Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-3 col-sm-6 courses-col">
+                <div className="single-courses-2 mt-30">
+                  <div className="courses-image">
+                    <Link href="/courses">
+                      <img src="/assets/images/courses/courses-4.webp" width="270" height="170" alt="courses" />
+                    </Link>
+                  </div>
+                  <div className="courses-content">
+                    <Link href="#" className="category">#Science</Link>
+                    <h4 className="courses-title">
+                      <Link href="/courses">Bachelor of Applied Mathematics</Link>
+                    </h4>
+                    <div className="courses-link">
+                      <Link className="apply" href="/courses">Online Apply</Link>
+                      <Link className="more" href="/courses">Read more <i className="fas fa-chevron-right"></i></Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* ====== Top Course Ends ====== */}
+
       {/* ====== Features Start ====== */}
       <div className="features-area-2 ">
         <div className="container">
