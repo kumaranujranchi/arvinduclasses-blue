@@ -7,7 +7,59 @@ import { useEffect } from "react";
 
 export default function AboutPage() {
   useEffect(() => {
-    // Initialize WOW.js if needed, or other client-side logic
+    // Initialize slick carousels for the About page after Next.js client-side navigation
+    const initSlick = () => {
+      // @ts-ignore
+      if (typeof window !== "undefined" && window.$ && window.$.fn && window.$.fn.slick) {
+        // @ts-ignore
+        const $ = window.$;
+
+        // Initialize Campus Image Slider
+        if ($(".campus-image").length && !$(".campus-image").hasClass("slick-initialized")) {
+          $(".campus-image").slick({
+            dots: false,
+            infinite: false,
+            arrows: true,
+            prevArrow: '<span class="prev"><i class="fas fa-chevron-left"></i>Prev</span>',
+            nextArrow: '<span class="next">Next <i class="fas fa-chevron-right"></i></span>',
+            speed: 800,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+          });
+        }
+
+        // Initialize Testimonials Image Slider
+        if ($(".testimonials-image").length && !$(".testimonials-image").hasClass("slick-initialized")) {
+          $(".testimonials-image").slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            dots: false,
+            fade: true,
+            asNavFor: '.testimonials-content',
+            speed: 800,
+            arrows: true,
+            prevArrow: false,
+            nextArrow: '<span class="next">Next <i class="far fa-long-arrow-right"></i></span>',
+          });
+        }
+
+        // Initialize Testimonials Content Slider
+        if ($(".testimonials-content").length && !$(".testimonials-content").hasClass("slick-initialized")) {
+          $(".testimonials-content").slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            asNavFor: '.testimonials-image',
+            dots: false,
+            arrows: false,
+            focusOnSelect: true,
+            speed: 800,
+          });
+        }
+      } else {
+        setTimeout(initSlick, 50);
+      }
+    };
+    initSlick();
   }, []);
 
   return (
