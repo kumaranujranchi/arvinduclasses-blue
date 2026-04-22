@@ -53,6 +53,22 @@ export default function HomePage() {
             responsive: [{ breakpoint: 767, settings: {} }],
           });
         }
+
+        // Initialize blog slider
+        if ($(".blog-active").length && !$(".blog-active").hasClass("slick-initialized")) {
+          $(".blog-active").slick({
+            autoplay: true,
+            autoplaySpeed: 4000,
+            dots: false,
+            arrows: false,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            responsive: [
+              { breakpoint: 992, settings: { slidesToShow: 2 } },
+              { breakpoint: 576, settings: { slidesToShow: 1 } },
+            ],
+          });
+        }
       } else {
         setTimeout(initSlick, 50);
       }
@@ -255,25 +271,25 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* ====== Latest Blog Post ====== */}
-      <section className="blog-area-2" style={{ paddingTop: "80px", paddingBottom: "60px" }}>
+      {/* ====== Blog Start ====== */}
+      <section className="blog-area-2">
+        <h4 className="trending-title">Trending blogs</h4>
         <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-lg-6 col-md-9">
-              <div className="section-title-2 text-center">
-                <h2 className="title">Latest Blog Post</h2>
+          <div className="row">
+            <div className="col-lg-5">
+              <div className="section-title-2">
+                <h2 className="title">Explore top Post</h2>
                 <span className="line"></span>
-                <p>Stay updated with tips, strategies, and news from Arvindu Classes to ace your exams.</p>
               </div>
             </div>
           </div>
-          <div className="blog-wrapper mt-40">
-            <div className="row">
-              <div className="col-lg-4 col-md-6">
+          <div className="blog-wrapper">
+            <div className="row-wrapper blog-active">
+              <div className="custom-col">
                 <div className="single-blog mt-30">
                   <div className="blog-image">
                     <a href="#">
-                      <img src="/assets/images/blog-1.webp" width="370" height="250" alt="blog" style={{ width: "100%", objectFit: "cover" }} />
+                      <img src="/assets/images/blog-1.webp" width="370" height="250" alt="blog" />
                     </a>
                   </div>
                   <div className="blog-content">
@@ -289,11 +305,11 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
-              <div className="col-lg-4 col-md-6">
+              <div className="custom-col">
                 <div className="single-blog mt-30">
                   <div className="blog-image">
                     <a href="#">
-                      <img src="/assets/images/blog-2.webp" width="370" height="250" alt="blog" style={{ width: "100%", objectFit: "cover" }} />
+                      <img src="/assets/images/blog-2.webp" width="370" height="250" alt="blog" />
                     </a>
                   </div>
                   <div className="blog-content">
@@ -309,11 +325,11 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
-              <div className="col-lg-4 col-md-6">
+              <div className="custom-col">
                 <div className="single-blog mt-30">
                   <div className="blog-image">
                     <a href="#">
-                      <img src="/assets/images/blog-3.webp" width="370" height="250" alt="blog" style={{ width: "100%", objectFit: "cover" }} />
+                      <img src="/assets/images/blog-3.webp" width="370" height="250" alt="blog" />
                     </a>
                   </div>
                   <div className="blog-content">
@@ -330,10 +346,11 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
+            <a href="#" className="more-post">45+ more post</a>
           </div>
         </div>
       </section>
-      {/* ====== Latest Blog Post Ends ====== */}
+      {/* ====== Blog Ends ====== */}
 
       {/* ====== Newsletter ====== */}
       <section className="newsletter-area-2">
