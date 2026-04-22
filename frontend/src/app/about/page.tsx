@@ -296,7 +296,7 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="col-lg-7">
-              <div className="campus-image-2 mt-50">
+              <div className="campus-image-2 mt-50" style={{ transform: 'scale(0.85)', transformOrigin: 'top left' }}>
                 <h4 className="campus-title-2">Image Gallery</h4>
                 <div className="image-1">
                   <img src="/assets/images/about/about-1.png" style={{ objectFit: 'cover' }} width="585" height="308" alt="campus gallery" />
