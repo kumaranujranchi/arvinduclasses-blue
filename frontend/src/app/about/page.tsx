@@ -227,7 +227,7 @@ export default function AboutPage() {
             <div className="col-lg-4">
               <div className="features-image-2">
                 <img
-                  src="/assets/images/features-2.webp"
+                  src="/assets/images/features-student.png"
                   width="342"
                   height="524"
                   alt="Features"
