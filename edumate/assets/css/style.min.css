@@ -27,3 +27,16 @@
         padding-top: 120px !important;
     }
 }
+
+/* Change header to relative positioning to prevent background leakage perfectly sync with dynamic height */
+.header-area {
+    position: relative !important;
+}
+.slider-area, .page-banner {
+    padding-top: 0 !important;
+}
+@media (max-width: 767px) {
+    .slider-area, .page-banner {
+        padding-top: 0 !important;
+    }
+}
