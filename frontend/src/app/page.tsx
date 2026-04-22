@@ -85,7 +85,7 @@ export default function HomePage() {
           <div className="row">
             <div className="col-lg-4 col-sm-6">
               <div className="single-features-item-2 d-flex mt-30 wow fadeInLeftBig" data-wow-duration="1s" data-wow-delay="0.2s">
-                <div className="item-icon">
+                <div className="item-icon me-3">
                   <img src="/assets/images/icon/icon-1.webp" width="46" height="46" alt="Icon" />
                 </div>
                 <div className="item-content media-body">
@@ -96,7 +96,7 @@ export default function HomePage() {
             </div>
             <div className="col-lg-4 col-sm-6">
               <div className="single-features-item-2 d-flex mt-30 wow fadeInUpBig" data-wow-duration="1s" data-wow-delay="0.4s">
-                <div className="item-icon">
+                <div className="item-icon me-3">
                   <img src="/assets/images/icon/icon-2.webp" width="46" height="46" alt="Icon" />
                 </div>
                 <div className="item-content media-body">
@@ -107,7 +107,7 @@ export default function HomePage() {
             </div>
             <div className="col-lg-4 col-sm-6">
               <div className="single-features-item-2 d-flex mt-30 wow fadeInRightBig" data-wow-duration="1s" data-wow-delay="0.6s">
-                <div className="item-icon">
+                <div className="item-icon me-3">
                   <img src="/assets/images/icon/icon-3.webp" width="46" height="46" alt="Icon" />
                 </div>
                 <div className="item-content media-body">
