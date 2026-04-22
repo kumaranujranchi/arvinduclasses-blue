@@ -346,6 +346,22 @@ export default function AboutPage() {
                     <h4 className="courses-title">
                       <Link href="/courses">Computer Science & Engineering</Link>
                     </h4>
+                    <div className="duration-rating">
+                      <div className="duration-fee">
+                        <p className="duration">Duration: <span> 4 year</span></p>
+                        <p className="fee">Fee: <span> $540</span></p>
+                      </div>
+                      <div className="rating">
+                        <span>Rating: </span>
+                        <ul className="star">
+                          <li><i className="fas fa-star"></i></li>
+                          <li><i className="fas fa-star"></i></li>
+                          <li><i className="fas fa-star"></i></li>
+                          <li><i className="fas fa-star"></i></li>
+                          <li><i className="fas fa-star"></i></li>
+                        </ul>
+                      </div>
+                    </div>
                     <div className="courses-link">
                       <Link className="apply" href="/courses">Online Apply</Link>
                       <Link className="more" href="/courses">Read more <i className="fas fa-chevron-right"></i></Link>
@@ -365,6 +381,22 @@ export default function AboutPage() {
                     <h4 className="courses-title">
                       <Link href="/courses">Bachelor of Business Administration</Link>
                     </h4>
+                    <div className="duration-rating">
+                      <div className="duration-fee">
+                        <p className="duration">Duration: <span> 4 year</span></p>
+                        <p className="fee">Fee: <span> $540</span></p>
+                      </div>
+                      <div className="rating">
+                        <span>Rating: </span>
+                        <ul className="star">
+                          <li><i className="fas fa-star"></i></li>
+                          <li><i className="fas fa-star"></i></li>
+                          <li><i className="fas fa-star"></i></li>
+                          <li><i className="fas fa-star"></i></li>
+                          <li><i className="fas fa-star"></i></li>
+                        </ul>
+                      </div>
+                    </div>
                     <div className="courses-link">
                       <Link className="apply" href="/courses">Online Apply</Link>
                       <Link className="more" href="/courses">Read more <i className="fas fa-chevron-right"></i></Link>
@@ -384,6 +416,22 @@ export default function AboutPage() {
                     <h4 className="courses-title">
                       <Link href="/courses">Social & Digital Marketing</Link>
                     </h4>
+                    <div className="duration-rating">
+                      <div className="duration-fee">
+                        <p className="duration">Duration: <span> 4 year</span></p>
+                        <p className="fee">Fee: <span> $540</span></p>
+                      </div>
+                      <div className="rating">
+                        <span>Rating: </span>
+                        <ul className="star">
+                          <li><i className="fas fa-star"></i></li>
+                          <li><i className="fas fa-star"></i></li>
+                          <li><i className="fas fa-star"></i></li>
+                          <li><i className="fas fa-star"></i></li>
+                          <li><i className="fas fa-star"></i></li>
+                        </ul>
+                      </div>
+                    </div>
                     <div className="courses-link">
                       <Link className="apply" href="/courses">Online Apply</Link>
                       <Link className="more" href="/courses">Read more <i className="fas fa-chevron-right"></i></Link>
@@ -403,6 +451,22 @@ export default function AboutPage() {
                     <h4 className="courses-title">
                       <Link href="/courses">Bachelor of Applied Mathematics</Link>
                     </h4>
+                    <div className="duration-rating">
+                      <div className="duration-fee">
+                        <p className="duration">Duration: <span> 4 year</span></p>
+                        <p className="fee">Fee: <span> $540</span></p>
+                      </div>
+                      <div className="rating">
+                        <span>Rating: </span>
+                        <ul className="star">
+                          <li><i className="fas fa-star"></i></li>
+                          <li><i className="fas fa-star"></i></li>
+                          <li><i className="fas fa-star"></i></li>
+                          <li><i className="fas fa-star"></i></li>
+                          <li><i className="fas fa-star"></i></li>
+                        </ul>
+                      </div>
+                    </div>
                     <div className="courses-link">
                       <Link className="apply" href="/courses">Online Apply</Link>
                       <Link className="more" href="/courses">Read more <i className="fas fa-chevron-right"></i></Link>
