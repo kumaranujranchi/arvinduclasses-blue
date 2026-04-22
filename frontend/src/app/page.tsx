@@ -15,7 +15,7 @@ export default function HomePage() {
         if ($(".slider-active").length && !$(".slider-active").hasClass("slick-initialized")) {
           function doAnimations(elements: any) {
             var animationEndEvents = "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend";
-            elements.each(function () {
+            elements.each(function (this: HTMLElement) {
               var $this = $(this);
               var $animationDelay = $this.data("delay");
               var $animationType = "animated " + $this.data("animation");
