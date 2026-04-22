@@ -32,8 +32,8 @@ export default function AboutPage() {
       {/* ====== About Section Start ====== */}
       <section className="about-area pt-80 pb-80">
         <div className="container">
-          <div className="row align-items-center gx-lg-5">
-            <div className="col-lg-7">
+          <div className="row align-items-center">
+            <div className="col-lg-5">
               <div className="about-content mt-40">
                 <h2 className="about-title">
                   Our <span>Story</span>
@@ -70,7 +70,7 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
-            <div className="col-lg-5">
+            <div className="col-lg-7">
               <div className="about-image mt-50">
                 <div className="single-image image-1">
                   <img
