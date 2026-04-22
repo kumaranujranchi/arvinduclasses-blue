@@ -1,0 +1,81 @@
+import { defineSchema, defineTable } from "convex/server";
+import { v } from "convex/values";
+
+export default defineSchema({
+  // ===== COURSES =====
+  courses: defineTable({
+    title: v.string(),
+    slug: v.string(),
+    category: v.string(),           // e.g. "#Engineering"
+    description: v.string(),
+    duration: v.string(),           // e.g. "1 year"
+    fee: v.number(),                // in INR
+    rating: v.optional(v.number()), // 1-5
+    imageUrl: v.optional(v.string()),
+    isActive: v.boolean(),
+    createdAt: v.number(),          // timestamp
+  })
+    .index("by_slug", ["slug"])
+    .index("by_category", ["category"])
+    .index("by_active", ["isActive"]),
+
+  // ===== BLOG POSTS =====
+  posts: defineTable({
+    title: v.string(),
+    slug: v.string(),
+    content: v.string(),
+    excerpt: v.string(),
+    author: v.string(),
+    imageUrl: v.optional(v.string()),
+    tags: v.array(v.string()),
+    isPublished: v.boolean(),
+    publishedAt: v.optional(v.number()),
+    createdAt: v.number(),
+  })
+    .index("by_slug", ["slug"])
+    .index("by_published", ["isPublished"]),
+
+  // ===== EVENTS =====
+  events: defineTable({
+    title: v.string(),
+    slug: v.string(),
+    description: v.string(),
+    imageUrl: v.optional(v.string()),
+    eventDate: v.number(),          // timestamp
+    location: v.string(),
+    isActive: v.boolean(),
+    createdAt: v.number(),
+  })
+    .index("by_slug", ["slug"])
+    .index("by_date", ["eventDate"]),
+
+  // ===== NOTICES =====
+  notices: defineTable({
+    title: v.string(),
+    content: v.string(),
+    isImportant: v.boolean(),
+    isActive: v.boolean(),
+    createdAt: v.number(),
+  })
+    .index("by_active", ["isActive"]),
+
+  // ===== CONTACT ENQUIRIES =====
+  enquiries: defineTable({
+    name: v.string(),
+    email: v.string(),
+    phone: v.optional(v.string()),
+    subject: v.string(),
+    message: v.string(),
+    isRead: v.boolean(),
+    createdAt: v.number(),
+  })
+    .index("by_read", ["isRead"]),
+
+  // ===== NEWSLETTER SUBSCRIBERS =====
+  subscribers: defineTable({
+    email: v.string(),
+    isActive: v.boolean(),
+    createdAt: v.number(),
+  })
+    .index("by_email", ["email"]),
+});

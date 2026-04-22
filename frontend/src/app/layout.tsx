@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { ConvexClientProvider } from "./components/ConvexClientProvider";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -33,7 +34,9 @@ export default function RootLayout({
         <link rel="stylesheet" href="/assets/css/style.min.css" />
       </head>
       <body>
-        {children}
+        <ConvexClientProvider>
+          {children}
+        </ConvexClientProvider>
 
         {/* Vendor JS */}
         <Script src="/assets/js/vendor/jquery-3.6.0.min.js" strategy="beforeInteractive" />
