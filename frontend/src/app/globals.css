@@ -166,3 +166,82 @@
 .premium-info-content a:hover {
   color: #01228D;
 }
+
+/* Core Values Hover Effect */
+.single-value {
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 1;
+  background: #fff;
+  border: 1px solid #eee;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.single-value::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  z-index: -1;
+}
+
+.single-value:hover::before {
+  top: 0;
+}
+
+.single-value:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  border-color: transparent;
+}
+
+.single-value:hover .value-icon i,
+.single-value:hover .value-title,
+.single-value:hover .value-desc {
+  color: #fff !important;
+}
+
+.single-value .value-quote {
+  position: absolute;
+  bottom: -60px;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  font-style: italic;
+  font-size: 14px;
+  transition: all 0.4s ease-in-out;
+  opacity: 0;
+  color: #fff;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.single-value:hover .value-quote {
+  bottom: 20px;
+  opacity: 1;
+}
+
+.single-value:hover .value-desc {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.single-value .value-desc {
+  transition: all 0.3s ease;
+}
+
+/* Value Card Colors - Matching Course Cards */
+.value-color-1::before { background: #07294d; } /* Dark Blue */
+.value-color-2::before { background: #1ab69d; } /* Green */
+.value-color-3::before { background: #3b82f6; } /* Sky Blue */
+.value-color-4::before { background: #20b2aa; } /* Turquoise */
+

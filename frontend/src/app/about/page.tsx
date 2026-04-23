@@ -367,18 +367,43 @@ export default function AboutPage() {
           </div>
           <div className="row mt-20">
             {[
-              { icon: 'fa-lightbulb', title: 'Innovation', desc: 'Constantly evolving our teaching methods.' },
-              { icon: 'fa-shield-alt', title: 'Integrity', desc: 'Transparency and honesty in everything we do.' },
-              { icon: 'fa-users', title: 'Inclusivity', desc: 'Equal opportunities for every student.' },
-              { icon: 'fa-medal', title: 'Excellence', desc: 'Striving for the best results in every exam.' }
+              { 
+                icon: 'fa-lightbulb', 
+                title: 'Innovation', 
+                desc: 'Constantly evolving our teaching methods.',
+                quote: '"Innovation distinguishes between a leader and a follower."',
+                color: 'value-color-1'
+              },
+              { 
+                icon: 'fa-shield-alt', 
+                title: 'Integrity', 
+                desc: 'Transparency and honesty in everything we do.',
+                quote: '"Integrity is doing the right thing, even when no one is watching."',
+                color: 'value-color-2'
+              },
+              { 
+                icon: 'fa-users', 
+                title: 'Inclusivity', 
+                desc: 'Equal opportunities for every student.',
+                quote: '"Diversity is a fact, but inclusion is a choice."',
+                color: 'value-color-3'
+              },
+              { 
+                icon: 'fa-medal', 
+                title: 'Excellence', 
+                desc: 'Striving for the best results in every exam.',
+                quote: '"Excellence is not a skill, it is an attitude."',
+                color: 'value-color-4'
+              }
             ].map((val, idx) => (
               <div key={idx} className="col-lg-3 col-sm-6">
-                <div className="single-value text-center mt-30 p-4 wow fadeInUp" data-wow-delay={`${idx * 0.2}s`} style={{ border: '1px solid #eee', borderRadius: '10px' }}>
+                <div className={`single-value text-center mt-30 p-4 wow fadeInUp ${val.color}`} data-wow-delay={`${idx * 0.2}s`}>
                   <div className="value-icon mb-3" style={{ fontSize: '40px', color: '#07294d' }}>
                     <i className={`fas ${val.icon}`}></i>
                   </div>
-                  <h4 className="value-title">{val.title}</h4>
-                  <p className="mt-10" style={{ fontSize: '14px' }}>{val.desc}</p>
+                  <h4 className="value-title" style={{ transition: 'all 0.3s' }}>{val.title}</h4>
+                  <p className="value-desc mt-10" style={{ fontSize: '14px' }}>{val.desc}</p>
+                  <div className="value-quote">{val.quote}</div>
                 </div>
               </div>
             ))}
