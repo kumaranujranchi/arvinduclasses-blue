@@ -146,7 +146,7 @@ export default function HomePage() {
           <div className="container">
             <div className="slider-content slider-content-3 text-center">
               <h2 className="title" data-animation="fadeInUp" data-delay="0.2s">
-                Education is the power of Humanity
+                Best Educational Environment for Your Success
               </h2>
               <ul className="slider-btn">
                 <li>
