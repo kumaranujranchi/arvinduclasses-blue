@@ -537,48 +537,29 @@ export default function AboutPage() {
           </div>
           <div className="teachers-wrapper">
             <div className="row teachers-row">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="col-md-4 col-sm-6 teachers-col">
+              {[
+                { name: 'Dr. Arvind Singh', desig: 'Mathematics Expert', img: 'teacher-1.png' },
+                { name: 'Prof. Sunita Verma', desig: 'Science Head', img: 'teacher-2.png' },
+                { name: 'Mr. Rajesh Kumar', desig: 'Commerce Specialist', img: 'teacher-3.png' }
+              ].map((teacher, idx) => (
+                <div key={idx} className="col-md-4 col-sm-6 teachers-col">
                   <div className="single-teacher mt-30 text-center">
                     <div className="teacher-social">
                       <ul className="social">
-                        <li>
-                          <a href="#">
-                            <i className="fab fa-facebook-f"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#">
-                            <i className="fab fa-twitter"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#">
-                            <i className="fab fa-instagram"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#">
-                            <i className="fab fa-linkedin-in"></i>
-                          </a>
-                        </li>
+                        <li><a href="#"><i className="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i className="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i className="fab fa-instagram"></i></a></li>
+                        <li><a href="#"><i className="fab fa-linkedin-in"></i></a></li>
                       </ul>
                     </div>
                     <div className="teacher-image">
                       <a href="#">
-                        <img
-                          src={`/assets/images/teachers/teacher-${i}.webp`}
-                          width="266"
-                          height="359"
-                          alt="teacher"
-                        />
+                        <img src={`/assets/images/teachers/${teacher.img}`} width="266" height="359" style={{ objectFit: 'cover' }} alt="teacher" />
                       </a>
                     </div>
                     <div className="teacher-content">
-                      <h4 className="name">
-                        <a href="#">Expert Teacher {i}</a>
-                      </h4>
-                      <span className="designation">Science/Commerce</span>
+                      <h4 className="name"><a href="#">{teacher.name}</a></h4>
+                      <span className="designation">{teacher.desig}</span>
                     </div>
                   </div>
                 </div>
