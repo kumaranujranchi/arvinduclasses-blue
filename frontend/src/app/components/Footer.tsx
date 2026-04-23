@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <section
       className="footer-area footer-02 bg_cover"
-      style={{ backgroundImage: "url(/assets/images/counter-bg.webp)" }}
+      style={{ backgroundImage: "url(/assets/images/footer.png)" }}
     >
       <div className="footer-widget">
         <div className="container">
