@@ -40,7 +40,7 @@ export default function Header() {
       </div>
 
       {/* Main Navigation */}
-      <div id="navigation" className="navigation navigation-landscape">
+      <div id="navigation" className="navigation navigation-landscape" style={{ padding: "10px 0" }}>
         <div className="container position-relative">
           <div className="row align-items-center">
             <div className="col-lg-3">
@@ -48,8 +48,8 @@ export default function Header() {
                 <Link href="/">
                   <Image
                     src="/assets/images/Arvindu-logo.png"
-                    height={25}
-                    width={120}
+                    height={35}
+                    width={150}
                     alt="Arvindu Classes Logo"
                     priority
                   />

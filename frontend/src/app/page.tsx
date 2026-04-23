@@ -117,7 +117,7 @@ export default function HomePage() {
       <section className="slider-area slider-03 slider-active">
         <div
           className="single-slider d-flex align-items-center bg_cover"
-          style={{ backgroundImage: "url(/assets/images/homepage1.png)" }}
+          style={{ backgroundImage: "linear-gradient(rgba(7, 41, 77, 0.7), rgba(7, 41, 77, 0.7)), url(/assets/images/homepage1.png)" }}
         >
           <div className="container">
             <div className="slider-content slider-content-3 text-center">
@@ -141,7 +141,7 @@ export default function HomePage() {
         </div>
         <div
           className="single-slider d-flex align-items-center bg_cover"
-          style={{ backgroundImage: "url(/assets/images/homepage2.png)" }}
+          style={{ backgroundImage: "linear-gradient(rgba(7, 41, 77, 0.7), rgba(7, 41, 77, 0.7)), url(/assets/images/homepage2.png)" }}
         >
           <div className="container">
             <div className="slider-content slider-content-3 text-center">
