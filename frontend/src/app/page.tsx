@@ -505,21 +505,21 @@ export default function HomePage() {
                 <div className="testimonials-shape shape-2"></div>
                 <div className="testimonials-image">
                   <div className="single-testimonial-image">
-                    <img src="/assets/images/testimonials-3.webp" width="313" height="579" alt="Testimonials" />
+                    <img src="/assets/images/testimonial_rohan.png" width="313" height="579" alt="Testimonials" />
                     <div className="content-meta">
                       <p className="name">Rohan Sharma</p>
                       <p className="designation">JEE Advanced, AIR 342</p>
                     </div>
                   </div>
                   <div className="single-testimonial-image">
-                    <img src="/assets/images/testimonials-2.webp" width="313" height="579" alt="Testimonials" />
+                    <img src="/assets/images/testimonial_priya.png" width="313" height="579" alt="Testimonials" />
                     <div className="content-meta">
                       <p className="name">Priya Verma</p>
                       <p className="designation">NEET Qualifier, 650+ Score</p>
                     </div>
                   </div>
                   <div className="single-testimonial-image">
-                    <img src="/assets/images/testimonials-1.webp" width="313" height="579" alt="Testimonials" />
+                    <img src="/assets/images/testimonial_amit.png" width="313" height="579" alt="Testimonials" />
                     <div className="content-meta">
                       <p className="name">Amit Kumar</p>
                       <p className="designation">Board Topper, 97%</p>
