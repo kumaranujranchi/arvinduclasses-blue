@@ -240,7 +240,7 @@
 }
 
 /* Value Card Colors - Matching Course Cards */
-.value-color-1::before { background: #07294d; } /* Dark Blue */
+.value-color-1::before { background: #e91e63; } /* Pink */
 .value-color-2::before { background: #1ab69d; } /* Green */
 .value-color-3::before { background: #3b82f6; } /* Sky Blue */
 .value-color-4::before { background: #20b2aa; } /* Turquoise */
