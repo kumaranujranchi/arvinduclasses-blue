@@ -296,16 +296,16 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="col-lg-7">
-              <div className="campus-image-2 mt-50" style={{ transform: 'scale(0.85)', transformOrigin: 'top left' }}>
+              <div className="campus-image-2 mt-50">
                 <h4 className="campus-title-2">Image Gallery</h4>
                 <div className="image-1">
-                  <img src="/assets/images/about/about-1.png" style={{ objectFit: 'cover' }} width="585" height="308" alt="campus gallery" />
+                  <img src="/assets/images/about/about-1.png" style={{ objectFit: 'cover', width: '100%', height: '300px', borderRadius: '8px' }} alt="campus gallery" />
                 </div>
-                <div className="image-2">
-                  <img src="/assets/images/about/about-2.png" style={{ objectFit: 'cover' }} width="253" height="220" alt="campus gallery" />
+                <div className="image-2" style={{ marginTop: '20px' }}>
+                  <img src="/assets/images/about/about-2.png" style={{ objectFit: 'cover', width: '100%', height: '200px', borderRadius: '8px' }} alt="campus gallery" />
                 </div>
-                <div className="image-3">
-                  <img src="/assets/images/about/about-3.png" style={{ objectFit: 'cover' }} width="412" height="270" alt="campus gallery" />
+                <div className="image-3" style={{ marginTop: '20px' }}>
+                  <img src="/assets/images/about/about-3.png" style={{ objectFit: 'cover', width: '100%', height: '250px', borderRadius: '8px' }} alt="campus gallery" />
                 </div>
                 <Link href="#" className="more">
                   View more <i className="fal fa-long-arrow-right"></i>
