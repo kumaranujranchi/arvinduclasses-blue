@@ -614,7 +614,7 @@ export default function AboutPage() {
                     <div className="testimonials-image">
                       <div className="single-testimonial-image">
                         <img
-                          src="/assets/images/testimonials-1.webp"
+                          src="/assets/images/about/about-testimonial.png"
                           width="313"
                           height="579"
                           alt="testimonials"
