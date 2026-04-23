@@ -315,7 +315,77 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      {/* ====== Best Educational Environment Ends ====== */}
+      {/* ====== Vision & Mission Section Start ====== */}
+      <section className="vision-mission-area pt-80 pb-80" style={{ background: '#f8f9fa' }}>
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-lg-6">
+              <div className="vision-content mt-40 wow fadeInLeft" data-wow-duration="1s">
+                <h2 className="about-title">Our <span>Vision</span></h2>
+                <span className="line"></span>
+                <p className="mt-20" style={{ fontSize: '18px', lineHeight: '1.8', textAlign: 'justify' }}>
+                  To be the most trusted and inspiring educational platform that empowers every student to achieve academic excellence and personal growth. We envision a future where learning is not a burden but a journey of discovery, leading to a generation of confident and skilled leaders.
+                </p>
+              </div>
+            </div>
+            <div className="col-lg-6">
+              <div className="mission-content mt-40 wow切换 fadeInRight" data-wow-duration="1s" style={{ padding: '40px', background: '#fff', borderRadius: '15px', boxShadow: '0 10px 30px rgba(0,0,0,0.05)' }}>
+                <h2 className="about-title">Our <span>Mission</span></h2>
+                <span className="line"></span>
+                <ul className="mt-20" style={{ listStyle: 'none', padding: 0 }}>
+                  <li className="mb-15 d-flex align-items-start">
+                    <i className="fas fa-check-circle mt-1 me-3" style={{ color: '#07294d' }}></i>
+                    <span>Providing concept-driven education to build strong academic foundations.</span>
+                  </li>
+                  <li className="mb-15 d-flex align-items-start">
+                    <i className="fas fa-check-circle mt-1 me-3" style={{ color: '#07294d' }}></i>
+                    <span>Personalized mentoring to address every student's unique learning needs.</span>
+                  </li>
+                  <li className="mb-15 d-flex align-items-start">
+                    <i className="fas fa-check-circle mt-1 me-3" style={{ color: '#07294d' }}></i>
+                    <span>Integrating modern technology with traditional teaching for best results.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* ====== Vision & Mission Section Ends ====== */}
+
+      {/* ====== Core Values Start ====== */}
+      <section className="core-values-area pt-80 pb-80">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-lg-8">
+              <div className="section-title text-center">
+                <h2 className="title">Our Core <span>Values</span></h2>
+                <span className="line mx-auto"></span>
+                <p className="mt-20">The pillars that define our commitment to excellence in education.</p>
+              </div>
+            </div>
+          </div>
+          <div className="row mt-20">
+            {[
+              { icon: 'fa-lightbulb', title: 'Innovation', desc: 'Constantly evolving our teaching methods.' },
+              { icon: 'fa-shield-alt', title: 'Integrity', desc: 'Transparency and honesty in everything we do.' },
+              { icon: 'fa-users', title: 'Inclusivity', desc: 'Equal opportunities for every student.' },
+              { icon: 'fa-medal', title: 'Excellence', desc: 'Striving for the best results in every exam.' }
+            ].map((val, idx) => (
+              <div key={idx} className="col-lg-3 col-sm-6">
+                <div className="single-value text-center mt-30 p-4 wow fadeInUp" data-wow-delay={`${idx * 0.2}s`} style={{ border: '1px solid #eee', borderRadius: '10px' }}>
+                  <div className="value-icon mb-3" style={{ fontSize: '40px', color: '#07294d' }}>
+                    <i className={`fas ${val.icon}`}></i>
+                  </div>
+                  <h4 className="value-title">{val.title}</h4>
+                  <p className="mt-10" style={{ fontSize: '14px' }}>{val.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      {/* ====== Core Values Ends ====== */}
 
       {/* Sections removed as they are duplicates of homepage sections */}
       {/* ====== Features Ends ====== */}
