@@ -538,9 +538,9 @@ export default function AboutPage() {
           <div className="teachers-wrapper">
             <div className="row teachers-row">
               {[
-                { name: 'Dr. Arvind Singh', desig: 'Mathematics Expert', img: 'teacher-1.png' },
-                { name: 'Prof. Sunita Verma', desig: 'Science Head', img: 'teacher-2.png' },
-                { name: 'Mr. Rajesh Kumar', desig: 'Commerce Specialist', img: 'teacher-3.png' }
+                { name: 'Prof. Sunita Verma', desig: 'Science Head', img: 'teacher-1.png' },
+                { name: 'Dr. Arvind Singh', desig: 'Mathematics Expert', img: 'teacher-2.png' },
+                { name: 'Ms. Anjali Sharma', desig: 'Commerce Specialist', img: 'teacher-3.png' }
               ].map((teacher, idx) => (
                 <div key={idx} className="col-md-4 col-sm-6 teachers-col">
                   <div className="single-teacher mt-30 text-center">
