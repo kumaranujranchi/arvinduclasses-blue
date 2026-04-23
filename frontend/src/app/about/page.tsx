@@ -634,7 +634,7 @@ export default function AboutPage() {
                           </p>
                         </div>
                         <div className="content-meta">
-                          <p className="name">Rahul Sharma</p>
+                          <h5 className="name">Shashi Ranjan</h5>
                           <p className="designation">Grade 12 Student</p>
                         </div>
                       </div>
