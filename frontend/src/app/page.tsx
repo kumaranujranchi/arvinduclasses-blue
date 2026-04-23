@@ -274,7 +274,7 @@ export default function HomePage() {
           <div className="row align-items-center">
             <div className="col-lg-4">
               <div className="features-image-2">
-                <img className="wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s" src="/assets/images/features-2.webp" alt="Features" />
+                <img className="wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s" src="/assets/images/homepage_girl.png" alt="Features" />
               </div>
             </div>
             <div className="col-lg-8">
