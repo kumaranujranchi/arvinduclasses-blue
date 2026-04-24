@@ -75,7 +75,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   }
 
   return (
-    <div className="flex h-screen bg-[#f4f7fb] overflow-hidden font-sans text-slate-900">
+    <>
+      <link rel="stylesheet" href="/assets/css/plugins/fontawesome.min.css" />
+      <div className="flex h-screen bg-[#f4f7fb] overflow-hidden font-sans text-slate-900">
       <style>{`
         .custom-scrollbar::-webkit-scrollbar {
           width: 4px;
@@ -157,5 +159,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </main>
       </div>
     </div>
+    </>
   );
 }
