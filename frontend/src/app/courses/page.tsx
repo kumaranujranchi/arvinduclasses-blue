@@ -43,7 +43,7 @@ export default function CoursesPage() {
       fee: "₹20,000",
       rating: 4,
       bgColor: "#27B8A7",
-      slug: "#",
+      slug: "applied-mathematics",
     },
     {
       tag: "#Science",
