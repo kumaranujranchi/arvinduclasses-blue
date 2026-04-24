@@ -121,7 +121,7 @@ export default function ResultsPage() {
                 <div className="col-lg-4 mb-4 mb-lg-0">
                   <div className="student-info-card p-4 rounded shadow-sm bg-white h-100 border-top border-primary border-4">
                     <div className="d-flex align-items-center mb-4">
-                      <div className="avatar-circle me-3" style={{ width: "60px", height: "60px", backgroundColor: "#07294d10", borderRadius: "50%", display: "flex", alignItems: "center", justifyCenter: "center" }}>
+                      <div className="avatar-circle me-3" style={{ width: "60px", height: "60px", backgroundColor: "#07294d10", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center" }}>
                         <i className="fas fa-user-graduate text-primary" style={{ fontSize: "24px" }}></i>
                       </div>
                       <div>
