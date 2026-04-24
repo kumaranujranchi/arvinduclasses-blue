@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import FeatureScrolling from "./components/FeatureScrolling";
 
 export default function HomePage() {
   useEffect(() => {
@@ -473,6 +474,8 @@ export default function HomePage() {
         </div>
       </section>
       {/* ====== Online Library Ends ====== */}
+
+      <FeatureScrolling />
 
       {/* ====== Testimonials Start ====== */}
       <section className="testimonials-area">
