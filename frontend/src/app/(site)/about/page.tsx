@@ -91,25 +91,22 @@ export default function AboutPage() {
                   Our <span>Story</span>
                 </h2>
                 <span className="line"></span>
-                <p className="mt-20" style={{ textAlign: "justify" }}>
+                <p className="mt-20 about-text-justify">
                   Arvindu Classes was started with a clear purpose — to change
                   the way students learn and understand academics.
                 </p>
-                <p className="mt-15" style={{ textAlign: "justify" }}>
+                <p className="mt-15 about-text-justify">
                   We observed that many students struggle not because they lack
                   ability, but because their fundamentals are weak and they do
                   not receive the right guidance at the right time. Most
                   traditional coaching focuses only on completing the syllabus,
                   leaving students confused and underprepared.
                 </p>
-                <p className="mt-15" style={{ textAlign: "justify" }}>
+                <p className="mt-15 about-text-justify">
                   This gap in learning inspired us to build something different.
                 </p>
 
-                <p
-                  className="mt-15 font-weight-bold"
-                  style={{ fontWeight: 600, textAlign: "justify" }}
-                >
+                <p className="mt-15 about-text-bold">
                   We believe that when a student understands the basics clearly,
                   confidence automatically follows, and results improve
                   naturally.
@@ -204,31 +201,19 @@ export default function AboutPage() {
                 <p className="mt-20">Many students face common challenges:</p>
                 <ul className="problem-list mt-20">
                   <li className="d-flex align-items-center mb-10">
-                    <i
-                      className="fas fa-check-circle me-2"
-                      style={{ color: "#ffc600" }}
-                    ></i>
+                    <i className="fas fa-check-circle me-2 about-check-icon"></i>
                     <span>Weak foundational concepts</span>
                   </li>
                   <li className="d-flex align-items-center mb-10">
-                    <i
-                      className="fas fa-check-circle me-2"
-                      style={{ color: "#ffc600" }}
-                    ></i>
+                    <i className="fas fa-check-circle me-2 about-check-icon"></i>
                     <span>Lack of personal attention in crowded classrooms</span>
                   </li>
                   <li className="d-flex align-items-center mb-10">
-                    <i
-                      className="fas fa-check-circle me-2"
-                      style={{ color: "#ffc600" }}
-                    ></i>
+                    <i className="fas fa-check-circle me-2 about-check-icon"></i>
                     <span>No proper system for testing and performance tracking</span>
                   </li>
                   <li className="d-flex align-items-center mb-10">
-                    <i
-                      className="fas fa-check-circle me-2"
-                      style={{ color: "#ffc600" }}
-                    ></i>
+                    <i className="fas fa-check-circle me-2 about-check-icon"></i>
                     <span>Fear of subjects like Maths, Science, or Accounts</span>
                   </li>
                 </ul>
@@ -240,35 +225,20 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="col-lg-6">
-              <div
-                className="our-mission mt-40 p-4 rounded shadow-sm"
-                style={{
-                  background: "linear-gradient(145deg, #07294d 0%, #004d99 100%)",
-                  color: "#fff",
-                }}
-              >
+              <div className="our-mission mt-40 rounded shadow-sm problem-mission-box">
                 <h3 className="sub-title text-white">Our Mission</h3>
-                <span
-                  className="line"
-                  style={{ backgroundColor: "#fff" }}
-                ></span>
+                <span className="line"></span>
                 <p className="mt-20 text-white">
                   To provide structured, concept-driven education in both
                   Science and Commerce streams, helping students build strong
                   foundations and achieve long-term academic success.
                 </p>
                 <div className="mission-image mt-30 shadow-lg rounded overflow-hidden">
-                  <img
-                    src="/assets/images/about/mission.png"
-                    alt="Mission"
-                    className="img-fluid"
-                      style={{
-                        transition: "transform 0.3s ease",
-                        height: "250px",
-                        objectFit: "cover",
-                        width: "100%",
-                      }}
-                  />
+                    <img
+                      src="/assets/images/about/mission.png"
+                      alt="Mission"
+                      className="img-fluid mission-img-style"
+                    />
                 </div>
               </div>
             </div>
@@ -299,13 +269,13 @@ export default function AboutPage() {
               <div className="campus-image-2 mt-50">
                 <h4 className="campus-title-2">Image Gallery</h4>
                 <div className="image-1">
-                  <img src="/assets/images/about/about-grid-1.png" width="585" height="308" style={{ objectFit: 'cover', borderRadius: '8px' }} alt="campus gallery" />
+                  <img src="/assets/images/about/about-grid-1.png" width="585" height="308" className="about-gallery-img" alt="campus gallery" />
                 </div>
                 <div className="image-2">
-                  <img src="/assets/images/about/about-grid-2.png" width="253" height="220" style={{ objectFit: 'cover', borderRadius: '8px' }} alt="campus gallery" />
+                  <img src="/assets/images/about/about-grid-2.png" width="253" height="220" className="about-gallery-img" alt="campus gallery" />
                 </div>
                 <div className="image-3">
-                  <img src="/assets/images/about/about-grid-3.png" width="412" height="270" style={{ objectFit: 'cover', borderRadius: '8px' }} alt="campus gallery" />
+                  <img src="/assets/images/about/about-grid-3.png" width="412" height="270" className="about-gallery-img" alt="campus gallery" />
                 </div>
                 <Link href="#" className="more">
                   View more <i className="fal fa-long-arrow-right"></i>
@@ -316,33 +286,33 @@ export default function AboutPage() {
         </div>
       </section>
       {/* ====== Vision & Mission Section Start ====== */}
-      <section className="vision-mission-area pt-80 pb-80" style={{ background: '#f8f9fa' }}>
+      <section className="vision-mission-area pt-80 pb-80 vision-area-bg">
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-6">
               <div className="vision-content mt-40 wow fadeInLeft" data-wow-duration="1s">
                 <h2 className="about-title">Our <span>Vision</span></h2>
                 <span className="line"></span>
-                <p className="mt-20" style={{ fontSize: '18px', lineHeight: '1.8', textAlign: 'justify' }}>
+                <p className="mt-20 vision-text-style">
                   To be the most trusted and inspiring educational platform that empowers every student to achieve academic excellence and personal growth. We envision a future where learning is not a burden but a journey of discovery, leading to a generation of confident and skilled leaders.
                 </p>
               </div>
             </div>
             <div className="col-lg-6">
-              <div className="mission-content mt-40 wow切换 fadeInRight" data-wow-duration="1s" style={{ padding: '40px', background: '#fff', borderRadius: '15px', boxShadow: '0 10px 30px rgba(0,0,0,0.05)' }}>
+              <div className="mission-content mt-40 wow切换 fadeInRight vision-mission-box" data-wow-duration="1s">
                 <h2 className="about-title">Our <span>Mission</span></h2>
                 <span className="line"></span>
-                <ul className="mt-20" style={{ listStyle: 'none', padding: 0 }}>
+                <ul className="mt-20 mission-list-style">
                   <li className="mb-15 d-flex align-items-start">
-                    <i className="fas fa-check-circle mt-1 me-3" style={{ color: '#07294d' }}></i>
+                    <i className="fas fa-check-circle mt-1 me-3 mission-check-icon"></i>
                     <span>Providing concept-driven education to build strong academic foundations.</span>
                   </li>
                   <li className="mb-15 d-flex align-items-start">
-                    <i className="fas fa-check-circle mt-1 me-3" style={{ color: '#07294d' }}></i>
+                    <i className="fas fa-check-circle mt-1 me-3 mission-check-icon"></i>
                     <span>Personalized mentoring to address every student's unique learning needs.</span>
                   </li>
                   <li className="mb-15 d-flex align-items-start">
-                    <i className="fas fa-check-circle mt-1 me-3" style={{ color: '#07294d' }}></i>
+                    <i className="fas fa-check-circle mt-1 me-3 mission-check-icon"></i>
                     <span>Integrating modern technology with traditional teaching for best results.</span>
                   </li>
                 </ul>
@@ -398,11 +368,11 @@ export default function AboutPage() {
             ].map((val, idx) => (
               <div key={idx} className="col-lg-3 col-sm-6">
                 <div className={`single-value text-center mt-30 p-4 wow fadeInUp ${val.color}`} data-wow-delay={`${idx * 0.2}s`}>
-                  <div className="value-icon mb-3" style={{ fontSize: '40px', color: '#07294d' }}>
+                  <div className="value-icon mb-3 value-icon-style">
                     <i className={`fas ${val.icon}`}></i>
                   </div>
-                  <h4 className="value-title" style={{ transition: 'all 0.3s' }}>{val.title}</h4>
-                  <p className="value-desc mt-10" style={{ fontSize: '14px' }}>{val.desc}</p>
+                  <h4 className="value-title value-title-style">{val.title}</h4>
+                  <p className="value-desc mt-10 value-desc-style">{val.desc}</p>
                   <div className="value-quote">{val.quote}</div>
                 </div>
               </div>
@@ -553,7 +523,7 @@ export default function AboutPage() {
                     </div>
                     <div className="teacher-image">
                       <a href="#">
-                        <img src={`/assets/images/teachers/${teacher.img}`} width="266" height="359" style={{ objectFit: 'cover' }} alt="teacher" />
+                        <img src={`/assets/images/teachers/${teacher.img}`} width="266" height="359" className="teacher-img-style" alt="teacher" />
                       </a>
                     </div>
                     <div className="teacher-content">

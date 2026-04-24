@@ -397,6 +397,265 @@
   }
 }
 
+/* Sticky Buttons */
+.sticky-buttons-container {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sticky-btn {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  color: #fff;
+  padding: 15px 10px;
+  border-radius: 5px 0 0 5px;
+  font-weight: 700;
+  font-size: 13px;
+  text-decoration: none;
+  box-shadow: -2px 2px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 110px;
+  letter-spacing: 0.5px;
+  border: 1px solid rgba(255,255,255,0.1);
+  position: relative;
+  right: -5px;
+  cursor: pointer;
+}
+
+.sticky-btn:hover {
+  right: 0px !important;
+  box-shadow: -5px 5px 20px rgba(0,0,0,0.2) !important;
+}
+
+.demo-btn { background: #EAB830; }
+.demo-btn:hover { background: #f5c441 !important; }
+
+.enroll-btn { background: #01228D; }
+.enroll-btn:hover { background: #0a35c2 !important; }
+
+@media (max-width: 768px) {
+  .sticky-buttons-container {
+    display: none !important;
+  }
+}
+
+/* Feature Scrolling */
+.feature-scrolling-area {
+  padding: 60px 0;
+  background: #f8fbff;
+  position: relative;
+}
+
+.scrolling-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.scroll-row {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  white-space: nowrap;
+}
+
+.scroll-content {
+  display: flex;
+  gap: 20px;
+  padding: 10px 0;
+}
+
+.left-to-right .scroll-content {
+  animation: scroll-left 60s linear infinite;
+}
+
+.right-to-left .scroll-content {
+  animation: scroll-right 60s linear infinite;
+}
+
+.feature-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  padding: 8px 24px;
+  border-radius: 100px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  border: 1px solid rgba(0,0,0,0.03);
+  transition: transform 0.3s ease;
+}
+
+.feature-badge:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.icon-box {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 14px;
+}
+
+.feature-badge span {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+.gradient-mask {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 150px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.mask-left {
+  left: 0;
+  background: linear-gradient(to right, #f8fbff 10%, transparent 100%);
+}
+
+.mask-right {
+  right: 0;
+  background: linear-gradient(to left, #f8fbff 10%, transparent 100%);
+}
+
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scroll-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+@media (max-width: 768px) {
+  .feature-scrolling-area {
+    padding: 40px 0;
+  }
+  .gradient-mask {
+    width: 80px;
+  }
+  .feature-badge {
+    padding: 6px 18px;
+  }
+  .feature-badge span {
+    font-size: 13px;
+  }
+  .left-to-right .scroll-content, 
+  .right-to-left .scroll-content {
+    animation-duration: 40s;
+  }
+}
+
+/* About Page Specific Styles */
+.about-text-justify {
+  text-align: justify;
+}
+
+.about-text-bold {
+  font-weight: 600;
+  text-align: justify;
+}
+
+.about-check-icon {
+  color: #ffc600;
+}
+
+.problem-mission-box {
+  background: linear-gradient(145deg, #07294d 0%, #004d99 100%);
+  color: #fff;
+}
+
+.problem-mission-box .line {
+  background-color: #fff;
+}
+
+.mission-img-style {
+  transition: transform 0.3s ease;
+  height: 250px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.about-gallery-img {
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.vision-area-bg {
+  background: #f8f9fa;
+}
+
+.vision-text-style {
+  font-size: 18px;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+.vision-mission-box {
+  padding: 40px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.mission-list-style {
+  list-style: none;
+  padding: 0;
+}
+
+.mission-check-icon {
+  color: #07294d;
+}
+
+.value-icon-style {
+  font-size: 40px;
+  color: #07294d;
+}
+
+.value-title-style {
+  transition: all 0.3s;
+}
+
+.value-desc-style {
+  font-size: 14px;
+}
+
+.teacher-img-style {
+  object-fit: cover;
+}
+
+/* Course Card specific styles */
+.course-card-wrapper {
+  min-height: 330px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.course-link-wrapper {
+  margin-top: auto;
+}
+
+
+
 
 
 

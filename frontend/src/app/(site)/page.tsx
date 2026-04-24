@@ -341,13 +341,9 @@ export default function HomePage() {
                 { tag: "#University", title: "B.Com Academic Support", fee: "₹45,000", duration: "3 Years", bgColor: "#7D2AE8", slug: "bcom-support", delay: "0.6s" },
               ].map(({ tag, title, fee, duration, bgColor, slug, delay }, idx) => (
                 <div key={idx} className="col-lg-4 col-sm-6 courses-col">
-                  <div className="single-courses mt-30 wow fadeInUpBig" data-wow-duration="1s" data-wow-delay={delay} 
+                  <div className="single-courses mt-30 wow fadeInUpBig course-card-wrapper" data-wow-duration="1s" data-wow-delay={delay} 
                     style={{ 
-                      backgroundColor: bgColor, 
-                      minHeight: '330px', 
-                      display: 'flex', 
-                      flexDirection: 'column', 
-                      justifyContent: 'space-between' 
+                      backgroundColor: bgColor
                     }}>
                     <div>
                       <a href="#" className="category">{tag}</a>
@@ -365,7 +361,7 @@ export default function HomePage() {
                         </ul>
                       </div>
                     </div>
-                    <div className="courses-link" style={{ marginTop: 'auto' }}>
+                    <div className="courses-link course-link-wrapper">
                       <a className="apply" href="#">Online Apply</a>
                       <Link className="more" href={`/courses/${slug}`}>Read more <i className="fas fa-chevron-right"></i></Link>
                     </div>

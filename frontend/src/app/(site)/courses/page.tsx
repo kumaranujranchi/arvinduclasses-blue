@@ -91,15 +91,11 @@ export default function CoursesPage() {
               {courses.map(({ tag, title, duration, fee, rating, bgColor, slug }, index) => (
                 <div key={index} className="col-lg-4 col-sm-6 courses-col">
                   <div
-                    className="single-courses mt-30 wow fadeInUpBig"
+                    className="single-courses mt-30 wow fadeInUpBig course-card-wrapper"
                     data-wow-duration="1s"
                     data-wow-delay={`${0.2 * (index + 1)}s`}
                     style={{ 
-                      backgroundColor: bgColor,
-                      minHeight: '330px',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'space-between'
+                      backgroundColor: bgColor
                     }}
                   >
                     <div>
@@ -132,7 +128,7 @@ export default function CoursesPage() {
                         </ul>
                       </div>
                     </div>
-                    <div className="courses-link" style={{ marginTop: 'auto' }}>
+                    <div className="courses-link course-link-wrapper">
                       <a className="apply" href="#">
                         Book Demo
                       </a>
