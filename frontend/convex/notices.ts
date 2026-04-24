@@ -22,12 +22,15 @@ export const getAll = query({
 
 export const createNotice = mutation({
   args: {
+    title: v.string(),
     content: v.string(),
-    link: v.optional(v.string()),
+    isImportant: v.boolean(),
   },
   handler: async (ctx, args) => {
     return await ctx.db.insert("notices", {
-      ...args,
+      title: args.title,
+      content: args.content,
+      isImportant: args.isImportant,
       isActive: true,
       createdAt: Date.now(),
     });

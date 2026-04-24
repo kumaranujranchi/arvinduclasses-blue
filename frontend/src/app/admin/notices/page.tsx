@@ -11,12 +11,12 @@ export default function ManageNotices() {
   const toggleStatus = useMutation(api.notices.toggleNoticeStatus);
 
   const [isAdding, setIsAdding] = useState(false);
-  const [formData, setFormData] = useState({ content: "", link: "" });
+  const [formData, setFormData] = useState({ title: "", content: "", isImportant: false });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     await createNotice(formData);
-    setFormData({ content: "", link: "" });
+    setFormData({ title: "", content: "", isImportant: false });
     setIsAdding(false);
   };
 
@@ -47,6 +47,31 @@ export default function ManageNotices() {
       {isAdding && (
         <div className="bg-white p-10 rounded-3xl shadow-xl border border-blue-50 animate-in slide-in-from-top duration-500">
           <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="space-y-2">
+                <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Notice Title</label>
+                <input 
+                  required
+                  className="w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-blue-100 font-bold text-gray-700 outline-none placeholder:text-gray-300"
+                  placeholder="e.g. Admission Open"
+                  value={formData.title}
+                  onChange={(e) => setFormData({...formData, title: e.target.value})}
+                />
+              </div>
+              <div className="flex items-center gap-4 pt-8">
+                <label className="relative inline-flex items-center cursor-pointer">
+                  <input 
+                    type="checkbox" 
+                    className="sr-only peer"
+                    checked={formData.isImportant}
+                    onChange={(e) => setFormData({...formData, isImportant: e.target.checked})}
+                  />
+                  <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-500"></div>
+                  <span className="ml-3 text-[10px] font-black uppercase tracking-widest text-gray-400">Mark as Important</span>
+                </label>
+              </div>
+            </div>
+
             <div className="space-y-2">
               <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Notice Content</label>
               <textarea 
@@ -58,21 +83,11 @@ export default function ManageNotices() {
                 onChange={(e) => setFormData({...formData, content: e.target.value})}
               />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Target Link (Optional)</label>
-                <input 
-                  className="w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-blue-100 font-bold text-gray-700 outline-none"
-                  placeholder="https://example.com/apply"
-                  value={formData.link}
-                  onChange={(e) => setFormData({...formData, link: e.target.value})}
-                />
-              </div>
-              <div className="flex items-end">
-                <button type="submit" className="w-full py-4 bg-[#ffc600] text-[#07294d] rounded-2xl font-black text-xs uppercase tracking-widest shadow-lg shadow-yellow-500/20 hover:shadow-xl transition-all active:scale-95">
-                  Publish Notice
-                </button>
-              </div>
+
+            <div className="flex justify-end">
+              <button type="submit" className="px-10 py-4 bg-[#ffc600] text-[#07294d] rounded-2xl font-black text-xs uppercase tracking-widest shadow-lg shadow-yellow-500/20 hover:shadow-xl transition-all active:scale-95">
+                Publish Notice
+              </button>
             </div>
           </form>
         </div>
@@ -83,18 +98,14 @@ export default function ManageNotices() {
           <div key={notice._id} className="bg-white p-6 rounded-[24px] shadow-sm border border-gray-50 flex flex-col md:flex-row md:items-center justify-between gap-6 group hover:shadow-md transition-all duration-300">
             <div className="flex items-center gap-6 flex-1">
               <div className={`w-14 h-14 shrink-0 rounded-2xl flex items-center justify-center text-xl shadow-sm ${
-                notice.isActive ? "bg-blue-500 text-white" : "bg-gray-100 text-gray-400"
+                notice.isImportant ? "bg-red-500 text-white" : "bg-blue-500 text-white"
               }`}>
-                <i className="fas fa-bullhorn"></i>
+                <i className={notice.isImportant ? "fas fa-exclamation-circle" : "fas fa-bullhorn"}></i>
               </div>
               <div className="min-w-0">
-                <p className="font-bold text-gray-800 text-base leading-snug">{notice.content}</p>
+                <h4 className="font-black text-[#07294d] text-sm uppercase tracking-tight">{notice.title}</h4>
+                <p className="font-bold text-gray-800 text-base leading-snug mt-1">{notice.content}</p>
                 <div className="flex flex-wrap items-center gap-4 mt-2">
-                  {notice.link && (
-                    <a href={notice.link} target="_blank" className="text-[10px] text-blue-500 font-black uppercase tracking-widest hover:underline flex items-center gap-1">
-                      <i className="fas fa-link"></i> Attachment
-                    </a>
-                  )}
                   <span className="text-[10px] text-gray-300 font-black uppercase tracking-widest">
                     {new Date(notice.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}
                   </span>
