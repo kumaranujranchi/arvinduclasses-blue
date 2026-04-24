@@ -6,7 +6,7 @@ import { api } from "../../../../convex/_generated/api";
 import { toast } from "react-hot-toast";
 
 export default function BannersManagement() {
-  const banners = useQuery(api.banners.getBanners);
+  const banners = useQuery(api.banners.getBanners, {});
   const addBanner = useMutation(api.banners.addBanner);
   const updateBanner = useMutation(api.banners.updateBanner);
   const deleteBanner = useMutation(api.banners.deleteBanner);
