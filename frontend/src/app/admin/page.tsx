@@ -4,7 +4,7 @@ import { useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 
 export default function AdminDashboard() {
-  const stats = useQuery(api.admin.getStats);
+  const stats = useQuery(api.dashboard.getStats);
 
   if (!stats) {
     return (
