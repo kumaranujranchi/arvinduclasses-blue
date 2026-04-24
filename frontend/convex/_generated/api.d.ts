@@ -9,10 +9,13 @@
  */
 
 import type * as actions from "../actions.js";
+import type * as auth from "../auth.js";
 import type * as courses from "../courses.js";
 import type * as leads from "../leads.js";
 import type * as notices from "../notices.js";
 import type * as posts from "../posts.js";
+import type * as seed from "../seed.js";
+import type * as toppers from "../toppers.js";
 
 import type {
   ApiFromModules,
@@ -22,10 +25,13 @@ import type {
 
 declare const fullApi: ApiFromModules<{
   actions: typeof actions;
+  auth: typeof auth;
   courses: typeof courses;
   leads: typeof leads;
   notices: typeof notices;
   posts: typeof posts;
+  seed: typeof seed;
+  toppers: typeof toppers;
 }>;
 
 /**
