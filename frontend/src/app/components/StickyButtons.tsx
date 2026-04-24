@@ -86,12 +86,13 @@ const StickyButtons = () => {
         Enroll Now
       </button>
 
-      <LeadForm 
-        isOpen={formConfig.isOpen} 
-        onClose={closeForm} 
-        type={formConfig.type} 
-      />
     </div>
+
+    <LeadForm 
+      isOpen={formConfig.isOpen} 
+      onClose={closeForm} 
+      type={formConfig.type} 
+    />
 
       <style jsx>{`
         .sticky-btn:hover {

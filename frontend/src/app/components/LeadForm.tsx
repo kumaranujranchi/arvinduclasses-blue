@@ -115,10 +115,11 @@ const LeadForm = ({ isOpen, onClose, type }: LeadFormProps) => {
           z-index: 10002;
           display: flex;
           justify-content: center;
-          align-items: flex-end;
+          align-items: center;
           visibility: hidden;
           opacity: 0;
           transition: all 0.4s ease;
+          padding: 20px;
         }
 
         .lead-form-overlay.open {
@@ -130,11 +131,12 @@ const LeadForm = ({ isOpen, onClose, type }: LeadFormProps) => {
           width: 100%;
           max-width: 500px;
           background: #fff;
-          border-radius: 24px 24px 0 0;
+          border-radius: 24px;
           padding: 40px;
-          transform: translateY(100%);
-          transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-          box-shadow: 0 -10px 40px rgba(0,0,0,0.15);
+          transform: translateY(100px);
+          transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+          box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+          position: relative;
         }
 
         .lead-form-overlay.open .lead-form-container {
