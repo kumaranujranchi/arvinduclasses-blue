@@ -63,9 +63,10 @@ export default function ResultsPage() {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-lg-10">
-              <div className="section-title text-center mb-50">
-                <h2 className="title">Check Performance</h2>
-                <p className="mt-20">Enter your roll number to access your detailed performance report and subject-wise analysis.</p>
+              <div className="text-center mb-50">
+                <h2 className="title" style={{ fontSize: "44px", color: "#07294d" }}>Check <span style={{ color: "#ffc600" }}>Performance</span></h2>
+                <span className="line mx-auto" style={{ width: "100px", height: "2px", background: "#ffc600", display: "block", marginTop: "15px" }}></span>
+                <p className="mt-20" style={{ fontSize: "18px", color: "#151515", fontWeight: "400" }}>Enter your roll number to access your detailed performance report and subject-wise analysis.</p>
               </div>
               
               <div className="search-card p-4 p-md-5 shadow-lg rounded-lg bg-white position-relative" style={{ marginTop: "-20px" }}>
@@ -223,10 +224,10 @@ export default function ResultsPage() {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-lg-8">
-              <div className="section-title text-center mb-50">
-                <h2 className="title">Our Consistent <span>Performers</span></h2>
-                <span className="line mx-auto"></span>
-                <p className="mt-20">Celebrating the hard work and dedication of our top rankers in recent monthly assessments.</p>
+              <div className="text-center mb-50">
+                <h2 className="title" style={{ fontSize: "44px", color: "#07294d" }}>Our Consistent <span style={{ color: "#ffc600" }}>Performers</span></h2>
+                <span className="line mx-auto" style={{ width: "100px", height: "2px", background: "#ffc600", display: "block", marginTop: "15px" }}></span>
+                <p className="mt-20" style={{ fontSize: "18px", color: "#151515", fontWeight: "400" }}>Celebrating the hard work and dedication of our top rankers in recent monthly assessments.</p>
               </div>
             </div>
           </div>
@@ -259,9 +260,10 @@ export default function ResultsPage() {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-6">
-              <div className="section-title mb-40">
-                <h2 className="title">Upcoming <span>Tests</span></h2>
-                <p className="mt-20">Stay prepared for your next challenge. Regular testing helps in identifying weak spots and building exam confidence.</p>
+              <div className="mb-40">
+                <h2 className="title" style={{ fontSize: "44px", color: "#07294d" }}>Upcoming <span style={{ color: "#ffc600" }}>Tests</span></h2>
+                <span className="line" style={{ width: "100px", height: "2px", background: "#ffc600", display: "block", marginTop: "15px" }}></span>
+                <p className="mt-20" style={{ fontSize: "18px", color: "#151515", fontWeight: "400", lineHeight: "1.6" }}>Stay prepared for your next challenge. Regular testing helps in identifying weak spots and building exam confidence.</p>
               </div>
               <div className="test-calendar-list">
                 {[
