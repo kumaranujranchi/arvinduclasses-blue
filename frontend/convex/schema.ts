@@ -120,4 +120,15 @@ export default defineSchema({
   })
     .index("by_email", ["email"])
     .index("by_role", ["role"]),
+
+  activityLog: defineTable({
+    userId: v.string(),
+    userName: v.string(),
+    action: v.string(),             // e.g. "CREATE", "UPDATE", "DELETE", "LOGIN"
+    module: v.string(),             // e.g. "LEADS", "USERS", "COURSES"
+    description: v.string(),
+    createdAt: v.number(),
+  })
+    .index("by_created", ["createdAt"])
+    .index("by_user", ["userId"]),
 });

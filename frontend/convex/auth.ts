@@ -32,6 +32,16 @@ export const login = mutation({
     // Update lastLogin
     await ctx.db.patch(user._id, { lastLogin: Date.now() });
 
+    // Log Activity
+    await ctx.db.insert("activityLog", {
+      userId: user._id,
+      userName: user.name,
+      action: "LOGIN",
+      module: "AUTH",
+      description: `User logged in to the ${user.role.replace('_', ' ')} portal`,
+      createdAt: Date.now(),
+    });
+
     return {
       userId: user._id,
       name: user.name,
@@ -52,6 +62,7 @@ export const createUser = mutation({
     role: v.string(),
     phone: v.optional(v.string()),
     createdBy: v.string(), // userId of the creator
+    creatorName: v.string(), // Name of the creator
   },
   handler: async (ctx, args) => {
     const email = args.email.toLowerCase().trim();
@@ -62,7 +73,7 @@ export const createUser = mutation({
 
     if (existing) throw new ConvexError(`A user with email "${email}" already exists.`);
 
-    return await ctx.db.insert("users", {
+    const userId = await ctx.db.insert("users", {
       name: args.name,
       email,
       password: args.password,
@@ -73,6 +84,18 @@ export const createUser = mutation({
       lastLogin: undefined,
       createdAt: Date.now(),
     });
+
+    // Log Activity
+    await ctx.db.insert("activityLog", {
+      userId: args.createdBy,
+      userName: args.creatorName,
+      action: "CREATE",
+      module: "USERS",
+      description: `Created new user: ${args.name} (${args.role})`,
+      createdAt: Date.now(),
+    });
+
+    return userId;
   },
 });
 
@@ -109,13 +132,26 @@ export const updateUser = mutation({
     phone: v.optional(v.string()),
     password: v.optional(v.string()),
     isActive: v.optional(v.boolean()),
+    adminId: v.string(),
+    adminName: v.string(),
   },
   handler: async (ctx, args) => {
-    const { id, ...updates } = args;
+    const { id, adminId, adminName, ...updates } = args;
     const filtered = Object.fromEntries(
       Object.entries(updates).filter(([, v]) => v !== undefined)
     );
     await ctx.db.patch(id, filtered);
+
+    const user = await ctx.db.get(id);
+    // Log Activity
+    await ctx.db.insert("activityLog", {
+      userId: adminId,
+      userName: adminName,
+      action: "UPDATE",
+      module: "USERS",
+      description: `Updated user details for: ${user?.name || 'Unknown'}`,
+      createdAt: Date.now(),
+    });
   },
 });
 
@@ -123,9 +159,24 @@ export const updateUser = mutation({
  * Delete a user — only super_admin.
  */
 export const deleteUser = mutation({
-  args: { id: v.id("users") },
+  args: { 
+    id: v.id("users"),
+    adminId: v.string(),
+    adminName: v.string(),
+  },
   handler: async (ctx, args) => {
+    const user = await ctx.db.get(args.id);
     await ctx.db.delete(args.id);
+
+    // Log Activity
+    await ctx.db.insert("activityLog", {
+      userId: args.adminId,
+      userName: args.adminName,
+      action: "DELETE",
+      module: "USERS",
+      description: `Permanently deleted user: ${user?.name || 'Unknown'}`,
+      createdAt: Date.now(),
+    });
   },
 });
 
@@ -133,9 +184,25 @@ export const deleteUser = mutation({
  * Toggle user active status.
  */
 export const toggleUserStatus = mutation({
-  args: { id: v.id("users"), isActive: v.boolean() },
+  args: { 
+    id: v.id("users"), 
+    isActive: v.boolean(),
+    adminId: v.string(),
+    adminName: v.string(),
+  },
   handler: async (ctx, args) => {
     await ctx.db.patch(args.id, { isActive: args.isActive });
+
+    const user = await ctx.db.get(args.id);
+    // Log Activity
+    await ctx.db.insert("activityLog", {
+      userId: args.adminId,
+      userName: args.adminName,
+      action: "UPDATE",
+      module: "USERS",
+      description: `${args.isActive ? 'Enabled' : 'Disabled'} account for user: ${user?.name || 'Unknown'}`,
+      createdAt: Date.now(),
+    });
   },
 });
 

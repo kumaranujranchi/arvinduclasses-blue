@@ -9,6 +9,7 @@
  */
 
 import type * as actions from "../actions.js";
+import type * as activity from "../activity.js";
 import type * as auth from "../auth.js";
 import type * as courses from "../courses.js";
 import type * as leads from "../leads.js";
@@ -25,6 +26,7 @@ import type {
 
 declare const fullApi: ApiFromModules<{
   actions: typeof actions;
+  activity: typeof activity;
   auth: typeof auth;
   courses: typeof courses;
   leads: typeof leads;

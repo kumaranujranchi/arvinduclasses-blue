@@ -54,11 +54,14 @@ export default function UserManagement() {
           role: formData.role,
           phone: formData.phone,
           password: formData.password,
+          adminId: sessionStr ? JSON.parse(sessionStr).userId : "system",
+          adminName: sessionStr ? JSON.parse(sessionStr).name : "System",
         });
       } else {
         await createUser({
           ...formData,
           createdBy: creator,
+          creatorName: sessionStr ? JSON.parse(sessionStr).name : "System",
         });
       }
       
@@ -140,7 +143,16 @@ export default function UserManagement() {
                   </td>
                   <td className="p-4">
                     <button 
-                      onClick={() => toggleStatus({ id: user._id, isActive: !user.isActive })}
+                      onClick={() => {
+                        const sessionStr = localStorage.getItem("user_session");
+                        const admin = sessionStr ? JSON.parse(sessionStr) : null;
+                        toggleStatus({ 
+                          id: user._id, 
+                          isActive: !user.isActive,
+                          adminId: admin?.userId || "system",
+                          adminName: admin?.name || "System"
+                        });
+                      }}
                       className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
                         user.isActive ? 'bg-green-500' : 'bg-gray-300'
                       }`}
@@ -166,7 +178,13 @@ export default function UserManagement() {
                       <button 
                         onClick={() => {
                           if (confirm("Are you sure you want to delete this user?")) {
-                            deleteUser({ id: user._id });
+                            const sessionStr = localStorage.getItem("user_session");
+                            const admin = sessionStr ? JSON.parse(sessionStr) : null;
+                            deleteUser({ 
+                              id: user._id,
+                              adminId: admin?.userId || "system",
+                              adminName: admin?.name || "System"
+                            });
                           }
                         }}
                         className="flex items-center gap-1.5 text-red-500 hover:text-red-700 font-bold text-xs transition-all"

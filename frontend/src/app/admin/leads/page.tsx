@@ -70,7 +70,16 @@ export default function ManageLeads() {
                   <td className="px-10 py-8">
                     <select 
                       value={lead.status}
-                      onChange={(e) => updateStatus({ id: lead._id, status: e.target.value })}
+                      onChange={(e) => {
+                        const sessionStr = localStorage.getItem("user_session");
+                        const currentUser = sessionStr ? JSON.parse(sessionStr) : null;
+                        updateStatus({ 
+                          id: lead._id, 
+                          status: e.target.value,
+                          adminId: currentUser?.userId || "unknown",
+                          adminName: currentUser?.name || "Unknown Admin"
+                        });
+                      }}
                       className={`text-[9px] font-black uppercase tracking-widest px-4 py-2 rounded-full border-none outline-none shadow-sm cursor-pointer transition-all ${
                         lead.status === 'new' ? 'bg-blue-500 text-white' : 
                         lead.status === 'contacted' ? 'bg-orange-400 text-white' :

@@ -34,9 +34,25 @@ export const createLead = mutation({
 
 
 export const updateLeadStatus = mutation({
-  args: { id: v.id("leads"), status: v.string() },
+  args: { 
+    id: v.id("leads"), 
+    status: v.string(),
+    adminId: v.string(),
+    adminName: v.string(),
+  },
   handler: async (ctx, args) => {
     await ctx.db.patch(args.id, { status: args.status });
+
+    const lead = await ctx.db.get(args.id);
+    // Log Activity
+    await ctx.db.insert("activityLog", {
+      userId: args.adminId,
+      userName: args.adminName,
+      action: "UPDATE",
+      module: "LEADS",
+      description: `Changed status of lead ${lead?.name || 'Unknown'} to ${args.status.toUpperCase()}`,
+      createdAt: Date.now(),
+    });
   },
 });
 
