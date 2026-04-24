@@ -154,25 +154,36 @@ export default function UserManagement() {
                     {new Date(user.createdAt).toLocaleDateString()}
                   </td>
                   <td className="p-4 text-right">
-                    <div className="flex justify-end gap-2">
-                      <button 
-                        onClick={() => handleEdit(user)}
-                        className="w-8 h-8 rounded-lg bg-blue-50 text-blue-500 flex items-center justify-center hover:bg-blue-500 hover:text-white transition-colors"
-                        title="Edit User"
-                      >
-                        <i className="fas fa-edit text-sm"></i>
-                      </button>
-                      <button 
-                        onClick={() => {
-                          if (confirm("Are you sure you want to delete this user?")) {
-                            deleteUser({ id: user._id });
-                          }
-                        }}
-                        className="w-8 h-8 rounded-lg bg-red-50 text-red-500 flex items-center justify-center hover:bg-red-500 hover:text-white transition-colors"
-                        title="Delete User"
-                      >
-                        <i className="fas fa-trash-alt text-sm"></i>
-                      </button>
+                    <div className="flex justify-end gap-3">
+                      {/* Edit Icon with Tooltip */}
+                      <div className="relative group">
+                        <button 
+                          onClick={() => handleEdit(user)}
+                          className="text-slate-400 hover:text-blue-600 transition-colors p-2"
+                        >
+                          <i className="fas fa-edit text-lg"></i>
+                        </button>
+                        <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-slate-800 text-white text-[10px] font-bold rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-10">
+                          Edit Profile
+                        </span>
+                      </div>
+
+                      {/* Delete Icon with Tooltip */}
+                      <div className="relative group">
+                        <button 
+                          onClick={() => {
+                            if (confirm("Are you sure you want to delete this user?")) {
+                              deleteUser({ id: user._id });
+                            }
+                          }}
+                          className="text-slate-400 hover:text-red-500 transition-colors p-2"
+                        >
+                          <i className="fas fa-trash-alt text-lg"></i>
+                        </button>
+                        <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-red-600 text-white text-[10px] font-bold rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-10">
+                          Delete User
+                        </span>
+                      </div>
                     </div>
                   </td>
                 </tr>
