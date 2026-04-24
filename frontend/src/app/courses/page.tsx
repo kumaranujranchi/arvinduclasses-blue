@@ -34,7 +34,7 @@ export default function CoursesPage() {
       fee: "₹40,000",
       rating: 5,
       bgColor: "#0C8B51",
-      slug: "#",
+      slug: "commerce-program",
     },
     {
       tag: "#Mathematics",
