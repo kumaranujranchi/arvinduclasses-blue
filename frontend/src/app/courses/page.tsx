@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
@@ -15,6 +16,7 @@ export default function CoursesPage() {
       fee: "₹25,000",
       rating: 5,
       bgColor: "#EAB830",
+      slug: "foundation-program",
     },
     {
       tag: "#Science",
@@ -23,6 +25,7 @@ export default function CoursesPage() {
       fee: "₹35,000",
       rating: 5,
       bgColor: "#2F7AD5",
+      slug: "#",
     },
     {
       tag: "#Commerce",
@@ -31,6 +34,7 @@ export default function CoursesPage() {
       fee: "₹40,000",
       rating: 5,
       bgColor: "#0C8B51",
+      slug: "#",
     },
     {
       tag: "#Mathematics",
@@ -39,6 +43,7 @@ export default function CoursesPage() {
       fee: "₹20,000",
       rating: 4,
       bgColor: "#27B8A7",
+      slug: "#",
     },
     {
       tag: "#Science",
@@ -47,6 +52,7 @@ export default function CoursesPage() {
       fee: "₹30,000",
       rating: 5,
       bgColor: "#2F7AD5",
+      slug: "#",
     },
     {
       tag: "#Commerce",
@@ -55,6 +61,7 @@ export default function CoursesPage() {
       fee: "₹45,000",
       rating: 5,
       bgColor: "#0C8B51",
+      slug: "#",
     },
   ];
 
@@ -81,7 +88,7 @@ export default function CoursesPage() {
         <div className="container">
           <div className="courses-wrapper">
             <div className="row courses-row">
-              {courses.map(({ tag, title, duration, fee, rating, bgColor }, index) => (
+              {courses.map(({ tag, title, duration, fee, rating, bgColor, slug }, index) => (
                 <div key={index} className="col-lg-4 col-sm-6 courses-col">
                   <div
                     className="single-courses mt-30 wow fadeInUpBig"
@@ -93,7 +100,7 @@ export default function CoursesPage() {
                       {tag}
                     </a>
                     <h4 className="courses-title">
-                      <a href="#">{title}</a>
+                      <Link href={slug === "#" ? "#" : `/courses/${slug}`}>{title}</Link>
                     </h4>
                     <div className="duration-fee">
                       <p className="duration">
@@ -121,9 +128,9 @@ export default function CoursesPage() {
                       <a className="apply" href="#">
                         Book Demo
                       </a>
-                      <a className="more" href="#">
+                      <Link className="more" href={slug === "#" ? "#" : `/courses/${slug}`}>
                         View Details <i className="fas fa-chevron-right"></i>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
