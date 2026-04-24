@@ -7,10 +7,12 @@ import { api } from "../../../../convex/_generated/api";
 export default function UserManagement() {
   const users = useQuery(api.auth.getAllUsers);
   const createUser = useMutation(api.auth.createUser);
+  const updateUser = useMutation(api.auth.updateUser);
   const toggleStatus = useMutation(api.auth.toggleUserStatus);
   const deleteUser = useMutation(api.auth.deleteUser);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editingUser, setEditingUser] = useState<any>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -25,6 +27,18 @@ export default function UserManagement() {
     "counsellor", "accounts", "sales", "operations"
   ];
 
+  const handleEdit = (user: any) => {
+    setEditingUser(user);
+    setFormData({
+      name: user.name,
+      email: user.email,
+      password: user.password || "", // Existing password might not be returned in query if security is tight, but here it is
+      role: user.role,
+      phone: user.phone || "",
+    });
+    setIsModalOpen(true);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
@@ -33,15 +47,32 @@ export default function UserManagement() {
       const sessionStr = localStorage.getItem("user_session");
       const creator = sessionStr ? JSON.parse(sessionStr).userId : "system";
 
-      await createUser({
-        ...formData,
-        createdBy: creator,
-      });
-      setIsModalOpen(false);
-      setFormData({ name: "", email: "", password: "", role: "student", phone: "" });
+      if (editingUser) {
+        await updateUser({
+          id: editingUser._id,
+          name: formData.name,
+          role: formData.role,
+          phone: formData.phone,
+          password: formData.password,
+        });
+      } else {
+        await createUser({
+          ...formData,
+          createdBy: creator,
+        });
+      }
+      
+      closeModal();
     } catch (err: any) {
-      setError(err.message || "Failed to create user");
+      setError(err.message || "Operation failed");
     }
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setEditingUser(null);
+    setFormData({ name: "", email: "", password: "", role: "student", phone: "" });
+    setError("");
   };
 
   if (!users) {
@@ -60,7 +91,10 @@ export default function UserManagement() {
           <p className="text-gray-500 text-sm mt-1">Create and manage access roles for the platform.</p>
         </div>
         <button 
-          onClick={() => setIsModalOpen(true)}
+          onClick={() => {
+            setEditingUser(null);
+            setIsModalOpen(true);
+          }}
           className="bg-[#07294d] hover:bg-[#0a3666] text-white px-6 py-3 rounded-xl font-bold transition-all shadow-md flex items-center gap-2"
         >
           <i className="fas fa-user-plus"></i>
@@ -120,16 +154,26 @@ export default function UserManagement() {
                     {new Date(user.createdAt).toLocaleDateString()}
                   </td>
                   <td className="p-4 text-right">
-                    <button 
-                      onClick={() => {
-                        if (confirm("Are you sure you want to delete this user?")) {
-                          deleteUser({ id: user._id });
-                        }
-                      }}
-                      className="w-8 h-8 rounded-lg bg-red-50 text-red-500 flex items-center justify-center hover:bg-red-500 hover:text-white transition-colors ml-auto"
-                    >
-                      <i className="fas fa-trash-alt text-sm"></i>
-                    </button>
+                    <div className="flex justify-end gap-2">
+                      <button 
+                        onClick={() => handleEdit(user)}
+                        className="w-8 h-8 rounded-lg bg-blue-50 text-blue-500 flex items-center justify-center hover:bg-blue-500 hover:text-white transition-colors"
+                        title="Edit User"
+                      >
+                        <i className="fas fa-edit text-sm"></i>
+                      </button>
+                      <button 
+                        onClick={() => {
+                          if (confirm("Are you sure you want to delete this user?")) {
+                            deleteUser({ id: user._id });
+                          }
+                        }}
+                        className="w-8 h-8 rounded-lg bg-red-50 text-red-500 flex items-center justify-center hover:bg-red-500 hover:text-white transition-colors"
+                        title="Delete User"
+                      >
+                        <i className="fas fa-trash-alt text-sm"></i>
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}
@@ -143,13 +187,15 @@ export default function UserManagement() {
         </div>
       </div>
 
-      {/* Add User Modal */}
+      {/* User Modal (Add/Edit) */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
             <div className="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50">
-              <h2 className="text-xl font-bold text-gray-800">Add New User</h2>
-              <button onClick={() => setIsModalOpen(false)} className="text-gray-400 hover:text-red-500">
+              <h2 className="text-xl font-bold text-gray-800">
+                {editingUser ? "Edit User" : "Add New User"}
+              </h2>
+              <button onClick={closeModal} className="text-gray-400 hover:text-red-500">
                 <i className="fas fa-times text-xl"></i>
               </button>
             </div>
@@ -171,9 +217,14 @@ export default function UserManagement() {
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs font-bold text-gray-500 uppercase">Email Address *</label>
-                <input type="email" required className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-100 outline-none" 
-                  value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} />
+                <label className="text-xs font-bold text-gray-500 uppercase">Email Address {editingUser && "(Read-only)"} *</label>
+                <input 
+                  type="email" 
+                  required 
+                  disabled={!!editingUser}
+                  className={`w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-100 outline-none ${editingUser ? 'bg-gray-100 cursor-not-allowed text-gray-500' : 'bg-gray-50 focus:bg-white'}`}
+                  value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} 
+                />
               </div>
 
               <div className="grid grid-cols-2 gap-4">
@@ -188,15 +239,17 @@ export default function UserManagement() {
                   </select>
                 </div>
                 <div className="space-y-1">
-                  <label className="text-xs font-bold text-gray-500 uppercase">Initial Password *</label>
+                  <label className="text-xs font-bold text-gray-500 uppercase">Password *</label>
                   <input type="text" required className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-100 outline-none" 
                     value={formData.password} onChange={e => setFormData({...formData, password: e.target.value})} />
                 </div>
               </div>
 
               <div className="pt-4 flex justify-end gap-3">
-                <button type="button" onClick={() => setIsModalOpen(false)} className="px-6 py-3 rounded-xl font-bold text-gray-500 hover:bg-gray-100">Cancel</button>
-                <button type="submit" className="px-6 py-3 rounded-xl font-bold text-white bg-[#07294d] hover:bg-[#0a3666] shadow-md">Create User</button>
+                <button type="button" onClick={closeModal} className="px-6 py-3 rounded-xl font-bold text-gray-500 hover:bg-gray-100">Cancel</button>
+                <button type="submit" className="px-6 py-3 rounded-xl font-bold text-white bg-[#07294d] hover:bg-[#0a3666] shadow-md">
+                  {editingUser ? "Update User" : "Create User"}
+                </button>
               </div>
             </form>
           </div>
