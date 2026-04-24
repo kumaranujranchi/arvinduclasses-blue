@@ -60,8 +60,8 @@ export default function CoursesPage() {
       duration: "3 Years",
       fee: "₹45,000",
       rating: 5,
-      bgColor: "#0C8B51",
-      slug: "#",
+      bgColor: "#7D2AE8",
+      slug: "bcom-support",
     },
   ];
 
