@@ -56,9 +56,29 @@ export const deleteCourse = mutation({
   },
 });
 
+
 export const toggleCourseStatus = mutation({
   args: { id: v.id("courses"), isActive: v.boolean() },
   handler: async (ctx, args) => {
     await ctx.db.patch(args.id, { isActive: args.isActive });
   },
 });
+
+export const getDashboardStats = query({
+  handler: async (ctx) => {
+    const leads = await ctx.db.query("leads").collect();
+    const courses = await ctx.db.query("courses").collect();
+    const toppers = await ctx.db.query("toppers").collect();
+    const posts = await ctx.db.query("posts").collect();
+
+    return {
+      totalLeads: leads.length,
+      newLeads: leads.filter(l => l.status === "new").length,
+      totalCourses: courses.length,
+      totalToppers: toppers.length,
+      totalPosts: posts.length,
+      recentLeads: leads.sort((a, b) => b.createdAt - a.createdAt).slice(0, 5)
+    };
+  },
+});
+
