@@ -101,10 +101,10 @@ export default function Footer() {
       <div className="footer-copyright">
         <div className="container">
           <div className="copyright text-center">
-            <p>
-              &copy; 2026 <span> Arvindu Classes </span> Made with{" "}
-              <i className="fa fa-heart"></i> by{" "}
-              <a href="http://www.synergybrandarchitect.in" target="_blank" rel="noopener noreferrer">
+            <p style={{ fontSize: '13px', color: '#8a8a8a', margin: 0 }}>
+              &copy; 2026 <span style={{ color: '#01228D', fontWeight: 600 }}>Arvindu Classes</span> Made with{" "}
+              <i className="fa fa-heart" style={{ color: '#ff0000' }}></i> by{" "}
+              <a href="http://www.synergybrandarchitect.in" target="_blank" rel="noopener noreferrer" style={{ color: '#333', fontWeight: 500 }}>
                 Synergy Brand Architect
               </a>
             </p>
