@@ -234,7 +234,8 @@ export default function DigitalMarketingPage() {
                     "SEO optimization for a website",
                     "Social media page growth",
                     "Landing page creation",
-                    "Full Sales Funnel setup"
+                    "Full Sales Funnel setup",
+                    "AI Content Automation project"
                   ].map((project, i) => (
                     <div key={i} className="col-md-6 mb-3">
                       <div className="p-3 bg-white rounded border-left border-warning border-4 shadow-sm">
