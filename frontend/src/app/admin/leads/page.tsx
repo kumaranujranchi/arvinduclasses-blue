@@ -55,7 +55,13 @@ export default function ManageLeads() {
                     </div>
                   </td>
                   <td className="px-10 py-8">
-                    <span className="text-sm font-black text-[#07294d] bg-gray-100 px-4 py-2 rounded-xl border border-gray-100">{lead.course}</span>
+                    {lead.course ? (
+                      <span className="text-sm font-black text-blue-700 bg-blue-50 px-4 py-2 rounded-xl border border-blue-100 inline-block">
+                        {lead.course}
+                      </span>
+                    ) : (
+                      <span className="text-xs font-bold text-gray-400 italic">No Course</span>
+                    )}
                   </td>
                   <td className="px-10 py-8">
                     <p className="text-sm font-bold text-gray-700 capitalize">{lead.type}</p>
