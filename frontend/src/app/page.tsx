@@ -274,7 +274,7 @@ export default function HomePage() {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-4">
-              <div className="features-image-2">
+              <div className="features-image-2" style={{ marginTop: "-45px" }}>
                 <img className="wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s" src="/assets/images/homepage_girl_v2.png" alt="Features" />
               </div>
             </div>
