@@ -10,7 +10,7 @@ const navLinks = [
   { href: "/about", label: "About" },
   { href: "/courses", label: "Courses", hasDropdown: true },
   { href: "/results", label: "Results" },
-  { href: "/digital-marketing", label: "DM Program", isNew: true },
+  { href: "/digital-marketing", label: "Digital Marketing", isNew: true },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -55,7 +55,7 @@ export default function Header() {
       <div id="navigation" className="navigation navigation-landscape" style={{ padding: "10px 0" }}>
         <div className="container position-relative">
           <div className="row align-items-center">
-            <div className="col-lg-3">
+            <div className="col-lg-2">
               <div className="header-logo">
                 <Link href="/">
                   <Image
@@ -68,7 +68,7 @@ export default function Header() {
                 </Link>
               </div>
             </div>
-            <div className="col-lg-7 position-static">
+            <div className="col-lg-8 position-static">
               <div className="nav-toggle"></div>
               <nav className="nav-menus-wrapper">
                 <ul className="nav-menu">
@@ -218,7 +218,7 @@ export default function Header() {
         }
 
         .nav-menu li {
-          margin-right: 30px;
+          margin-right: 15px;
         }
         .nav-menu li a {
           padding: 25px 0;
