@@ -4,11 +4,14 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useQuery } from "convex/react";
+import { api } from "../../../convex/_generated/api";
 
 export default function ResultsPage() {
   const [rollNumber, setRollNumber] = useState("");
   const [month, setMonth] = useState("April 2025");
   const [showResult, setShowResult] = useState(false);
+  const activeToppers = useQuery(api.toppers.getActiveToppers);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -261,25 +264,33 @@ export default function ResultsPage() {
             </div>
           </div>
           <div className="row justify-content-center">
-            {[
-              { name: "Rahul S.", rank: "1", score: "295/300", stream: "Science", img: "testimonial-1.png" },
-              { name: "Priya M.", rank: "2", score: "288/300", stream: "Commerce", img: "testimonial-2.png" },
-              { name: "Sneha V.", rank: "3", score: "282/300", stream: "Science", img: "testimonial-3.png" }
-            ].map((topper, i) => (
-              <div key={i} className="col-lg-4 col-md-6 mb-30">
+            {activeToppers === undefined ? (
+               <div className="col-12 text-center py-5">
+                 <div className="spinner-border text-primary" role="status"></div>
+               </div>
+            ) : activeToppers.length > 0 ? activeToppers.map((topper, i) => (
+              <div key={topper._id} className="col-lg-4 col-md-6 mb-30">
                 <div className="single-topper text-center p-4 border rounded-lg transition-all" style={{ backgroundColor: "#fff" }}>
                   <div className="topper-rank" style={{ position: "absolute", top: "20px", left: "20px", background: "#ffc600", color: "#07294d", width: "40px", height: "40px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: "bold", fontSize: "18px", boxShadow: "0 4px 10px rgba(255,198,0,0.3)" }}>
                     #{topper.rank}
                   </div>
                   <div className="topper-thumb mb-20">
-                    <i className="fas fa-user-circle text-light" style={{ fontSize: "80px" }}></i>
+                    <img 
+                      src={`https://ui-avatars.com/api/?name=${topper.name}&background=07294d&color=fff&bold=true`} 
+                      alt={topper.name}
+                      style={{ width: "100px", height: "100px", borderRadius: "50%", border: "4px solid #fff", boxShadow: "0 10px 20px rgba(0,0,0,0.1)" }}
+                    />
                   </div>
                   <h4 className="name">{topper.name}</h4>
-                  <p className="stream text-muted small mb-3">{topper.stream} Batch</p>
+                  <p className="stream text-muted small mb-3">{topper.stream} | {topper.testMonth}</p>
                   <div className="score font-weight-bold text-primary" style={{ fontSize: "20px" }}>{topper.score}</div>
                 </div>
               </div>
-            ))}
+            )) : (
+              <div className="col-12 text-center py-5">
+                <p className="text-muted">No toppers listed for this session yet.</p>
+              </div>
+            )}
           </div>
         </div>
       </section>

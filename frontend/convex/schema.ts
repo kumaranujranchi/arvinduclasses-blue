@@ -92,4 +92,26 @@ export default defineSchema({
     createdAt: v.number(),
   })
     .index("by_email", ["email"]),
+  // ===== TOPPERS / RESULTS =====
+  toppers: defineTable({
+    name: v.string(),
+    rank: v.string(),
+    score: v.string(),
+    stream: v.string(),
+    imageUrl: v.optional(v.string()),
+    testMonth: v.string(),           // e.g. "April 2025"
+    isActive: v.boolean(),
+    createdAt: v.number(),
+  })
+    .index("by_active", ["isActive"])
+    .index("by_month", ["testMonth"]),
+
+  users: defineTable({
+    name: v.string(),
+    email: v.string(),
+    password: v.string(),
+    role: v.string(), // 'admin', 'student', 'teacher'
+    isActive: v.boolean(),
+    createdAt: v.number(),
+  }).index("by_email", ["email"]),
 });
