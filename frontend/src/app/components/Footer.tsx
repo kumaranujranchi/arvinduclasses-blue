@@ -29,10 +29,10 @@ export default function Footer() {
                 <h4 className="footer-title">Useful Link</h4>
                 <ul className="link-list">
                   <li><Link href="/courses">All Courses</Link></li>
+                  <li><Link href="/digital-marketing">Digital Marketing</Link></li>
                   <li><a href="#">Our Teachers</a></li>
                   <li><a href="#">Our Events</a></li>
                   <li><Link href="/blog">Blog Posts</Link></li>
-                  <li><a href="#">FAQs</a></li>
                 </ul>
               </div>
             </div>
@@ -43,9 +43,9 @@ export default function Footer() {
                 <h4 className="footer-title">Pages</h4>
                 <ul className="link-list">
                   <li><Link href="/about">About Us</Link></li>
+                  <li><Link href="/blog">Blog</Link></li>
                   <li><a href="#">Teacher Details</a></li>
                   <li><a href="#">Gallery</a></li>
-                  <li><a href="#">Gallery Masonry</a></li>
                   <li><a href="#">Testimonial</a></li>
                   <li><Link href="/notice">Notice</Link></li>
                   <li><Link href="/login">Login</Link></li>
@@ -88,9 +88,10 @@ export default function Footer() {
                 <li><Link href="/">Home</Link></li>
                 <li><Link href="/about">About</Link></li>
                 <li><Link href="/courses">Courses</Link></li>
+                <li><Link href="/digital-marketing">Digital Marketing</Link></li>
+                <li><Link href="/blog">Blog</Link></li>
                 <li><Link href="/notice">Notice Board</Link></li>
                 <li><a href="#">Offers</a></li>
-                <li><a href="#">Events</a></li>
               </ul>
             </div>
           </div>

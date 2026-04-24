@@ -10,7 +10,7 @@ const navLinks = [
   { href: "/about", label: "About" },
   { href: "/courses", label: "Courses", hasDropdown: true },
   { href: "/results", label: "Results" },
-  { href: "/blog", label: "Blog" },
+  { href: "/digital-marketing", label: "DM Program", isNew: true },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -72,13 +72,16 @@ export default function Header() {
               <div className="nav-toggle"></div>
               <nav className="nav-menus-wrapper">
                 <ul className="nav-menu">
-                  {navLinks.map(({ href, label, hasDropdown }) => (
+                  {navLinks.map(({ href, label, hasDropdown, isNew }) => (
                     <li 
                       key={href} 
-                      className={`${hasDropdown ? "has-dropdown position-static" : ""}`}
+                      className={`${hasDropdown ? "has-dropdown position-static" : ""} position-relative`}
                       onMouseEnter={() => hasDropdown && setIsHovered(true)}
                       onMouseLeave={() => hasDropdown && setIsHovered(false)}
                     >
+                      {isNew && (
+                        <span className="badge-new">New</span>
+                      )}
                       <Link
                         href={href}
                         className={`${pathname === href ? "active" : ""} d-flex align-items-center`}
@@ -135,6 +138,25 @@ export default function Header() {
       </div>
 
       <style jsx>{`
+        .badge-new {
+          position: absolute;
+          top: 10px;
+          right: -10px;
+          background: #e53e3e;
+          color: #fff;
+          font-size: 9px;
+          padding: 1px 5px;
+          border-radius: 10px;
+          font-weight: 800;
+          text-transform: uppercase;
+          z-index: 10;
+          animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+          0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+          40% {transform: translateY(-5px);}
+          60% {transform: translateY(-3px);}
+        }
         .mega-menu {
           position: absolute;
           top: 100%;
