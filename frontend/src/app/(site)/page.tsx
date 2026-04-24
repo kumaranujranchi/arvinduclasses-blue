@@ -7,7 +7,7 @@ import Footer from "../components/Footer";
 import FeatureScrolling from "../components/FeatureScrolling";
 import NewsletterForm from "../components/NewsletterForm";
 import { useQuery } from "convex/react";
-import { api } from "../../convex/_generated/api";
+import { api } from "../../../convex/_generated/api";
 
 export default function HomePage() {
   const banners = useQuery(api.banners.getBanners, { onlyActive: true });
