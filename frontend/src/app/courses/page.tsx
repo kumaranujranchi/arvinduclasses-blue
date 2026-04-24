@@ -94,37 +94,45 @@ export default function CoursesPage() {
                     className="single-courses mt-30 wow fadeInUpBig"
                     data-wow-duration="1s"
                     data-wow-delay={`${0.2 * (index + 1)}s`}
-                    style={{ backgroundColor: bgColor }}
+                    style={{ 
+                      backgroundColor: bgColor,
+                      minHeight: '330px',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'space-between'
+                    }}
                   >
-                    <a href="#" className="category">
-                      {tag}
-                    </a>
-                    <h4 className="courses-title">
-                      <Link href={slug === "#" ? "#" : `/courses/${slug}`}>{title}</Link>
-                    </h4>
-                    <div className="duration-fee">
-                      <p className="duration">
-                        Duration: <span>{duration}</span>
-                      </p>
-                      <p className="fee">
-                        Fee: <span>{fee}</span>
-                      </p>
+                    <div>
+                      <a href="#" className="category">
+                        {tag}
+                      </a>
+                      <h4 className="courses-title">
+                        <Link href={slug === "#" ? "#" : `/courses/${slug}`}>{title}</Link>
+                      </h4>
+                      <div className="duration-fee">
+                        <p className="duration">
+                          Duration: <span>{duration}</span>
+                        </p>
+                        <p className="fee">
+                          Fee: <span>{fee}</span>
+                        </p>
+                      </div>
+                      <div className="rating">
+                        <span>Rating: </span>
+                        <ul className="star">
+                          {[...Array(5)].map((_, i) => (
+                            <li key={i}>
+                              <i
+                                className={
+                                  i < rating ? "fas fa-star" : "far fa-star"
+                                }
+                              ></i>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
-                    <div className="rating">
-                      <span>Rating: </span>
-                      <ul className="star">
-                        {[...Array(5)].map((_, i) => (
-                          <li key={i}>
-                            <i
-                              className={
-                                i < rating ? "fas fa-star" : "far fa-star"
-                              }
-                            ></i>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="courses-link">
+                    <div className="courses-link" style={{ marginTop: 'auto' }}>
                       <a className="apply" href="#">
                         Book Demo
                       </a>

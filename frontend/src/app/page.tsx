@@ -340,22 +340,31 @@ export default function HomePage() {
                 { tag: "#University", title: "B.Com Academic Support", fee: "₹45,000", duration: "3 Years", bgColor: "#7D2AE8", slug: "bcom-support", delay: "0.6s" },
               ].map(({ tag, title, fee, duration, bgColor, slug, delay }, idx) => (
                 <div key={idx} className="col-lg-4 col-sm-6 courses-col">
-                  <div className="single-courses mt-30 wow fadeInUpBig" data-wow-duration="1s" data-wow-delay={delay} style={{ backgroundColor: bgColor }}>
-                    <a href="#" className="category">{tag}</a>
-                    <h4 className="courses-title">
-                      <Link href={`/courses/${slug}`}>{title}</Link>
-                    </h4>
-                    <div className="duration-fee">
-                      <p className="duration">Duration: <span>{duration}</span></p>
-                      <p className="fee">Fee: <span>{fee}</span></p>
+                  <div className="single-courses mt-30 wow fadeInUpBig" data-wow-duration="1s" data-wow-delay={delay} 
+                    style={{ 
+                      backgroundColor: bgColor, 
+                      minHeight: '330px', 
+                      display: 'flex', 
+                      flexDirection: 'column', 
+                      justifyContent: 'space-between' 
+                    }}>
+                    <div>
+                      <a href="#" className="category">{tag}</a>
+                      <h4 className="courses-title">
+                        <Link href={`/courses/${slug}`}>{title}</Link>
+                      </h4>
+                      <div className="duration-fee">
+                        <p className="duration">Duration: <span>{duration}</span></p>
+                        <p className="fee">Fee: <span>{fee}</span></p>
+                      </div>
+                      <div className="rating">
+                        <span>Rating: </span>
+                        <ul className="star">
+                          {[...Array(5)].map((_, i) => <li key={i}><i className="fas fa-star"></i></li>)}
+                        </ul>
+                      </div>
                     </div>
-                    <div className="rating">
-                      <span>Rating: </span>
-                      <ul className="star">
-                        {[...Array(5)].map((_, i) => <li key={i}><i className="fas fa-star"></i></li>)}
-                      </ul>
-                    </div>
-                    <div className="courses-link">
+                    <div className="courses-link" style={{ marginTop: 'auto' }}>
                       <a className="apply" href="#">Online Apply</a>
                       <Link className="more" href={`/courses/${slug}`}>Read more <i className="fas fa-chevron-right"></i></Link>
                     </div>
