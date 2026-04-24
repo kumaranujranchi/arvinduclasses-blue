@@ -69,20 +69,21 @@ export default function HomePage() {
         if ($(".testimonials-image").length && !$(".testimonials-image").hasClass("slick-initialized")) {
           $(".testimonials-image").slick({
             autoplay: true,
-            autoplaySpeed: 3000,
+            autoplaySpeed: 4000,
             dots: false,
             arrows: false,
             fade: true,
+            infinite: true,
             asNavFor: ".testimonials-content",
           });
         }
         if ($(".testimonials-content").length && !$(".testimonials-content").hasClass("slick-initialized")) {
           $(".testimonials-content").slick({
-            autoplay: true,
-            autoplaySpeed: 3000,
+            autoplay: false,
             dots: false,
             arrows: false,
             fade: true,
+            infinite: true,
             asNavFor: ".testimonials-image",
           });
         }
