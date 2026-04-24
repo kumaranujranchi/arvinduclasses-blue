@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 /* Global resets - all design styles are loaded from /assets/css/style.min.css */
 *, *::before, *::after {
   box-sizing: border-box;

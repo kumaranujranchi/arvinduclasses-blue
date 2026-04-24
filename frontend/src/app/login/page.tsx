@@ -44,7 +44,7 @@ export default function GlobalLogin() {
       <div className="w-full max-w-md">
         <div className="bg-white rounded-[40px] shadow-2xl shadow-blue-100 overflow-hidden border border-gray-50">
           <div className="p-10 pb-6 text-center">
-            <img src="/assets/images/arvindu-favicon.png" alt="Arvindu Classes" className="w-16 h-16 mx-auto mb-6" />
+            <img src="/assets/images/Arvindu-logo.png" alt="Arvindu Classes" className="w-24 h-24 mx-auto mb-6 object-contain" />
             <h1 className="text-3xl font-black text-[#07294d] tracking-tight">Portal Login</h1>
             <p className="text-gray-400 font-bold text-[10px] uppercase tracking-widest mt-3">Arvindu Classes Student & Staff Portal</p>
           </div>
