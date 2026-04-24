@@ -30,7 +30,9 @@ export default function GlobalLogin() {
         router.push("/");
       }
     } catch (err: any) {
-      setError(err.message || "Invalid credentials. Please try again.");
+      // ConvexError puts the payload in err.data
+      const message = err.data || err.message || "Invalid credentials. Please try again.";
+      setError(message);
     } finally {
       setIsLoading(false);
     }

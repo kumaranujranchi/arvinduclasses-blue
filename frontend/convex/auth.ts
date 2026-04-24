@@ -1,5 +1,5 @@
 import { query, mutation } from "./_generated/server";
-import { v } from "convex/values";
+import { ConvexError, v } from "convex/values";
 
 // All valid roles in the system
 export const ROLES = [
@@ -25,9 +25,9 @@ export const login = mutation({
       .withIndex("by_email", (q) => q.eq("email", args.email.toLowerCase().trim()))
       .unique();
 
-    if (!user) throw new Error("No account found with this email.");
-    if (!user.isActive) throw new Error("Your account has been disabled. Contact the Super Admin.");
-    if (user.password !== args.password) throw new Error("Incorrect password. Please try again.");
+    if (!user) throw new ConvexError("No account found with this email.");
+    if (!user.isActive) throw new ConvexError("Your account has been disabled. Contact the Super Admin.");
+    if (user.password !== args.password) throw new ConvexError("Incorrect password. Please try again.");
 
     // Update lastLogin
     await ctx.db.patch(user._id, { lastLogin: Date.now() });
@@ -60,7 +60,7 @@ export const createUser = mutation({
       .withIndex("by_email", (q) => q.eq("email", email))
       .unique();
 
-    if (existing) throw new Error(`A user with email "${email}" already exists.`);
+    if (existing) throw new ConvexError(`A user with email "${email}" already exists.`);
 
     return await ctx.db.insert("users", {
       name: args.name,
