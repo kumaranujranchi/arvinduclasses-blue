@@ -154,36 +154,26 @@ export default function UserManagement() {
                     {new Date(user.createdAt).toLocaleDateString()}
                   </td>
                   <td className="p-4 text-right">
-                    <div className="flex justify-end gap-3">
-                      {/* Edit Icon with Tooltip */}
-                      <div className="relative group">
-                        <button 
-                          onClick={() => handleEdit(user)}
-                          className="text-slate-400 hover:text-blue-600 transition-colors p-2"
-                        >
-                          <i className="fas fa-edit text-lg"></i>
-                        </button>
-                        <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-slate-800 text-white text-[10px] font-bold rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-10">
-                          Edit Profile
-                        </span>
-                      </div>
+                    <div className="flex justify-end items-center gap-4">
+                      <button 
+                        onClick={() => handleEdit(user)}
+                        className="text-gray-600 hover:text-blue-600 transition-all transform hover:scale-110 p-1"
+                        title="Edit Profile"
+                      >
+                        <i className="fas fa-edit text-xl"></i>
+                      </button>
 
-                      {/* Delete Icon with Tooltip */}
-                      <div className="relative group">
-                        <button 
-                          onClick={() => {
-                            if (confirm("Are you sure you want to delete this user?")) {
-                              deleteUser({ id: user._id });
-                            }
-                          }}
-                          className="text-slate-400 hover:text-red-500 transition-colors p-2"
-                        >
-                          <i className="fas fa-trash-alt text-lg"></i>
-                        </button>
-                        <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-red-600 text-white text-[10px] font-bold rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-10">
-                          Delete User
-                        </span>
-                      </div>
+                      <button 
+                        onClick={() => {
+                          if (confirm("Are you sure you want to delete this user?")) {
+                            deleteUser({ id: user._id });
+                          }
+                        }}
+                        className="text-gray-600 hover:text-red-500 transition-all transform hover:scale-110 p-1"
+                        title="Delete User"
+                      >
+                        <i className="fas fa-trash-alt text-xl"></i>
+                      </button>
                     </div>
                   </td>
                 </tr>
