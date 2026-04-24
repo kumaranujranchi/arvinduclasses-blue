@@ -24,12 +24,14 @@ const LeadForm = ({ isOpen, onClose, type }: LeadFormProps) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log("Submitting lead form:", { ...formData, type });
     setStatus('submitting');
     try {
-      await createLead({
+      const result = await createLead({
         ...formData,
         type: type
       });
+      console.log("Lead created successfully:", result);
       setStatus('success');
       setTimeout(() => {
         onClose();
@@ -37,7 +39,7 @@ const LeadForm = ({ isOpen, onClose, type }: LeadFormProps) => {
         setStatus('idle');
       }, 2000);
     } catch (error) {
-      console.error(error);
+      console.error("Lead submission error:", error);
       setStatus('error');
     }
   };
@@ -54,6 +56,12 @@ const LeadForm = ({ isOpen, onClose, type }: LeadFormProps) => {
           <button className="close-btn" onClick={onClose}>&times;</button>
         </div>
         
+        {status === 'error' && (
+          <div className="error-notice">
+            Something went wrong. Please try again or call us directly.
+          </div>
+        )}
+
         {status === 'success' ? (
           <div className="success-message">
             <div className="icon">✓</div>
@@ -228,6 +236,18 @@ const LeadForm = ({ isOpen, onClose, type }: LeadFormProps) => {
           background: #ccc;
           cursor: not-allowed;
           transform: none;
+        }
+
+        .error-notice {
+          background: #fff5f5;
+          color: #e53e3e;
+          padding: 12px;
+          border-radius: 12px;
+          margin-bottom: 20px;
+          font-size: 14px;
+          font-weight: 600;
+          text-align: center;
+          border: 1px solid #fed7d7;
         }
 
         .success-message {
