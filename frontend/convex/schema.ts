@@ -131,4 +131,18 @@ export default defineSchema({
   })
     .index("by_created", ["createdAt"])
     .index("by_user", ["userId"]),
+
+  // ===== SITE BANNERS =====
+  banners: defineTable({
+    title: v.string(),
+    subtitle: v.optional(v.string()),
+    imageUrl: v.string(),
+    buttonText: v.optional(v.string()),
+    buttonLink: v.optional(v.string()),
+    order: v.number(),
+    isActive: v.boolean(),
+    createdAt: v.number(),
+  })
+    .index("by_active", ["isActive"])
+    .index("by_order", ["order"]),
 });
