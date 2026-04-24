@@ -39,12 +39,12 @@ export default function FoundationProgramPage() {
       
       {/* Page Banner - Compact and Sleek */}
       <section className="page-banner">
-        <div className="page-banner-bg bg_cover" style={{ backgroundImage: "url(/assets/images/course-banner.png)", padding: "100px 0" }}>
+        <div className="page-banner-bg bg_cover" style={{ backgroundImage: "url(/assets/images/course-banner.png)" }}>
           <div className="container">
-            <div className="banner-content text-center wow fadeInDown">
-              <h2 className="title" style={{ fontSize: "36px", fontWeight: "800", color: "#fff", textShadow: "0 2px 4px rgba(0,0,0,0.3)" }}>Foundation Program (Class 6–8)</h2>
+            <div className="banner-content text-center wow fadeInDown" style={{ paddingTop: "120px", paddingBottom: "80px" }}>
+              <h2 className="title" style={{ fontSize: "32px", fontWeight: "800", color: "#fff", textShadow: "0 2px 4px rgba(0,0,0,0.3)" }}>Foundation Program (Class 6–8)</h2>
               <div style={{ width: "60px", height: "4px", background: "#EAB830", margin: "20px auto" }}></div>
-              <p style={{ color: "#fff", fontSize: "18px", fontWeight: "500" }}>Excellence in education starts with a strong foundation.</p>
+              <p style={{ color: "#fff", fontSize: "16px", fontWeight: "500" }}>Excellence in education starts with a strong foundation.</p>
             </div>
           </div>
         </div>
