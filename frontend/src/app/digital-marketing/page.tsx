@@ -277,8 +277,8 @@ export default function DigitalMarketingPage() {
                 </div>
 
                 <div className="cta-sidebar-card mt-30 p-4 rounded-lg text-white" style={{ background: "linear-gradient(45deg, #07294d, #01228D)" }}>
-                  <h6>Need Help Choosing?</h6>
-                  <p className="small opacity-75 mt-2 mb-3">Speak with our career counselor to understand if this is right for you.</p>
+                  <h6 className="text-white">Need Help Choosing?</h6>
+                  <p className="text-white small opacity-75 mt-2 mb-3">Speak with our career counselor to understand if this is right for you.</p>
                   <a href="tel:+918051696333" className="text-white font-weight-bold">Call: +91 80516 96333</a>
                 </div>
               </div>
