@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* Prevent FOUC for slick sliders */
 .slider-active:not(.slick-initialized),
 .slick-slider:not(.slick-initialized) {
