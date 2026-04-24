@@ -153,14 +153,14 @@ export default function UserManagement() {
                   <td className="p-4 text-sm text-gray-500">
                     {new Date(user.createdAt).toLocaleDateString()}
                   </td>
-                  <td className="p-4 text-right">
-                    <div className="flex justify-end items-center gap-4">
+                  <td className="p-4 text-right min-w-[120px]">
+                    <div className="flex justify-end items-center gap-3">
                       <button 
                         onClick={() => handleEdit(user)}
-                        className="text-gray-600 hover:text-blue-600 transition-all transform hover:scale-110 p-1"
-                        title="Edit Profile"
+                        className="flex items-center gap-1.5 text-blue-600 hover:text-blue-800 font-bold text-xs transition-all"
                       >
-                        <i className="fas fa-edit text-xl"></i>
+                        <i className="fas fa-edit"></i>
+                        <span>Edit</span>
                       </button>
 
                       <button 
@@ -169,10 +169,10 @@ export default function UserManagement() {
                             deleteUser({ id: user._id });
                           }
                         }}
-                        className="text-gray-600 hover:text-red-500 transition-all transform hover:scale-110 p-1"
-                        title="Delete User"
+                        className="flex items-center gap-1.5 text-red-500 hover:text-red-700 font-bold text-xs transition-all"
                       >
-                        <i className="fas fa-trash-alt text-xl"></i>
+                        <i className="fas fa-trash-alt"></i>
+                        <span>Delete</span>
                       </button>
                     </div>
                   </td>
