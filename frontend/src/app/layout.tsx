@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { ConvexClientProvider } from "./components/ConvexClientProvider";
+import StickyButtons from "./components/StickyButtons";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -36,6 +37,7 @@ export default function RootLayout({
       <body>
         <ConvexClientProvider>
           {children}
+          <StickyButtons />
         </ConvexClientProvider>
 
         {/* Vendor JS */}
