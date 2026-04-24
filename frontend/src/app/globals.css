@@ -391,5 +391,12 @@
   color: #ffc600;
 }
 
+@media (min-width: 992px) {
+  .nav-toggle {
+    display: none !important;
+  }
+}
+
+
 
 
