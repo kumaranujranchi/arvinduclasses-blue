@@ -342,7 +342,7 @@ export default function DigitalMarketingPage() {
           font-weight: 700;
           border: none;
           transition: all 0.3s ease;
-          display: flex;
+          display: inline-flex;
           align-items: center;
           justify-content: center;
           text-align: center;
