@@ -34,139 +34,186 @@ export default function AdminDashboard() {
   ];
 
   return (
-    <div className="space-y-8 animate-in fade-in duration-500 max-w-[1600px] mx-auto pb-10">
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', maxWidth: '1600px', margin: '0 auto', paddingBottom: '40px' }}>
       
       {/* Top Section: Welcome Card & Main Stat */}
-      <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '32px' }} className="xl-grid-3">
+        <style>{`
+          @media (min-width: 1200px) {
+            .xl-grid-3 { grid-template-columns: 2fr 1fr !important; }
+          }
+          .dashboard-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+          }
+          .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+          }
+        `}</style>
         
         {/* Welcome Card */}
-        <div className="xl:col-span-2 bg-[#01228D] rounded-[32px] p-10 flex items-center justify-between overflow-hidden relative shadow-2xl shadow-blue-900/20">
-          <div className="relative z-10 text-white">
-            <h1 className="text-3xl font-bold">Welcome Back, {userName}!</h1>
-            <p className="text-blue-100 mt-4 max-w-[400px] text-lg leading-relaxed">
+        <div style={{ 
+          backgroundColor: '#01228D', 
+          borderRadius: '32px', 
+          padding: '40px', 
+          display: 'flex', 
+          alignItems: 'center', 
+          justifyContent: 'space-between', 
+          overflow: 'hidden', 
+          position: 'relative',
+          boxShadow: '0 20px 40px rgba(1, 34, 141, 0.2)'
+        }}>
+          <div style={{ position: 'relative', zIndex: 10, color: '#fff', maxWidth: '60%' }}>
+            <h1 style={{ fontSize: '32px', fontWeight: '800', margin: 0 }}>Welcome Back, {userName}!</h1>
+            <p style={{ color: '#bfdbfe', marginTop: '16px', fontSize: '18px', lineHeight: '1.6' }}>
               You have {stats.newLeads} new admissions this month. Keep up the great work!
             </p>
-            <div className="mt-10 flex gap-10">
-              <div className="flex flex-col">
-                <span className="text-3xl font-black">{stats.totalLeads}</span>
-                <span className="text-xs font-medium text-blue-200 uppercase tracking-widest mt-2">Total Inquiries</span>
+            <div style={{ marginTop: '40px', display: 'flex', gap: '40px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <span style={{ fontSize: '32px', fontWeight: '900' }}>{stats.totalLeads}</span>
+                <span style={{ fontSize: '11px', fontWeight: '600', color: '#93c5fd', textTransform: 'uppercase', letterSpacing: '1px', marginTop: '8px' }}>Total Inquiries</span>
               </div>
-              <div className="flex flex-col border-l border-blue-400/30 pl-10">
-                <span className="text-3xl font-black">{stats.newLeads}</span>
-                <span className="text-xs font-medium text-blue-200 uppercase tracking-widest mt-2">New Admits</span>
+              <div style={{ display: 'flex', flexDirection: 'column', borderLeft: '1px solid rgba(255,255,255,0.2)', paddingLeft: '40px' }}>
+                <span style={{ fontSize: '32px', fontWeight: '900' }}>{stats.newLeads}</span>
+                <span style={{ fontSize: '11px', fontWeight: '600', color: '#93c5fd', textTransform: 'uppercase', letterSpacing: '1px', marginTop: '8px' }}>New Admits</span>
               </div>
             </div>
-            <button className="mt-10 px-8 py-3 bg-white text-[#01228D] text-sm font-bold rounded-2xl shadow-xl hover:bg-blue-50 transition-all active:scale-95">
+            <button style={{ 
+              marginTop: '40px', 
+              padding: '12px 32px', 
+              backgroundColor: '#fff', 
+              color: '#01228D', 
+              fontSize: '14px', 
+              fontWeight: '700', 
+              borderRadius: '16px', 
+              border: 'none', 
+              cursor: 'pointer',
+              boxShadow: '0 10px 20px rgba(0,0,0,0.1)'
+            }}>
               Download Reports
             </button>
           </div>
           
-          {/* Illustration */}
-          <div className="hidden md:block relative w-64 h-64 mr-4">
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '30%', position: 'relative' }}>
             <img 
               src="https://img.freepik.com/free-vector/analytics-concept-illustration_114360-4416.jpg" 
               alt="Dashboard" 
-              className="relative z-10 w-full h-full object-contain brightness-110 contrast-125"
+              style={{ width: '100%', height: 'auto', borderRadius: '24px', filter: 'brightness(1.1) contrast(1.1)' }}
             />
           </div>
 
-          {/* Decorative Elements */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl"></div>
+          <div style={{ position: 'absolute', top: 0, right: 0, width: '256px', height: '256px', backgroundColor: 'rgba(255,255,255,0.05)', borderRadius: '50%', transform: 'translate(25%, -25%)', filter: 'blur(60px)' }}></div>
         </div>
 
         {/* Mini Stats Grid */}
-        <div className="grid grid-cols-2 gap-6">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px' }}>
           {statCards.map((card, i) => (
-            <div key={i} className="bg-white p-6 rounded-[28px] border border-gray-100 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
-              <div className={`w-12 h-12 ${card.bg} ${card.color} rounded-2xl flex items-center justify-center text-lg group-hover:scale-110 transition-transform`}>
+            <div key={i} className="dashboard-card" style={{ 
+              backgroundColor: '#fff', 
+              padding: '24px', 
+              borderRadius: '28px', 
+              border: '1px solid #f1f5f9', 
+              display: 'flex', 
+              flexDirection: 'column', 
+              justifyContent: 'space-between',
+              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)'
+            }}>
+              <div style={{ width: '48px', height: '48px', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px' }} className={`${card.bg} ${card.color}`}>
                 <i className={card.icon}></i>
               </div>
-              <div className="mt-6">
-                <h4 className="text-2xl font-black text-slate-800 leading-none">{card.value}</h4>
-                <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mt-3">{card.label}</p>
+              <div style={{ marginTop: '24px' }}>
+                <h4 style={{ fontSize: '24px', fontWeight: '900', color: '#1e293b', margin: 0 }}>{card.value}</h4>
+                <p style={{ fontSize: '11px', fontWeight: '700', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.5px', marginTop: '12px', margin: 0 }}>{card.label}</p>
               </div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Main Content: Recent Leads Table */}
-      <div className="bg-white rounded-[32px] border border-gray-100 shadow-sm overflow-hidden">
-        <div className="px-10 py-8 border-b border-gray-50 flex items-center justify-between">
+      {/* Recent Leads Table */}
+      <div style={{ backgroundColor: '#fff', borderRadius: '32px', border: '1px solid #f1f5f9', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)', overflow: 'hidden' }}>
+        <div style={{ padding: '32px 40px', borderBottom: '1px solid #f1f5f9', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div>
-            <h3 className="text-xl font-bold text-slate-800">Recent Inquiries</h3>
-            <p className="text-sm text-slate-400 font-medium mt-1">Latest students who reached out via the website.</p>
+            <h3 style={{ fontSize: '20px', fontWeight: '800', color: '#1e293b', margin: 0 }}>Recent Inquiries</h3>
+            <p style={{ fontSize: '14px', color: '#94a3b8', fontWeight: '500', marginTop: '4px', margin: 0 }}>Latest students who reached out via the website.</p>
           </div>
-          <div className="flex items-center gap-4">
-            <div className="bg-slate-50 p-1.5 rounded-xl flex border border-slate-100">
-              <button className="px-5 py-2 bg-white shadow-sm text-xs font-bold rounded-lg text-[#01228D]">New</button>
-              <button className="px-5 py-2 text-xs font-bold text-slate-400">Processed</button>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+            <div style={{ backgroundColor: '#f8fafc', padding: '6px', borderRadius: '12px', display: 'flex', border: '1px solid #f1f5f9' }}>
+              <button style={{ padding: '8px 20px', backgroundColor: '#fff', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', fontSize: '12px', fontWeight: '700', borderRadius: '8px', border: 'none', color: '#01228D', cursor: 'pointer' }}>New</button>
+              <button style={{ padding: '8px 20px', backgroundColor: 'transparent', fontSize: '12px', fontWeight: '700', borderRadius: '8px', border: 'none', color: '#94a3b8', cursor: 'pointer' }}>Processed</button>
             </div>
           </div>
         </div>
 
-        <div className="overflow-x-auto">
-          <table className="w-full text-left">
+        <div style={{ overflowX: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
             <thead>
-              <tr className="bg-slate-50/50">
-                <th className="px-10 py-5 text-xs font-bold text-slate-500 uppercase tracking-widest">Student</th>
-                <th className="px-10 py-5 text-xs font-bold text-slate-500 uppercase tracking-widest">Interested In</th>
-                <th className="px-10 py-5 text-xs font-bold text-slate-500 uppercase tracking-widest">Status</th>
-                <th className="px-10 py-5 text-xs font-bold text-slate-500 uppercase tracking-widest">Date</th>
-                <th className="px-10 py-5 text-xs font-bold text-slate-500 uppercase tracking-widest text-center">Action</th>
+              <tr style={{ backgroundColor: '#f8fafc' }}>
+                <th style={{ padding: '20px 40px', fontSize: '11px', fontWeight: '800', color: '#64748b', textTransform: 'uppercase', letterSpacing: '1px' }}>Student</th>
+                <th style={{ padding: '20px 40px', fontSize: '11px', fontWeight: '800', color: '#64748b', textTransform: 'uppercase', letterSpacing: '1px' }}>Interested In</th>
+                <th style={{ padding: '20px 40px', fontSize: '11px', fontWeight: '800', color: '#64748b', textTransform: 'uppercase', letterSpacing: '1px' }}>Status</th>
+                <th style={{ padding: '20px 40px', fontSize: '11px', fontWeight: '800', color: '#64748b', textTransform: 'uppercase', letterSpacing: '1px' }}>Date</th>
+                <th style={{ padding: '20px 40px', fontSize: '11px', fontWeight: '800', color: '#64748b', textTransform: 'uppercase', letterSpacing: '1px', textAlign: 'center' }}>Action</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-50">
+            <tbody>
               {stats.recentLeads.length > 0 ? stats.recentLeads.map((lead: any) => (
-                <tr key={lead._id} className="group hover:bg-slate-50/30 transition-colors">
-                  <td className="px-10 py-6">
-                    <div className="flex items-center gap-4">
-                      <div className="w-11 h-11 rounded-2xl bg-blue-50 flex items-center justify-center text-[#01228D] font-bold text-base shadow-sm">
+                <tr key={lead._id} style={{ borderBottom: '1px solid #f8fafc' }}>
+                  <td style={{ padding: '24px 40px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                      <div style={{ width: '44px', height: '44px', borderRadius: '14px', backgroundColor: '#eff6ff', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#01228D', fontWeight: '800', fontSize: '16px' }}>
                         {lead.name.charAt(0)}
                       </div>
                       <div>
-                        <p className="text-sm font-bold text-slate-800">{lead.name}</p>
-                        <p className="text-xs text-slate-400 font-medium mt-1">{lead.phone}</p>
+                        <p style={{ fontSize: '14px', fontWeight: '700', color: '#1e293b', margin: 0 }}>{lead.name}</p>
+                        <p style={{ fontSize: '12px', color: '#94a3b8', fontWeight: '500', marginTop: '4px', margin: 0 }}>{lead.phone}</p>
                       </div>
                     </div>
                   </td>
-                  <td className="px-10 py-6">
-                    <span className="text-xs font-bold text-slate-600 bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-100">{lead.course}</span>
+                  <td style={{ padding: '24px 40px' }}>
+                    <span style={{ fontSize: '12px', fontWeight: '700', color: '#475569', backgroundColor: '#f1f5f9', padding: '6px 12px', borderRadius: '10px', border: '1px solid #e2e8f0' }}>{lead.course}</span>
                   </td>
-                  <td className="px-10 py-6">
-                    <span className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[11px] font-bold ${
-                      lead.status === 'new' 
-                        ? 'bg-blue-50 text-blue-600' 
-                        : 'bg-green-50 text-green-600'
-                    }`}>
-                      <span className={`w-2 h-2 rounded-full ${lead.status === 'new' ? 'bg-blue-600' : 'bg-green-600 animate-pulse'}`}></span>
+                  <td style={{ padding: '24px 40px' }}>
+                    <span style={{ 
+                      display: 'inline-flex', 
+                      alignItems: 'center', 
+                      gap: '8px', 
+                      padding: '6px 14px', 
+                      borderRadius: '20px', 
+                      fontSize: '11px', 
+                      fontWeight: '700',
+                      backgroundColor: lead.status === 'new' ? '#eff6ff' : '#f0fdf4',
+                      color: lead.status === 'new' ? '#2563eb' : '#16a34a'
+                    }}>
+                      <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: lead.status === 'new' ? '#2563eb' : '#16a34a' }}></span>
                       {lead.status === 'new' ? 'Pending' : 'Completed'}
                     </span>
                   </td>
-                  <td className="px-10 py-6 text-sm text-slate-400 font-bold">
+                  <td style={{ padding: '24px 40px', fontSize: '14px', color: '#64748b', fontWeight: '700' }}>
                     {new Date(lead.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })}
                   </td>
-                  <td className="px-10 py-6 text-center">
-                    <button className="w-10 h-10 rounded-xl hover:bg-slate-50 text-slate-400 hover:text-[#01228D] transition-all flex items-center justify-center mx-auto">
-                      <i className="fas fa-ellipsis-v text-sm"></i>
+                  <td style={{ padding: '24px 40px', textAlign: 'center' }}>
+                    <button style={{ width: '40px', height: '40px', borderRadius: '12px', border: 'none', backgroundColor: 'transparent', color: '#94a3b8', cursor: 'pointer' }}>
+                      <i className="fas fa-ellipsis-v"></i>
                     </button>
                   </td>
                 </tr>
               )) : (
                 <tr>
-                  <td colSpan={5} className="px-10 py-24 text-center text-slate-300 font-bold text-lg">No leads found yet.</td>
+                  <td colSpan={5} style={{ padding: '80px 40px', textAlign: 'center', color: '#cbd5e1', fontWeight: '700', fontSize: '18px' }}>No leads found yet.</td>
                 </tr>
               )}
             </tbody>
           </table>
         </div>
         
-        {/* Table Footer */}
-        <div className="px-10 py-6 bg-slate-50/50 border-t border-slate-50 flex justify-between items-center">
-          <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Showing last 5 leads</p>
-          <button className="px-6 py-2 bg-white border border-slate-200 rounded-xl text-xs font-bold text-[#01228D] hover:bg-slate-50 transition-all shadow-sm">View All Leads</button>
+        <div style={{ padding: '24px 40px', backgroundColor: '#f8fafc', borderTop: '1px solid #f1f5f9', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <p style={{ fontSize: '12px', fontWeight: '700', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '1px', margin: 0 }}>Showing last 5 leads</p>
+          <button style={{ padding: '8px 24px', backgroundColor: '#fff', border: '1px solid #e2e8f0', borderRadius: '12px', fontSize: '12px', fontWeight: '700', color: '#01228D', cursor: 'pointer', boxShadow: '0 1px 2px rgba(0,0,0,0.05)' }}>View All Leads</button>
         </div>
       </div>
     </div>
+  );
+}
   );
 }
