@@ -71,6 +71,20 @@ export default defineSchema({
   })
     .index("by_read", ["isRead"]),
 
+  // ===== LEADS / ADMISSIONS =====
+  leads: defineTable({
+    name: v.string(),
+    email: v.string(),
+    phone: v.string(),
+    course: v.string(),
+    locality: v.string(),
+    type: v.string(),                // 'demo' or 'enroll'
+    status: v.string(),              // 'new', 'contacted', 'admitted'
+    createdAt: v.number(),
+  })
+    .index("by_type", ["type"])
+    .index("by_status", ["status"]),
+
   // ===== NEWSLETTER SUBSCRIBERS =====
   subscribers: defineTable({
     email: v.string(),

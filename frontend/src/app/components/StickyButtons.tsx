@@ -1,9 +1,24 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
+import LeadForm from './LeadForm';
 
 const StickyButtons = () => {
+  const [formConfig, setFormConfig] = useState<{ isOpen: boolean; type: 'demo' | 'enroll' }>({
+    isOpen: false,
+    type: 'demo'
+  });
+
+  const openForm = (type: 'demo' | 'enroll') => {
+    setFormConfig({ isOpen: true, type });
+  };
+
+  const closeForm = () => {
+    setFormConfig({ ...formConfig, isOpen: false });
+  };
+
   return (
+    <>
     <div className="sticky-buttons-container" style={{
       position: 'fixed',
       right: 0,
@@ -14,8 +29,8 @@ const StickyButtons = () => {
       flexDirection: 'column',
       gap: '2px'
     }}>
-      <a 
-        href="#" 
+      <button 
+        onClick={() => openForm('demo')}
         className="sticky-btn demo-btn" 
         style={{
           writingMode: 'vertical-rl',
@@ -36,13 +51,14 @@ const StickyButtons = () => {
           letterSpacing: '0.5px',
           border: '1px solid rgba(255,255,255,0.1)',
           position: 'relative',
-          right: '-5px'
+          right: '-5px',
+          cursor: 'pointer'
         }}
       >
         Book Demo
-      </a>
-      <a 
-        href="#" 
+      </button>
+      <button 
+        onClick={() => openForm('enroll')}
         className="sticky-btn enroll-btn" 
         style={{
           writingMode: 'vertical-rl',
@@ -63,11 +79,19 @@ const StickyButtons = () => {
           letterSpacing: '0.5px',
           border: '1px solid rgba(255,255,255,0.1)',
           position: 'relative',
-          right: '-5px'
+          right: '-5px',
+          cursor: 'pointer'
         }}
       >
         Enroll Now
-      </a>
+      </button>
+
+      <LeadForm 
+        isOpen={formConfig.isOpen} 
+        onClose={closeForm} 
+        type={formConfig.type} 
+      />
+    </div>
 
       <style jsx>{`
         .sticky-btn:hover {
@@ -88,6 +112,7 @@ const StickyButtons = () => {
         }
       `}</style>
     </div>
+    </>
   );
 };
 
