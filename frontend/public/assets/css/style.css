@@ -5948,6 +5948,15 @@ button, input[type=submit] {
   padding-top: 15px;
 }
 .courses-sidebar ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
   padding: 14px 0;
   border-bottom: 1px solid #DBDBDB;
   font-weight: 500;
@@ -5964,8 +5973,9 @@ button, input[type=submit] {
 }
 .courses-sidebar ul li strong {
   display: block;
-  float: right;
   font-weight: 500;
+  text-align: right;
+  margin-left: 15px;
 }
 
 .courses-sidebar-category {
