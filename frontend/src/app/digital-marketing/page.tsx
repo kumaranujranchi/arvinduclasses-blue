@@ -342,6 +342,10 @@ export default function DigitalMarketingPage() {
           font-weight: 700;
           border: none;
           transition: all 0.3s ease;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
         }
         .main-btn:hover {
           background-color: #07294d;
