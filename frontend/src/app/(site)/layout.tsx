@@ -4,6 +4,15 @@ import StickyButtons from "../components/StickyButtons";
 import NoticeBar from "../components/NoticeBar";
 import "../globals.css";
 
+// Legacy CSS Imports - Moved to src to prevent FOUC (flickering)
+import "@/assets/css/plugins/bootstrap.min.css";
+import "@/assets/css/plugins/fontawesome.min.css";
+import "@/assets/css/plugins/default.css";
+import "@/assets/css/plugins/animate.min.css";
+import "@/assets/css/plugins/slick.css";
+import "@/assets/css/plugins/magnific-popup.css";
+import "@/assets/css/style.min.css";
+
 export default function SiteLayout({
   children,
 }: Readonly<{
@@ -11,20 +20,6 @@ export default function SiteLayout({
 }>) {
   return (
     <>
-      <head>
-        {/* Vendor CSS - Only for Site Pages */}
-        <link rel="stylesheet" href="/assets/css/plugins/bootstrap.min.css" />
-        <link rel="stylesheet" href="/assets/css/plugins/fontawesome.min.css" />
-        <link rel="stylesheet" href="/assets/css/plugins/default.css" />
-
-        {/* Plugin CSS */}
-        <link rel="stylesheet" href="/assets/css/plugins/animate.min.css" />
-        <link rel="stylesheet" href="/assets/css/plugins/slick.css" />
-        <link rel="stylesheet" href="/assets/css/plugins/magnific-popup.css" />
-
-        {/* Main Style */}
-        <link rel="stylesheet" href="/assets/css/style.min.css" />
-      </head>
       <div>
         <NoticeBar />
         {children}
