@@ -237,12 +237,12 @@ export default function FoundationProgramPage() {
       <section className="cta-area wow fadeInUp" style={{ paddingBottom: "100px" }}>
         <div className="container">
           <div className="cta-box bg_cover" style={{ backgroundImage: "url(/assets/images/newsletter-bg-1.webp)", borderRadius: "20px", padding: "60px 40px", boxShadow: "0 20px 40px rgba(0,0,0,0.1)", position: "relative", overflow: "hidden" }}>
-            <div className="overlay" style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(1, 34, 141, 0.8)", zIndex: 1 }}></div>
+            <div className="overlay" style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(1, 34, 141, 0.96)", zIndex: 1 }}></div>
             <div className="row align-items-center" style={{ position: "relative", zIndex: 2 }}>
               <div className="col-lg-8 text-center text-lg-left">
-                <div className="section-title">
+                <div className="cta-text-wrapper">
                   <h2 className="title" style={{ fontSize: "32px", color: "#fff", fontWeight: "800" }}>Start Your Journey Towards Excellence</h2>
-                  <p style={{ color: "rgba(255,255,255,0.9)", fontSize: "18px", marginTop: "15px" }}>Join our foundation program and transform your academic potential.</p>
+                  <p style={{ color: "rgba(255,255,255,0.95)", fontSize: "18px", marginTop: "10px" }}>Join our foundation program and transform your academic potential.</p>
                 </div>
               </div>
               <div className="col-lg-4 text-center text-lg-right mt-40 mt-lg-0">
