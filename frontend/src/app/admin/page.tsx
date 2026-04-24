@@ -2,181 +2,170 @@
 
 import { useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
+import { useState, useEffect } from "react";
 
 export default function AdminDashboard() {
   const stats = useQuery(api.courses.getDashboardStats);
+  const [userName, setUserName] = useState("Admin");
+
+  useEffect(() => {
+    const sessionStr = localStorage.getItem("user_session");
+    if (sessionStr) {
+      try {
+        const user = JSON.parse(sessionStr);
+        setUserName(user.name.split(" ")[0]);
+      } catch (e) {}
+    }
+  }, []);
 
   if (!stats) {
     return (
-      <div className="flex items-center justify-center h-screen -mt-20">
-        <div className="flex flex-col items-center gap-4">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-[#07294d] border-r-transparent"></div>
-          <p className="text-gray-400 font-bold text-sm uppercase tracking-widest">Loading Dashboard...</p>
-        </div>
+      <div className="flex items-center justify-center h-full">
+        <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-[#01228D] border-r-transparent"></div>
       </div>
     );
   }
 
   const statCards = [
-    { label: "Total Leads", value: stats.totalLeads, icon: "fas fa-user-plus", color: "bg-blue-500", shadow: "shadow-blue-100" },
-    { label: "New Admissions", value: stats.newLeads, icon: "fas fa-graduation-cap", color: "bg-green-500", shadow: "shadow-green-100" },
-    { label: "Active Courses", value: stats.totalCourses, icon: "fas fa-book-open", color: "bg-orange-500", shadow: "shadow-orange-100" },
-    { label: "Toppers Added", value: stats.totalToppers, icon: "fas fa-award", color: "bg-purple-500", shadow: "shadow-purple-100" },
+    { label: "Total Leads", value: stats.totalLeads, icon: "fas fa-users", color: "text-blue-600", bg: "bg-blue-50" },
+    { label: "New Admissions", value: stats.newLeads, icon: "fas fa-graduation-cap", color: "text-green-600", bg: "bg-green-50" },
+    { label: "Active Courses", value: stats.totalCourses, icon: "fas fa-book", color: "text-orange-600", bg: "bg-orange-50" },
+    { label: "Total Toppers", value: stats.totalToppers, icon: "fas fa-award", color: "text-purple-600", bg: "bg-purple-50" },
   ];
 
   return (
-    <div className="space-y-8 animate-in fade-in duration-700 max-w-[1600px] mx-auto">
-      {/* Welcome Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-8 rounded-3xl shadow-sm border border-gray-50">
-        <div>
-          <h1 className="text-2xl font-extrabold text-[#07294d] tracking-tight">Dashboard Overview</h1>
-          <p className="text-gray-500 mt-1 font-medium text-sm">Welcome back! Here's what's happening with Arvindu Classes today.</p>
-        </div>
-        <div className="flex items-center gap-3">
-          <div className="bg-[#f0fdf4] px-4 py-2 rounded-full shadow-sm border border-[#bbf7d0] flex items-center gap-2">
-            <span className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></span>
-            <span className="text-xs font-bold text-green-700 tracking-wide uppercase">System Live</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Stat Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-        {statCards.map((card, i) => (
-          <div key={i} className="bg-white p-6 rounded-3xl shadow-sm border border-gray-50 hover:shadow-md transition-all duration-300 group flex flex-col justify-between h-[160px]">
-            <div className="flex justify-between items-start">
-              <div className="space-y-1">
-                <p className="text-gray-400 text-[11px] font-black uppercase tracking-widest leading-none">{card.label}</p>
-                <h3 className="text-3xl font-black text-[#07294d] leading-none">{card.value}</h3>
+    <div className="space-y-6 animate-in fade-in duration-500 max-w-[1400px] mx-auto">
+      
+      {/* Top Section: Welcome Card & Main Stat */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        {/* Welcome Card - Matches "Congratulations Jonathan" */}
+        <div className="lg:col-span-2 bg-white rounded-[24px] p-8 border border-gray-100 flex items-center justify-between overflow-hidden relative group">
+          <div className="relative z-10">
+            <h1 className="text-xl font-bold text-gray-800">Welcome Back, {userName}!</h1>
+            <p className="text-sm text-gray-500 mt-2 max-w-[300px] leading-relaxed">
+              You have {stats.newLeads} new admissions this month. Keep up the great work in managing Arvindu Classes!
+            </p>
+            <div className="mt-8 flex gap-6">
+              <div className="flex flex-col">
+                <span className="text-2xl font-black text-[#01228D] leading-none">{stats.totalLeads}</span>
+                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mt-2">Total Inquiries</span>
               </div>
-              <div className={`w-12 h-12 ${card.color} rounded-2xl flex items-center justify-center text-white text-xl shadow-lg ${card.shadow} group-hover:scale-110 transition-transform`}>
+              <div className="flex flex-col border-l border-gray-100 pl-6">
+                <span className="text-2xl font-black text-green-600 leading-none">{stats.newLeads}</span>
+                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mt-2">Successful Admits</span>
+              </div>
+            </div>
+            <button className="mt-8 px-6 py-2.5 bg-[#01228D] text-white text-xs font-bold rounded-xl shadow-lg shadow-blue-200 hover:bg-[#001970] transition-all active:scale-95">
+              Download Reports
+            </button>
+          </div>
+          
+          {/* Illustration Mockup */}
+          <div className="hidden md:block relative w-48 h-48">
+            <div className="absolute inset-0 bg-blue-50 rounded-full scale-110 group-hover:scale-125 transition-transform duration-700"></div>
+            <img 
+              src="https://img.freepik.com/free-vector/analytics-concept-illustration_114360-4416.jpg" 
+              alt="Dashboard" 
+              className="relative z-10 w-full h-full object-contain mix-blend-multiply"
+            />
+          </div>
+
+          {/* Background Decorative Blob */}
+          <div className="absolute -top-10 -right-10 w-40 h-40 bg-blue-50/50 rounded-full blur-3xl"></div>
+        </div>
+
+        {/* Mini Stats Grid - Matches the right side boxes in reference */}
+        <div className="grid grid-cols-2 gap-4">
+          {statCards.map((card, i) => (
+            <div key={i} className="bg-white p-5 rounded-[20px] border border-gray-50 hover:shadow-sm transition-all flex flex-col justify-between">
+              <div className={`w-10 h-10 ${card.bg} ${card.color} rounded-xl flex items-center justify-center text-sm`}>
                 <i className={card.icon}></i>
               </div>
+              <div className="mt-4">
+                <h4 className="text-xl font-black text-gray-800 leading-none">{card.value}</h4>
+                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mt-2">{card.label}</p>
+              </div>
             </div>
-            <div className="flex items-center gap-2 mt-auto">
-              <span className="text-green-600 text-[10px] font-black bg-green-50 px-2 py-1 rounded-md tracking-wider">+12%</span>
-              <span className="text-gray-400 text-[10px] font-bold uppercase tracking-wider">vs last month</span>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
-      {/* Main Grid Layout */}
-      <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 pb-10 items-start">
-        {/* Recent Leads - Takes up 2 columns on extra large screens */}
-        <div className="xl:col-span-2 bg-white rounded-3xl shadow-sm border border-gray-50 overflow-hidden flex flex-col h-full">
-          <div className="p-6 border-b border-gray-50 flex items-center justify-between bg-white">
-            <h3 className="text-lg font-bold text-[#07294d]">Recent Course Leads</h3>
-            <button className="px-4 py-2 bg-gray-50 rounded-xl text-[#07294d] font-bold text-xs hover:bg-[#07294d] hover:text-white transition-colors shadow-sm">View All Leads</button>
+      {/* Main Content: Recent Leads Table */}
+      <div className="bg-white rounded-[24px] border border-gray-100 overflow-hidden">
+        <div className="px-8 py-6 border-b border-gray-50 flex items-center justify-between">
+          <div>
+            <h3 className="text-lg font-bold text-gray-800">Recent Inquiries</h3>
+            <p className="text-xs text-gray-400 font-medium mt-1">Showing the latest students who reached out via the website.</p>
           </div>
-          <div className="overflow-x-auto flex-1">
-            <table className="w-full text-left min-w-[600px]">
-              <thead>
-                <tr className="bg-gray-50 border-b border-gray-100">
-                  <th className="px-6 py-4 text-[10px] font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Student</th>
-                  <th className="px-6 py-4 text-[10px] font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Course</th>
-                  <th className="px-6 py-4 text-[10px] font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">Status</th>
-                  <th className="px-6 py-4 text-[10px] font-black text-gray-400 uppercase tracking-widest text-right whitespace-nowrap">Date</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-50">
-                {stats.recentLeads.length > 0 ? stats.recentLeads.map((lead: any) => (
-                  <tr key={lead._id} className="hover:bg-gray-50/50 transition-colors">
-                    <td className="px-6 py-4">
-                      <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 font-bold text-sm">
-                          {lead.name.charAt(0)}
-                        </div>
-                        <div className="flex flex-col justify-center">
-                          <p className="font-bold text-[#07294d] text-sm leading-tight">{lead.name}</p>
-                          <p className="text-[11px] text-gray-400 font-medium leading-tight">{lead.phone}</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td className="px-6 py-4">
-                      <span className="text-[11px] font-bold text-[#07294d] bg-gray-100 px-2.5 py-1 rounded-md whitespace-nowrap">{lead.course}</span>
-                    </td>
-                    <td className="px-6 py-4">
-                      <span className={`text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-md whitespace-nowrap ${
-                        lead.status === 'new' ? 'bg-blue-100 text-blue-700' : 'bg-green-100 text-green-700'
-                      }`}>
-                        {lead.status}
-                      </span>
-                    </td>
-                    <td className="px-6 py-4 text-[11px] text-gray-400 font-bold text-right whitespace-nowrap">
-                      {new Date(lead.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })}
-                    </td>
-                  </tr>
-                )) : (
-                  <tr>
-                    <td colSpan={4} className="px-6 py-16 text-center text-gray-400 font-bold text-sm tracking-wide">No leads found yet.</td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
+          <div className="flex items-center gap-2">
+            <div className="bg-gray-50 p-1.5 rounded-lg flex border border-gray-100">
+              <button className="px-3 py-1 bg-white shadow-sm text-[10px] font-bold rounded-md text-[#01228D]">New</button>
+              <button className="px-3 py-1 text-[10px] font-bold text-gray-400">Processed</button>
+            </div>
           </div>
         </div>
 
-        {/* Right Sidebar - Takes 1 column */}
-        <div className="flex flex-col gap-6 h-full">
-          {/* Quick Actions */}
-          <div className="bg-[#07294d] p-8 rounded-3xl shadow-lg relative overflow-hidden group">
-            <div className="relative z-10">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center text-lg text-[#EAB830]">
-                  <i className="fas fa-bolt"></i>
-                </div>
-                <h3 className="text-lg font-bold text-white tracking-wide">Quick Actions</h3>
-              </div>
-              <p className="text-white/70 text-xs font-medium leading-relaxed mb-6">Manage critical tasks and content updates instantly from your dashboard.</p>
-              
-              <div className="space-y-3">
-                <button className="w-full py-3.5 bg-[#EAB830] text-[#07294d] rounded-xl font-bold text-sm hover:bg-white transition-all shadow-lg active:scale-[0.98] flex items-center justify-center gap-2">
-                  <i className="fas fa-user-plus text-xs"></i> Add New Topper
-                </button>
-                <button className="w-full py-3.5 bg-white/10 text-white rounded-xl font-bold text-sm hover:bg-white/20 transition-all active:scale-[0.98] flex items-center justify-center gap-2 border border-white/10">
-                  <i className="fas fa-pen-nib text-xs"></i> Write Blog Post
-                </button>
-              </div>
-            </div>
-            
-            {/* Decorative Orbs */}
-            <div className="absolute -right-12 -bottom-12 w-40 h-40 bg-[#EAB830]/20 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform duration-700"></div>
-            <div className="absolute top-0 right-0 w-32 h-32 bg-blue-400/10 rounded-full blur-2xl pointer-events-none"></div>
-          </div>
-
-          {/* Enrollment Split */}
-          <div className="bg-white p-6 rounded-3xl shadow-sm border border-gray-50 flex-1">
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="text-[11px] font-black text-gray-400 uppercase tracking-widest">Enrollment Split</h3>
-              <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-400">
-                <i className="fas fa-chart-pie text-sm"></i>
-              </div>
-            </div>
-            
-            <div className="space-y-6">
-              {[
-                { name: "Digital Marketing", count: 45, color: "bg-blue-500", icon: "fas fa-bullhorn" },
-                { name: "Engineering (JEE)", count: 32, color: "bg-orange-500", icon: "fas fa-atom" },
-                { name: "Commerce (B.Com)", count: 28, color: "bg-green-500", icon: "fas fa-chart-line" }
-              ].map((c, i) => (
-                <div key={i} className="flex flex-col gap-2">
-                  <div className="flex justify-between items-center">
+        <div className="overflow-x-auto">
+          <table className="w-full text-left">
+            <thead>
+              <tr className="bg-gray-50/50">
+                <th className="px-8 py-4 text-[10px] font-black text-gray-400 uppercase tracking-widest">Student Details</th>
+                <th className="px-8 py-4 text-[10px] font-black text-gray-400 uppercase tracking-widest">Interested In</th>
+                <th className="px-8 py-4 text-[10px] font-black text-gray-400 uppercase tracking-widest">Status</th>
+                <th className="px-8 py-4 text-[10px] font-black text-gray-400 uppercase tracking-widest">Date</th>
+                <th className="px-8 py-4 text-[10px] font-black text-gray-400 uppercase tracking-widest text-center">Action</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-50">
+              {stats.recentLeads.length > 0 ? stats.recentLeads.map((lead: any) => (
+                <tr key={lead._id} className="group hover:bg-gray-50/30 transition-colors">
+                  <td className="px-8 py-4">
                     <div className="flex items-center gap-3">
-                      <div className={`w-7 h-7 rounded-md ${c.color}/10 flex items-center justify-center ${c.color.replace('bg-', 'text-')}`}>
-                        <i className={`${c.icon} text-[10px]`}></i>
+                      <div className="w-9 h-9 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 font-bold text-sm">
+                        {lead.name.charAt(0)}
                       </div>
-                      <span className="text-[#07294d] text-xs font-bold">{c.name}</span>
+                      <div>
+                        <p className="text-sm font-bold text-gray-800 leading-none">{lead.name}</p>
+                        <p className="text-[11px] text-gray-400 font-medium mt-1">{lead.phone}</p>
+                      </div>
                     </div>
-                    <span className="text-gray-400 text-[11px] font-black">{c.count}%</span>
-                  </div>
-                  <div className="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden">
-                    <div className={`${c.color} h-full rounded-full`} style={{ width: `${c.count}%` }}></div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+                  </td>
+                  <td className="px-8 py-4">
+                    <span className="text-[11px] font-bold text-gray-500 bg-gray-50 px-2.5 py-1 rounded-lg border border-gray-100">{lead.course}</span>
+                  </td>
+                  <td className="px-8 py-4">
+                    <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold ${
+                      lead.status === 'new' 
+                        ? 'bg-blue-50 text-blue-600' 
+                        : 'bg-green-50 text-green-600'
+                    }`}>
+                      <span className={`w-1.5 h-1.5 rounded-full ${lead.status === 'new' ? 'bg-blue-600' : 'bg-green-600'}`}></span>
+                      {lead.status === 'new' ? 'Pending' : 'Completed'}
+                    </span>
+                  </td>
+                  <td className="px-8 py-4 text-[11px] text-gray-400 font-bold">
+                    {new Date(lead.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })}
+                  </td>
+                  <td className="px-8 py-4 text-center">
+                    <button className="text-gray-400 hover:text-[#01228D] transition-colors">
+                      <i className="fas fa-ellipsis-h text-sm"></i>
+                    </button>
+                  </td>
+                </tr>
+              )) : (
+                <tr>
+                  <td colSpan={5} className="px-8 py-20 text-center text-gray-400 font-bold text-sm">No leads found yet.</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+        
+        {/* Table Footer - Like in reference */}
+        <div className="px-8 py-4 bg-gray-50/50 border-t border-gray-50 flex justify-between items-center">
+          <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Showing last 5 leads</p>
+          <button className="text-[11px] font-bold text-[#01228D] hover:underline">View All Leads</button>
         </div>
       </div>
     </div>
