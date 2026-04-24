@@ -75,7 +75,7 @@ export default function Header() {
                   {navLinks.map(({ href, label, hasDropdown, isNew }) => (
                     <li 
                       key={href} 
-                      className={`${hasDropdown ? "has-dropdown position-static" : ""} position-relative`}
+                      className={`${hasDropdown ? "has-dropdown position-static" : "position-relative"}`}
                       onMouseEnter={() => hasDropdown && setIsHovered(true)}
                       onMouseLeave={() => hasDropdown && setIsHovered(false)}
                     >
