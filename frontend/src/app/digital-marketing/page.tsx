@@ -166,7 +166,7 @@ export default function DigitalMarketingPage() {
                     const isActive = activeAccordion === i;
                     
                     return (
-                      <div key={i} className="accordion-item mb-3 border rounded shadow-sm" style={{ overflow: "visible" }}>
+                      <div key={i} className="accordion-item mb-3 border rounded shadow-sm" style={{ overflow: "visible", backgroundColor: "#fff" }}>
                         <h2 className="accordion-header">
                           <button 
                             className={`accordion-button ${!isActive ? 'collapsed' : ''} p-4 font-weight-bold`} 
@@ -176,34 +176,49 @@ export default function DigitalMarketingPage() {
                               backgroundColor: isActive ? "#f8fbff" : "#fff", 
                               color: "#07294d",
                               boxShadow: "none",
-                              border: "none"
+                              border: "none",
+                              display: "flex",
+                              justifyContent: "space-between",
+                              alignItems: "center",
+                              width: "100%",
+                              textAlign: "left"
                             }}
                           >
-                            {phase.title}
+                            <span>{phase.title}</span>
+                            <i className={`fas fa-chevron-down transition-transform duration-300 ${isActive ? 'rotate-180' : ''}`} style={{ fontSize: "14px", opacity: 0.7 }}></i>
                           </button>
                         </h2>
-                        <div className={`accordion-collapse collapse ${isActive ? 'show' : ''}`}>
-                          <div className="accordion-body p-4 bg-light">
+                        {isActive && (
+                          <div className="p-4" style={{ 
+                            backgroundColor: "#fcfdfe", 
+                            borderTop: "1px solid #f0f0f0",
+                            display: "block",
+                            visibility: "visible",
+                            opacity: 1
+                          }}>
                             <div className="row">
                               <div className="col-md-7">
-                                <h6 className="mb-3 text-primary">What You'll Learn:</h6>
+                                <h6 className="mb-3" style={{ color: "#07294d", fontWeight: "700" }}>What You'll Learn:</h6>
                                 <ul className="list-unstyled">
                                   {phase.content.map((item, j) => (
-                                    <li key={j} className="mb-2"><i className="fas fa-dot-circle me-2 text-muted small"></i> {item}</li>
+                                    <li key={j} className="mb-2 d-flex align-items-start">
+                                      <i className="fas fa-check-circle me-2 mt-1" style={{ color: "#2F7AD5", fontSize: "14px" }}></i>
+                                      <span style={{ color: "#444", fontSize: "15px" }}>{item}</span>
+                                    </li>
                                   ))}
                                 </ul>
                               </div>
-                              <div className="col-md-5">
-                                <h6 className="mb-3 text-warning">Tools Covered:</h6>
+                              <div className="col-md-5 mt-4 mt-md-0">
+                                <h6 className="mb-3" style={{ color: "#ffc600", fontWeight: "700" }}>Tools Covered:</h6>
                                 <div className="d-flex flex-wrap gap-2">
                                   {phase.tools.map((tool, j) => (
-                                    <span key={j} className="badge bg-white text-dark border p-2">{tool}</span>
+                                    <span key={j} className="badge bg-white text-dark border p-2" style={{ fontWeight: "500", fontSize: "13px" }}>{tool}</span>
                                   ))}
                                 </div>
                               </div>
                             </div>
                           </div>
-                        </div>
+                        )}
                       </div>
                     );
                   })}
