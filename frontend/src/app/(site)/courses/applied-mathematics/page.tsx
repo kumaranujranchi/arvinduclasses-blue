@@ -41,48 +41,48 @@ export default function AppliedMathematicsPage() {
       <section className="page-banner">
         <div className="page-banner-bg bg_cover" style={{ backgroundImage: "url(/assets/images/course-banner.png)" }}>
           <div className="container">
-            <div className="banner-content text-center wow fadeInDown" style={{ paddingTop: "120px", paddingBottom: "80px" }}>
-              <h2 className="title" style={{ fontSize: "32px", fontWeight: "800", color: "#fff", textShadow: "0 2px 4px rgba(0,0,0,0.3)" }}>Applied Mathematics (Class 9–12)</h2>
+            <div className="banner-content text-center wow fadeInDown course-detail-banner-content">
+              <h2 className="title course-detail-title">Applied Mathematics (Class 9–12)</h2>
               <div style={{ width: "60px", height: "4px", background: "#27B8A7", margin: "20px auto" }}></div>
-              <p style={{ color: "#fff", fontSize: "16px", fontWeight: "500" }}>Strengthening fundamentals. Improving problem-solving skills.</p>
+              <p className="course-detail-subtitle">Strengthening fundamentals. Improving problem-solving skills.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Courses Details Start */}
-      <section className="courses-details" style={{ paddingTop: "80px", paddingBottom: "80px", backgroundColor: "#fdfdfd" }}>
+      <section className="courses-details course-details-section">
         <div className="container">
           <div className="row">
             <div className="col-lg-8">
               <div className="courses-details-content">
                 <div className="image wow zoomIn" data-wow-duration="1s">
-                   <img src="/assets/images/courses-details.webp" style={{ borderRadius: "16px", boxShadow: "0 20px 40px rgba(0,0,0,0.12)", width: "100%", height: "auto" }} alt="Applied Mathematics Details" />
+                   <img src="/assets/images/courses-details.webp" className="course-detail-img" alt="Applied Mathematics Details" />
                 </div>
 
                 <div className="content-box mt-50 wow fadeInUp">
-                  <h3 className="title" style={{ fontSize: "30px", color: "#01228D", fontWeight: "700" }}>Applied Mathematics Program (Class 9–12)</h3>
-                  <p style={{ fontSize: "17px", lineHeight: "1.7", color: "#444", marginTop: "20px" }}>
+                  <h3 className="title course-content-title">Applied Mathematics Program (Class 9–12)</h3>
+                  <p className="course-content-text-1">
                     This program is designed for students who want to strengthen their Mathematics skills and improve their performance in school exams.
                   </p>
-                  <p style={{ fontSize: "17px", lineHeight: "1.7", color: "#444", marginTop: "15px" }}>
+                  <p className="course-content-text-2">
                     Mathematics is a subject that requires regular practice and clear understanding. Our approach focuses on simplifying concepts, improving problem-solving ability, and building confidence step-by-step.
                   </p>
                 </div>
 
                 <div className="overview-section mt-50 wow fadeInUp">
-                  <h4 style={{ fontSize: "24px", color: "#01228D", fontWeight: "700", marginBottom: "20px" }}>Course Overview</h4>
-                  <p style={{ fontSize: "16px", color: "#555", lineHeight: "1.6" }}>
+                  <h4 className="course-overview-title">Course Overview</h4>
+                  <p className="course-overview-text-1">
                     The Applied Mathematics Program helps students develop strong numerical and analytical skills required for academic success.
                   </p>
-                  <p style={{ fontSize: "16px", color: "#555", marginTop: "15px" }}>We focus on:</p>
-                  <ul className="courses-details-list" style={{ marginTop: "10px" }}>
-                    <li style={{ marginTop: "10px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "4px", color: "#27B8A7" }}></i> <p style={{ fontSize: "15px" }}>Concept clarity in core mathematical topics</p></li>
-                    <li style={{ marginTop: "10px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "4px", color: "#27B8A7" }}></i> <p style={{ fontSize: "15px" }}>Step-by-step problem-solving techniques</p></li>
-                    <li style={{ marginTop: "10px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "4px", color: "#27B8A7" }}></i> <p style={{ fontSize: "15px" }}>Regular practice with structured worksheets</p></li>
-                    <li style={{ marginTop: "10px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "4px", color: "#27B8A7" }}></i> <p style={{ fontSize: "15px" }}>Improving speed and accuracy</p></li>
+                  <p className="course-overview-text-2">We focus on:</p>
+                  <ul className="courses-details-list mt-10px">
+                    <li className="course-list-item"><i className="fas fa-check" style={{ top: "4px", color: "#27B8A7" }}></i> <p className="course-list-text">Concept clarity in core mathematical topics</p></li>
+                    <li className="course-list-item"><i className="fas fa-check" style={{ top: "4px", color: "#27B8A7" }}></i> <p className="course-list-text">Step-by-step problem-solving techniques</p></li>
+                    <li className="course-list-item"><i className="fas fa-check" style={{ top: "4px", color: "#27B8A7" }}></i> <p className="course-list-text">Regular practice with structured worksheets</p></li>
+                    <li className="course-list-item"><i className="fas fa-check" style={{ top: "4px", color: "#27B8A7" }}></i> <p className="course-list-text">Improving speed and accuracy</p></li>
                   </ul>
-                  <p style={{ fontSize: "16px", color: "#555", marginTop: "20px", fontWeight: "600" }}>
+                  <p className="course-overview-text-3">
                     This course is ideal for students who want to improve their Maths performance or need extra support alongside school learning.
                   </p>
                 </div>
@@ -91,42 +91,42 @@ export default function AppliedMathematicsPage() {
                 <div className="row mt-40">
                   <div className="col-md-6 wow fadeInLeft" data-wow-delay="0.1s">
                     <div className="highlight-card" style={{ background: "#fff", padding: "25px", borderRadius: "12px", border: "1px solid #eee", borderLeft: "5px solid #27B8A7", marginBottom: "20px", transition: "all 0.3s" }}>
-                       <h5 style={{ fontSize: "18px", marginBottom: "10px", fontWeight: "700" }}>Concept Mastery</h5>
+                       <h5 className="course-highlight-title">Concept Mastery</h5>
                        <p style={{ fontSize: "14px", color: "#666" }}>Strong focus on fundamentals and concepts with daily doubt-clearing sessions.</p>
                     </div>
                   </div>
                   <div className="col-md-6 wow fadeInRight" data-wow-delay="0.1s">
-                    <div className="highlight-card" style={{ background: "#fff", padding: "25px", borderRadius: "12px", border: "1px solid #eee", borderLeft: "5px solid #01228D", marginBottom: "20px", transition: "all 0.3s" }}>
-                       <h5 style={{ fontSize: "18px", marginBottom: "10px", fontWeight: "700" }}>Practice Oriented</h5>
+                    <div className="highlight-card course-highlight-card-dark">
+                       <h5 className="course-highlight-title">Practice Oriented</h5>
                        <p style={{ fontSize: "14px", color: "#666" }}>Daily practice worksheets and step-by-step problem solving methods for better results.</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="courses-details-tab wow fadeInUp" style={{ marginTop: "40px" }}>
-                  <ul className="nav nav-justified" style={{ background: "#f8f9fa", borderRadius: "10px 10px 0 0", overflow: "hidden" }}>
+                <div className="courses-details-tab wow fadeInUp course-tab-container">
+                  <ul className="nav nav-justified course-tab-nav">
                     <li className="nav-item">
-                      <a className={activeTab === 'benefit' ? 'active' : ''} onClick={() => setActiveTab('benefit')} style={{ cursor: 'pointer', padding: "20px 10px", height: "auto", border: "none", fontSize: "16px" }}>Benefits</a>
+                      <a className={`course-tab-link ${activeTab === 'benefit' ? 'active' : ''}`} onClick={() => setActiveTab('benefit')}>Benefits</a>
                     </li>
                     <li className="nav-item">
-                      <a className={activeTab === 'curriculum' ? 'active' : ''} onClick={() => setActiveTab('curriculum')} style={{ cursor: 'pointer', padding: "20px 10px", height: "auto", border: "none", fontSize: "16px" }}>Curriculum</a>
+                      <a className={`course-tab-link ${activeTab === 'curriculum' ? 'active' : ''}`} onClick={() => setActiveTab('curriculum')}>Curriculum</a>
                     </li>
                     <li className="nav-item">
-                      <a className={activeTab === 'teachers' ? 'active' : ''} onClick={() => setActiveTab('teachers')} style={{ cursor: 'pointer', padding: "20px 10px", height: "auto", border: "none", fontSize: "16px" }}>Faculty</a>
+                      <a className={`course-tab-link ${activeTab === 'teachers' ? 'active' : ''}`} onClick={() => setActiveTab('teachers')}>Faculty</a>
                     </li>
                     <li className="nav-item">
-                      <a className={activeTab === 'reviews' ? 'active' : ''} onClick={() => setActiveTab('reviews')} style={{ cursor: 'pointer', padding: "20px 10px", height: "auto", border: "none", fontSize: "16px" }}>Reviews</a>
+                      <a className={`course-tab-link ${activeTab === 'reviews' ? 'active' : ''}`} onClick={() => setActiveTab('reviews')}>Reviews</a>
                     </li>
                   </ul>
-                  <div className="tab-content" style={{ border: "1px solid #eee", padding: "40px", borderRadius: "0 0 10px 10px", background: "#fff" }}>
+                  <div className="tab-content course-tab-content-wrapper">
                     {activeTab === 'benefit' && (
                       <div className="tab-pane fade show active">
-                        <ul className="courses-details-list" style={{ margin: 0, padding: 0 }}>
-                          <li style={{ marginTop: "12px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Improved confidence in Mathematics.</p></li>
-                          <li style={{ marginTop: "12px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Better problem-solving and analytical skills.</p></li>
-                          <li style={{ marginTop: "12px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Increased calculation speed and accuracy.</p></li>
-                          <li style={{ marginTop: "12px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Strong support for board exam preparation.</p></li>
-                          <li style={{ marginTop: "12px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Reduced fear of Maths through simple explanations.</p></li>
+                        <ul className="courses-details-list m-0 p-0">
+                          <li className="course-list-item"><i className="fas fa-check course-list-icon-green"></i> <p className="course-list-text">Improved confidence in Mathematics.</p></li>
+                          <li className="course-list-item"><i className="fas fa-check course-list-icon-green"></i> <p className="course-list-text">Better problem-solving and analytical skills.</p></li>
+                          <li className="course-list-item"><i className="fas fa-check course-list-icon-green"></i> <p className="course-list-text">Increased calculation speed and accuracy.</p></li>
+                          <li className="course-list-item"><i className="fas fa-check course-list-icon-green"></i> <p className="course-list-text">Strong support for board exam preparation.</p></li>
+                          <li className="course-list-item"><i className="fas fa-check course-list-icon-green"></i> <p className="course-list-text">Reduced fear of Maths through simple explanations.</p></li>
                         </ul>
                       </div>
                     )}
@@ -134,25 +134,25 @@ export default function AppliedMathematicsPage() {
                       <div className="tab-pane fade show active">
                          <div className="row">
                            <div className="col-md-6">
-                              <div style={{ background: "#f9f9f9", padding: "20px", borderRadius: "8px", height: "100%", marginBottom: "20px" }}>
-                                <h6 style={{ fontWeight: "700", marginBottom: "15px", color: "#01228D" }}>Class 9–10 Core</h6>
-                                <ul style={{ fontSize: "13px", color: "#555", paddingLeft: "15px" }}>
-                                  <li style={{ marginBottom: "8px" }}>• Number System & Algebra</li>
-                                  <li style={{ marginBottom: "8px" }}>• Linear Equations</li>
-                                  <li style={{ marginBottom: "8px" }}>• Geometry & Mensuration</li>
-                                  <li style={{ marginBottom: "8px" }}>• Trigonometry Basics</li>
-                                  <li style={{ marginBottom: "8px" }}>• Statistics & Probability</li>
+                              <div className="course-curriculum-card">
+                                <h6 className="course-curriculum-title">Class 9–10 Core</h6>
+                                <ul className="course-curriculum-list">
+                                  <li className="course-curriculum-item">• Number System & Algebra</li>
+                                  <li className="course-curriculum-item">• Linear Equations</li>
+                                  <li className="course-curriculum-item">• Geometry & Mensuration</li>
+                                  <li className="course-curriculum-item">• Trigonometry Basics</li>
+                                  <li className="course-curriculum-item">• Statistics & Probability</li>
                                 </ul>
                               </div>
                            </div>
                            <div className="col-md-6">
-                              <div style={{ background: "#f9f9f9", padding: "20px", borderRadius: "8px", height: "100%", marginBottom: "20px" }}>
-                                <h6 style={{ fontWeight: "700", marginBottom: "15px", color: "#01228D" }}>Class 11–12 Core</h6>
-                                <ul style={{ fontSize: "13px", color: "#555", paddingLeft: "15px" }}>
-                                  <li style={{ marginBottom: "8px" }}>• Functions & Relations</li>
-                                  <li style={{ marginBottom: "8px" }}>• Calculus Basics</li>
-                                  <li style={{ marginBottom: "8px" }}>• Algebra & Matrices</li>
-                                  <li style={{ marginBottom: "8px" }}>• Probability</li>
+                              <div className="course-curriculum-card">
+                                <h6 className="course-curriculum-title">Class 11–12 Core</h6>
+                                <ul className="course-curriculum-list">
+                                  <li className="course-curriculum-item">• Functions & Relations</li>
+                                  <li className="course-curriculum-item">• Calculus Basics</li>
+                                  <li className="course-curriculum-item">• Algebra & Matrices</li>
+                                  <li className="course-curriculum-item">• Probability</li>
                                 </ul>
                               </div>
                            </div>
@@ -167,13 +167,13 @@ export default function AppliedMathematicsPage() {
                     )}
                     {activeTab === 'teachers' && (
                       <div className="tab-pane fade show active">
-                        <p style={{ fontSize: "16px", color: "#444" }}>Our Mathematics faculty focuses on making the subject simple and easy to understand for every student.</p>
-                        <p style={{ marginTop: "15px", fontWeight: "600" }}>Students benefit from:</p>
+                        <p className="course-teacher-text-1">Our Mathematics faculty focuses on making the subject simple and easy to understand for every student.</p>
+                        <p className="course-teacher-text-2">Students benefit from:</p>
                         <ul className="courses-details-list" style={{ marginTop: "10px", padding: 0 }}>
-                           <li style={{ marginTop: "10px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Step-by-step explanation of problems</p></li>
-                           <li style={{ marginTop: "10px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Practice-oriented teaching style</p></li>
-                           <li style={{ marginTop: "10px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Individual doubt-solving support</p></li>
-                           <li style={{ marginTop: "10px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Personal attention in small batches</p></li>
+                           <li className="course-list-item"><i className="fas fa-check course-list-icon-green"></i> <p className="course-list-text">Step-by-step explanation of problems</p></li>
+                           <li className="course-list-item"><i className="fas fa-check course-list-icon-green"></i> <p className="course-list-text">Practice-oriented teaching style</p></li>
+                           <li className="course-list-item"><i className="fas fa-check course-list-icon-green"></i> <p className="course-list-text">Individual doubt-solving support</p></li>
+                           <li className="course-list-item"><i className="fas fa-check course-list-icon-green"></i> <p className="course-list-text">Personal attention in small batches</p></li>
                         </ul>
                       </div>
                     )}
@@ -197,7 +197,7 @@ export default function AppliedMathematicsPage() {
                   <div className="sidebar-title" style={{ borderBottom: "1px solid #eee", paddingBottom: "15px", marginBottom: "20px" }}>
                     <h4 className="title" style={{ fontSize: "22px", margin: 0 }}>Course Features</h4>
                   </div>
-                  <ul className="courses-features-items" style={{ margin: 0, padding: 0 }}>
+                  <ul className="courses-features-items m-0 p-0">
                     <li style={{ padding: "12px 0", borderBottom: "1px solid #f9f9f9" }}>Fee <strong>₹20,000</strong></li>
                     <li style={{ padding: "12px 0", borderBottom: "1px solid #f9f9f9" }}>Duration <strong>1 Year</strong></li>
                     <li style={{ padding: "12px 0", borderBottom: "1px solid #f9f9f9" }}>Classes <strong>3–4 Days/Week</strong></li>

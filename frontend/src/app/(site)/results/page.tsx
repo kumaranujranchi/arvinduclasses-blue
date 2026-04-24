@@ -47,13 +47,10 @@ export default function ResultsPage() {
       <Header />
 
       {/* ====== Page Banner Start ====== */}
-      <section className="page-banner">
-        <div
-          className="page-banner-bg bg_cover"
-          style={{ backgroundColor: "#07294d" }}
-        >
+      <section className="page-banner results-page-banner">
+        <div className="page-banner-bg bg_cover results-banner-bg">
           <div className="container">
-            <div className="banner-content text-center">
+            <div className="banner-content text-center results-banner-content">
               <h2 className="title">Test Results</h2>
             </div>
           </div>
@@ -62,34 +59,20 @@ export default function ResultsPage() {
       {/* ====== Page Banner Ends ====== */}
 
       {/* ====== Search Section ====== */}
-      <section className="results-search-area pt-80 pb-80" style={{ 
-        backgroundColor: "#f8fbff",
-        position: "relative",
-        overflow: "hidden"
-      }}>
+      <section className="results-search-area pt-80 pb-80 results-search-wrapper">
         {/* Subtle Grid Pattern Overlay - Increased Visibility */}
-        <div style={{
-          position: "absolute",
-          top: 0, left: 0, right: 0, bottom: 0,
-          backgroundImage: `linear-gradient(to right, rgba(7, 41, 77, 0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(7, 41, 77, 0.12) 1px, transparent 1px)`,
-          backgroundSize: "35px 35px",
-          maskImage: "radial-gradient(circle at center, black 30%, transparent 95%)",
-          WebkitMaskImage: "radial-gradient(circle at center, black 30%, transparent 95%)",
-          opacity: 0.6,
-          pointerEvents: "none",
-          zIndex: 0
-        }}></div>
+        <div className="results-grid-overlay"></div>
 
-        <div className="container" style={{ position: "relative", zIndex: 1 }}>
+        <div className="container relative-z1">
           <div className="row justify-content-center">
             <div className="col-lg-10">
               <div className="text-center mb-50">
-                <h2 className="title" style={{ fontSize: "44px", color: "#07294d" }}>Check <span style={{ color: "#ffc600" }}>Performance</span></h2>
-                <span className="line mx-auto" style={{ width: "100px", height: "2px", background: "#ffc600", display: "block", marginTop: "15px" }}></span>
-                <p className="mt-20" style={{ fontSize: "18px", color: "#151515", fontWeight: "400" }}>Enter your roll number to access your detailed performance report and subject-wise analysis.</p>
+                <h2 className="title results-section-title">Check <span className="text-highlight-yellow">Performance</span></h2>
+                <span className="line mx-auto results-section-line"></span>
+                <p className="mt-20 results-section-desc">Enter your roll number to access your detailed performance report and subject-wise analysis.</p>
               </div>
               
-              <div className="search-card p-4 p-md-5 shadow-lg rounded-lg bg-white position-relative" style={{ marginTop: "-20px" }}>
+              <div className="search-card p-4 p-md-5 shadow-lg rounded-lg bg-white position-relative mt-minus-20">
                 <form onSubmit={handleSearch}>
                   <div className="row align-items-end">
                     <div className="col-md-5 mb-3 mb-md-0">
@@ -99,12 +82,11 @@ export default function ResultsPage() {
                           <span className="input-group-text bg-light border-right-0"><i className="fas fa-id-card text-primary"></i></span>
                           <input
                             type="text"
-                            className="form-control p-3 border-left-0"
+                            className="form-control p-3 border-left-0 h-55px"
                             placeholder="e.g. AC-2025-001"
                             value={rollNumber}
                             onChange={(e) => setRollNumber(e.target.value)}
                             required
-                            style={{ height: "55px" }}
                           />
                         </div>
                       </div>
@@ -113,10 +95,9 @@ export default function ResultsPage() {
                       <div className="form-group">
                         <label className="mb-2 font-weight-bold text-dark">Test Session</label>
                         <select 
-                          className="form-control p-3"
+                          className="form-control p-3 h-55px"
                           value={month}
                           onChange={(e) => setMonth(e.target.value)}
-                          style={{ height: "55px" }}
                         >
                           <option>April 2025 - Monthly Test</option>
                           <option>March 2025 - Monthly Test</option>
@@ -125,7 +106,7 @@ export default function ResultsPage() {
                       </div>
                     </div>
                     <div className="col-md-3">
-                      <button type="submit" className="main-btn w-100" style={{ height: "55px", borderRadius: "5px", fontSize: "16px" }}>
+                      <button type="submit" className="main-btn w-100 results-search-btn">
                         <i className="fas fa-search me-2"></i> View Report
                       </button>
                     </div>
@@ -142,8 +123,8 @@ export default function ResultsPage() {
                 <div className="col-lg-4 mb-4 mb-lg-0">
                   <div className="student-info-card p-4 rounded shadow-sm bg-white h-100 border-top border-primary border-4">
                     <div className="d-flex align-items-center mb-4">
-                      <div className="avatar-circle me-3" style={{ width: "60px", height: "60px", backgroundColor: "#07294d10", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                        <i className="fas fa-user-graduate text-primary" style={{ fontSize: "24px" }}></i>
+                      <div className="avatar-circle me-3 avatar-circle-style">
+                        <i className="fas fa-user-graduate text-primary fs-24px"></i>
                       </div>
                       <div>
                         <h5 className="mb-0">{mockData.name}</h5>
@@ -166,7 +147,7 @@ export default function ResultsPage() {
                       </div>
                     </div>
 
-                    <div className="rank-stats mt-4 p-4 rounded text-center" style={{ background: "linear-gradient(135deg, #07294d 0%, #004d99 100%)", color: "#fff" }}>
+                    <div className="rank-stats mt-4 p-4 rounded text-center rank-stats-box">
                       <span className="d-block small opacity-75 mb-1 text-uppercase">Institute Rank</span>
                       <h2 className="text-white mb-0">{mockData.rank}<small className="opacity-50"> / {mockData.totalStudents}</small></h2>
                       <div className="mt-2 small">Top 5% of the batch</div>
@@ -196,8 +177,8 @@ export default function ResultsPage() {
                               <td className="font-weight-bold py-3">{sub.name}</td>
                               <td>{sub.marks} <span className="text-muted">/ {sub.total}</span></td>
                               <td>{((sub.marks / sub.total) * 100).toFixed(0)}%</td>
-                              <td style={{ minWidth: "150px" }}>
-                                <div className="progress" style={{ height: "6px" }}>
+                              <td className="min-w-150px">
+                                <div className="progress h-6px">
                                   <div 
                                     className="progress-bar" 
                                     style={{ 
@@ -214,19 +195,19 @@ export default function ResultsPage() {
                     </div>
 
                     <div className="summary-pills d-flex flex-wrap gap-3 mt-4">
-                      <div className="pill p-3 rounded flex-grow-1" style={{ backgroundColor: "#f0fdf4", border: "1px solid #dcfce7" }}>
+                      <div className="pill p-3 rounded flex-grow-1 pill-success">
                         <div className="text-success small font-weight-bold">Total Percentage</div>
                         <h4 className="text-success mb-0">{mockData.percentage}</h4>
                       </div>
-                      <div className="pill p-3 rounded flex-grow-1" style={{ backgroundColor: "#eff6ff", border: "1px solid #dbeafe" }}>
+                      <div className="pill p-3 rounded flex-grow-1 pill-primary">
                         <div className="text-primary small font-weight-bold">Total Marks</div>
-                        <h4 className="text-primary mb-0">{mockData.total} <small className="text-muted" style={{ fontSize: "14px" }}>/ {mockData.maxTotal}</small></h4>
+                        <h4 className="text-primary mb-0">{mockData.total} <small className="text-muted fs-14px">/ {mockData.maxTotal}</small></h4>
                       </div>
                     </div>
 
-                    <div className="remark-box mt-4 p-3 rounded" style={{ borderLeft: "4px solid #ffc600", backgroundColor: "#fffdf5" }}>
+                    <div className="remark-box mt-4 p-3 rounded remark-box-style">
                       <h6 className="mb-2 text-dark font-weight-bold"><i className="fas fa-lightbulb text-warning me-2"></i> Performance Insight</h6>
-                      <p className="m-0 text-muted small" style={{ lineHeight: "1.6" }}>
+                      <p className="m-0 text-muted small line-height-16">
                         Aryan is showing steady improvement in Mathematics. However, attention is required in Chemistry specifically in Organic reactions. 
                         We recommend attending the upcoming doubt-solving session on 20th April.
                       </p>
@@ -240,26 +221,17 @@ export default function ResultsPage() {
       </section>
 
       {/* ====== Consistency Performers (Toppers) Section ====== */}
-      <section className="toppers-area pt-100 pb-100" style={{ position: "relative", overflow: "hidden" }}>
+      <section className="toppers-area pt-100 pb-100 toppers-area-wrapper">
         {/* Subtle Grid Pattern Overlay - Increased Visibility */}
-        <div style={{
-          position: "absolute",
-          top: 0, left: 0, right: 0, bottom: 0,
-          backgroundImage: `linear-gradient(to right, rgba(7, 41, 77, 0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(7, 41, 77, 0.12) 1px, transparent 1px)`,
-          backgroundSize: "35px 35px",
-          maskImage: "radial-gradient(circle at center, black 30%, transparent 95%)",
-          WebkitMaskImage: "radial-gradient(circle at center, black 30%, transparent 95%)",
-          opacity: 0.5,
-          pointerEvents: "none"
-        }}></div>
+        <div className="results-grid-overlay opacity-50"></div>
 
-        <div className="container" style={{ position: "relative", zIndex: 1 }}>
+        <div className="container relative-z1">
           <div className="row justify-content-center">
             <div className="col-lg-8">
               <div className="text-center mb-50">
-                <h2 className="title" style={{ fontSize: "44px", color: "#07294d" }}>Our Consistent <span style={{ color: "#ffc600" }}>Performers</span></h2>
-                <span className="line mx-auto" style={{ width: "100px", height: "2px", background: "#ffc600", display: "block", marginTop: "15px" }}></span>
-                <p className="mt-20" style={{ fontSize: "18px", color: "#151515", fontWeight: "400" }}>Celebrating the hard work and dedication of our top rankers in recent monthly assessments.</p>
+                <h2 className="title results-section-title">Our Consistent <span className="text-highlight-yellow">Performers</span></h2>
+                <span className="line mx-auto results-section-line"></span>
+                <p className="mt-20 results-section-desc">Celebrating the hard work and dedication of our top rankers in recent monthly assessments.</p>
               </div>
             </div>
           </div>
@@ -270,20 +242,20 @@ export default function ResultsPage() {
                </div>
             ) : activeToppers.length > 0 ? activeToppers.map((topper, i) => (
               <div key={topper._id} className="col-lg-4 col-md-6 mb-30">
-                <div className="single-topper text-center p-4 border rounded-lg transition-all" style={{ backgroundColor: "#fff" }}>
-                  <div className="topper-rank" style={{ position: "absolute", top: "20px", left: "20px", background: "#ffc600", color: "#07294d", width: "40px", height: "40px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: "bold", fontSize: "18px", boxShadow: "0 4px 10px rgba(255,198,0,0.3)" }}>
+                <div className="single-topper text-center p-4 border rounded-lg transition-all topper-card-bg">
+                  <div className="topper-rank-badge">
                     #{topper.rank}
                   </div>
                   <div className="topper-thumb mb-20">
                     <img 
                       src={`https://ui-avatars.com/api/?name=${topper.name}&background=07294d&color=fff&bold=true`} 
                       alt={topper.name}
-                      style={{ width: "100px", height: "100px", borderRadius: "50%", border: "4px solid #fff", boxShadow: "0 10px 20px rgba(0,0,0,0.1)" }}
+                      className="topper-thumb-style"
                     />
                   </div>
                   <h4 className="name">{topper.name}</h4>
                   <p className="stream text-muted small mb-3">{topper.stream} | {topper.testMonth}</p>
-                  <div className="score font-weight-bold text-primary" style={{ fontSize: "20px" }}>{topper.score}</div>
+                  <div className="score font-weight-bold text-primary fs-20px">{topper.score}</div>
                 </div>
               </div>
             )) : (
@@ -296,26 +268,17 @@ export default function ResultsPage() {
       </section>
 
       {/* ====== Upcoming Tests Section ====== */}
-      <section className="upcoming-tests-area pt-100 pb-100" style={{ background: "#f8f9fa", position: "relative", overflow: "hidden" }}>
+      <section className="upcoming-tests-area pt-100 pb-100 results-section-wrapper bg-light-gray">
         {/* Subtle Grid Pattern Overlay - Increased Visibility */}
-        <div style={{
-          position: "absolute",
-          top: 0, left: 0, right: 0, bottom: 0,
-          backgroundImage: `linear-gradient(to right, rgba(7, 41, 77, 0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(7, 41, 77, 0.12) 1px, transparent 1px)`,
-          backgroundSize: "35px 35px",
-          maskImage: "radial-gradient(circle at center, black 30%, transparent 95%)",
-          WebkitMaskImage: "radial-gradient(circle at center, black 30%, transparent 95%)",
-          opacity: 0.6,
-          pointerEvents: "none"
-        }}></div>
+        <div className="results-grid-overlay"></div>
 
-        <div className="container" style={{ position: "relative", zIndex: 1 }}>
+        <div className="container relative-z1">
           <div className="row align-items-center">
             <div className="col-lg-6">
               <div className="mb-40">
-                <h2 className="title" style={{ fontSize: "44px", color: "#07294d" }}>Upcoming <span style={{ color: "#ffc600" }}>Tests</span></h2>
-                <span className="line" style={{ width: "100px", height: "2px", background: "#ffc600", display: "block", marginTop: "15px" }}></span>
-                <p className="mt-20" style={{ fontSize: "18px", color: "#151515", fontWeight: "400", lineHeight: "1.6" }}>Stay prepared for your next challenge. Regular testing helps in identifying weak spots and building exam confidence.</p>
+                <h2 className="title results-section-title">Upcoming <span className="text-highlight-yellow">Tests</span></h2>
+                <span className="line results-section-line"></span>
+                <p className="mt-20 results-section-desc line-height-16">Stay prepared for your next challenge. Regular testing helps in identifying weak spots and building exam confidence.</p>
               </div>
               <div className="test-calendar-list">
                 {[
@@ -324,7 +287,7 @@ export default function ResultsPage() {
                   { date: "May 20, 2025", title: "Monthly Foundation Test", type: "Class 10" }
                 ].map((test, i) => (
                   <div key={i} className="test-item d-flex align-items-center p-3 mb-3 bg-white rounded shadow-sm">
-                    <div className="date-box text-center p-2 rounded" style={{ backgroundColor: "#07294d10", minWidth: "100px" }}>
+                    <div className="date-box text-center p-2 rounded date-box-style">
                       <span className="d-block font-weight-bold text-primary">{test.date.split(',')[0]}</span>
                     </div>
                     <div className="test-info ms-4 flex-grow-1">
@@ -337,10 +300,10 @@ export default function ResultsPage() {
               </div>
             </div>
             <div className="col-lg-6">
-              <div className="test-cta p-5 rounded-lg text-white" style={{ background: "linear-gradient(135deg, #0C8B51 0%, #07294d 100%)", boxShadow: "0 20px 40px rgba(0,0,0,0.15)" }}>
+              <div className="test-cta p-5 rounded-lg text-white test-cta-box">
                 <h3 className="text-white mb-3">Improve Your Result</h3>
                 <p className="text-white opacity-75 mb-30">Get personalized mentoring and focus on your weak areas with our expert faculty members.</p>
-                <Link href="/courses" className="main-btn main-btn-2" style={{ backgroundColor: "#ffc600", color: "#07294d", border: "none" }}>Join Mentorship</Link>
+                <Link href="/courses" className="main-btn main-btn-2 btn-join-mentorship">Join Mentorship</Link>
               </div>
             </div>
           </div>
@@ -348,25 +311,16 @@ export default function ResultsPage() {
       </section>
 
       {/* ====== FAQ Section ====== */}
-      <section className="results-faq pt-100 pb-100" style={{ position: "relative", overflow: "hidden" }}>
+      <section className="results-faq pt-100 pb-100 results-section-wrapper">
         {/* Subtle Grid Pattern Overlay - Increased Visibility */}
-        <div style={{
-          position: "absolute",
-          top: 0, left: 0, right: 0, bottom: 0,
-          backgroundImage: `linear-gradient(to right, rgba(7, 41, 77, 0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(7, 41, 77, 0.12) 1px, transparent 1px)`,
-          backgroundSize: "35px 35px",
-          maskImage: "radial-gradient(circle at center, black 30%, transparent 95%)",
-          WebkitMaskImage: "radial-gradient(circle at center, black 30%, transparent 95%)",
-          opacity: 0.5,
-          pointerEvents: "none"
-        }}></div>
+        <div className="results-grid-overlay opacity-50"></div>
 
-        <div className="container" style={{ position: "relative", zIndex: 1 }}>
+        <div className="container relative-z1">
           <div className="row justify-content-center">
             <div className="col-lg-8">
               <div className="text-center mb-50">
-                <h2 className="title" style={{ fontSize: "44px", color: "#07294d" }}>Frequently <span style={{ color: "#ffc600" }}>Asked</span> Questions</h2>
-                <span className="line mx-auto" style={{ width: "100px", height: "2px", background: "#ffc600", display: "block", marginTop: "15px" }}></span>
+                <h2 className="title results-section-title">Frequently <span className="text-highlight-yellow">Asked</span> Questions</h2>
+                <span className="line mx-auto results-section-line"></span>
               </div>
               <div className="faq-wrapper">
                 <div className="faq-item p-3 mb-3 border rounded bg-white shadow-sm">
@@ -389,55 +343,6 @@ export default function ResultsPage() {
 
       <Footer />
 
-      <style jsx>{`
-        .page-banner {
-          padding-top: 155px;
-          background: #01228D;
-        }
-        .banner-content {
-          padding-top: 150px;
-          padding-bottom: 140px;
-        }
-        .banner-content .title {
-          color: #fff;
-          font-weight: 700;
-          font-size: 76px;
-        }
-        .single-topper {
-          position: relative;
-          transition: all 0.3s ease;
-        }
-        .single-topper:hover {
-          transform: translateY(-10px);
-          box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-          border-color: #ffc600;
-        }
-        .transition-all {
-          transition: all 0.3s ease;
-        }
-        .form-control:focus {
-          border-color: #ffc600;
-          box-shadow: none;
-        }
-        .main-btn {
-          background-color: #ffc600;
-          color: #07294d;
-          font-weight: 700;
-        }
-        .main-btn:hover {
-          background-color: #07294d;
-          color: #fff;
-        }
-        @media (max-width: 767px) {
-          .banner-content .title {
-            font-size: 40px;
-          }
-          .banner-content {
-            padding-top: 80px;
-            padding-bottom: 80px;
-          }
-        }
-      `}</style>
     </>
   );
 }

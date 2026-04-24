@@ -225,7 +225,7 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="col-lg-6">
-              <div className="our-mission mt-40 rounded shadow-sm problem-mission-box">
+              <div className="our-mission mt-40 p-4 rounded shadow-sm problem-mission-box">
                 <h3 className="sub-title text-white">Our Mission</h3>
                 <span className="line"></span>
                 <p className="mt-20 text-white">

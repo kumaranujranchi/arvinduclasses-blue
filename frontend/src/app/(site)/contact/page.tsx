@@ -13,10 +13,7 @@ export default function ContactPage() {
 
       {/* Page Banner */}
       <section className="page-banner">
-        <div
-          className="page-banner-bg bg_cover"
-          style={{ backgroundImage: "url(/assets/images/page-banner.webp)" }}
-        >
+        <div className="page-banner-bg bg_cover page-banner-bg-image">
           <div className="container">
             <div className="banner-content text-center">
               <h2 className="title">Contact Us</h2>

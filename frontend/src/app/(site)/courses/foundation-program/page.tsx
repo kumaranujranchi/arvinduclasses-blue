@@ -41,31 +41,31 @@ export default function FoundationProgramPage() {
       <section className="page-banner">
         <div className="page-banner-bg bg_cover" style={{ backgroundImage: "url(/assets/images/course-banner.png)" }}>
           <div className="container">
-            <div className="banner-content text-center wow fadeInDown" style={{ paddingTop: "120px", paddingBottom: "80px" }}>
-              <h2 className="title" style={{ fontSize: "32px", fontWeight: "800", color: "#fff", textShadow: "0 2px 4px rgba(0,0,0,0.3)" }}>Foundation Program (Class 6–8)</h2>
+            <div className="banner-content text-center wow fadeInDown course-detail-banner-content">
+              <h2 className="title course-detail-title">Foundation Program (Class 6–8)</h2>
               <div style={{ width: "60px", height: "4px", background: "#EAB830", margin: "20px auto" }}></div>
-              <p style={{ color: "#fff", fontSize: "16px", fontWeight: "500" }}>Excellence in education starts with a strong foundation.</p>
+              <p className="course-detail-subtitle">Excellence in education starts with a strong foundation.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Courses Details Start */}
-      <section className="courses-details" style={{ paddingTop: "80px", paddingBottom: "80px", backgroundColor: "#fdfdfd" }}>
+      <section className="courses-details course-details-section">
         <div className="container">
           <div className="row">
             <div className="col-lg-8">
               <div className="courses-details-content">
                 <div className="image wow zoomIn" data-wow-duration="1s">
-                   <img src="/assets/images/courses-details.webp" style={{ borderRadius: "16px", boxShadow: "0 20px 40px rgba(0,0,0,0.12)", width: "100%", height: "auto" }} alt="Course Details" />
+                   <img src="/assets/images/courses-details.webp" className="course-detail-img" alt="Course Details" />
                 </div>
 
                 <div className="content-box mt-50 wow fadeInUp">
-                  <h3 className="title" style={{ fontSize: "30px", color: "#01228D", fontWeight: "700" }}>Foundation Program for Class 6–8 (CBSE & ICSE)</h3>
-                  <p style={{ fontSize: "17px", lineHeight: "1.7", color: "#444", marginTop: "20px" }}>
+                  <h3 className="title course-content-title">Foundation Program for Class 6–8 (CBSE & ICSE)</h3>
+                  <p className="course-content-text-1">
                     At Arvindu Classes, we believe that the middle school years are the most critical for academic development. This program is meticulously designed to bridge the gap between basic schooling and advanced academic challenges.
                   </p>
-                  <p style={{ fontSize: "17px", lineHeight: "1.7", color: "#444", marginTop: "15px" }}>
+                  <p className="course-content-text-2">
                     Our teaching methodology focuses on <strong>Conceptual Clarity</strong>, <strong>Problem-Solving</strong>, and <strong>Disciplined Study Habits</strong>. We ensure that students not only score well in school but also develop a genuine interest in the subjects.
                   </p>
                 </div>
@@ -82,7 +82,7 @@ export default function FoundationProgramPage() {
                     </div>
                   </div>
                   <div className="col-md-6 wow fadeInRight" data-wow-delay="0.1s">
-                    <div className="highlight-card" style={{ background: "#fff", padding: "25px", borderRadius: "12px", border: "1px solid #eee", borderLeft: "5px solid #2F7AD5", marginBottom: "20px", transition: "all 0.3s" }}>
+                    <div className="highlight-card course-highlight-card-blue">
                        <div style={{ display: "flex", alignItems: "center", marginBottom: "12px" }}>
                           <i className="fas fa-chart-line" style={{ fontSize: "20px", color: "#2F7AD5", marginRight: "12px" }}></i>
                           <h5 style={{ fontSize: "18px", margin: 0, fontWeight: "700" }}>Progressive Difficulty</h5>
@@ -110,26 +110,26 @@ export default function FoundationProgramPage() {
                   </div>
                 </div>
 
-                <div className="courses-details-tab wow fadeInUp" style={{ marginTop: "40px" }}>
-                  <ul className="nav nav-justified" style={{ background: "#f8f9fa", borderRadius: "10px 10px 0 0", overflow: "hidden" }}>
+                <div className="courses-details-tab wow fadeInUp course-tab-container">
+                  <ul className="nav nav-justified course-tab-nav">
                     <li className="nav-item">
-                      <a className={activeTab === 'benefit' ? 'active' : ''} onClick={() => setActiveTab('benefit')} style={{ cursor: 'pointer', padding: "20px 10px", height: "auto", border: "none", fontSize: "16px" }}>Benefits</a>
+                      <a className={`course-tab-link ${activeTab === 'benefit' ? 'active' : ''}`} onClick={() => setActiveTab('benefit')}>Benefits</a>
                     </li>
                     <li className="nav-item">
-                      <a className={activeTab === 'curriculum' ? 'active' : ''} onClick={() => setActiveTab('curriculum')} style={{ cursor: 'pointer', padding: "20px 10px", height: "auto", border: "none", fontSize: "16px" }}>Curriculum</a>
+                      <a className={`course-tab-link ${activeTab === 'curriculum' ? 'active' : ''}`} onClick={() => setActiveTab('curriculum')}>Curriculum</a>
                     </li>
                     <li className="nav-item">
-                      <a className={activeTab === 'teachers' ? 'active' : ''} onClick={() => setActiveTab('teachers')} style={{ cursor: 'pointer', padding: "20px 10px", height: "auto", border: "none", fontSize: "16px" }}>Faculty</a>
+                      <a className={`course-tab-link ${activeTab === 'teachers' ? 'active' : ''}`} onClick={() => setActiveTab('teachers')}>Faculty</a>
                     </li>
                     <li className="nav-item">
-                      <a className={activeTab === 'reviews' ? 'active' : ''} onClick={() => setActiveTab('reviews')} style={{ cursor: 'pointer', padding: "20px 10px", height: "auto", border: "none", fontSize: "16px" }}>Reviews</a>
+                      <a className={`course-tab-link ${activeTab === 'reviews' ? 'active' : ''}`} onClick={() => setActiveTab('reviews')}>Reviews</a>
                     </li>
                   </ul>
-                  <div className="tab-content" style={{ border: "1px solid #eee", padding: "40px", borderRadius: "0 0 10px 10px", background: "#fff" }}>
+                  <div className="tab-content course-tab-content-wrapper">
                     {activeTab === 'benefit' && (
                       <div className="tab-pane fade show active">
                         <h5 style={{ fontSize: "20px", marginBottom: "20px", fontWeight: "700" }}>Why Choose This Program?</h5>
-                        <ul className="courses-details-list" style={{ margin: 0, padding: 0 }}>
+                        <ul className="courses-details-list m-0 p-0">
                           <li style={{ marginTop: "15px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51", fontSize: "16px" }}></i> <p style={{ fontSize: "16px" }}>Eliminate the fear of complex subjects like Maths and Physics.</p></li>
                           <li style={{ marginTop: "15px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51", fontSize: "16px" }}></i> <p style={{ fontSize: "16px" }}>Develop analytical thinking and logical reasoning skills.</p></li>
                           <li style={{ marginTop: "15px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51", fontSize: "16px" }}></i> <p style={{ fontSize: "16px" }}>Prepare for future competitive exams like Olympiads, NTSE, and JEE/NEET.</p></li>
@@ -142,7 +142,7 @@ export default function FoundationProgramPage() {
                          <div className="row">
                            <div className="col-md-6">
                               <div style={{ background: "#f9f9f9", padding: "20px", borderRadius: "8px", height: "100%" }}>
-                                <h6 style={{ fontWeight: "700", marginBottom: "15px", color: "#01228D" }}>Mathematics Core</h6>
+                                <h6 className="course-curriculum-title">Mathematics Core</h6>
                                 <ul style={{ fontSize: "14px", color: "#555", paddingLeft: "15px" }}>
                                   <li style={{ marginBottom: "10px" }}>• Number System, Algebra & Ratio</li>
                                   <li style={{ marginBottom: "10px" }}>• Geometry, Mensuration & Symmetry</li>
@@ -153,7 +153,7 @@ export default function FoundationProgramPage() {
                            </div>
                            <div className="col-md-6">
                               <div style={{ background: "#f9f9f9", padding: "20px", borderRadius: "8px", height: "100%" }}>
-                                <h6 style={{ fontWeight: "700", marginBottom: "15px", color: "#01228D" }}>Science Foundations</h6>
+                                <h6 className="course-curriculum-title">Science Foundations</h6>
                                 <ul style={{ fontSize: "14px", color: "#555", paddingLeft: "15px" }}>
                                   <li style={{ marginBottom: "10px" }}>• Physics: Motion, Force, Light & Electricity</li>
                                   <li style={{ marginBottom: "10px" }}>• Chemistry: Matter, Fibre & Changes</li>
@@ -192,7 +192,7 @@ export default function FoundationProgramPage() {
                   <div className="sidebar-title" style={{ borderBottom: "1px solid #eee", paddingBottom: "15px", marginBottom: "20px" }}>
                     <h4 className="title" style={{ fontSize: "22px", margin: 0 }}>Course At A Glance</h4>
                   </div>
-                  <ul className="courses-features-items" style={{ margin: 0, padding: 0 }}>
+                  <ul className="courses-features-items m-0 p-0">
                     <li style={{ padding: "12px 0", borderBottom: "1px solid #f9f9f9" }}>Fee <strong>₹25,000</strong></li>
                     <li style={{ padding: "12px 0", borderBottom: "1px solid #f9f9f9" }}>Duration <strong>1 Year</strong></li>
                     <li style={{ padding: "12px 0", borderBottom: "1px solid #f9f9f9" }}>Schedule <strong>5 Days/Week</strong></li>

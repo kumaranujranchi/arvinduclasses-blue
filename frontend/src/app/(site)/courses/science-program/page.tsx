@@ -41,48 +41,48 @@ export default function ScienceProgramPage() {
       <section className="page-banner">
         <div className="page-banner-bg bg_cover" style={{ backgroundImage: "url(/assets/images/course-banner.png)" }}>
           <div className="container">
-            <div className="banner-content text-center wow fadeInDown" style={{ paddingTop: "120px", paddingBottom: "80px" }}>
-              <h2 className="title" style={{ fontSize: "32px", fontWeight: "800", color: "#fff", textShadow: "0 2px 4px rgba(0,0,0,0.3)" }}>Science Program (Class 9–10)</h2>
-              <div style={{ width: "60px", height: "4px", background: "#2F7AD5", margin: "20px auto" }}></div>
-              <p style={{ color: "#fff", fontSize: "16px", fontWeight: "500" }}>Excellence in Boards through structured learning and expert guidance.</p>
+            <div className="banner-content text-center wow fadeInDown course-detail-banner-content">
+              <h2 className="title course-detail-title">Science Program (Class 9–10)</h2>
+              <div className="course-detail-divider"></div>
+              <p className="course-detail-subtitle">Excellence in Boards through structured learning and expert guidance.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Courses Details Start */}
-      <section className="courses-details" style={{ paddingTop: "80px", paddingBottom: "80px", backgroundColor: "#fdfdfd" }}>
+      <section className="courses-details course-details-section">
         <div className="container">
           <div className="row">
             <div className="col-lg-8">
               <div className="courses-details-content">
                 <div className="image wow zoomIn" data-wow-duration="1s">
-                   <img src="/assets/images/courses-details.webp" style={{ borderRadius: "16px", boxShadow: "0 20px 40px rgba(0,0,0,0.12)", width: "100%", height: "auto" }} alt="Science Program Details" />
+                   <img src="/assets/images/courses-details.webp" className="course-detail-img" alt="Science Program Details" />
                 </div>
 
                 <div className="content-box mt-50 wow fadeInUp">
-                  <h3 className="title" style={{ fontSize: "30px", color: "#01228D", fontWeight: "700" }}>Science Program for Class 9–10 (CBSE & ICSE Board Preparation)</h3>
-                  <p style={{ fontSize: "17px", lineHeight: "1.7", color: "#444", marginTop: "20px" }}>
+                  <h3 className="title course-content-title">Science Program for Class 9–10 (CBSE & ICSE Board Preparation)</h3>
+                  <p className="course-content-text-1">
                     This program is designed for students of Class 9 and 10 who want strong conceptual clarity and excellent performance in board examinations.
                   </p>
-                  <p style={{ fontSize: "17px", lineHeight: "1.7", color: "#444", marginTop: "15px" }}>
+                  <p className="course-content-text-2">
                     At this stage, subjects become more detailed and require a deeper understanding. Our teaching focuses on simplifying concepts, strengthening fundamentals, and preparing students with a structured approach for board exams.
                   </p>
                 </div>
 
                 <div className="overview-section mt-50 wow fadeInUp">
-                  <h4 style={{ fontSize: "24px", color: "#01228D", fontWeight: "700", marginBottom: "20px" }}>Course Overview</h4>
-                  <p style={{ fontSize: "16px", color: "#555", lineHeight: "1.6" }}>
+                  <h4 className="course-overview-title">Course Overview</h4>
+                  <p className="course-overview-text-1">
                     The Science Program provides complete preparation for Class 9 and 10 with a focus on both conceptual learning and exam performance.
                   </p>
-                  <p style={{ fontSize: "16px", color: "#555", marginTop: "15px" }}>We ensure that students:</p>
-                  <ul className="courses-details-list" style={{ marginTop: "10px" }}>
-                    <li style={{ marginTop: "10px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "4px", color: "#2F7AD5" }}></i> <p style={{ fontSize: "15px" }}>Understand concepts clearly instead of memorizing</p></li>
-                    <li style={{ marginTop: "10px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "4px", color: "#2F7AD5" }}></i> <p style={{ fontSize: "15px" }}>Practice regularly with structured assignments</p></li>
-                    <li style={{ marginTop: "10px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "4px", color: "#2F7AD5" }}></i> <p style={{ fontSize: "15px" }}>Get tested frequently to track progress</p></li>
-                    <li style={{ marginTop: "10px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "4px", color: "#2F7AD5" }}></i> <p style={{ fontSize: "15px" }}>Improve weak areas through targeted support</p></li>
+                  <p className="course-overview-text-2">We ensure that students:</p>
+                  <ul className="courses-details-list mt-10px">
+                    <li className="course-list-item"><i className="fas fa-check course-list-icon"></i> <p className="course-list-text">Understand concepts clearly instead of memorizing</p></li>
+                    <li className="course-list-item"><i className="fas fa-check course-list-icon"></i> <p className="course-list-text">Practice regularly with structured assignments</p></li>
+                    <li className="course-list-item"><i className="fas fa-check course-list-icon"></i> <p className="course-list-text">Get tested frequently to track progress</p></li>
+                    <li className="course-list-item"><i className="fas fa-check course-list-icon"></i> <p className="course-list-text">Improve weak areas through targeted support</p></li>
                   </ul>
-                  <p style={{ fontSize: "16px", color: "#555", marginTop: "20px", fontWeight: "600" }}>
+                  <p className="course-overview-text-3">
                     This program is ideal for students aiming for high scores in board exams and a strong base for Class 11.
                   </p>
                 </div>
@@ -90,51 +90,51 @@ export default function ScienceProgramPage() {
                 {/* Academic Highlights Grid */}
                 <div className="row mt-40">
                   <div className="col-md-6 wow fadeInLeft" data-wow-delay="0.1s">
-                    <div className="highlight-card" style={{ background: "#fff", padding: "25px", borderRadius: "12px", border: "1px solid #eee", borderLeft: "5px solid #2F7AD5", marginBottom: "20px", transition: "all 0.3s" }}>
-                       <h5 style={{ fontSize: "18px", marginBottom: "10px", fontWeight: "700" }}>Board-Specific Preparation</h5>
-                       <ul style={{ fontSize: "14px", color: "#666", padding: 0 }}>
-                          <li style={{ marginBottom: "5px" }}>• Complete syllabus for CBSE & ICSE</li>
-                          <li style={{ marginBottom: "5px" }}>• Full syllabus mock exams</li>
-                          <li style={{ marginBottom: "5px" }}>• Board exam writing practice</li>
+                    <div className="highlight-card course-highlight-card-blue">
+                       <h5 className="course-highlight-title">Board-Specific Preparation</h5>
+                       <ul className="course-highlight-list">
+                          <li className="course-highlight-list-item">• Complete syllabus for CBSE & ICSE</li>
+                          <li className="course-highlight-list-item">• Full syllabus mock exams</li>
+                          <li className="course-highlight-list-item">• Board exam writing practice</li>
                        </ul>
                     </div>
                   </div>
                   <div className="col-md-6 wow fadeInRight" data-wow-delay="0.1s">
-                    <div className="highlight-card" style={{ background: "#fff", padding: "25px", borderRadius: "12px", border: "1px solid #eee", borderLeft: "5px solid #01228D", marginBottom: "20px", transition: "all 0.3s" }}>
-                       <h5 style={{ fontSize: "18px", marginBottom: "10px", fontWeight: "700" }}>Numerical Mastery</h5>
-                       <ul style={{ fontSize: "14px", color: "#666", padding: 0 }}>
-                          <li style={{ marginBottom: "5px" }}>• Physics & Maths Problem Solving</li>
-                          <li style={{ marginBottom: "5px" }}>• Regular Doubt-Solving Sessions</li>
-                          <li style={{ marginBottom: "5px" }}>• Performance Analysis</li>
+                    <div className="highlight-card course-highlight-card-dark">
+                       <h5 className="course-highlight-title">Numerical Mastery</h5>
+                       <ul className="course-highlight-list">
+                          <li className="course-highlight-list-item">• Physics & Maths Problem Solving</li>
+                          <li className="course-highlight-list-item">• Regular Doubt-Solving Sessions</li>
+                          <li className="course-highlight-list-item">• Performance Analysis</li>
                        </ul>
                     </div>
                   </div>
                 </div>
 
-                <div className="courses-details-tab wow fadeInUp" style={{ marginTop: "40px" }}>
-                  <ul className="nav nav-justified" style={{ background: "#f8f9fa", borderRadius: "10px 10px 0 0", overflow: "hidden" }}>
+                <div className="courses-details-tab wow fadeInUp course-tab-container">
+                  <ul className="nav nav-justified course-tab-nav">
                     <li className="nav-item">
-                      <a className={activeTab === 'benefit' ? 'active' : ''} onClick={() => setActiveTab('benefit')} style={{ cursor: 'pointer', padding: "20px 10px", height: "auto", border: "none", fontSize: "16px" }}>Benefits</a>
+                      <a className={`course-tab-link ${activeTab === 'benefit' ? 'active' : ''}`} onClick={() => setActiveTab('benefit')}>Benefits</a>
                     </li>
                     <li className="nav-item">
-                      <a className={activeTab === 'curriculum' ? 'active' : ''} onClick={() => setActiveTab('curriculum')} style={{ cursor: 'pointer', padding: "20px 10px", height: "auto", border: "none", fontSize: "16px" }}>Curriculum</a>
+                      <a className={`course-tab-link ${activeTab === 'curriculum' ? 'active' : ''}`} onClick={() => setActiveTab('curriculum')}>Curriculum</a>
                     </li>
                     <li className="nav-item">
-                      <a className={activeTab === 'teachers' ? 'active' : ''} onClick={() => setActiveTab('teachers')} style={{ cursor: 'pointer', padding: "20px 10px", height: "auto", border: "none", fontSize: "16px" }}>Faculty</a>
+                      <a className={`course-tab-link ${activeTab === 'teachers' ? 'active' : ''}`} onClick={() => setActiveTab('teachers')}>Faculty</a>
                     </li>
                     <li className="nav-item">
-                      <a className={activeTab === 'reviews' ? 'active' : ''} onClick={() => setActiveTab('reviews')} style={{ cursor: 'pointer', padding: "20px 10px", height: "auto", border: "none", fontSize: "16px" }}>Reviews</a>
+                      <a className={`course-tab-link ${activeTab === 'reviews' ? 'active' : ''}`} onClick={() => setActiveTab('reviews')}>Reviews</a>
                     </li>
                   </ul>
-                  <div className="tab-content" style={{ border: "1px solid #eee", padding: "40px", borderRadius: "0 0 10px 10px", background: "#fff" }}>
+                  <div className="tab-content course-tab-content-wrapper">
                     {activeTab === 'benefit' && (
                       <div className="tab-pane fade show active">
-                        <ul className="courses-details-list" style={{ margin: 0, padding: 0 }}>
-                          <li style={{ marginTop: "12px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Strong preparation for Class 10 board exams.</p></li>
-                          <li style={{ marginTop: "12px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Clear understanding of Physics, Chemistry, and Maths.</p></li>
-                          <li style={{ marginTop: "12px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Improved problem-solving speed and accuracy.</p></li>
-                          <li style={{ marginTop: "12px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Better exam writing and time management skills.</p></li>
-                          <li style={{ marginTop: "12px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Solid foundation for Class 11 Science or Commerce.</p></li>
+                        <ul className="courses-details-list m-0 p-0">
+                          <li className="course-list-item"><i className="fas fa-check course-list-icon-green"></i> <p className="course-list-text">Strong preparation for Class 10 board exams.</p></li>
+                          <li className="course-list-item"><i className="fas fa-check course-list-icon-green"></i> <p className="course-list-text">Clear understanding of Physics, Chemistry, and Maths.</p></li>
+                          <li className="course-list-item"><i className="fas fa-check course-list-icon-green"></i> <p className="course-list-text">Improved problem-solving speed and accuracy.</p></li>
+                          <li className="course-list-item"><i className="fas fa-check course-list-icon-green"></i> <p className="course-list-text">Better exam writing and time management skills.</p></li>
+                          <li className="course-list-item"><i className="fas fa-check course-list-icon-green"></i> <p className="course-list-text">Solid foundation for Class 11 Science or Commerce.</p></li>
                         </ul>
                       </div>
                     )}
@@ -142,47 +142,47 @@ export default function ScienceProgramPage() {
                       <div className="tab-pane fade show active">
                          <div className="row">
                            <div className="col-md-6">
-                              <div style={{ background: "#f9f9f9", padding: "20px", borderRadius: "8px", height: "100%", marginBottom: "20px" }}>
-                                <h6 style={{ fontWeight: "700", marginBottom: "15px", color: "#01228D" }}>Mathematics</h6>
-                                <ul style={{ fontSize: "13px", color: "#555", paddingLeft: "15px" }}>
-                                  <li style={{ marginBottom: "8px" }}>• Polynomials & Linear Equations</li>
-                                  <li style={{ marginBottom: "8px" }}>• Trigonometry (Class 10)</li>
-                                  <li style={{ marginBottom: "8px" }}>• Coordinate Geometry</li>
-                                  <li style={{ marginBottom: "8px" }}>• Geometry & Mensuration</li>
-                                  <li style={{ marginBottom: "8px" }}>• Statistics & Probability</li>
+                              <div className="course-curriculum-card">
+                                <h6 className="course-curriculum-title">Mathematics</h6>
+                                <ul className="course-curriculum-list">
+                                  <li className="course-curriculum-item">• Polynomials & Linear Equations</li>
+                                  <li className="course-curriculum-item">• Trigonometry (Class 10)</li>
+                                  <li className="course-curriculum-item">• Coordinate Geometry</li>
+                                  <li className="course-curriculum-item">• Geometry & Mensuration</li>
+                                  <li className="course-curriculum-item">• Statistics & Probability</li>
                                 </ul>
                               </div>
                            </div>
                            <div className="col-md-6">
-                              <div style={{ background: "#f9f9f9", padding: "20px", borderRadius: "8px", height: "100%", marginBottom: "20px" }}>
-                                <h6 style={{ fontWeight: "700", marginBottom: "15px", color: "#01228D" }}>Physics</h6>
-                                <ul style={{ fontSize: "13px", color: "#555", paddingLeft: "15px" }}>
-                                  <li style={{ marginBottom: "8px" }}>• Motion and Laws of Motion</li>
-                                  <li style={{ marginBottom: "8px" }}>• Work, Energy, and Power</li>
-                                  <li style={{ marginBottom: "8px" }}>• Light (Reflection & Refraction)</li>
-                                  <li style={{ marginBottom: "8px" }}>• Electricity and Magnetism</li>
+                              <div className="course-curriculum-card">
+                                <h6 className="course-curriculum-title">Physics</h6>
+                                <ul className="course-curriculum-list">
+                                  <li className="course-curriculum-item">• Motion and Laws of Motion</li>
+                                  <li className="course-curriculum-item">• Work, Energy, and Power</li>
+                                  <li className="course-curriculum-item">• Light (Reflection & Refraction)</li>
+                                  <li className="course-curriculum-item">• Electricity and Magnetism</li>
                                 </ul>
                               </div>
                            </div>
                            <div className="col-md-6">
-                              <div style={{ background: "#f9f9f9", padding: "20px", borderRadius: "8px", height: "100%", marginBottom: "20px" }}>
-                                <h6 style={{ fontWeight: "700", marginBottom: "15px", color: "#01228D" }}>Chemistry</h6>
-                                <ul style={{ fontSize: "13px", color: "#555", paddingLeft: "15px" }}>
-                                  <li style={{ marginBottom: "8px" }}>• Chemical Reactions & Equations</li>
-                                  <li style={{ marginBottom: "8px" }}>• Acids, Bases, and Salts</li>
-                                  <li style={{ marginBottom: "8px" }}>• Metals and Non-Metals</li>
-                                  <li style={{ marginBottom: "8px" }}>• Carbon and its Compounds</li>
+                              <div className="course-curriculum-card">
+                                <h6 className="course-curriculum-title">Chemistry</h6>
+                                <ul className="course-curriculum-list">
+                                  <li className="course-curriculum-item">• Chemical Reactions & Equations</li>
+                                  <li className="course-curriculum-item">• Acids, Bases, and Salts</li>
+                                  <li className="course-curriculum-item">• Metals and Non-Metals</li>
+                                  <li className="course-curriculum-item">• Carbon and its Compounds</li>
                                 </ul>
                               </div>
                            </div>
                            <div className="col-md-6">
-                              <div style={{ background: "#f9f9f9", padding: "20px", borderRadius: "8px", height: "100%", marginBottom: "20px" }}>
-                                <h6 style={{ fontWeight: "700", marginBottom: "15px", color: "#01228D" }}>Biology</h6>
-                                <ul style={{ fontSize: "13px", color: "#555", paddingLeft: "15px" }}>
-                                  <li style={{ marginBottom: "8px" }}>• Life Processes</li>
-                                  <li style={{ marginBottom: "8px" }}>• Control and Coordination</li>
-                                  <li style={{ marginBottom: "8px" }}>• Reproduction</li>
-                                  <li style={{ marginBottom: "8px" }}>• Environment and Ecosystem</li>
+                              <div className="course-curriculum-card">
+                                <h6 className="course-curriculum-title">Biology</h6>
+                                <ul className="course-curriculum-list">
+                                  <li className="course-curriculum-item">• Life Processes</li>
+                                  <li className="course-curriculum-item">• Control and Coordination</li>
+                                  <li className="course-curriculum-item">• Reproduction</li>
+                                  <li className="course-curriculum-item">• Environment and Ecosystem</li>
                                 </ul>
                               </div>
                            </div>
@@ -191,13 +191,13 @@ export default function ScienceProgramPage() {
                     )}
                     {activeTab === 'teachers' && (
                       <div className="tab-pane fade show active">
-                        <p style={{ fontSize: "16px", color: "#444" }}>Our faculty specializes in board-level teaching and focuses on making complex topics simple and easy to understand.</p>
-                        <p style={{ marginTop: "15px", fontWeight: "600" }}>Students benefit from:</p>
+                        <p className="course-teacher-text-1">Our faculty specializes in board-level teaching and focuses on making complex topics simple and easy to understand.</p>
+                        <p className="course-teacher-text-2">Students benefit from:</p>
                         <ul className="courses-details-list" style={{ marginTop: "10px", padding: 0 }}>
-                           <li style={{ marginTop: "10px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Structured explanation of concepts</p></li>
-                           <li style={{ marginTop: "10px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Step-by-step problem solving</p></li>
-                           <li style={{ marginTop: "10px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Regular doubt-clearing sessions</p></li>
-                           <li style={{ marginTop: "10px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Individual attention and guidance</p></li>
+                           <li className="course-list-item"><i className="fas fa-check course-list-icon-green"></i> <p className="course-list-text">Structured explanation of concepts</p></li>
+                           <li className="course-list-item"><i className="fas fa-check course-list-icon-green"></i> <p className="course-list-text">Step-by-step problem solving</p></li>
+                           <li className="course-list-item"><i className="fas fa-check course-list-icon-green"></i> <p className="course-list-text">Regular doubt-clearing sessions</p></li>
+                           <li className="course-list-item"><i className="fas fa-check course-list-icon-green"></i> <p className="course-list-text">Individual attention and guidance</p></li>
                         </ul>
                       </div>
                     )}
@@ -221,7 +221,7 @@ export default function ScienceProgramPage() {
                   <div className="sidebar-title" style={{ borderBottom: "1px solid #eee", paddingBottom: "15px", marginBottom: "20px" }}>
                     <h4 className="title" style={{ fontSize: "22px", margin: 0 }}>Course Features</h4>
                   </div>
-                  <ul className="courses-features-items" style={{ margin: 0, padding: 0 }}>
+                  <ul className="courses-features-items m-0 p-0">
                     <li style={{ padding: "12px 0", borderBottom: "1px solid #f9f9f9" }}>Fee <strong>₹35,000</strong></li>
                     <li style={{ padding: "12px 0", borderBottom: "1px solid #f9f9f9" }}>Duration <strong>1 Year</strong></li>
                     <li style={{ padding: "12px 0", borderBottom: "1px solid #f9f9f9" }}>Schedule <strong>5–6 Days/Week</strong></li>

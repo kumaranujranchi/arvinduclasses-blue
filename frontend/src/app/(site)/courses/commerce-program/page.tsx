@@ -41,48 +41,48 @@ export default function CommerceProgramPage() {
       <section className="page-banner">
         <div className="page-banner-bg bg_cover" style={{ backgroundImage: "url(/assets/images/course-banner.png)" }}>
           <div className="container">
-            <div className="banner-content text-center wow fadeInDown" style={{ paddingTop: "120px", paddingBottom: "80px" }}>
-              <h2 className="title" style={{ fontSize: "32px", fontWeight: "800", color: "#fff", textShadow: "0 2px 4px rgba(0,0,0,0.3)" }}>Commerce Program (Class 11–12)</h2>
+            <div className="banner-content text-center wow fadeInDown course-detail-banner-content">
+              <h2 className="title course-detail-title">Commerce Program (Class 11–12)</h2>
               <div style={{ width: "60px", height: "4px", background: "#0C8B51", margin: "20px auto" }}></div>
-              <p style={{ color: "#fff", fontSize: "16px", fontWeight: "500" }}>Building a professional future through conceptual clarity.</p>
+              <p className="course-detail-subtitle">Building a professional future through conceptual clarity.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Courses Details Start */}
-      <section className="courses-details" style={{ paddingTop: "80px", paddingBottom: "80px", backgroundColor: "#fdfdfd" }}>
+      <section className="courses-details course-details-section">
         <div className="container">
           <div className="row">
             <div className="col-lg-8">
               <div className="courses-details-content">
                 <div className="image wow zoomIn" data-wow-duration="1s">
-                   <img src="/assets/images/courses-details.webp" style={{ borderRadius: "16px", boxShadow: "0 20px 40px rgba(0,0,0,0.12)", width: "100%", height: "auto" }} alt="Commerce Program Details" />
+                   <img src="/assets/images/courses-details.webp" className="course-detail-img" alt="Commerce Program Details" />
                 </div>
 
                 <div className="content-box mt-50 wow fadeInUp">
-                  <h3 className="title" style={{ fontSize: "30px", color: "#01228D", fontWeight: "700" }}>Commerce Program for Class 11–12 (CBSE & ICSE)</h3>
-                  <p style={{ fontSize: "17px", lineHeight: "1.7", color: "#444", marginTop: "20px" }}>
+                  <h3 className="title course-content-title">Commerce Program for Class 11–12 (CBSE & ICSE)</h3>
+                  <p className="course-content-text-1">
                     This program is designed for Commerce students of Class 11 and 12 who want strong conceptual clarity and excellent performance in board exams.
                   </p>
-                  <p style={{ fontSize: "17px", lineHeight: "1.7", color: "#444", marginTop: "15px" }}>
+                  <p className="course-content-text-2">
                     Commerce subjects require both understanding and application, especially in Accountancy and Economics. Our teaching approach ensures that students build concepts step-by-step and gain confidence in solving numerical and theoretical questions.
                   </p>
                 </div>
 
                 <div className="overview-section mt-50 wow fadeInUp">
-                  <h4 style={{ fontSize: "24px", color: "#01228D", fontWeight: "700", marginBottom: "20px" }}>Course Overview</h4>
-                  <p style={{ fontSize: "16px", color: "#555", lineHeight: "1.6" }}>
+                  <h4 className="course-overview-title">Course Overview</h4>
+                  <p className="course-overview-text-1">
                     The Commerce Program provides structured preparation for Accountancy, Economics, and Business Studies, along with regular practice and performance tracking.
                   </p>
-                  <p style={{ fontSize: "16px", color: "#555", marginTop: "15px" }}>We focus on:</p>
-                  <ul className="courses-details-list" style={{ marginTop: "10px" }}>
-                    <li style={{ marginTop: "10px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "4px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Building strong conceptual clarity in core subjects</p></li>
-                    <li style={{ marginTop: "10px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "4px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Step-by-step numerical problem solving in Accountancy</p></li>
-                    <li style={{ marginTop: "10px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "4px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Understanding economic concepts with real-world examples</p></li>
-                    <li style={{ marginTop: "10px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "4px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Preparing students for board exams and future career paths</p></li>
+                  <p className="course-overview-text-2">We focus on:</p>
+                  <ul className="courses-details-list mt-10px">
+                    <li className="course-list-item"><i className="fas fa-check" style={{ top: "4px", color: "#0C8B51" }}></i> <p className="course-list-text">Building strong conceptual clarity in core subjects</p></li>
+                    <li className="course-list-item"><i className="fas fa-check" style={{ top: "4px", color: "#0C8B51" }}></i> <p className="course-list-text">Step-by-step numerical problem solving in Accountancy</p></li>
+                    <li className="course-list-item"><i className="fas fa-check" style={{ top: "4px", color: "#0C8B51" }}></i> <p className="course-list-text">Understanding economic concepts with real-world examples</p></li>
+                    <li className="course-list-item"><i className="fas fa-check" style={{ top: "4px", color: "#0C8B51" }}></i> <p className="course-list-text">Preparing students for board exams and future career paths</p></li>
                   </ul>
-                  <p style={{ fontSize: "16px", color: "#555", marginTop: "20px", fontWeight: "600" }}>
+                  <p className="course-overview-text-3">
                     This program is ideal for students aiming for high scores and planning careers in Commerce fields such as CA, CS, or Business.
                   </p>
                 </div>
@@ -91,42 +91,42 @@ export default function CommerceProgramPage() {
                 <div className="row mt-40">
                   <div className="col-md-6 wow fadeInLeft" data-wow-delay="0.1s">
                     <div className="highlight-card" style={{ background: "#fff", padding: "25px", borderRadius: "12px", border: "1px solid #eee", borderLeft: "5px solid #0C8B51", marginBottom: "20px", transition: "all 0.3s" }}>
-                       <h5 style={{ fontSize: "18px", marginBottom: "10px", fontWeight: "700" }}>Career Path Preparation</h5>
+                       <h5 className="course-highlight-title">Career Path Preparation</h5>
                        <p style={{ fontSize: "14px", color: "#666" }}>Strong foundation for competitive exams like CA Foundation, CS Executive, and University entrances.</p>
                     </div>
                   </div>
                   <div className="col-md-6 wow fadeInRight" data-wow-delay="0.1s">
-                    <div className="highlight-card" style={{ background: "#fff", padding: "25px", borderRadius: "12px", border: "1px solid #eee", borderLeft: "5px solid #01228D", marginBottom: "20px", transition: "all 0.3s" }}>
-                       <h5 style={{ fontSize: "18px", marginBottom: "10px", fontWeight: "700" }}>Expert Collaboration</h5>
+                    <div className="highlight-card course-highlight-card-dark">
+                       <h5 className="course-highlight-title">Expert Collaboration</h5>
                        <p style={{ fontSize: "14px", color: "#666" }}>Academic support provided in professional collaboration with <strong>Sukrishna Commerce</strong> experts.</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="courses-details-tab wow fadeInUp" style={{ marginTop: "40px" }}>
-                  <ul className="nav nav-justified" style={{ background: "#f8f9fa", borderRadius: "10px 10px 0 0", overflow: "hidden" }}>
+                <div className="courses-details-tab wow fadeInUp course-tab-container">
+                  <ul className="nav nav-justified course-tab-nav">
                     <li className="nav-item">
-                      <a className={activeTab === 'benefit' ? 'active' : ''} onClick={() => setActiveTab('benefit')} style={{ cursor: 'pointer', padding: "20px 10px", height: "auto", border: "none", fontSize: "16px" }}>Benefits</a>
+                      <a className={`course-tab-link ${activeTab === 'benefit' ? 'active' : ''}`} onClick={() => setActiveTab('benefit')}>Benefits</a>
                     </li>
                     <li className="nav-item">
-                      <a className={activeTab === 'curriculum' ? 'active' : ''} onClick={() => setActiveTab('curriculum')} style={{ cursor: 'pointer', padding: "20px 10px", height: "auto", border: "none", fontSize: "16px" }}>Curriculum</a>
+                      <a className={`course-tab-link ${activeTab === 'curriculum' ? 'active' : ''}`} onClick={() => setActiveTab('curriculum')}>Curriculum</a>
                     </li>
                     <li className="nav-item">
-                      <a className={activeTab === 'teachers' ? 'active' : ''} onClick={() => setActiveTab('teachers')} style={{ cursor: 'pointer', padding: "20px 10px", height: "auto", border: "none", fontSize: "16px" }}>Faculty</a>
+                      <a className={`course-tab-link ${activeTab === 'teachers' ? 'active' : ''}`} onClick={() => setActiveTab('teachers')}>Faculty</a>
                     </li>
                     <li className="nav-item">
-                      <a className={activeTab === 'reviews' ? 'active' : ''} onClick={() => setActiveTab('reviews')} style={{ cursor: 'pointer', padding: "20px 10px", height: "auto", border: "none", fontSize: "16px" }}>Reviews</a>
+                      <a className={`course-tab-link ${activeTab === 'reviews' ? 'active' : ''}`} onClick={() => setActiveTab('reviews')}>Reviews</a>
                     </li>
                   </ul>
-                  <div className="tab-content" style={{ border: "1px solid #eee", padding: "40px", borderRadius: "0 0 10px 10px", background: "#fff" }}>
+                  <div className="tab-content course-tab-content-wrapper">
                     {activeTab === 'benefit' && (
                       <div className="tab-pane fade show active">
-                        <ul className="courses-details-list" style={{ margin: 0, padding: 0 }}>
-                          <li style={{ marginTop: "12px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Strong foundation for CA, CS, and B.Com.</p></li>
-                          <li style={{ marginTop: "12px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Improved accuracy in Accountancy problem solving.</p></li>
-                          <li style={{ marginTop: "12px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Clear understanding of Economics concepts with real-world context.</p></li>
-                          <li style={{ marginTop: "12px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Better exam writing and professional presentation skills.</p></li>
-                          <li style={{ marginTop: "12px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Confidence in handling complex board exam questions.</p></li>
+                        <ul className="courses-details-list m-0 p-0">
+                          <li className="course-list-item"><i className="fas fa-check course-list-icon-green"></i> <p className="course-list-text">Strong foundation for CA, CS, and B.Com.</p></li>
+                          <li className="course-list-item"><i className="fas fa-check course-list-icon-green"></i> <p className="course-list-text">Improved accuracy in Accountancy problem solving.</p></li>
+                          <li className="course-list-item"><i className="fas fa-check course-list-icon-green"></i> <p className="course-list-text">Clear understanding of Economics concepts with real-world context.</p></li>
+                          <li className="course-list-item"><i className="fas fa-check course-list-icon-green"></i> <p className="course-list-text">Better exam writing and professional presentation skills.</p></li>
+                          <li className="course-list-item"><i className="fas fa-check course-list-icon-green"></i> <p className="course-list-text">Confidence in handling complex board exam questions.</p></li>
                         </ul>
                       </div>
                     )}
@@ -134,35 +134,35 @@ export default function CommerceProgramPage() {
                       <div className="tab-pane fade show active">
                          <div className="row">
                            <div className="col-md-6">
-                              <div style={{ background: "#f9f9f9", padding: "20px", borderRadius: "8px", height: "100%", marginBottom: "20px" }}>
-                                <h6 style={{ fontWeight: "700", marginBottom: "15px", color: "#01228D" }}>Accountancy</h6>
-                                <ul style={{ fontSize: "13px", color: "#555", paddingLeft: "15px" }}>
-                                  <li style={{ marginBottom: "8px" }}>• Journal, Ledger, Trial Balance</li>
-                                  <li style={{ marginBottom: "8px" }}>• Financial Statements</li>
-                                  <li style={{ marginBottom: "8px" }}>• Partnership Accounts</li>
-                                  <li style={{ marginBottom: "8px" }}>• Company Accounts (Class 12)</li>
+                              <div className="course-curriculum-card">
+                                <h6 className="course-curriculum-title">Accountancy</h6>
+                                <ul className="course-curriculum-list">
+                                  <li className="course-curriculum-item">• Journal, Ledger, Trial Balance</li>
+                                  <li className="course-curriculum-item">• Financial Statements</li>
+                                  <li className="course-curriculum-item">• Partnership Accounts</li>
+                                  <li className="course-curriculum-item">• Company Accounts (Class 12)</li>
                                 </ul>
                               </div>
                            </div>
                            <div className="col-md-6">
-                              <div style={{ background: "#f9f9f9", padding: "20px", borderRadius: "8px", height: "100%", marginBottom: "20px" }}>
-                                <h6 style={{ fontWeight: "700", marginBottom: "15px", color: "#01228D" }}>Economics</h6>
-                                <ul style={{ fontSize: "13px", color: "#555", paddingLeft: "15px" }}>
-                                  <li style={{ marginBottom: "8px" }}>• Microeconomics (Demand, Supply)</li>
-                                  <li style={{ marginBottom: "8px" }}>• Macroeconomics (National Income)</li>
-                                  <li style={{ marginBottom: "8px" }}>• Indian Economic Development</li>
-                                  <li style={{ marginBottom: "8px" }}>• Money & Banking</li>
+                              <div className="course-curriculum-card">
+                                <h6 className="course-curriculum-title">Economics</h6>
+                                <ul className="course-curriculum-list">
+                                  <li className="course-curriculum-item">• Microeconomics (Demand, Supply)</li>
+                                  <li className="course-curriculum-item">• Macroeconomics (National Income)</li>
+                                  <li className="course-curriculum-item">• Indian Economic Development</li>
+                                  <li className="course-curriculum-item">• Money & Banking</li>
                                 </ul>
                               </div>
                            </div>
                            <div className="col-md-6">
-                              <div style={{ background: "#f9f9f9", padding: "20px", borderRadius: "8px", height: "100%", marginBottom: "20px" }}>
-                                <h6 style={{ fontWeight: "700", marginBottom: "15px", color: "#01228D" }}>Business Studies</h6>
-                                <ul style={{ fontSize: "13px", color: "#555", paddingLeft: "15px" }}>
-                                  <li style={{ marginBottom: "8px" }}>• Principles of Management</li>
-                                  <li style={{ marginBottom: "8px" }}>• Business Environment</li>
-                                  <li style={{ marginBottom: "8px" }}>• Marketing Management</li>
-                                  <li style={{ marginBottom: "8px" }}>• Financial Management</li>
+                              <div className="course-curriculum-card">
+                                <h6 className="course-curriculum-title">Business Studies</h6>
+                                <ul className="course-curriculum-list">
+                                  <li className="course-curriculum-item">• Principles of Management</li>
+                                  <li className="course-curriculum-item">• Business Environment</li>
+                                  <li className="course-curriculum-item">• Marketing Management</li>
+                                  <li className="course-curriculum-item">• Financial Management</li>
                                 </ul>
                               </div>
                            </div>
@@ -178,13 +178,13 @@ export default function CommerceProgramPage() {
                     )}
                     {activeTab === 'teachers' && (
                       <div className="tab-pane fade show active">
-                        <p style={{ fontSize: "16px", color: "#444" }}>Our Commerce faculty is experienced in board-level teaching and focuses on making complex topics simple and practical.</p>
-                        <p style={{ marginTop: "15px", fontWeight: "600" }}>Students receive:</p>
+                        <p className="course-teacher-text-1">Our Commerce faculty is experienced in board-level teaching and focuses on making complex topics simple and practical.</p>
+                        <p className="course-teacher-text-2">Students receive:</p>
                         <ul className="courses-details-list" style={{ marginTop: "10px", padding: 0 }}>
-                           <li style={{ marginTop: "10px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Step-by-step explanation of Accountancy problems</p></li>
-                           <li style={{ marginTop: "10px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Real-life examples for Economics and Business Studies</p></li>
-                           <li style={{ marginTop: "10px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Regular doubt-solving sessions</p></li>
-                           <li style={{ marginTop: "10px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Personal guidance for academic improvement</p></li>
+                           <li className="course-list-item"><i className="fas fa-check course-list-icon-green"></i> <p className="course-list-text">Step-by-step explanation of Accountancy problems</p></li>
+                           <li className="course-list-item"><i className="fas fa-check course-list-icon-green"></i> <p className="course-list-text">Real-life examples for Economics and Business Studies</p></li>
+                           <li className="course-list-item"><i className="fas fa-check course-list-icon-green"></i> <p className="course-list-text">Regular doubt-solving sessions</p></li>
+                           <li className="course-list-item"><i className="fas fa-check course-list-icon-green"></i> <p className="course-list-text">Personal guidance for academic improvement</p></li>
                         </ul>
                       </div>
                     )}
@@ -208,7 +208,7 @@ export default function CommerceProgramPage() {
                   <div className="sidebar-title" style={{ borderBottom: "1px solid #eee", paddingBottom: "15px", marginBottom: "20px" }}>
                     <h4 className="title" style={{ fontSize: "22px", margin: 0 }}>Course Features</h4>
                   </div>
-                  <ul className="courses-features-items" style={{ margin: 0, padding: 0 }}>
+                  <ul className="courses-features-items m-0 p-0">
                     <li style={{ padding: "12px 0", borderBottom: "1px solid #f9f9f9" }}>Fee <strong>₹40,000</strong></li>
                     <li style={{ padding: "12px 0", borderBottom: "1px solid #f9f9f9" }}>Duration <strong>1 Year</strong></li>
                     <li style={{ padding: "12px 0", borderBottom: "1px solid #f9f9f9" }}>Classes <strong>5–6 Days/Week</strong></li>

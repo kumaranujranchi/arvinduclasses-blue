@@ -13,15 +13,12 @@ export default function DigitalMarketingPage() {
       <Header />
 
       {/* ====== Page Banner Start ====== */}
-      <section className="page-banner">
-        <div
-          className="page-banner-bg bg_cover"
-          style={{ backgroundColor: "#07294d" }}
-        >
+      <section className="page-banner dm-page-banner">
+        <div className="page-banner-bg bg_cover dm-banner-bg">
           <div className="container">
-            <div className="banner-content text-center">
-              <h2 className="title" style={{ fontSize: "56px" }}>AI-Powered Digital Marketing Program</h2>
-              <p className="text-white mt-3" style={{ fontSize: "20px", opacity: 0.9 }}>(Job + Freelance Ready)</p>
+            <div className="banner-content text-center dm-banner-content">
+              <h2 className="title dm-title-lg">AI-Powered Digital Marketing Program</h2>
+              <p className="text-white mt-3 dm-subtitle">(Job + Freelance Ready)</p>
             </div>
           </div>
         </div>
@@ -29,34 +26,20 @@ export default function DigitalMarketingPage() {
       {/* ====== Page Banner Ends ====== */}
 
       {/* ====== Main Content Start ====== */}
-      <section className="dm-program-details pt-80 pb-80" style={{ 
-        backgroundColor: "#f8fbff",
-        position: "relative",
-        overflow: "hidden"
-      }}>
+      <section className="dm-program-details pt-80 pb-80 dm-program-details-wrapper">
         {/* Subtle Architectural Grid Pattern */}
-        <div style={{
-          position: "absolute",
-          top: 0, left: 0, right: 0, bottom: 0,
-          backgroundImage: `linear-gradient(to right, rgba(7, 41, 77, 0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(7, 41, 77, 0.12) 1px, transparent 1px)`,
-          backgroundSize: "35px 35px",
-          maskImage: "radial-gradient(circle at center, black 30%, transparent 95%)",
-          WebkitMaskImage: "radial-gradient(circle at center, black 30%, transparent 95%)",
-          opacity: 0.6,
-          pointerEvents: "none",
-          zIndex: 0
-        }}></div>
+        <div className="results-grid-overlay"></div>
 
-        <div className="container" style={{ position: "relative", zIndex: 1 }}>
+        <div className="container relative-z1">
           <div className="row">
             {/* Left Column: Course Information */}
             <div className="col-lg-8">
               <div className="intro-section mb-60">
-                <h3 className="mb-30" style={{ color: "#07294d", fontWeight: "700" }}>Transform Your Career with <span style={{ color: "#ffc600" }}>AI-Powered</span> Marketing</h3>
-                <p style={{ fontSize: "18px", lineHeight: "1.8", color: "#444" }}>
+                <h3 className="mb-30 dm-section-title">Transform Your Career with <span className="text-highlight-yellow">AI-Powered</span> Marketing</h3>
+                <p className="dm-text">
                   This program is designed to make you a complete digital marketer with real-world skills, hands-on experience, and AI-powered tools. 
                 </p>
-                <p className="mt-20" style={{ fontSize: "18px", lineHeight: "1.8", color: "#444" }}>
+                <p className="mt-20 dm-text">
                   We don’t just teach tools — we build strong marketing understanding first, then train you to execute strategies using modern platforms and AI automation.
                 </p>
                 
@@ -72,7 +55,7 @@ export default function DigitalMarketingPage() {
 
               {/* Course Overview */}
               <div className="overview-section mb-60">
-                <h4 className="mb-30" style={{ color: "#07294d" }}>Course Overview</h4>
+                <h4 className="mb-30 text-dark-blue">Course Overview</h4>
                 <div className="row">
                   {[
                     "Marketing Fundamentals (Pre-Boost)",
@@ -85,8 +68,8 @@ export default function DigitalMarketingPage() {
                     "Analytics & Tracking"
                   ].map((phase, i) => (
                     <div key={i} className="col-md-6 mb-3">
-                      <div className="phase-card p-3 bg-white rounded border d-flex align-items-center">
-                        <span className="me-3 font-weight-bold text-primary" style={{ fontSize: "20px" }}>0{i+1}</span>
+                      <div className="dm-phase-card p-3 bg-white rounded border d-flex align-items-center">
+                        <span className="me-3 font-weight-bold text-primary fs-20px">0{i+1}</span>
                         <span className="font-weight-bold">{phase}</span>
                       </div>
                     </div>
@@ -95,7 +78,7 @@ export default function DigitalMarketingPage() {
               </div>
 
               {/* Differentiators */}
-              <div className="diff-section mb-60 rounded-lg text-white" style={{ background: "linear-gradient(135deg, #07294d 0%, #004d99 100%)", padding: "40px" }}>
+              <div className="diff-section mb-60 rounded-lg text-white dm-diff-section">
                 <h4 className="text-white mb-30">What Makes This Course Different</h4>
                 <div className="row">
                   {[
@@ -108,7 +91,7 @@ export default function DigitalMarketingPage() {
                   ].map((item, i) => (
                     <div key={i} className="col-md-4 mb-30">
                       <div className="diff-item text-center">
-                        <i className={`${item.icon} mb-3`} style={{ fontSize: "30px", color: "#ffc600" }}></i>
+                        <i className={`${item.icon} mb-3 dm-diff-icon`}></i>
                         <h6 className="text-white">{item.title}</h6>
                       </div>
                     </div>
@@ -118,7 +101,7 @@ export default function DigitalMarketingPage() {
 
               {/* Detailed Curriculum */}
               <div className="curriculum-section mb-60">
-                <h4 className="mb-40" style={{ color: "#07294d" }}>Detailed Curriculum & Tools</h4>
+                <h4 className="mb-40 text-dark-blue">Detailed Curriculum & Tools</h4>
                 
                 <div className="accordion" id="curriculumAccordion">
                   {[
@@ -166,53 +149,36 @@ export default function DigitalMarketingPage() {
                     const isActive = activeAccordion === i;
                     
                     return (
-                      <div key={i} className="accordion-item mb-3 border rounded shadow-sm" style={{ overflow: "visible", backgroundColor: "#fff" }}>
+                      <div key={i} className="accordion-item mb-3 border rounded shadow-sm dm-accordion-item">
                         <h2 className="accordion-header">
                           <button 
-                            className={`accordion-button ${!isActive ? 'collapsed' : ''} p-4 font-weight-bold`} 
+                            className={`accordion-button ${!isActive ? 'collapsed' : ''} p-4 font-weight-bold dm-accordion-btn ${isActive ? 'dm-accordion-btn-active' : 'dm-accordion-btn-inactive'}`} 
                             type="button" 
                             onClick={() => setActiveAccordion(isActive ? null : i)}
-                            style={{ 
-                              backgroundColor: isActive ? "#f8fbff" : "#fff", 
-                              color: "#07294d",
-                              boxShadow: "none",
-                              border: "none",
-                              display: "flex",
-                              justifyContent: "space-between",
-                              alignItems: "center",
-                              width: "100%",
-                              textAlign: "left"
-                            }}
                           >
                             <span>{phase.title}</span>
-                            <i className={`fas fa-chevron-down transition-transform duration-300 ${isActive ? 'rotate-180' : ''}`} style={{ fontSize: "14px", opacity: 0.7 }}></i>
+                            <i className={`fas fa-chevron-down transition-transform duration-300 dm-accordion-icon ${isActive ? 'rotate-180' : ''}`}></i>
                           </button>
                         </h2>
                         {isActive && (
-                          <div className="p-4" style={{ 
-                            backgroundColor: "#fcfdfe", 
-                            borderTop: "1px solid #f0f0f0",
-                            display: "block",
-                            visibility: "visible",
-                            opacity: 1
-                          }}>
+                          <div className="p-4 dm-accordion-body">
                             <div className="row">
                               <div className="col-md-7">
-                                <h6 className="mb-3" style={{ color: "#07294d", fontWeight: "700" }}>What You'll Learn:</h6>
+                                <h6 className="mb-3 dm-section-title">What You'll Learn:</h6>
                                 <ul className="list-unstyled">
                                   {phase.content.map((item, j) => (
                                     <li key={j} className="mb-2 d-flex align-items-start">
-                                      <i className="fas fa-check-circle me-2 mt-1" style={{ color: "#2F7AD5", fontSize: "14px" }}></i>
-                                      <span style={{ color: "#444", fontSize: "15px" }}>{item}</span>
+                                      <i className="fas fa-check-circle me-2 mt-1 dm-check-icon"></i>
+                                      <span className="dm-list-text">{item}</span>
                                     </li>
                                   ))}
                                 </ul>
                               </div>
                               <div className="col-md-5 mt-4 mt-md-0">
-                                <h6 className="mb-3" style={{ color: "#ffc600", fontWeight: "700" }}>Tools Covered:</h6>
+                                <h6 className="mb-3 dm-tools-title">Tools Covered:</h6>
                                 <div className="d-flex flex-wrap gap-2">
                                   {phase.tools.map((tool, j) => (
-                                    <span key={j} className="badge bg-white text-dark border p-2" style={{ fontWeight: "500", fontSize: "13px" }}>{tool}</span>
+                                    <span key={j} className="badge bg-white text-dark border p-2 dm-tool-badge">{tool}</span>
                                   ))}
                                 </div>
                               </div>
@@ -227,7 +193,7 @@ export default function DigitalMarketingPage() {
 
               {/* Projects */}
               <div className="projects-section mb-60">
-                <h4 className="mb-30" style={{ color: "#07294d" }}>Hands-on Projects</h4>
+                <h4 className="mb-30 text-dark-blue">Hands-on Projects</h4>
                 <div className="row">
                   {[
                     "Running real ad campaigns",
@@ -265,7 +231,7 @@ export default function DigitalMarketingPage() {
                     <div className="stars mb-3 text-warning">
                       <i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i>
                     </div>
-                    <p className="mb-3" style={{ fontStyle: "italic", lineHeight: "1.6" }}>
+                    <p className="mb-3 dm-review-text">
                       "This course completely changed my understanding of marketing. The AI tools and real projects helped me start freelancing confidently."
                     </p>
                     <h6 className="mb-0">— Student Graduate</h6>
@@ -276,10 +242,10 @@ export default function DigitalMarketingPage() {
 
             {/* Right Column: Sticky Sidebar */}
             <div className="col-lg-4">
-              <div className="course-sidebar sticky-top" style={{ top: "100px", zIndex: 10 }}>
+              <div className="course-sidebar sticky-top sticky-top-100">
                 <div className="sidebar-card p-4 rounded-lg bg-white shadow-lg border-top border-warning border-5">
                   <div className="price-tag mb-4 text-center">
-                    <h3 style={{ color: "#07294d", fontWeight: "800" }}>₹35,000</h3>
+                    <h3 className="dm-price">₹35,000</h3>
                     <span className="text-muted small">All-inclusive program fee</span>
                   </div>
                   
@@ -299,7 +265,7 @@ export default function DigitalMarketingPage() {
                     ))}
                   </div>
 
-                  <button className="main-btn w-100 mb-3 py-3" style={{ borderRadius: "10px", fontSize: "18px" }}>
+                  <button className="dm-main-btn w-100 mb-3 py-3 dm-btn-primary">
                     Book Free Demo
                   </button>
                   
@@ -308,7 +274,7 @@ export default function DigitalMarketingPage() {
                   </div>
                 </div>
 
-                <div className="cta-sidebar-card mt-30 p-4 rounded-lg text-white" style={{ background: "linear-gradient(45deg, #07294d, #01228D)" }}>
+                <div className="cta-sidebar-card mt-30 p-4 rounded-lg text-white dm-cta-sidebar">
                   <h6 className="text-white">Need Help Choosing?</h6>
                   <p className="text-white small opacity-75 mt-2 mb-3">Speak with our career counselor to understand if this is right for you.</p>
                   <a href="tel:+918051696333" className="text-white font-weight-bold">Call: +91 80516 96333</a>
@@ -320,19 +286,13 @@ export default function DigitalMarketingPage() {
       </section>
 
       {/* ====== Final CTA Section ====== */}
-      <section className="final-cta pt-80 pb-80" style={{ backgroundColor: "#07294d", position: "relative", overflow: "hidden" }}>
-        <div style={{
-          position: "absolute",
-          top: 0, left: 0, right: 0, bottom: 0,
-          backgroundImage: `linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px)`,
-          backgroundSize: "40px 40px",
-          opacity: 0.3
-        }}></div>
+      <section className="final-cta pt-80 pb-80 dm-final-cta-wrapper">
+        <div className="dm-final-cta-overlay"></div>
         
-        <div className="container text-center" style={{ position: "relative", zIndex: 1 }}>
+        <div className="container text-center relative-z1">
           <h2 className="text-white mb-3">Start Your Career in Digital Marketing with AI</h2>
-          <p className="text-white opacity-75 mb-40" style={{ fontSize: "18px" }}>Learn practical skills, work on real projects, and become job-ready.</p>
-          <button className="main-btn py-3 px-5" style={{ borderRadius: "30px", background: "#ffc600", color: "#07294d", fontSize: "20px", fontWeight: "700" }}>
+          <p className="text-white opacity-75 mb-40 fs-18px">Learn practical skills, work on real projects, and become job-ready.</p>
+          <button className="dm-main-btn py-3 px-5 dm-btn-large">
             Book Free Demo Now
           </button>
         </div>
@@ -340,58 +300,6 @@ export default function DigitalMarketingPage() {
 
       <Footer />
 
-      <style jsx>{`
-        .page-banner {
-          padding-top: 155px;
-          background: #01228D;
-        }
-        .banner-content {
-          padding-top: 120px;
-          padding-bottom: 110px;
-        }
-        .banner-content .title {
-          color: #fff;
-          font-weight: 700;
-        }
-        .phase-card {
-          transition: all 0.3s ease;
-        }
-        .phase-card:hover {
-          transform: translateX(10px);
-          border-color: #ffc600 !important;
-          box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-        .accordion-button:not(.collapsed) {
-          background-color: #f8fbff;
-          box-shadow: none;
-        }
-        .accordion-button:focus {
-          box-shadow: none;
-        }
-        .main-btn {
-          background-color: #ffc600;
-          color: #07294d;
-          font-weight: 700;
-          border: none;
-          transition: all 0.3s ease;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          text-align: center;
-        }
-        .main-btn:hover {
-          background-color: #07294d;
-          color: #fff;
-          transform: translateY(-3px);
-        }
-        @media (max-width: 991px) {
-          .course-sidebar {
-            margin-top: 50px;
-            position: relative !important;
-            top: 0 !important;
-          }
-        }
-      `}</style>
     </>
   );
 }
