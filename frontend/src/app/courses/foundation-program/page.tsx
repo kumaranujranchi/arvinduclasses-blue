@@ -201,7 +201,7 @@ export default function FoundationProgramPage() {
                     <li style={{ padding: "12px 0", border: "none" }}>Rating <strong style={{ color: "#EAB830" }}>★★★★★ (5.0)</strong></li>
                   </ul>
                   <div className="sidebar-btn mt-30">
-                    <a className="main-btn w-100 text-center" href="#" style={{ borderRadius: "10px", padding: "15px 0", height: "auto", lineHeight: "1", fontSize: "16px", background: "#01228D" }}>Book Free Demo Class</a>
+                    <a className="main-btn w-100 text-center" href="#" style={{ borderRadius: "10px", padding: "0", height: "50px", lineHeight: "50px", fontSize: "16px", background: "#01228D" }}>Book Free Demo Class</a>
                   </div>
                 </div>
 
@@ -246,7 +246,7 @@ export default function FoundationProgramPage() {
                 </div>
               </div>
               <div className="col-lg-4 text-center text-lg-right mt-40 mt-lg-0">
-                 <button className="main-btn main-btn-2" style={{ borderRadius: "12px", background: "#fff", color: "#01228D", border: "none", padding: "18px 35px", fontSize: "16px", fontWeight: "700" }}>Book Free Demo</button>
+                 <button className="main-btn" style={{ borderRadius: "12px", background: "#fff", color: "#01228D", border: "none", height: "55px", lineHeight: "55px", padding: "0 35px", fontSize: "16px", fontWeight: "700" }}>Book Free Demo</button>
               </div>
             </div>
           </div>
@@ -282,6 +282,11 @@ export default function FoundationProgramPage() {
         .courses-details-list li i {
            position: absolute;
            left: 0;
+        }
+        /* Ensure buttons are perfectly centered */
+        .main-btn {
+          display: inline-block;
+          vertical-align: middle;
         }
       `}</style>
     </>
