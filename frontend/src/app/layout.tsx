@@ -47,17 +47,17 @@ export default function RootLayout({
         <Script src="/assets/js/vendor/modernizr-3.7.1.min.js" strategy="beforeInteractive" />
 
         {/* Plugin JS */}
-        <Script src="/assets/js/plugins/popper.min.js" strategy="lazyOnload" />
-        <Script src="/assets/js/plugins/bootstrap.min.js" strategy="lazyOnload" />
-        <Script src="/assets/js/plugins/slick.min.js" strategy="lazyOnload" />
-        <Script src="/assets/js/plugins/jquery.magnific-popup.min.js" strategy="lazyOnload" />
-        <Script src="/assets/js/plugins/imagesloaded.pkgd.min.js" strategy="lazyOnload" />
-        <Script src="/assets/js/plugins/isotope.pkgd.min.js" strategy="lazyOnload" />
-        <Script src="/assets/js/plugins/wow.min.js" strategy="lazyOnload" />
-        <Script src="/assets/js/plugins/ajax-contact.js" strategy="lazyOnload" />
+        <Script src="/assets/js/plugins/popper.min.js" strategy="afterInteractive" />
+        <Script src="/assets/js/plugins/bootstrap.min.js" strategy="afterInteractive" />
+        <Script src="/assets/js/plugins/slick.min.js" strategy="afterInteractive" />
+        <Script src="/assets/js/plugins/jquery.magnific-popup.min.js" strategy="afterInteractive" />
+        <Script src="/assets/js/plugins/imagesloaded.pkgd.min.js" strategy="afterInteractive" />
+        <Script src="/assets/js/plugins/isotope.pkgd.min.js" strategy="afterInteractive" />
+        <Script src="/assets/js/plugins/wow.min.js" strategy="afterInteractive" />
+        <Script src="/assets/js/plugins/ajax-contact.js" strategy="afterInteractive" />
 
         {/* Main Activation JS */}
-        <Script src="/assets/js/main.js" strategy="lazyOnload" />
+        <Script src="/assets/js/main.js" strategy="afterInteractive" />
       </body>
     </html>
   );

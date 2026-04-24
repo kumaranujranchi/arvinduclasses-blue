@@ -242,17 +242,19 @@ $(function() {
     =              Magnific Popup                 =
     =============================================*/
 
-    $('.video-popup').magnificPopup({
-        type: 'iframe'
-        // other options
-    });
+    if ($.fn.magnificPopup) {
+        $('.video-popup').magnificPopup({
+            type: 'iframe'
+            // other options
+        });
 
-    $('.image-popup').magnificPopup({
-        type: 'image',
-        gallery:{
-          enabled:true
-        }
-    });
+        $('.image-popup').magnificPopup({
+            type: 'image',
+            gallery:{
+              enabled:true
+            }
+        });
+    }
 
     /*=====  End of Magnific Popup ======*/
 
@@ -321,37 +323,39 @@ $(function() {
     =             Slick Blog Active               =
     =============================================*/
 
-    $('.blog-active').slick({
-        dots: false,
-        infinite: false,
-        arrows: false,
-        prevArrow:'<span class="prev"><i class="fas fa-chevron-left"></i></span>',
-        nextArrow: '<span class="next"><i class="fas fa-chevron-right"></i></span>',
-        autoplay: true,
-        speed: 800,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        responsive: [
-            {
-              breakpoint: 992,
-              settings: {
-                slidesToShow: 2,
-              }
-            },
-            {
-              breakpoint: 768,
-              settings: {
-                slidesToShow: 1,
-              }
-            },
-            {
-              breakpoint: 576,
-              settings: {
-                slidesToShow: 1,
-              }
-            }
-        ]
-    });
+    if ($.fn.slick && $('.blog-active').length) {
+        $('.blog-active').slick({
+            dots: false,
+            infinite: false,
+            arrows: false,
+            prevArrow:'<span class="prev"><i class="fas fa-chevron-left"></i></span>',
+            nextArrow: '<span class="next"><i class="fas fa-chevron-right"></i></span>',
+            autoplay: true,
+            speed: 800,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            responsive: [
+                {
+                  breakpoint: 992,
+                  settings: {
+                    slidesToShow: 2,
+                  }
+                },
+                {
+                  breakpoint: 768,
+                  settings: {
+                    slidesToShow: 1,
+                  }
+                },
+                {
+                  breakpoint: 576,
+                  settings: {
+                    slidesToShow: 1,
+                  }
+                }
+            ]
+        });
+    }
 
     /*=====  End of Slick Collection Active  ======*/
 
@@ -608,10 +612,17 @@ $(function() {
 $(document).ready(function($) {
     //Check if an element was in a screen
     function isScrolledIntoView(elem){
+        var $elem = $(elem);
+        if (!$elem.length) return false;
+        
         var docViewTop = $(window).scrollTop();
         var docViewBottom = docViewTop + $(window).height();
-        var elemTop = $(elem).offset().top;
-        var elemBottom = elemTop + $(elem).height();
+        
+        var offset = $elem.offset();
+        if (!offset) return false;
+        
+        var elemTop = offset.top;
+        var elemBottom = elemTop + $elem.height();
         return ((elemBottom <= docViewBottom));
     }
     //Count up code

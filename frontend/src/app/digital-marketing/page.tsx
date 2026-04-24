@@ -6,6 +6,8 @@ import Link from "next/link";
 import { useState } from "react";
 
 export default function DigitalMarketingPage() {
+  const [activeAccordion, setActiveAccordion] = useState<number | null>(0);
+
   return (
     <>
       <Header />
@@ -160,37 +162,51 @@ export default function DigitalMarketingPage() {
                       content: ["Data Tracking", "Campaign Analysis", "Conversion Tracking"],
                       tools: ["Google Analytics (GA4)", "Google Tag Manager", "Meta Insights", "Hotjar"]
                     }
-                  ].map((phase, i) => (
-                    <div key={i} className="accordion-item mb-3 border rounded overflow-hidden shadow-sm">
-                      <h2 className="accordion-header">
-                        <button className={`accordion-button ${i !== 0 ? 'collapsed' : ''} p-4 font-weight-bold`} type="button" data-bs-toggle="collapse" data-bs-target={`#collapse${i}`} style={{ backgroundColor: "#fff", color: "#07294d" }}>
-                          {phase.title}
-                        </button>
-                      </h2>
-                      <div id={`collapse${i}`} className={`accordion-collapse collapse ${i === 0 ? 'show' : ''}`} data-bs-parent="#curriculumAccordion">
-                        <div className="accordion-body p-4 bg-light">
-                          <div className="row">
-                            <div className="col-md-7">
-                              <h6 className="mb-3 text-primary">What You'll Learn:</h6>
-                              <ul className="list-unstyled">
-                                {phase.content.map((item, j) => (
-                                  <li key={j} className="mb-2"><i className="fas fa-dot-circle me-2 text-muted small"></i> {item}</li>
-                                ))}
-                              </ul>
-                            </div>
-                            <div className="col-md-5">
-                              <h6 className="mb-3 text-warning">Tools Covered:</h6>
-                              <div className="d-flex flex-wrap gap-2">
-                                {phase.tools.map((tool, j) => (
-                                  <span key={j} className="badge bg-white text-dark border p-2">{tool}</span>
-                                ))}
+                  ].map((phase, i) => {
+                    const isActive = activeAccordion === i;
+                    
+                    return (
+                      <div key={i} className="accordion-item mb-3 border rounded shadow-sm" style={{ overflow: "visible" }}>
+                        <h2 className="accordion-header">
+                          <button 
+                            className={`accordion-button ${!isActive ? 'collapsed' : ''} p-4 font-weight-bold`} 
+                            type="button" 
+                            onClick={() => setActiveAccordion(isActive ? null : i)}
+                            style={{ 
+                              backgroundColor: isActive ? "#f8fbff" : "#fff", 
+                              color: "#07294d",
+                              boxShadow: "none",
+                              border: "none"
+                            }}
+                          >
+                            {phase.title}
+                          </button>
+                        </h2>
+                        <div className={`accordion-collapse collapse ${isActive ? 'show' : ''}`}>
+                          <div className="accordion-body p-4 bg-light">
+                            <div className="row">
+                              <div className="col-md-7">
+                                <h6 className="mb-3 text-primary">What You'll Learn:</h6>
+                                <ul className="list-unstyled">
+                                  {phase.content.map((item, j) => (
+                                    <li key={j} className="mb-2"><i className="fas fa-dot-circle me-2 text-muted small"></i> {item}</li>
+                                  ))}
+                                </ul>
+                              </div>
+                              <div className="col-md-5">
+                                <h6 className="mb-3 text-warning">Tools Covered:</h6>
+                                <div className="d-flex flex-wrap gap-2">
+                                  {phase.tools.map((tool, j) => (
+                                    <span key={j} className="badge bg-white text-dark border p-2">{tool}</span>
+                                  ))}
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
 
