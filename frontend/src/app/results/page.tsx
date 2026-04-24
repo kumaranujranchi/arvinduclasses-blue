@@ -59,8 +59,25 @@ export default function ResultsPage() {
       {/* ====== Page Banner Ends ====== */}
 
       {/* ====== Search Section ====== */}
-      <section className="results-search-area pt-80 pb-80" style={{ backgroundColor: "#f8fbff" }}>
-        <div className="container">
+      <section className="results-search-area pt-80 pb-80" style={{ 
+        backgroundColor: "#f8fbff",
+        position: "relative",
+        overflow: "hidden"
+      }}>
+        {/* Subtle Grid Pattern Overlay */}
+        <div style={{
+          position: "absolute",
+          top: 0, left: 0, right: 0, bottom: 0,
+          backgroundImage: `linear-gradient(to right, rgba(7, 41, 77, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(7, 41, 77, 0.05) 1px, transparent 1px)`,
+          backgroundSize: "30px 30px",
+          maskImage: "radial-gradient(circle at center, black, transparent 80%)",
+          WebkitMaskImage: "radial-gradient(circle at center, black, transparent 80%)",
+          opacity: 0.5,
+          pointerEvents: "none",
+          zIndex: 0
+        }}></div>
+
+        <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <div className="row justify-content-center">
             <div className="col-lg-10">
               <div className="text-center mb-50">
@@ -220,8 +237,20 @@ export default function ResultsPage() {
       </section>
 
       {/* ====== Consistency Performers (Toppers) Section ====== */}
-      <section className="toppers-area pt-100 pb-100">
-        <div className="container">
+      <section className="toppers-area pt-100 pb-100" style={{ position: "relative", overflow: "hidden" }}>
+        {/* Subtle Grid Pattern Overlay */}
+        <div style={{
+          position: "absolute",
+          top: 0, left: 0, right: 0, bottom: 0,
+          backgroundImage: `linear-gradient(to right, rgba(7, 41, 77, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(7, 41, 77, 0.05) 1px, transparent 1px)`,
+          backgroundSize: "30px 30px",
+          maskImage: "radial-gradient(circle at top right, black, transparent 70%)",
+          WebkitMaskImage: "radial-gradient(circle at top right, black, transparent 70%)",
+          opacity: 0.3,
+          pointerEvents: "none"
+        }}></div>
+
+        <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <div className="row justify-content-center">
             <div className="col-lg-8">
               <div className="text-center mb-50">
@@ -256,8 +285,20 @@ export default function ResultsPage() {
       </section>
 
       {/* ====== Upcoming Tests Section ====== */}
-      <section className="upcoming-tests-area pt-100 pb-100" style={{ background: "#f8f9fa" }}>
-        <div className="container">
+      <section className="upcoming-tests-area pt-100 pb-100" style={{ background: "#f8f9fa", position: "relative", overflow: "hidden" }}>
+        {/* Subtle Grid Pattern Overlay */}
+        <div style={{
+          position: "absolute",
+          top: 0, left: 0, right: 0, bottom: 0,
+          backgroundImage: `linear-gradient(to right, rgba(7, 41, 77, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(7, 41, 77, 0.05) 1px, transparent 1px)`,
+          backgroundSize: "30px 30px",
+          maskImage: "radial-gradient(circle at bottom left, black, transparent 70%)",
+          WebkitMaskImage: "radial-gradient(circle at bottom left, black, transparent 70%)",
+          opacity: 0.4,
+          pointerEvents: "none"
+        }}></div>
+
+        <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <div className="row align-items-center">
             <div className="col-lg-6">
               <div className="mb-40">
@@ -296,23 +337,36 @@ export default function ResultsPage() {
       </section>
 
       {/* ====== FAQ Section ====== */}
-      <section className="results-faq pt-100 pb-100">
-        <div className="container">
+      <section className="results-faq pt-100 pb-100" style={{ position: "relative", overflow: "hidden" }}>
+        {/* Subtle Grid Pattern Overlay */}
+        <div style={{
+          position: "absolute",
+          top: 0, left: 0, right: 0, bottom: 0,
+          backgroundImage: `linear-gradient(to right, rgba(7, 41, 77, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(7, 41, 77, 0.05) 1px, transparent 1px)`,
+          backgroundSize: "30px 30px",
+          maskImage: "radial-gradient(circle at center, black, transparent 80%)",
+          WebkitMaskImage: "radial-gradient(circle at center, black, transparent 80%)",
+          opacity: 0.3,
+          pointerEvents: "none"
+        }}></div>
+
+        <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <div className="row justify-content-center">
             <div className="col-lg-8">
-              <div className="section-title text-center mb-50">
-                <h2 className="title">Frequently <span>Asked</span> Questions</h2>
+              <div className="text-center mb-50">
+                <h2 className="title" style={{ fontSize: "44px", color: "#07294d" }}>Frequently <span style={{ color: "#ffc600" }}>Asked</span> Questions</h2>
+                <span className="line mx-auto" style={{ width: "100px", height: "2px", background: "#ffc600", display: "block", marginTop: "15px" }}></span>
               </div>
               <div className="faq-wrapper">
-                <div className="faq-item p-3 mb-3 border rounded">
+                <div className="faq-item p-3 mb-3 border rounded bg-white shadow-sm">
                   <h6 className="mb-2 font-weight-bold"><i className="fas fa-question-circle text-primary me-2"></i> How often are results updated?</h6>
                   <p className="text-muted small">Test results are typically uploaded within 48-72 hours of the test completion after thorough evaluation by our subject experts.</p>
                 </div>
-                <div className="faq-item p-3 mb-3 border rounded">
+                <div className="faq-item p-3 mb-3 border rounded bg-white shadow-sm">
                   <h6 className="mb-2 font-weight-bold"><i className="fas fa-question-circle text-primary me-2"></i> What should I do if I cannot find my result?</h6>
                   <p className="text-muted small">Please ensure you are entering the correct roll number. If the problem persists, contact the institute office or your batch coordinator.</p>
                 </div>
-                <div className="faq-item p-3 mb-3 border rounded">
+                <div className="faq-item p-3 mb-3 border rounded bg-white shadow-sm">
                   <h6 className="mb-2 font-weight-bold"><i className="fas fa-question-circle text-primary me-2"></i> Are these results shared with parents?</h6>
                   <p className="text-muted small">Yes, an automated SMS/WhatsApp notification is sent to registered parents once the results are published on the website.</p>
                 </div>
