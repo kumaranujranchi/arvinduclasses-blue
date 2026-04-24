@@ -13,7 +13,7 @@ export default function AdminDashboard() {
     if (sessionStr) {
       try {
         const user = JSON.parse(sessionStr);
-        setUserName(user.name.split(" ")[0]);
+        setUserName(user.name);
       } catch (e) {}
     }
   }, []);

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import AdminClock from "../components/AdminClock";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const [isAuthorized, setIsAuthorized] = useState(false);
@@ -155,6 +156,20 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col overflow-hidden">
+        {/* Top Header Bar */}
+        <header className="bg-white border-b border-gray-100 px-8 py-4 flex items-center justify-between z-20">
+          <div className="flex items-center gap-3 text-slate-400 font-bold text-xs uppercase tracking-widest">
+            <i className="far fa-calendar-check text-blue-500"></i>
+            <AdminClock />
+          </div>
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-green-50 text-green-600 rounded-full text-[10px] font-black uppercase tracking-widest">
+              <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+              System Live
+            </div>
+          </div>
+        </header>
+
         <main className="flex-1 overflow-y-auto p-6 lg:p-8 custom-scrollbar">
           {children}
         </main>
