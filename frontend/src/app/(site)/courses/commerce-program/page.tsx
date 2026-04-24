@@ -77,10 +77,10 @@ export default function CommerceProgramPage() {
                   </p>
                   <p className="course-overview-text-2">We focus on:</p>
                   <ul className="courses-details-list mt-10px">
-                    <li className="course-list-item"><i className="fas fa-check" className="list-icon-green-t4"></i> <p className="course-list-text">Building strong conceptual clarity in core subjects</p></li>
-                    <li className="course-list-item"><i className="fas fa-check" className="list-icon-green-t4"></i> <p className="course-list-text">Step-by-step numerical problem solving in Accountancy</p></li>
-                    <li className="course-list-item"><i className="fas fa-check" className="list-icon-green-t4"></i> <p className="course-list-text">Understanding economic concepts with real-world examples</p></li>
-                    <li className="course-list-item"><i className="fas fa-check" className="list-icon-green-t4"></i> <p className="course-list-text">Preparing students for board exams and future career paths</p></li>
+                    <li className="course-list-item"><i className="fas fa-check list-icon-green-t4"></i> <p className="course-list-text">Building strong conceptual clarity in core subjects</p></li>
+                    <li className="course-list-item"><i className="fas fa-check list-icon-green-t4"></i> <p className="course-list-text">Step-by-step numerical problem solving in Accountancy</p></li>
+                    <li className="course-list-item"><i className="fas fa-check list-icon-green-t4"></i> <p className="course-list-text">Understanding economic concepts with real-world examples</p></li>
+                    <li className="course-list-item"><i className="fas fa-check list-icon-green-t4"></i> <p className="course-list-text">Preparing students for board exams and future career paths</p></li>
                   </ul>
                   <p className="course-overview-text-3">
                     This program is ideal for students aiming for high scores and planning careers in Commerce fields such as CA, CS, or Business.
@@ -90,7 +90,7 @@ export default function CommerceProgramPage() {
                 {/* Career Focus Highlights Grid */}
                 <div className="row mt-40">
                   <div className="col-md-6 wow fadeInLeft" data-wow-delay="0.1s">
-                    <div className="highlight-card" className="card-highlight-green">
+                    <div className="highlight-card card-highlight-green">
                        <h5 className="course-highlight-title">Career Path Preparation</h5>
                        <p className="fs-14-gray">Strong foundation for competitive exams like CA Foundation, CS Executive, and University entrances.</p>
                     </div>
@@ -168,7 +168,7 @@ export default function CommerceProgramPage() {
                            </div>
                            <div className="col-md-6">
                               <div className="card-curriculum-center">
-                                <i className="fas fa-briefcase" className="fs-30-green-mb10"></i>
+                                <i className="fas fa-briefcase fs-30-green-mb10"></i>
                                 <h6 className="fw-700-darkblue">Career Focused</h6>
                                 <p className="fs-12-gray666">Complete coverage for CBSE & ICSE Boards with a focus on future professional success.</p>
                               </div>
@@ -205,8 +205,8 @@ export default function CommerceProgramPage() {
               <div className="courses-sidebar sticky-top-100">
                 {/* Course Features - Side Panel */}
                 <div className="courses-features wow fadeInRight course-sidebar-widget-v2">
-                  <div className="sidebar-title" className="course-sidebar-header">
-                    <h4 className="title" className="course-sidebar-title-text">Course Features</h4>
+                  <div className="sidebar-title course-sidebar-header">
+                    <h4 className="title course-sidebar-title-text">Course Features</h4>
                   </div>
                   <ul className="courses-features-items m-0 p-0">
                     <li className="course-sidebar-item-border">Fee <strong>₹40,000</strong></li>
@@ -218,25 +218,25 @@ export default function CommerceProgramPage() {
                     <li className="p-12-0-border-none">Rating <strong className="text-star-yellow">★★★★★ (5.0)</strong></li>
                   </ul>
                   <div className="sidebar-btn mt-30">
-                    <a className="main-btn w-100 text-center" href="#" className="course-sidebar-btn-blue">Book Demo Class</a>
+                    <a className="main-btn w-100 text-center course-sidebar-btn-blue" href="#">Book Demo Class</a>
                   </div>
                 </div>
 
                 {/* Related Courses Interlinking Widget */}
                 <div className="related-courses-widget mt-50 wow fadeInRight" data-wow-delay="0.2s">
-                   <h4 className="title" className="course-sidebar-title-md">Recommended Programs</h4>
+                   <h4 className="title course-sidebar-title-md">Recommended Programs</h4>
                    <div className="related-list">
                      {relatedCourses.map((course, idx) => (
                        <Link key={idx} href={course.slug} className="sidebar-course-link course-sidebar-link-box">
                           <div className="sidebar-card course-sidebar-card-sm">
-                             <div className="img" className="course-sidebar-img-box">
+                             <div className="img course-sidebar-img-box">
                                 <img src={course.image} alt={course.title} className="w-100 h-100 object-cover" />
                              </div>
-                             <div className="info" className="course-sidebar-info-v2">
+                             <div className="info course-sidebar-info-v2">
                                 <h5 className="course-sidebar-course-title">{course.title}</h5>
                                 <div className="d-flex justify-content-between align-items-center mt-5">
                                    <span style={{ fontSize: "12px", color: course.color, fontWeight: "700" }}>{course.fee}</span>
-                                   <i className="fas fa-chevron-right" className="fs-10px text-light-gray"></i>
+                                   <i className="fas fa-chevron-right fs-10px text-light-gray"></i>
                                 </div>
                              </div>
                           </div>
@@ -251,19 +251,19 @@ export default function CommerceProgramPage() {
       </section>
 
       {/* Career Focused CTA Section */}
-      <section className="cta-area wow fadeInUp" className="pb-100">
+      <section className="cta-area wow fadeInUp pb-100">
         <div className="container">
           <div className="cta-box bg_cover course-cta-box">
-            <div className="overlay" className="course-cta-overlay"></div>
-            <div className="row align-items-center" className="relative-z2">
+            <div className="overlay course-cta-overlay"></div>
+            <div className="row align-items-center relative-z2">
               <div className="col-lg-8 text-center text-lg-left">
                 <div className="cta-text-wrapper">
-                  <h2 className="title" className="course-cta-title">Build a Strong Career in Commerce</h2>
+                  <h2 className="title course-cta-title">Build a Strong Career in Commerce</h2>
                   <p className="course-cta-desc">Get expert guidance and structured preparation for your board exams and future goals.</p>
                 </div>
               </div>
               <div className="col-lg-4 text-center text-lg-right mt-40 mt-lg-0">
-                 <button className="main-btn" className="course-cta-btn">Book Free Demo</button>
+                 <button className="main-btn course-cta-btn">Book Free Demo</button>
               </div>
             </div>
           </div>

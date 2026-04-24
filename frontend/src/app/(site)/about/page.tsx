@@ -69,8 +69,7 @@ export default function AboutPage() {
       {/* ====== Page Banner Start ====== */}
       <section className="page-banner">
         <div
-          className="page-banner-bg bg_cover"
-          className="banner-bg-about"
+          className="page-banner-bg bg_cover banner-bg-about"
         >
           <div className="container">
             <div className="banner-content text-center">
@@ -437,8 +436,7 @@ export default function AboutPage() {
       <div className="counter-area-2 pt-80">
         <div className="container">
           <div
-            className="counter-wrapper-2 bg_cover"
-            className="counter-bg-main"
+            className="counter-wrapper-2 bg_cover counter-bg-main"
           >
             <div className="row">
               <div className="col-sm-3 col-6 counter-col">

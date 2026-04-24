@@ -73,9 +73,9 @@ export default function FoundationProgramPage() {
                 {/* Interactive Key Highlights Grid */}
                 <div className="row mt-40">
                   <div className="col-md-6 wow fadeInLeft" data-wow-delay="0.1s">
-                    <div className="highlight-card" className="card-highlight-yellow">
+                    <div className="highlight-card card-highlight-yellow">
                        <div className="d-flex align-items-center mb-12">
-                          <i className="fas fa-brain" className="fs-20-yellow-mr12"></i>
+                          <i className="fas fa-brain fs-20-yellow-mr12"></i>
                           <h5 className="fs-18-m0-fw700">Deep Conceptual Clarity</h5>
                        </div>
                        <p className="fs-14-gray">We move beyond rote learning to ensure students understand the 'Why' and 'How' behind every concept.</p>
@@ -84,25 +84,25 @@ export default function FoundationProgramPage() {
                   <div className="col-md-6 wow fadeInRight" data-wow-delay="0.1s">
                     <div className="highlight-card course-highlight-card-blue">
                        <div className="d-flex align-items-center mb-12">
-                          <i className="fas fa-chart-line" className="fs-20-blue-mr12"></i>
+                          <i className="fas fa-chart-line fs-20-blue-mr12"></i>
                           <h5 className="fs-18-m0-fw700">Progressive Difficulty</h5>
                        </div>
                        <p className="fs-14-gray">Curriculum that starts with basics and gradually shifts towards competitive exam level thinking.</p>
                     </div>
                   </div>
                   <div className="col-md-6 wow fadeInLeft" data-wow-delay="0.2s">
-                    <div className="highlight-card" className="card-highlight-green">
+                    <div className="highlight-card card-highlight-green">
                        <div className="d-flex align-items-center mb-12">
-                          <i className="fas fa-user-check" className="fs-20-green-mr12"></i>
+                          <i className="fas fa-user-check fs-20-green-mr12"></i>
                           <h5 className="fs-18-m0-fw700">Personalized Support</h5>
                        </div>
                        <p className="fs-14-gray">Small batch sizes allow our mentors to focus on the individual learning pace of every student.</p>
                     </div>
                   </div>
                   <div className="col-md-6 wow fadeInRight" data-wow-delay="0.2s">
-                    <div className="highlight-card" className="card-highlight-red">
+                    <div className="highlight-card card-highlight-red">
                        <div className="d-flex align-items-center mb-12">
-                          <i className="fas fa-file-invoice" className="fs-20-red-mr12"></i>
+                          <i className="fas fa-file-invoice fs-20-red-mr12"></i>
                           <h5 className="fs-18-m0-fw700">Weekly Assessment</h5>
                        </div>
                        <p className="fs-14-gray">Regular tests with detailed analysis to identify and improve weak areas immediately.</p>
@@ -130,10 +130,10 @@ export default function FoundationProgramPage() {
                       <div className="tab-pane fade show active">
                         <h5 className="fs-20-mb20-fw700">Why Choose This Program?</h5>
                         <ul className="courses-details-list m-0 p-0">
-                          <li className="mt-15-pl30"><i className="fas fa-check" className="list-icon-green-t6-fs16"></i> <p className="fs-16">Eliminate the fear of complex subjects like Maths and Physics.</p></li>
-                          <li className="mt-15-pl30"><i className="fas fa-check" className="list-icon-green-t6-fs16"></i> <p className="fs-16">Develop analytical thinking and logical reasoning skills.</p></li>
-                          <li className="mt-15-pl30"><i className="fas fa-check" className="list-icon-green-t6-fs16"></i> <p className="fs-16">Prepare for future competitive exams like Olympiads, NTSE, and JEE/NEET.</p></li>
-                          <li className="mt-15-pl30"><i className="fas fa-check" className="list-icon-green-t6-fs16"></i> <p className="fs-16">Gain an edge over peers in school internal and board examinations.</p></li>
+                          <li className="mt-15-pl30"><i className="fas fa-check list-icon-green-t6-fs16"></i> <p className="fs-16">Eliminate the fear of complex subjects like Maths and Physics.</p></li>
+                          <li className="mt-15-pl30"><i className="fas fa-check list-icon-green-t6-fs16"></i> <p className="fs-16">Develop analytical thinking and logical reasoning skills.</p></li>
+                          <li className="mt-15-pl30"><i className="fas fa-check list-icon-green-t6-fs16"></i> <p className="fs-16">Prepare for future competitive exams like Olympiads, NTSE, and JEE/NEET.</p></li>
+                          <li className="mt-15-pl30"><i className="fas fa-check list-icon-green-t6-fs16"></i> <p className="fs-16">Gain an edge over peers in school internal and board examinations.</p></li>
                         </ul>
                       </div>
                     )}
@@ -167,7 +167,7 @@ export default function FoundationProgramPage() {
                     )}
                     {activeTab === 'teachers' && (
                       <div className="tab-pane fade show active text-center">
-                        <i className="fas fa-user-tie" className="fs-40-darkblue-mb20"></i>
+                        <i className="fas fa-user-tie fs-40-darkblue-mb20"></i>
                         <h5 className="fs-20-fw700">Expert Mentorship</h5>
                         <p className="mt-15-gray666">Our faculty consists of experienced educators who specialize in middle school pedagogy. They are trained to make learning fun while maintaining academic rigor.</p>
                       </div>
@@ -189,8 +189,8 @@ export default function FoundationProgramPage() {
               <div className="courses-sidebar sticky-top-100">
                 {/* Course Features - Premium Sidebar Card */}
                 <div className="courses-features wow fadeInRight course-sidebar-widget-v2">
-                  <div className="sidebar-title" className="course-sidebar-header">
-                    <h4 className="title" className="course-sidebar-title-text">Course At A Glance</h4>
+                  <div className="sidebar-title course-sidebar-header">
+                    <h4 className="title course-sidebar-title-text">Course At A Glance</h4>
                   </div>
                   <ul className="courses-features-items m-0 p-0">
                     <li className="course-sidebar-item-border">Fee <strong>₹25,000</strong></li>
@@ -201,25 +201,25 @@ export default function FoundationProgramPage() {
                     <li className="p-12-0-border-none">Rating <strong className="text-star-yellow">★★★★★ (5.0)</strong></li>
                   </ul>
                   <div className="sidebar-btn mt-30">
-                    <a className="main-btn w-100 text-center" href="#" className="r10-p0-h50-lh50-fs16-bgdarkblue">Book Free Demo Class</a>
+                    <a className="main-btn w-100 text-center r10-p0-h50-lh50-fs16-bgdarkblue" href="#">Book Free Demo Class</a>
                   </div>
                 </div>
 
                 {/* Related Courses Interlinking Widget */}
                 <div className="related-courses-widget mt-50 wow fadeInRight" data-wow-delay="0.2s">
-                   <h4 className="title" className="course-sidebar-title-md">Other Programs</h4>
+                   <h4 className="title course-sidebar-title-md">Other Programs</h4>
                    <div className="related-list">
                      {relatedCourses.map((course, idx) => (
                        <Link key={idx} href={course.slug} className="sidebar-course-link course-sidebar-link-box">
                           <div className="sidebar-card course-sidebar-card-sm">
-                             <div className="img" className="course-sidebar-img-box">
+                             <div className="img course-sidebar-img-box">
                                 <img src={course.image} alt={course.title} className="w-100 h-100 object-cover" />
                              </div>
-                             <div className="info" className="course-sidebar-info-v2">
+                             <div className="info course-sidebar-info-v2">
                                 <h5 className="course-sidebar-course-title">{course.title}</h5>
                                 <div className="d-flex justify-content-between align-items-center mt-5">
                                    <span className="fs-12-green-fw700">{course.fee}</span>
-                                   <i className="fas fa-chevron-right" className="fs-10px text-light-gray"></i>
+                                   <i className="fas fa-chevron-right fs-10px text-light-gray"></i>
                                 </div>
                              </div>
                           </div>
@@ -234,19 +234,19 @@ export default function FoundationProgramPage() {
       </section>
 
       {/* Modern CTA Section */}
-      <section className="cta-area wow fadeInUp" className="pb-100">
+      <section className="cta-area wow fadeInUp pb-100">
         <div className="container">
           <div className="cta-box bg_cover course-cta-box">
-            <div className="overlay" className="course-cta-overlay"></div>
-            <div className="row align-items-center" className="relative-z2">
+            <div className="overlay course-cta-overlay"></div>
+            <div className="row align-items-center relative-z2">
               <div className="col-lg-8 text-center text-lg-left">
                 <div className="cta-text-wrapper">
-                  <h2 className="title" className="course-cta-title">Start Your Journey Towards Excellence</h2>
+                  <h2 className="title course-cta-title">Start Your Journey Towards Excellence</h2>
                   <p className="course-cta-desc">Join our foundation program and transform your academic potential.</p>
                 </div>
               </div>
               <div className="col-lg-4 text-center text-lg-right mt-40 mt-lg-0">
-                 <button className="main-btn" className="course-cta-btn">Book Free Demo</button>
+                 <button className="main-btn course-cta-btn">Book Free Demo</button>
               </div>
             </div>
           </div>

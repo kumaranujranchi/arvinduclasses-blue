@@ -41,8 +41,8 @@ export default function PCBProgramPage() {
       <section className="page-banner">
         <div className="page-banner-bg bg_cover page-banner-bg-image">
           <div className="container">
-            <div className="banner-content text-center wow fadeInDown" className="banner-padding-y">
-              <h2 className="title" className="title-white-shadow">Physics, Chemistry & Biology</h2>
+            <div className="banner-content text-center wow fadeInDown banner-padding-y">
+              <h2 className="title title-white-shadow">Physics, Chemistry & Biology</h2>
               <div className="banner-divider"></div>
               <p className="text-white-16-500">Mastering Science through conceptual clarity and regular practice.</p>
             </div>
@@ -51,7 +51,7 @@ export default function PCBProgramPage() {
       </section>
 
       {/* Courses Details Start */}
-      <section className="courses-details" className="section-padding-y-fdfd">
+      <section className="courses-details section-padding-y-fdfd">
         <div className="container">
           <div className="row">
             <div className="col-lg-8">
@@ -61,7 +61,7 @@ export default function PCBProgramPage() {
                 </div>
 
                 <div className="content-box mt-50 wow fadeInUp">
-                  <h3 className="title" className="title-dark-blue-30">Science Program – Physics, Chemistry & Biology (Class 9–10)</h3>
+                  <h3 className="title title-dark-blue-30">Science Program – Physics, Chemistry & Biology (Class 9–10)</h3>
                   <p className="text-gray-17-mt20">
                     This program is designed for students who want a deeper understanding of core Science subjects — Physics, Chemistry, and Biology.
                   </p>
@@ -76,11 +76,11 @@ export default function PCBProgramPage() {
                     The Science Combo Program focuses on strengthening concepts in Physics, Chemistry, and Biology with structured teaching and regular assessments.
                   </p>
                   <p className="text-gray-16-mt15">We ensure that students:</p>
-                  <ul className="courses-details-list" className="mt-10">
-                    <li className="list-item-mt10-pl30"><i className="fas fa-check" className="list-icon-blue-t4"></i> <p className="fs-15">Understand concepts instead of memorizing</p></li>
-                    <li className="list-item-mt10-pl30"><i className="fas fa-check" className="list-icon-blue-t4"></i> <p className="fs-15">Practice numerical and theory-based questions regularly</p></li>
-                    <li className="list-item-mt10-pl30"><i className="fas fa-check" className="list-icon-blue-t4"></i> <p className="fs-15">Improve their performance through continuous evaluation</p></li>
-                    <li className="list-item-mt10-pl30"><i className="fas fa-check" className="list-icon-blue-t4"></i> <p className="fs-15">Develop confidence in handling complex topics</p></li>
+                  <ul className="courses-details-list mt-10">
+                    <li className="list-item-mt10-pl30"><i className="fas fa-check list-icon-blue-t4"></i> <p className="fs-15">Understand concepts instead of memorizing</p></li>
+                    <li className="list-item-mt10-pl30"><i className="fas fa-check list-icon-blue-t4"></i> <p className="fs-15">Practice numerical and theory-based questions regularly</p></li>
+                    <li className="list-item-mt10-pl30"><i className="fas fa-check list-icon-blue-t4"></i> <p className="fs-15">Improve their performance through continuous evaluation</p></li>
+                    <li className="list-item-mt10-pl30"><i className="fas fa-check list-icon-blue-t4"></i> <p className="fs-15">Develop confidence in handling complex topics</p></li>
                   </ul>
                   <p className="text-gray-16-mt20-bold">
                     This program is ideal for students who want extra support in Science subjects alongside school preparation.
@@ -90,43 +90,43 @@ export default function PCBProgramPage() {
                 {/* Science Mastery Highlights Grid */}
                 <div className="row mt-40">
                   <div className="col-md-6 wow fadeInLeft" data-wow-delay="0.1s">
-                    <div className="highlight-card" className="card-highlight-blue">
+                    <div className="highlight-card card-highlight-blue">
                        <h5 className="fs-18-mb10-bold">Theory & Diagram Focus</h5>
                        <p className="fs-14-gray">Specialized guidance for Biology diagrams and theoretical concepts in Chemistry.</p>
                     </div>
                   </div>
                   <div className="col-md-6 wow fadeInRight" data-wow-delay="0.1s">
-                    <div className="highlight-card" className="card-highlight-dark">
+                    <div className="highlight-card card-highlight-dark">
                        <h5 className="fs-18-mb10-bold">Lab & Numerical Support</h5>
                        <p className="fs-14-gray">Practical lab concept support and intensive numerical practice for Physics.</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="courses-details-tab wow fadeInUp" className="mt-40">
-                  <ul className="nav nav-justified" className="tab-nav-bg">
+                <div className="courses-details-tab wow fadeInUp mt-40">
+                  <ul className="nav nav-justified tab-nav-bg">
                     <li className="nav-item">
-                      <a className={activeTab === 'benefit' ? 'active' : ''} onClick={() => setActiveTab('benefit')} className="tab-link-custom">Benefits</a>
+                      <a className={`${activeTab === 'benefit' ? 'active' : ''} tab-link-custom`} onClick={() => setActiveTab('benefit')}>Benefits</a>
                     </li>
                     <li className="nav-item">
-                      <a className={activeTab === 'curriculum' ? 'active' : ''} onClick={() => setActiveTab('curriculum')} className="tab-link-custom">Curriculum</a>
+                      <a className={`${activeTab === 'curriculum' ? 'active' : ''} tab-link-custom`} onClick={() => setActiveTab('curriculum')}>Curriculum</a>
                     </li>
                     <li className="nav-item">
-                      <a className={activeTab === 'teachers' ? 'active' : ''} onClick={() => setActiveTab('teachers')} className="tab-link-custom">Faculty</a>
+                      <a className={`${activeTab === 'teachers' ? 'active' : ''} tab-link-custom`} onClick={() => setActiveTab('teachers')}>Faculty</a>
                     </li>
                     <li className="nav-item">
-                      <a className={activeTab === 'reviews' ? 'active' : ''} onClick={() => setActiveTab('reviews')} className="tab-link-custom">Reviews</a>
+                      <a className={`${activeTab === 'reviews' ? 'active' : ''} tab-link-custom`} onClick={() => setActiveTab('reviews')}>Reviews</a>
                     </li>
                   </ul>
-                  <div className="tab-content" className="tab-content-box">
+                  <div className="tab-content tab-content-box">
                     {activeTab === 'benefit' && (
                       <div className="tab-pane fade show active">
-                        <ul className="courses-details-list" className="m-0 p-0">
-                          <li className="list-item-mt12-pl30"><i className="fas fa-check" className="list-icon-green-t6"></i> <p className="fs-15">Strong understanding of core Science subjects.</p></li>
-                          <li className="list-item-mt12-pl30"><i className="fas fa-check" className="list-icon-green-t6"></i> <p className="fs-15">Improved performance in school and board exams.</p></li>
-                          <li className="list-item-mt12-pl30"><i className="fas fa-check" className="list-icon-green-t6"></i> <p className="fs-15">Better numerical solving skills for Physics & Chemistry.</p></li>
-                          <li className="list-item-mt12-pl30"><i className="fas fa-check" className="list-icon-green-t6"></i> <p className="fs-15">Clear concepts in Biology and theory-intensive subjects.</p></li>
-                          <li className="list-item-mt12-pl30"><i className="fas fa-check" className="list-icon-green-t6"></i> <p className="fs-15">Strong foundation for higher studies in Science streams.</p></li>
+                        <ul className="courses-details-list m-0 p-0">
+                          <li className="list-item-mt12-pl30"><i className="fas fa-check list-icon-green-t6"></i> <p className="fs-15">Strong understanding of core Science subjects.</p></li>
+                          <li className="list-item-mt12-pl30"><i className="fas fa-check list-icon-green-t6"></i> <p className="fs-15">Improved performance in school and board exams.</p></li>
+                          <li className="list-item-mt12-pl30"><i className="fas fa-check list-icon-green-t6"></i> <p className="fs-15">Better numerical solving skills for Physics & Chemistry.</p></li>
+                          <li className="list-item-mt12-pl30"><i className="fas fa-check list-icon-green-t6"></i> <p className="fs-15">Clear concepts in Biology and theory-intensive subjects.</p></li>
+                          <li className="list-item-mt12-pl30"><i className="fas fa-check list-icon-green-t6"></i> <p className="fs-15">Strong foundation for higher studies in Science streams.</p></li>
                         </ul>
                       </div>
                     )}
@@ -173,10 +173,10 @@ export default function PCBProgramPage() {
                         <p className="fs-16-gray444">Our Science faculty focuses on making complex topics simple and easy to understand through structured teaching.</p>
                         <p className="mt-15-fw600">Students benefit from:</p>
                         <ul className="courses-details-list mt-10px p-0">
-                           <li className="list-item-mt10-pl30"><i className="fas fa-check" className="list-icon-green-t6"></i> <p className="fs-15">Concept-based explanation</p></li>
-                           <li className="list-item-mt10-pl30"><i className="fas fa-check" className="list-icon-green-t6"></i> <p className="fs-15">Numerical problem-solving guidance</p></li>
-                           <li className="list-item-mt10-pl30"><i className="fas fa-check" className="list-icon-green-t6"></i> <p className="fs-15">Diagram and theory clarity</p></li>
-                           <li className="list-item-mt10-pl30"><i className="fas fa-check" className="list-icon-green-t6"></i> <p className="fs-15">Regular doubt-clearing support</p></li>
+                           <li className="list-item-mt10-pl30"><i className="fas fa-check list-icon-green-t6"></i> <p className="fs-15">Concept-based explanation</p></li>
+                           <li className="list-item-mt10-pl30"><i className="fas fa-check list-icon-green-t6"></i> <p className="fs-15">Numerical problem-solving guidance</p></li>
+                           <li className="list-item-mt10-pl30"><i className="fas fa-check list-icon-green-t6"></i> <p className="fs-15">Diagram and theory clarity</p></li>
+                           <li className="list-item-mt10-pl30"><i className="fas fa-check list-icon-green-t6"></i> <p className="fs-15">Regular doubt-clearing support</p></li>
                         </ul>
                       </div>
                     )}
@@ -197,10 +197,10 @@ export default function PCBProgramPage() {
               <div className="courses-sidebar sticky-top-100">
                 {/* Course Features - Side Panel */}
                 <div className="courses-features wow fadeInRight course-sidebar-widget-v2">
-                  <div className="sidebar-title" className="course-sidebar-header">
-                    <h4 className="title" className="course-sidebar-title-text">Course Features</h4>
+                  <div className="sidebar-title course-sidebar-header">
+                    <h4 className="title course-sidebar-title-text">Course Features</h4>
                   </div>
-                  <ul className="courses-features-items" className="m-0 p-0">
+                  <ul className="courses-features-items m-0 p-0">
                     <li className="course-sidebar-item-border">Fee <strong>₹30,000</strong></li>
                     <li className="course-sidebar-item-border">Duration <strong>1 Year</strong></li>
                     <li className="course-sidebar-item-border">Classes <strong>5 Days/Week</strong></li>
@@ -210,25 +210,25 @@ export default function PCBProgramPage() {
                     <li className="p-12-0-border-none">Rating <strong className="text-star-yellow">★★★★★ (5.0)</strong></li>
                   </ul>
                   <div className="sidebar-btn mt-30">
-                    <a className="main-btn w-100 text-center" href="#" className="course-sidebar-btn-blue">Book Demo Class</a>
+                    <a className="main-btn w-100 text-center course-sidebar-btn-blue" href="#">Book Demo Class</a>
                   </div>
                 </div>
 
                 {/* Related Courses Interlinking Widget */}
                 <div className="related-courses-widget mt-50 wow fadeInRight" data-wow-delay="0.2s">
-                   <h4 className="title" className="course-sidebar-title-md">Recommended Programs</h4>
+                   <h4 className="title course-sidebar-title-md">Recommended Programs</h4>
                    <div className="related-list">
                      {relatedCourses.map((course, idx) => (
                        <Link key={idx} href={course.slug} className="sidebar-course-link course-sidebar-link-box">
                           <div className="sidebar-card course-sidebar-card-sm">
-                             <div className="img" className="course-sidebar-img-box">
+                             <div className="img course-sidebar-img-box">
                                 <img src={course.image} alt={course.title} className="w-100 h-100 object-cover" />
                              </div>
-                             <div className="info" className="course-sidebar-info-v2">
+                             <div className="info course-sidebar-info-v2">
                                 <h5 className="course-sidebar-course-title">{course.title}</h5>
                                 <div className="d-flex justify-content-between align-items-center mt-5">
                                    <span style={{ fontSize: "12px", color: course.color, fontWeight: "700" }}>{course.fee}</span>
-                                   <i className="fas fa-chevron-right" className="fs-10px text-light-gray"></i>
+                                   <i className="fas fa-chevron-right fs-10px text-light-gray"></i>
                                 </div>
                              </div>
                           </div>
@@ -243,19 +243,19 @@ export default function PCBProgramPage() {
       </section>
 
       {/* Concept Focused CTA Section */}
-      <section className="cta-area wow fadeInUp" className="pb-100">
+      <section className="cta-area wow fadeInUp pb-100">
         <div className="container">
           <div className="cta-box bg_cover course-cta-box">
-            <div className="overlay" className="course-cta-overlay"></div>
-            <div className="row align-items-center" className="relative-z2">
+            <div className="overlay course-cta-overlay"></div>
+            <div className="row align-items-center relative-z2">
               <div className="col-lg-8 text-center text-lg-left">
                 <div className="cta-text-wrapper">
-                  <h2 className="title" className="course-cta-title">Master Science with Clear Concepts</h2>
+                  <h2 className="title course-cta-title">Master Science with Clear Concepts</h2>
                   <p className="course-cta-desc">Join our Science program and build a strong understanding of Physics, Chemistry, and Biology.</p>
                 </div>
               </div>
               <div className="col-lg-4 text-center text-lg-right mt-40 mt-lg-0">
-                 <button className="main-btn" className="course-cta-btn">Book Free Demo</button>
+                 <button className="main-btn course-cta-btn">Book Free Demo</button>
               </div>
             </div>
           </div>

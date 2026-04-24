@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+/* Prevent FOUC for slick sliders */
+.slider-active:not(.slick-initialized),
+.slick-slider:not(.slick-initialized) {
+  display: none !important;
+}
+
+
 /* Global resets - all design styles are loaded from /assets/css/style.min.css */
 *, *::before, *::after {
   box-sizing: border-box;

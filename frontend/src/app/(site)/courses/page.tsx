@@ -72,8 +72,7 @@ export default function CoursesPage() {
       {/* Page Banner */}
       <section className="page-banner">
         <div
-          className="page-banner-bg bg_cover"
-          className="banner-bg-course"
+          className="page-banner-bg bg_cover banner-bg-course"
         >
           <div className="container">
             <div className="banner-content text-center">

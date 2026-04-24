@@ -37,10 +37,10 @@ export default function AdminDashboard() {
     <div className="space-y-8 animate-in fade-in duration-500 max-w-[1600px] mx-auto pb-10">
       
       {/* Top Section: Welcome Card & Main Stat */}
-      <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
+      <div className="flex flex-col xl:flex-row gap-8">
         
         {/* Welcome Card */}
-        <div className="xl:col-span-2 bg-[#01228D] rounded-[32px] p-10 flex items-center justify-between overflow-hidden relative shadow-2xl shadow-blue-900/20">
+        <div className="xl:flex-[2] bg-[#01228D] rounded-[32px] p-10 flex items-center justify-between overflow-hidden relative shadow-2xl shadow-blue-900/20 min-h-[300px]">
           <div className="relative z-10 text-white">
             <h1 className="text-3xl font-bold">Welcome Back, {userName}!</h1>
             <p className="text-blue-100 mt-4 max-w-[400px] text-lg leading-relaxed">
@@ -74,8 +74,9 @@ export default function AdminDashboard() {
           <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl"></div>
         </div>
 
-        {/* Mini Stats Grid */}
-        <div className="grid grid-cols-2 gap-6">
+        {/* Mini Stats Grid - Explicitly wrapped to prevent overlap */}
+        <div className="xl:flex-1">
+          <div className="grid grid-cols-2 gap-6 h-full">
           {statCards.map((card, i) => (
             <div key={i} className="bg-white p-6 rounded-[28px] border border-gray-100 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
               <div className={`w-12 h-12 ${card.bg} ${card.color} rounded-2xl flex items-center justify-center text-lg group-hover:scale-110 transition-transform`}>
@@ -89,6 +90,7 @@ export default function AdminDashboard() {
           ))}
         </div>
       </div>
+    </div>
 
       {/* Main Content: Recent Leads Table */}
       <div className="bg-white rounded-[32px] border border-gray-100 shadow-sm overflow-hidden">

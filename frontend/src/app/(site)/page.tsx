@@ -117,8 +117,7 @@ export default function HomePage() {
       {/* ====== Slider ====== */}
       <section className="slider-area slider-03 slider-active">
         <div
-          className="single-slider d-flex align-items-center bg_cover"
-          className="home-slider-bg-1"
+          className="single-slider d-flex align-items-center bg_cover home-slider-bg-1"
         >
           <div className="container">
             <div className="slider-content slider-content-3 text-center">
@@ -141,8 +140,7 @@ export default function HomePage() {
           </div>
         </div>
         <div
-          className="single-slider d-flex align-items-center bg_cover"
-          className="home-slider-bg-2"
+          className="single-slider d-flex align-items-center bg_cover home-slider-bg-2"
         >
           <div className="container">
             <div className="slider-content slider-content-3 text-center">
@@ -274,7 +272,7 @@ export default function HomePage() {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-4">
-              <div className="features-image-2" className="mt-minus-45">
+              <div className="features-image-2 mt-minus-45">
                 <img className="wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s" src="/assets/images/homepage_girl_v2.png" alt="Features" />
               </div>
             </div>
@@ -408,8 +406,7 @@ export default function HomePage() {
       <div className="counter-area-2">
         <div className="container">
           <div
-            className="counter-wrapper-2 bg_cover"
-            className="home-counter-bg"
+            className="counter-wrapper-2 bg_cover home-counter-bg"
           >
             <div className="row">
               {[
@@ -612,10 +609,9 @@ export default function HomePage() {
       <section className="newsletter-area-2">
         <div className="container">
           <div
-            className="newsletter-wrapper bg_cover wow zoomIn"
+            className="newsletter-wrapper bg_cover wow zoomIn home-newsletter-bg"
             data-wow-duration="1s"
             data-wow-delay="0.2s"
-            className="home-newsletter-bg"
           >
             <div className="row align-items-center">
               <div className="col-lg-5">
