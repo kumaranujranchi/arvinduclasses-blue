@@ -110,8 +110,14 @@ export default defineSchema({
     name: v.string(),
     email: v.string(),
     password: v.string(),
-    role: v.string(), // 'admin', 'student', 'teacher'
+    // Roles: super_admin | admin | student | teacher | counsellor | accounts | sales | operations
+    role: v.string(),
     isActive: v.boolean(),
+    phone: v.optional(v.string()),
+    createdBy: v.optional(v.string()), // userId of creator
+    lastLogin: v.optional(v.number()),
     createdAt: v.number(),
-  }).index("by_email", ["email"]),
+  })
+    .index("by_email", ["email"])
+    .index("by_role", ["role"]),
 });

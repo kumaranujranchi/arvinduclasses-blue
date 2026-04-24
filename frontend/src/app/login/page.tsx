@@ -21,9 +21,14 @@ export default function GlobalLogin() {
     try {
       const user = await loginMutation({ email, password });
       localStorage.setItem("user_session", JSON.stringify(user));
-      if (user.role === "admin") router.push("/admin");
-      else if (user.role === "student") router.push("/student-dashboard");
-      else router.push("/");
+      const staffRoles = ["super_admin", "admin", "teacher", "counsellor", "accounts", "sales", "operations"];
+      if (staffRoles.includes(user.role)) {
+        router.push("/admin");
+      } else if (user.role === "student") {
+        router.push("/student-dashboard");
+      } else {
+        router.push("/");
+      }
     } catch (err: any) {
       setError(err.message || "Invalid credentials. Please try again.");
     } finally {

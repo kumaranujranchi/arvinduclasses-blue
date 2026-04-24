@@ -10,6 +10,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const pathname = usePathname();
   const router = useRouter();
 
+  const [user, setUser] = useState<any>(null);
+
   useEffect(() => {
     const sessionStr = localStorage.getItem("user_session");
     if (!sessionStr) {
@@ -18,10 +20,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     }
 
     try {
-      const user = JSON.parse(sessionStr);
-      if (user.role !== "admin") {
+      const parsedUser = JSON.parse(sessionStr);
+      const staffRoles = ["super_admin", "admin", "teacher", "counsellor", "accounts", "sales", "operations"];
+      if (!staffRoles.includes(parsedUser.role)) {
         router.push("/login");
       } else {
+        setUser(parsedUser);
         setIsAuthorized(true);
       }
     } catch (e) {
@@ -35,13 +39,16 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   };
 
   const menuItems = [
-    { label: "Dashboard", href: "/admin", icon: "fas fa-th-large" },
-    { label: "Course Leads", href: "/admin/leads", icon: "fas fa-users" },
-    { label: "Manage Results", href: "/admin/results", icon: "fas fa-trophy" },
-    { label: "Academic Courses", href: "/admin/courses", icon: "fas fa-book" },
-    { label: "Announcements", href: "/admin/notices", icon: "fas fa-bullhorn" },
-    { label: "Blog Posts", href: "/admin/blog", icon: "fas fa-newspaper" },
+    { label: "Dashboard", href: "/admin", icon: "fas fa-th-large", roles: ["super_admin", "admin", "teacher", "counsellor", "accounts", "sales", "operations"] },
+    { label: "User Management", href: "/admin/users", icon: "fas fa-user-shield", roles: ["super_admin"] },
+    { label: "Course Leads", href: "/admin/leads", icon: "fas fa-users", roles: ["super_admin", "admin", "sales", "counsellor"] },
+    { label: "Manage Results", href: "/admin/results", icon: "fas fa-trophy", roles: ["super_admin", "admin", "operations"] },
+    { label: "Academic Courses", href: "/admin/courses", icon: "fas fa-book", roles: ["super_admin", "admin", "operations"] },
+    { label: "Announcements", href: "/admin/notices", icon: "fas fa-bullhorn", roles: ["super_admin", "admin", "operations"] },
+    { label: "Blog Posts", href: "/admin/blog", icon: "fas fa-newspaper", roles: ["super_admin", "admin", "operations"] },
   ];
+
+  const visibleMenuItems = user ? menuItems.filter(item => item.roles.includes(user.role)) : [];
 
   if (!isAuthorized) {
     return (
@@ -71,7 +78,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </div>
 
         <nav className="flex-1 px-4 space-y-1 overflow-y-auto">
-          {menuItems.map((item) => {
+          {visibleMenuItems.map((item) => {
             const isActive = pathname === item.href;
             return (
               <Link
@@ -135,11 +142,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             
             <div className="flex items-center gap-4 pl-6 border-l border-gray-100">
               <div className="text-right hidden sm:block">
-                <p className="text-sm font-bold text-gray-800 leading-none">Anuj Kumar</p>
-                <p className="text-[10px] text-blue-500 font-bold uppercase mt-1">Super Admin</p>
+                <p className="text-sm font-bold text-gray-800 leading-none">{user?.name || "Loading..."}</p>
+                <p className="text-[10px] text-blue-500 font-bold uppercase mt-1">{user?.role?.replace("_", " ") || "Staff"}</p>
               </div>
               <div className="w-11 h-11 rounded-2xl bg-[#07294d] flex items-center justify-center text-white font-bold shadow-lg shadow-blue-100 overflow-hidden">
-                <img src={`https://ui-avatars.com/api/?name=Anuj+Kumar&background=07294d&color=fff&bold=true`} alt="Profile" />
+                <img src={`https://ui-avatars.com/api/?name=${encodeURIComponent(user?.name || "A K")}&background=07294d&color=fff&bold=true`} alt="Profile" />
               </div>
             </div>
           </div>

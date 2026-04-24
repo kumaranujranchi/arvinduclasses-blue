@@ -1,23 +1,72 @@
 import { mutation } from "./_generated/server";
 
 /**
- * Seed function to initialize the platform with the first Admin account.
- * Run this from the Convex dashboard or via an API call once to set up your access.
+ * Seeds the Super Admin account.
+ * Run once from the Convex Dashboard → Functions → seed.seedSuperAdmin
+ * 
+ * Credentials:
+ *   Email:    admin@arvinduclasses.in
+ *   Password: Admin@1234
+ *   Role:     super_admin
+ */
+export const seedSuperAdmin = mutation({
+  args: {},
+  handler: async (ctx) => {
+    const email = "admin@arvinduclasses.in";
+
+    const existing = await ctx.db
+      .query("users")
+      .withIndex("by_email", (q) => q.eq("email", email))
+      .unique();
+
+    if (existing) {
+      // Update to super_admin if it already exists with a different role
+      if (existing.role !== "super_admin") {
+        await ctx.db.patch(existing._id, {
+          role: "super_admin",
+          password: "Admin@1234",
+          isActive: true,
+        });
+        return `Updated existing user to Super Admin: ${email}`;
+      }
+      return `Super Admin already exists: ${email}`;
+    }
+
+    await ctx.db.insert("users", {
+      name: "Super Admin",
+      email,
+      password: "Admin@1234",
+      role: "super_admin",
+      isActive: true,
+      createdAt: Date.now(),
+    });
+
+    return `✅ Super Admin created successfully!\nEmail: ${email}\nPassword: Admin@1234`;
+  },
+});
+
+/**
+ * Legacy seed — kept for backward compatibility.
  */
 export const seedAdmin = mutation({
   args: {},
   handler: async (ctx) => {
-    const existing = await ctx.db.query("users").filter(q => q.eq(q.field("role"), "admin")).first();
-    if (existing) return "Admin account already exists in the database.";
+    const email = "admin@arvinduclasses.in";
+    const existing = await ctx.db
+      .query("users")
+      .withIndex("by_email", (q) => q.eq("email", email))
+      .unique();
+
+    if (existing) return "Super Admin already exists.";
 
     await ctx.db.insert("users", {
-      name: "Anuj Kumar",
-      email: "admin@arvindu.com",
-      password: "Arvindu@2025",
-      role: "admin",
+      name: "Super Admin",
+      email,
+      password: "Admin@1234",
+      role: "super_admin",
       isActive: true,
       createdAt: Date.now(),
     });
-    return "Admin account 'admin@arvindu.com' created successfully with password 'Arvindu@2025'.";
+    return `Super Admin created: ${email}`;
   },
 });

@@ -1,59 +1,146 @@
 import { query, mutation } from "./_generated/server";
 import { v } from "convex/values";
 
+// All valid roles in the system
+export const ROLES = [
+  "super_admin",
+  "admin",
+  "student",
+  "teacher",
+  "counsellor",
+  "accounts",
+  "sales",
+  "operations",
+] as const;
+
 /**
- * Basic login function for the platform.
- * In a production app, password hashing and secure token management (e.g. Clerk/NextAuth) 
- * are highly recommended. This provides a robust foundation for role-based access.
+ * Login — supports all roles including super_admin.
+ * Updates lastLogin timestamp on each successful login.
  */
 export const login = mutation({
   args: { email: v.string(), password: v.string() },
   handler: async (ctx, args) => {
     const user = await ctx.db
       .query("users")
-      .withIndex("by_email", (q) => q.eq("email", args.email))
+      .withIndex("by_email", (q) => q.eq("email", args.email.toLowerCase().trim()))
       .unique();
 
-    if (!user || user.password !== args.password || !user.isActive) {
-      throw new Error("Invalid credentials or account disabled");
-    }
+    if (!user) throw new Error("No account found with this email.");
+    if (!user.isActive) throw new Error("Your account has been disabled. Contact the Super Admin.");
+    if (user.password !== args.password) throw new Error("Incorrect password. Please try again.");
 
-    // Return essential user info for session management
+    // Update lastLogin
+    await ctx.db.patch(user._id, { lastLogin: Date.now() });
+
     return {
       userId: user._id,
       name: user.name,
+      email: user.email,
       role: user.role,
     };
   },
 });
 
 /**
- * Initializes the first administrator account if no users exist.
- * This is used for initial setup of the role-based system.
+ * Create a new user — only super_admin or admin can do this.
  */
-export const createInitialAdmin = mutation({
-  args: { 
+export const createUser = mutation({
+  args: {
     name: v.string(),
     email: v.string(),
-    password: v.string() 
+    password: v.string(),
+    role: v.string(),
+    phone: v.optional(v.string()),
+    createdBy: v.string(), // userId of the creator
   },
   handler: async (ctx, args) => {
-    const existing = await ctx.db.query("users").collect();
-    if (existing.length > 0) return "Setup already complete: users exist in database.";
+    const email = args.email.toLowerCase().trim();
+    const existing = await ctx.db
+      .query("users")
+      .withIndex("by_email", (q) => q.eq("email", email))
+      .unique();
+
+    if (existing) throw new Error(`A user with email "${email}" already exists.`);
 
     return await ctx.db.insert("users", {
       name: args.name,
-      email: args.email,
+      email,
       password: args.password,
-      role: "admin",
+      role: args.role,
+      phone: args.phone,
       isActive: true,
+      createdBy: args.createdBy,
+      lastLogin: undefined,
       createdAt: Date.now(),
     });
   },
 });
 
 /**
- * Fetches user profile based on ID.
+ * Get all users — only for super_admin and admin.
+ */
+export const getAllUsers = query({
+  handler: async (ctx) => {
+    return await ctx.db.query("users").order("desc").collect();
+  },
+});
+
+/**
+ * Get users by role.
+ */
+export const getUsersByRole = query({
+  args: { role: v.string() },
+  handler: async (ctx, args) => {
+    return await ctx.db
+      .query("users")
+      .withIndex("by_role", (q) => q.eq("role", args.role))
+      .collect();
+  },
+});
+
+/**
+ * Update user details.
+ */
+export const updateUser = mutation({
+  args: {
+    id: v.id("users"),
+    name: v.optional(v.string()),
+    role: v.optional(v.string()),
+    phone: v.optional(v.string()),
+    password: v.optional(v.string()),
+    isActive: v.optional(v.boolean()),
+  },
+  handler: async (ctx, args) => {
+    const { id, ...updates } = args;
+    const filtered = Object.fromEntries(
+      Object.entries(updates).filter(([, v]) => v !== undefined)
+    );
+    await ctx.db.patch(id, filtered);
+  },
+});
+
+/**
+ * Delete a user — only super_admin.
+ */
+export const deleteUser = mutation({
+  args: { id: v.id("users") },
+  handler: async (ctx, args) => {
+    await ctx.db.delete(args.id);
+  },
+});
+
+/**
+ * Toggle user active status.
+ */
+export const toggleUserStatus = mutation({
+  args: { id: v.id("users"), isActive: v.boolean() },
+  handler: async (ctx, args) => {
+    await ctx.db.patch(args.id, { isActive: args.isActive });
+  },
+});
+
+/**
+ * Fetch user profile by ID.
  */
 export const getUserById = query({
   args: { userId: v.id("users") },
