@@ -52,7 +52,7 @@ export default function CoursesPage() {
       fee: "₹30,000",
       rating: 5,
       bgColor: "#2F7AD5",
-      slug: "#",
+      slug: "pcb-program",
     },
     {
       tag: "#Commerce",
