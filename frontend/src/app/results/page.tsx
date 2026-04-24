@@ -64,15 +64,15 @@ export default function ResultsPage() {
         position: "relative",
         overflow: "hidden"
       }}>
-        {/* Subtle Grid Pattern Overlay */}
+        {/* Subtle Grid Pattern Overlay - Increased Visibility */}
         <div style={{
           position: "absolute",
           top: 0, left: 0, right: 0, bottom: 0,
-          backgroundImage: `linear-gradient(to right, rgba(7, 41, 77, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(7, 41, 77, 0.05) 1px, transparent 1px)`,
-          backgroundSize: "30px 30px",
-          maskImage: "radial-gradient(circle at center, black, transparent 80%)",
-          WebkitMaskImage: "radial-gradient(circle at center, black, transparent 80%)",
-          opacity: 0.5,
+          backgroundImage: `linear-gradient(to right, rgba(7, 41, 77, 0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(7, 41, 77, 0.12) 1px, transparent 1px)`,
+          backgroundSize: "35px 35px",
+          maskImage: "radial-gradient(circle at center, black 30%, transparent 95%)",
+          WebkitMaskImage: "radial-gradient(circle at center, black 30%, transparent 95%)",
+          opacity: 0.6,
           pointerEvents: "none",
           zIndex: 0
         }}></div>
@@ -238,15 +238,15 @@ export default function ResultsPage() {
 
       {/* ====== Consistency Performers (Toppers) Section ====== */}
       <section className="toppers-area pt-100 pb-100" style={{ position: "relative", overflow: "hidden" }}>
-        {/* Subtle Grid Pattern Overlay */}
+        {/* Subtle Grid Pattern Overlay - Increased Visibility */}
         <div style={{
           position: "absolute",
           top: 0, left: 0, right: 0, bottom: 0,
-          backgroundImage: `linear-gradient(to right, rgba(7, 41, 77, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(7, 41, 77, 0.05) 1px, transparent 1px)`,
-          backgroundSize: "30px 30px",
-          maskImage: "radial-gradient(circle at top right, black, transparent 70%)",
-          WebkitMaskImage: "radial-gradient(circle at top right, black, transparent 70%)",
-          opacity: 0.3,
+          backgroundImage: `linear-gradient(to right, rgba(7, 41, 77, 0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(7, 41, 77, 0.12) 1px, transparent 1px)`,
+          backgroundSize: "35px 35px",
+          maskImage: "radial-gradient(circle at center, black 30%, transparent 95%)",
+          WebkitMaskImage: "radial-gradient(circle at center, black 30%, transparent 95%)",
+          opacity: 0.5,
           pointerEvents: "none"
         }}></div>
 
@@ -286,15 +286,15 @@ export default function ResultsPage() {
 
       {/* ====== Upcoming Tests Section ====== */}
       <section className="upcoming-tests-area pt-100 pb-100" style={{ background: "#f8f9fa", position: "relative", overflow: "hidden" }}>
-        {/* Subtle Grid Pattern Overlay */}
+        {/* Subtle Grid Pattern Overlay - Increased Visibility */}
         <div style={{
           position: "absolute",
           top: 0, left: 0, right: 0, bottom: 0,
-          backgroundImage: `linear-gradient(to right, rgba(7, 41, 77, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(7, 41, 77, 0.05) 1px, transparent 1px)`,
-          backgroundSize: "30px 30px",
-          maskImage: "radial-gradient(circle at bottom left, black, transparent 70%)",
-          WebkitMaskImage: "radial-gradient(circle at bottom left, black, transparent 70%)",
-          opacity: 0.4,
+          backgroundImage: `linear-gradient(to right, rgba(7, 41, 77, 0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(7, 41, 77, 0.12) 1px, transparent 1px)`,
+          backgroundSize: "35px 35px",
+          maskImage: "radial-gradient(circle at center, black 30%, transparent 95%)",
+          WebkitMaskImage: "radial-gradient(circle at center, black 30%, transparent 95%)",
+          opacity: 0.6,
           pointerEvents: "none"
         }}></div>
 
@@ -338,15 +338,15 @@ export default function ResultsPage() {
 
       {/* ====== FAQ Section ====== */}
       <section className="results-faq pt-100 pb-100" style={{ position: "relative", overflow: "hidden" }}>
-        {/* Subtle Grid Pattern Overlay */}
+        {/* Subtle Grid Pattern Overlay - Increased Visibility */}
         <div style={{
           position: "absolute",
           top: 0, left: 0, right: 0, bottom: 0,
-          backgroundImage: `linear-gradient(to right, rgba(7, 41, 77, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(7, 41, 77, 0.05) 1px, transparent 1px)`,
-          backgroundSize: "30px 30px",
-          maskImage: "radial-gradient(circle at center, black, transparent 80%)",
-          WebkitMaskImage: "radial-gradient(circle at center, black, transparent 80%)",
-          opacity: 0.3,
+          backgroundImage: `linear-gradient(to right, rgba(7, 41, 77, 0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(7, 41, 77, 0.12) 1px, transparent 1px)`,
+          backgroundSize: "35px 35px",
+          maskImage: "radial-gradient(circle at center, black 30%, transparent 95%)",
+          WebkitMaskImage: "radial-gradient(circle at center, black 30%, transparent 95%)",
+          opacity: 0.5,
           pointerEvents: "none"
         }}></div>
 
