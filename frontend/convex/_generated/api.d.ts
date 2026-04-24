@@ -10,6 +10,7 @@
 
 import type * as actions from "../actions.js";
 import type * as courses from "../courses.js";
+import type * as leads from "../leads.js";
 import type * as notices from "../notices.js";
 import type * as posts from "../posts.js";
 
@@ -22,6 +23,7 @@ import type {
 declare const fullApi: ApiFromModules<{
   actions: typeof actions;
   courses: typeof courses;
+  leads: typeof leads;
   notices: typeof notices;
   posts: typeof posts;
 }>;
