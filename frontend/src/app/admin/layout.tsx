@@ -96,7 +96,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <div className="w-8 h-8 bg-[#01228D] rounded-lg flex items-center justify-center">
             <img src="/assets/images/arvindu-favicon.png" alt="L" className="w-5 h-5 brightness-200" />
           </div>
-          <span className="font-bold text-lg text-[#1e293b] tracking-tight">MaterialM</span>
+          <span className="font-bold text-lg text-[#1e293b] tracking-tight">Arvindu Classes</span>
         </div>
 
         {/* User Quick Info */}
