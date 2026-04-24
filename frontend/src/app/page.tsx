@@ -332,24 +332,22 @@ export default function HomePage() {
           <div className="courses-wrapper">
             <div className="row">
               {[
-                { tag: "#Science", title: "Computer Science & Engineering", delay: "0.2s" },
-                { tag: "#Science", title: "Applied Mathematics", delay: "0.4s" },
-                { tag: "#Business", title: "Bachelor of Business Administration", delay: "0.6s" },
-                { tag: "#Marketing", title: "Social & Digital Marketing", delay: "0.8s" },
-                { tag: "#Business", title: "Bachelor of Business Administration", delay: "0.2s" },
-                { tag: "#Marketing", title: "Social & Digital Marketing", delay: "0.4s" },
-                { tag: "#Science", title: "Applied Mathematics", delay: "0.6s" },
-                { tag: "#Science", title: "Computer Science & Engineering", delay: "0.8s" },
-              ].map(({ tag, title, delay }, idx) => (
-                <div key={idx} className="col-lg-3 col-sm-6 courses-col">
-                  <div className="single-courses mt-30 wow fadeInUpBig" data-wow-duration="1s" data-wow-delay={delay}>
+                { tag: "#Junior", title: "Foundation Program (Class 6–8)", fee: "₹25,000", duration: "1 Year", bgColor: "#EAB830", slug: "foundation-program", delay: "0.2s" },
+                { tag: "#Secondary", title: "Science Program (Class 9–10)", fee: "₹35,000", duration: "1 Year", bgColor: "#2F7AD5", slug: "science-program", delay: "0.4s" },
+                { tag: "#Senior", title: "Commerce (Class 11–12)", fee: "₹40,000", duration: "1 Year", bgColor: "#0C8B51", slug: "commerce-program", delay: "0.6s" },
+                { tag: "#Mathematics", title: "Applied Mathematics (9–12)", fee: "₹20,000", duration: "1 Year", bgColor: "#27B8A7", slug: "applied-mathematics", delay: "0.2s" },
+                { tag: "#Science", title: "Physics, Chemistry & Biology", fee: "₹30,000", duration: "1 Year", bgColor: "#2F7AD5", slug: "pcb-program", delay: "0.4s" },
+                { tag: "#University", title: "B.Com Academic Support", fee: "₹45,000", duration: "3 Years", bgColor: "#7D2AE8", slug: "bcom-support", delay: "0.6s" },
+              ].map(({ tag, title, fee, duration, bgColor, slug, delay }, idx) => (
+                <div key={idx} className="col-lg-4 col-sm-6 courses-col">
+                  <div className="single-courses mt-30 wow fadeInUpBig" data-wow-duration="1s" data-wow-delay={delay} style={{ backgroundColor: bgColor }}>
                     <a href="#" className="category">{tag}</a>
                     <h4 className="courses-title">
-                      <Link href="/courses">{title}</Link>
+                      <Link href={`/courses/${slug}`}>{title}</Link>
                     </h4>
                     <div className="duration-fee">
-                      <p className="duration">Duration: <span>1 year</span></p>
-                      <p className="fee">Fee: <span>₹5,000</span></p>
+                      <p className="duration">Duration: <span>{duration}</span></p>
+                      <p className="fee">Fee: <span>{fee}</span></p>
                     </div>
                     <div className="rating">
                       <span>Rating: </span>
@@ -359,7 +357,7 @@ export default function HomePage() {
                     </div>
                     <div className="courses-link">
                       <a className="apply" href="#">Online Apply</a>
-                      <Link className="more" href="/courses">Read more <i className="fas fa-chevron-right"></i></Link>
+                      <Link className="more" href={`/courses/${slug}`}>Read more <i className="fas fa-chevron-right"></i></Link>
                     </div>
                   </div>
                 </div>
