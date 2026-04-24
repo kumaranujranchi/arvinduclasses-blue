@@ -417,15 +417,15 @@ export default function HomePage() {
           >
             <div className="row">
               {[
-                { count: "3652", label: "Students" },
-                { count: "105", label: "Faculties" },
-                { count: "120", label: "Branches" },
-                { count: "30", label: "Awards Won" },
-              ].map(({ count, label }) => (
+                { count: "200", label: "Students", plus: true },
+                { count: "24", label: "Faculties", plus: true },
+                { count: "1", label: "Branches", plus: false },
+                { count: "4", label: "Awards Won", plus: true },
+              ].map(({ count, label, plus }) => (
                 <div key={label} className="col-sm-3 col-6 counter-col">
                   <div className="single-counter mt-30">
                     <span className="counter-count">
-                      <span className="count" data-count={count}>0</span> +
+                      <span className="count" data-count={count}>0</span> {plus && "+"}
                     </span>
                     <p>{label}</p>
                   </div>

@@ -474,7 +474,7 @@ export default function AboutPage() {
               <div className="col-sm-3 col-6 counter-col">
                 <div className="single-counter mt-30">
                   <span className="counter-count">
-                    <span className="count" data-count="3652">
+                    <span className="count" data-count="200">
                       0
                     </span>{" "}
                     +
@@ -485,7 +485,7 @@ export default function AboutPage() {
               <div className="col-sm-3 col-6 counter-col">
                 <div className="single-counter mt-30">
                   <span className="counter-count">
-                    <span className="count" data-count="105">
+                    <span className="count" data-count="24">
                       0
                     </span>{" "}
                     +
@@ -496,10 +496,9 @@ export default function AboutPage() {
               <div className="col-sm-3 col-6 counter-col">
                 <div className="single-counter mt-30">
                   <span className="counter-count">
-                    <span className="count" data-count="120">
+                    <span className="count" data-count="1">
                       0
-                    </span>{" "}
-                    +
+                    </span>
                   </span>
                   <p>Branches</p>
                 </div>
@@ -507,12 +506,12 @@ export default function AboutPage() {
               <div className="col-sm-3 col-6 counter-col">
                 <div className="single-counter mt-30">
                   <span className="counter-count">
-                    <span className="count" data-count="30">
+                    <span className="count" data-count="4">
                       0
                     </span>{" "}
                     +
                   </span>
-                  <p>Awards win</p>
+                  <p>Awards Won</p>
                 </div>
               </div>
             </div>
