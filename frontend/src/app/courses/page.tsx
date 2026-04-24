@@ -8,12 +8,54 @@ export const metadata = {
 
 export default function CoursesPage() {
   const courses = [
-    { tag: "#Engineering", title: "Bachelor of Engineering", duration: "4 years", fee: "₹50,000" },
-    { tag: "#Business", title: "Bachelor of Business Administration", duration: "3 years", fee: "₹45,000" },
-    { tag: "#Marketing", title: "Social & Digital Marketing", duration: "1 year", fee: "₹15,000" },
-    { tag: "#Science", title: "Applied Mathematics", duration: "3 years", fee: "₹40,000" },
-    { tag: "#Science", title: "Computer Science & Engineering", duration: "4 years", fee: "₹55,000" },
-    { tag: "#Arts", title: "Bachelor of Fine Arts", duration: "3 years", fee: "₹35,000" },
+    {
+      tag: "#Foundation",
+      title: "Foundation Program (Class 6–8)",
+      duration: "1 Year",
+      fee: "₹25,000",
+      rating: 5,
+      bgColor: "#EAB830",
+    },
+    {
+      tag: "#Science",
+      title: "Science Program (Class 9–10)",
+      duration: "1 Year",
+      fee: "₹35,000",
+      rating: 5,
+      bgColor: "#2F7AD5",
+    },
+    {
+      tag: "#Commerce",
+      title: "Commerce (Class 11–12)",
+      duration: "1 Year",
+      fee: "₹40,000",
+      rating: 5,
+      bgColor: "#0C8B51",
+    },
+    {
+      tag: "#Mathematics",
+      title: "Applied Mathematics (9–12)",
+      duration: "1 Year",
+      fee: "₹20,000",
+      rating: 4,
+      bgColor: "#27B8A7",
+    },
+    {
+      tag: "#Science",
+      title: "Physics, Chemistry & Biology",
+      duration: "1 Year",
+      fee: "₹30,000",
+      rating: 5,
+      bgColor: "#2F7AD5",
+    },
+    {
+      tag: "#Commerce",
+      title: "B.Com Academic Support",
+      duration: "3 Years",
+      fee: "₹45,000",
+      rating: 5,
+      bgColor: "#0C8B51",
+    },
   ];
 
   return (
@@ -39,33 +81,48 @@ export default function CoursesPage() {
         <div className="container">
           <div className="courses-wrapper">
             <div className="row courses-row">
-              {courses.map(({ tag, title, duration, fee }, index) => (
+              {courses.map(({ tag, title, duration, fee, rating, bgColor }, index) => (
                 <div key={index} className="col-lg-4 col-sm-6 courses-col">
                   <div
                     className="single-courses mt-30 wow fadeInUpBig"
                     data-wow-duration="1s"
                     data-wow-delay={`${0.2 * (index + 1)}s`}
+                    style={{ backgroundColor: bgColor }}
                   >
-                    <a href="#" className="category">{tag}</a>
+                    <a href="#" className="category">
+                      {tag}
+                    </a>
                     <h4 className="courses-title">
                       <a href="#">{title}</a>
                     </h4>
                     <div className="duration-fee">
-                      <p className="duration">Duration: <span>{duration}</span></p>
-                      <p className="fee">Fee: <span>{fee}</span></p>
+                      <p className="duration">
+                        Duration: <span>{duration}</span>
+                      </p>
+                      <p className="fee">
+                        Fee: <span>{fee}</span>
+                      </p>
                     </div>
                     <div className="rating">
                       <span>Rating: </span>
                       <ul className="star">
                         {[...Array(5)].map((_, i) => (
-                          <li key={i}><i className="fas fa-star"></i></li>
+                          <li key={i}>
+                            <i
+                              className={
+                                i < rating ? "fas fa-star" : "far fa-star"
+                              }
+                            ></i>
+                          </li>
                         ))}
                       </ul>
                     </div>
                     <div className="courses-link">
-                      <a className="apply" href="#">Online Apply</a>
+                      <a className="apply" href="#">
+                        Book Demo
+                      </a>
                       <a className="more" href="#">
-                        Read more <i className="fas fa-chevron-right"></i>
+                        View Details <i className="fas fa-chevron-right"></i>
                       </a>
                     </div>
                   </div>
