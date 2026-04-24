@@ -140,7 +140,7 @@ export default function Header() {
       <style jsx>{`
         .badge-new {
           position: absolute;
-          top: 10px;
+          top: 5px;
           right: -10px;
           background: #e53e3e;
           color: #fff;
