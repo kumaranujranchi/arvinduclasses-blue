@@ -22,7 +22,7 @@ const StickyButtons = () => {
           transform: 'rotate(180deg)',
           background: '#EAB830',
           color: '#fff',
-          padding: '20px 12px',
+          padding: '15px 10px',
           borderRadius: '0 5px 5px 0',
           fontWeight: '700',
           fontSize: '13px',
@@ -32,12 +32,12 @@ const StickyButtons = () => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          height: '160px',
+          height: '140px',
           letterSpacing: '0.5px',
           border: '1px solid rgba(255,255,255,0.1)'
         }}
       >
-        Book Free Demo Class
+        Book Demo Class
       </a>
       <a 
         href="#" 
@@ -47,7 +47,7 @@ const StickyButtons = () => {
           transform: 'rotate(180deg)',
           background: '#01228D',
           color: '#fff',
-          padding: '20px 12px',
+          padding: '15px 10px',
           borderRadius: '0 5px 5px 0',
           fontWeight: '700',
           fontSize: '13px',
@@ -57,12 +57,12 @@ const StickyButtons = () => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          height: '160px',
+          height: '120px',
           letterSpacing: '0.5px',
           border: '1px solid rgba(255,255,255,0.1)'
         }}
       >
-        Enroll for the Course
+        Enroll Now
       </a>
 
       <style jsx>{`
