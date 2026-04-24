@@ -3,46 +3,34 @@
 import React from 'react';
 
 const FeatureScrolling = () => {
-  const row1 = [
-    { label: "Live Classes", icon: "fa-video", color: "#3182ce" },
-    { label: "24x7 Doubt Solving", icon: "fa-headset", color: "#38a169" },
-    { label: "Mock Tests", icon: "fa-file-alt", color: "#dd6b20" },
-    { label: "Flashcards", icon: "fa-bolt", color: "#805ad5" },
-    { label: "Career Guidance", icon: "fa-compass", color: "#d69e2e" },
-    { label: "Live Classes", icon: "fa-video", color: "#3182ce" },
-    { label: "24x7 Doubt Solving", icon: "fa-headset", color: "#38a169" },
-    { label: "Mock Tests", icon: "fa-file-alt", color: "#dd6b20" },
-    { label: "Flashcards", icon: "fa-bolt", color: "#805ad5" },
-    { label: "Career Guidance", icon: "fa-compass", color: "#d69e2e" }
+  const colors = ["#3182ce", "#38a169", "#dd6b20", "#805ad5", "#e53e3e", "#d69e2e"];
+  const icons = ["fa-check-circle", "fa-star", "fa-book", "fa-graduation-cap", "fa-chalkboard-teacher", "fa-pencil-alt", "fa-lightbulb", "fa-user-check", "fa-clipboard-list", "fa-chart-line"];
+
+  const getTopicObj = (label: string, index: number) => ({
+    label,
+    icon: icons[index % icons.length],
+    color: colors[index % colors.length]
+  });
+
+  const allTopics = [
+    "Live Classes", "Concept-Based Learning", "Small Batch Size", "Personal Attention", "Doubt Solving Sessions", 
+    "Regular Homework", "Topic-wise Practice", "Weekly Tests", "Chapter-wise Tests", "Full Syllabus Tests", 
+    "Performance Tracking", "Progress Reports", "Exam Preparation", "Answer Writing Practice", "Revision Sessions", 
+    "Study Planning", "Time Management Support", "Individual Guidance", "Parent Updates", "Weak Topic Improvement", 
+    "Maths Problem Practice", "Science Concept Clarity", "Physics Numericals", "Chemistry Reactions Practice", 
+    "Biology Diagrams & Theory", "Accountancy Numericals", "Economics Concepts", "Business Studies Case Practice", 
+    "Board Exam Strategy", "Previous Year Questions Practice", "Sample Paper Practice", "Test Analysis & Feedback", 
+    "Speed & Accuracy Improvement", "Concept Revision Classes", "Daily Practice Questions", "Structured Curriculum", 
+    "Experienced Faculty", "Result-Oriented Approach", "Focused Learning Environment", "Limited Batch Size", 
+    "Regular Attendance Monitoring", "Student Performance Review", "Doubt Clearing Classes", "Practice Worksheets", 
+    "Formula Revision", "Diagram Practice", "Writing Skills Improvement", "Exam Time Strategy", 
+    "Stress-Free Learning Environment", "Continuous Assessment", "Strong Academic Foundation", "Confidence Building", 
+    "Smart Study Techniques"
   ];
 
-  const row2 = [
-    { label: "Improvement Book", icon: "fa-star", color: "#3182ce" },
-    { label: "PYQ Practice", icon: "fa-history", color: "#38a169" },
-    { label: "Meditation Session", icon: "fa-peace", color: "#e53e3e" },
-    { label: "Revision Notes", icon: "fa-sticky-note", color: "#805ad5" },
-    { label: "PYQ Tests", icon: "fa-file-signature", color: "#d69e2e" },
-    { label: "Mentorship", icon: "fa-user-graduate", color: "#3182ce" },
-    { label: "Improvement Book", icon: "fa-star", color: "#3182ce" },
-    { label: "PYQ Practice", icon: "fa-history", color: "#38a169" },
-    { label: "Meditation Session", icon: "fa-peace", color: "#e53e3e" },
-    { label: "Revision Notes", icon: "fa-sticky-note", color: "#805ad5" },
-    { label: "PYQ Tests", icon: "fa-file-signature", color: "#d69e2e" },
-    { label: "Mentorship", icon: "fa-user-graduate", color: "#3182ce" }
-  ];
-
-  const row3 = [
-    { label: "Topic-wise Videos", icon: "fa-play-circle", color: "#e53e3e" },
-    { label: "Subjective Tests", icon: "fa-pen-fancy", color: "#3182ce" },
-    { label: "ALLEN Important Q's", icon: "fa-brain", color: "#38a169" },
-    { label: "Topic-wise Tests", icon: "fa-bullseye", color: "#dd6b20" },
-    { label: "Regular Homework", icon: "fa-home", color: "#805ad5" },
-    { label: "Topic-wise Videos", icon: "fa-play-circle", color: "#e53e3e" },
-    { label: "Subjective Tests", icon: "fa-pen-fancy", color: "#3182ce" },
-    { label: "ALLEN Important Q's", icon: "fa-brain", color: "#38a169" },
-    { label: "Topic-wise Tests", icon: "fa-bullseye", color: "#dd6b20" },
-    { label: "Regular Homework", icon: "fa-home", color: "#805ad5" }
-  ];
+  const row1 = allTopics.slice(0, 18).map((t, i) => getTopicObj(t, i));
+  const row2 = allTopics.slice(18, 36).map((t, i) => getTopicObj(t, i + 18));
+  const row3 = allTopics.slice(36).map((t, i) => getTopicObj(t, i + 36));
 
   return (
     <section className="feature-scrolling-area">
@@ -148,11 +136,11 @@ const FeatureScrolling = () => {
         }
 
         .left-to-right .scroll-content {
-          animation: scroll-left 40s linear infinite;
+          animation: scroll-left 60s linear infinite;
         }
 
         .right-to-left .scroll-content {
-          animation: scroll-right 40s linear infinite;
+          animation: scroll-right 60s linear infinite;
         }
 
         .feature-badge {
@@ -199,12 +187,12 @@ const FeatureScrolling = () => {
 
         .mask-left {
           left: 0;
-          background: linear-gradient(to right, #f8fbff 0%, transparent 100%);
+          background: linear-gradient(to right, #f8fbff 10%, transparent 100%);
         }
 
         .mask-right {
           right: 0;
-          background: linear-gradient(to left, #f8fbff 0%, transparent 100%);
+          background: linear-gradient(to left, #f8fbff 10%, transparent 100%);
         }
 
         @keyframes scroll-left {
@@ -229,6 +217,10 @@ const FeatureScrolling = () => {
           }
           .feature-badge span {
             font-size: 13px;
+          }
+          .left-to-right .scroll-content, 
+          .right-to-left .scroll-content {
+            animation-duration: 40s;
           }
         }
       `}</style>
