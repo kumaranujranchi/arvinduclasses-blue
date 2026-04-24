@@ -5,6 +5,7 @@ import Link from "next/link";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import FeatureScrolling from "../components/FeatureScrolling";
+import NewsletterForm from "../components/NewsletterForm";
 
 export default function HomePage() {
   useEffect(() => {
@@ -624,10 +625,7 @@ export default function HomePage() {
               </div>
               <div className="col-lg-7">
                 <div className="newsletter-form mt-30">
-                  <form action="#">
-                    <input type="text" placeholder="Enter your email here" />
-                    <button className="main-btn main-btn-2">Subscribe now</button>
-                  </form>
+                  <NewsletterForm />
                 </div>
               </div>
             </div>

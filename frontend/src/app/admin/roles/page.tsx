@@ -13,8 +13,12 @@ const FEATURES = [
 const ROLES = [
   { id: 'super_admin', name: 'Super Admin', color: 'bg-purple-100 text-purple-700' },
   { id: 'admin', name: 'Administrator', color: 'bg-blue-100 text-blue-700' },
+  { id: 'student', name: 'Student', color: 'bg-indigo-100 text-indigo-700' },
+  { id: 'teacher', name: 'Teacher', color: 'bg-rose-100 text-rose-700' },
   { id: 'counsellor', name: 'Counsellor', color: 'bg-emerald-100 text-emerald-700' },
+  { id: 'accounts', name: 'Accounts', color: 'bg-amber-100 text-amber-700' },
   { id: 'sales', name: 'Sales Executive', color: 'bg-orange-100 text-orange-700' },
+  { id: 'operations', name: 'Operations', color: 'bg-cyan-100 text-cyan-700' },
 ];
 
 export default function RoleManagement() {
