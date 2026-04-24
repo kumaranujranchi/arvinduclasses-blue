@@ -37,106 +37,110 @@ export default function GlobalLogin() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f8fbff] flex items-center justify-center p-4 sm:p-6 font-sans">
-      {/* Font Awesome CDN for Icons */}
+    <div className="min-h-screen bg-[#f1f4f9] flex items-center justify-center p-6 font-sans">
+      {/* Font Awesome CDN for exact icon matching */}
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
       
-      <div className="w-full max-w-[480px]">
-        <div className="bg-white rounded-[2.5rem] shadow-[0_20px_50px_rgba(7,41,77,0.1)] overflow-hidden border border-blue-50/50">
-          <div className="p-8 sm:p-12 pb-6 text-center">
-            <div className="w-20 h-20 bg-blue-50 rounded-3xl mx-auto mb-6 flex items-center justify-center shadow-sm">
-               <img src="/assets/images/Arvindu-logo.png" alt="Arvindu Classes" className="w-14 h-14 object-contain" />
-            </div>
-            <h1 className="text-2xl sm:text-3xl font-bold text-[#07294d] tracking-tight">Welcome Back</h1>
-            <p className="text-gray-400 font-semibold text-[11px] uppercase tracking-[0.2em] mt-3">Arvindu Education Portal</p>
+      <div className="w-full max-w-[440px]">
+        <div className="bg-white rounded-[2.5rem] shadow-[0_15px_40px_rgba(0,0,0,0.05)] overflow-hidden border border-gray-100/50 p-8 sm:p-10">
+          
+          {/* Logo Section */}
+          <div className="text-center mb-8">
+            <img 
+              src="/assets/images/Arvindu-logo.png" 
+              alt="Arvindu Classes" 
+              className="h-16 mx-auto mb-4 object-contain" 
+            />
+            <h1 className="text-[2.6rem] font-black text-[#01228d] leading-tight mb-2">Welcome Back</h1>
+            <p className="text-gray-600 font-bold text-[11px] uppercase tracking-[0.15em]">Arvindu Education Portal</p>
           </div>
           
-          <div className="p-8 sm:p-12 pt-0">
-            <form onSubmit={handleLogin} className="space-y-5">
-              <div className="space-y-2">
-                <label className="text-[11px] font-bold uppercase tracking-wider text-gray-500 ml-1">Official Email</label>
-                <div className="relative group">
-                  <div className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 flex items-center justify-center text-gray-300 group-focus-within:text-blue-500 transition-colors pointer-events-none">
-                    <i className="fa-solid fa-envelope text-sm"></i>
-                  </div>
-                  <input 
-                    type="email" 
-                    required
-                    className="w-full pl-14 pr-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:bg-white focus:ring-2 focus:ring-blue-100 focus:border-blue-200 font-semibold text-gray-700 outline-none transition-all placeholder:text-gray-300"
-                    placeholder="example@arvindu.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
+          <form onSubmit={handleLogin} className="space-y-6">
+            {/* Email Field */}
+            <div className="space-y-2">
+              <label className="text-[11px] font-extrabold uppercase tracking-widest text-gray-400 ml-1">Official Email</label>
+              <div className="relative group">
+                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300">
+                  <i className="fa-regular fa-envelope text-xl"></i>
                 </div>
+                <input 
+                  type="email" 
+                  required
+                  className="w-full pl-12 pr-6 py-4 bg-[#f8f9fb] border border-gray-100 rounded-2xl focus:bg-white focus:ring-1 focus:ring-blue-200 outline-none transition-all placeholder:text-gray-300 text-gray-700 font-medium"
+                  placeholder="example@arvindu.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </div>
+            </div>
 
-              <div className="space-y-2">
-                <label className="text-[11px] font-bold uppercase tracking-wider text-gray-500 ml-1">Secret Password</label>
-                <div className="relative group">
-                  <div className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 flex items-center justify-center text-gray-300 group-focus-within:text-blue-500 transition-colors pointer-events-none">
-                    <i className="fa-solid fa-lock text-sm"></i>
-                  </div>
-                  <input 
-                    type="password" 
-                    required
-                    className="w-full pl-14 pr-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:bg-white focus:ring-2 focus:ring-blue-100 focus:border-blue-200 font-semibold text-gray-700 outline-none transition-all placeholder:text-gray-300"
-                    placeholder="••••••••••••"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
+            {/* Password Field */}
+            <div className="space-y-2">
+              <label className="text-[11px] font-extrabold uppercase tracking-widest text-gray-400 ml-1">Secret Password</label>
+              <div className="relative group">
+                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300">
+                  <i className="fa-solid fa-lock-open text-xl"></i>
                 </div>
+                <input 
+                  type="password" 
+                  required
+                  className="w-full pl-12 pr-6 py-4 bg-[#f8f9fb] border border-gray-100 rounded-2xl focus:bg-white focus:ring-1 focus:ring-blue-200 outline-none transition-all placeholder:text-gray-300 text-gray-700 font-medium text-2xl"
+                  placeholder="••••••••"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
               </div>
+            </div>
 
-              <div className="flex justify-end">
-                <a href="#" className="text-[11px] font-bold text-blue-500 hover:text-blue-700 transition-colors">Forgot Password?</a>
+            {/* Forgot Password */}
+            <div className="text-right">
+              <a href="#" className="text-[13px] font-black text-[#111] hover:text-[#01228d] transition-colors">Forgot Password?</a>
+            </div>
+
+            {error && (
+              <div className="bg-red-50 text-red-500 p-4 rounded-xl text-xs font-bold border border-red-100 animate-in fade-in slide-in-from-top-2">
+                {error}
               </div>
+            )}
 
-              {error && (
-                <div className="bg-red-50 text-red-500 p-4 rounded-xl text-xs font-bold border border-red-100 flex items-center gap-3 animate-in fade-in zoom-in duration-300">
-                  <i className="fa-solid fa-circle-exclamation text-base"></i>
-                  <span>{error}</span>
-                </div>
+            {/* Submit Button */}
+            <button 
+              type="submit" 
+              disabled={isLoading}
+              className="w-full py-4 bg-[#0a2342] text-white rounded-xl font-black text-lg shadow-lg hover:bg-[#0d2d54] transition-all flex items-center justify-center gap-2 group mt-2"
+            >
+              {isLoading ? (
+                <span>Verifying...</span>
+              ) : (
+                <>
+                  <span>Enter Portal</span>
+                  <i className="fa-solid fa-arrow-right-long text-xl transition-transform group-hover:translate-x-1"></i>
+                </>
               )}
+            </button>
+          </form>
 
-              <button 
-                type="submit" 
-                disabled={isLoading}
-                className="w-full py-4 bg-[#07294d] text-white rounded-2xl font-bold text-sm uppercase tracking-widest shadow-xl shadow-blue-100 hover:bg-[#0a3666] hover:-translate-y-0.5 transition-all active:scale-[0.98] disabled:opacity-50 disabled:translate-y-0 flex items-center justify-center gap-3 mt-4"
-              >
-                {isLoading ? (
-                  <>
-                    <i className="fa-solid fa-circle-notch fa-spin"></i>
-                    <span>Verifying...</span>
-                  </>
-                ) : (
-                  <>
-                    <span>Enter Portal</span>
-                    <i className="fa-solid fa-arrow-right-long"></i>
-                  </>
-                )}
-              </button>
-            </form>
-
-            <div className="mt-8 pt-8 border-t border-gray-100 text-center">
-              <a href="/" className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-gray-400 hover:text-[#07294d] transition-colors group">
-                <i className="fa-solid fa-house-chimney group-hover:-translate-x-1 transition-transform"></i>
-                <span>Back to Home</span>
-              </a>
+          {/* Bottom Navigation */}
+          <div className="mt-6 text-center space-y-6">
+            <a href="/" className="inline-flex items-center gap-2 text-[12px] font-black uppercase tracking-wider text-[#111] hover:text-[#01228d] transition-colors">
+              <i className="fa-solid fa-house"></i>
+              <span>Back to Home</span>
+            </a>
+            
+            <div className="space-y-2">
+              <p className="text-gray-900 text-[11px] font-black uppercase tracking-[0.1em] leading-relaxed">
+                &copy; 2026 Arvindu Classes. Authorized<br/>Access Only.
+              </p>
+              <div className="flex justify-center gap-4 text-[10px] font-black text-gray-400 uppercase tracking-widest">
+                <a href="#" className="hover:text-black">Privacy</a>
+                <span>•</span>
+                <a href="#" className="hover:text-black">Terms</a>
+                <span>•</span>
+                <a href="#" className="hover:text-black">Support</a>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div className="text-center mt-8 space-y-2">
-          <p className="text-gray-400 text-[10px] font-bold uppercase tracking-[0.2em]">
-            &copy; 2025 Arvindu Classes. Authorized Access Only.
-          </p>
-          <div className="flex justify-center gap-4 text-[10px] font-bold text-gray-300">
-            <a href="#" className="hover:text-gray-500 uppercase tracking-widest">Privacy</a>
-            <span>•</span>
-            <a href="#" className="hover:text-gray-500 uppercase tracking-widest">Terms</a>
-            <span>•</span>
-            <a href="#" className="hover:text-gray-500 uppercase tracking-widest">Support</a>
-          </div>
+
         </div>
       </div>
     </div>
