@@ -39,11 +39,11 @@ export default function FoundationProgramPage() {
       
       {/* Page Banner - Compact and Sleek */}
       <section className="page-banner">
-        <div className="page-banner-bg bg_cover" style={{ backgroundImage: "url(/assets/images/course-banner.png)" }}>
+        <div className="page-banner-bg bg_cover page-banner-bg-image">
           <div className="container">
             <div className="banner-content text-center wow fadeInDown course-detail-banner-content">
               <h2 className="title course-detail-title">Foundation Program (Class 6–8)</h2>
-              <div style={{ width: "60px", height: "4px", background: "#EAB830", margin: "20px auto" }}></div>
+              <div className="banner-divider-yellow"></div>
               <p className="course-detail-subtitle">Excellence in education starts with a strong foundation.</p>
             </div>
           </div>
@@ -73,39 +73,39 @@ export default function FoundationProgramPage() {
                 {/* Interactive Key Highlights Grid */}
                 <div className="row mt-40">
                   <div className="col-md-6 wow fadeInLeft" data-wow-delay="0.1s">
-                    <div className="highlight-card" style={{ background: "#fff", padding: "25px", borderRadius: "12px", border: "1px solid #eee", borderLeft: "5px solid #EAB830", marginBottom: "20px", transition: "all 0.3s" }}>
-                       <div style={{ display: "flex", alignItems: "center", marginBottom: "12px" }}>
-                          <i className="fas fa-brain" style={{ fontSize: "20px", color: "#EAB830", marginRight: "12px" }}></i>
-                          <h5 style={{ fontSize: "18px", margin: 0, fontWeight: "700" }}>Deep Conceptual Clarity</h5>
+                    <div className="highlight-card" className="card-highlight-yellow">
+                       <div className="d-flex align-items-center mb-12">
+                          <i className="fas fa-brain" className="fs-20-yellow-mr12"></i>
+                          <h5 className="fs-18-m0-fw700">Deep Conceptual Clarity</h5>
                        </div>
-                       <p style={{ fontSize: "14px", color: "#666" }}>We move beyond rote learning to ensure students understand the 'Why' and 'How' behind every concept.</p>
+                       <p className="fs-14-gray">We move beyond rote learning to ensure students understand the 'Why' and 'How' behind every concept.</p>
                     </div>
                   </div>
                   <div className="col-md-6 wow fadeInRight" data-wow-delay="0.1s">
                     <div className="highlight-card course-highlight-card-blue">
-                       <div style={{ display: "flex", alignItems: "center", marginBottom: "12px" }}>
-                          <i className="fas fa-chart-line" style={{ fontSize: "20px", color: "#2F7AD5", marginRight: "12px" }}></i>
-                          <h5 style={{ fontSize: "18px", margin: 0, fontWeight: "700" }}>Progressive Difficulty</h5>
+                       <div className="d-flex align-items-center mb-12">
+                          <i className="fas fa-chart-line" className="fs-20-blue-mr12"></i>
+                          <h5 className="fs-18-m0-fw700">Progressive Difficulty</h5>
                        </div>
-                       <p style={{ fontSize: "14px", color: "#666" }}>Curriculum that starts with basics and gradually shifts towards competitive exam level thinking.</p>
+                       <p className="fs-14-gray">Curriculum that starts with basics and gradually shifts towards competitive exam level thinking.</p>
                     </div>
                   </div>
                   <div className="col-md-6 wow fadeInLeft" data-wow-delay="0.2s">
-                    <div className="highlight-card" style={{ background: "#fff", padding: "25px", borderRadius: "12px", border: "1px solid #eee", borderLeft: "5px solid #0C8B51", marginBottom: "20px", transition: "all 0.3s" }}>
-                       <div style={{ display: "flex", alignItems: "center", marginBottom: "12px" }}>
-                          <i className="fas fa-user-check" style={{ fontSize: "20px", color: "#0C8B51", marginRight: "12px" }}></i>
-                          <h5 style={{ fontSize: "18px", margin: 0, fontWeight: "700" }}>Personalized Support</h5>
+                    <div className="highlight-card" className="card-highlight-green">
+                       <div className="d-flex align-items-center mb-12">
+                          <i className="fas fa-user-check" className="fs-20-green-mr12"></i>
+                          <h5 className="fs-18-m0-fw700">Personalized Support</h5>
                        </div>
-                       <p style={{ fontSize: "14px", color: "#666" }}>Small batch sizes allow our mentors to focus on the individual learning pace of every student.</p>
+                       <p className="fs-14-gray">Small batch sizes allow our mentors to focus on the individual learning pace of every student.</p>
                     </div>
                   </div>
                   <div className="col-md-6 wow fadeInRight" data-wow-delay="0.2s">
-                    <div className="highlight-card" style={{ background: "#fff", padding: "25px", borderRadius: "12px", border: "1px solid #eee", borderLeft: "5px solid #ff4d4d", marginBottom: "20px", transition: "all 0.3s" }}>
-                       <div style={{ display: "flex", alignItems: "center", marginBottom: "12px" }}>
-                          <i className="fas fa-file-invoice" style={{ fontSize: "20px", color: "#ff4d4d", marginRight: "12px" }}></i>
-                          <h5 style={{ fontSize: "18px", margin: 0, fontWeight: "700" }}>Weekly Assessment</h5>
+                    <div className="highlight-card" className="card-highlight-red">
+                       <div className="d-flex align-items-center mb-12">
+                          <i className="fas fa-file-invoice" className="fs-20-red-mr12"></i>
+                          <h5 className="fs-18-m0-fw700">Weekly Assessment</h5>
                        </div>
-                       <p style={{ fontSize: "14px", color: "#666" }}>Regular tests with detailed analysis to identify and improve weak areas immediately.</p>
+                       <p className="fs-14-gray">Regular tests with detailed analysis to identify and improve weak areas immediately.</p>
                     </div>
                   </div>
                 </div>
@@ -128,12 +128,12 @@ export default function FoundationProgramPage() {
                   <div className="tab-content course-tab-content-wrapper">
                     {activeTab === 'benefit' && (
                       <div className="tab-pane fade show active">
-                        <h5 style={{ fontSize: "20px", marginBottom: "20px", fontWeight: "700" }}>Why Choose This Program?</h5>
+                        <h5 className="fs-20-mb20-fw700">Why Choose This Program?</h5>
                         <ul className="courses-details-list m-0 p-0">
-                          <li style={{ marginTop: "15px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51", fontSize: "16px" }}></i> <p style={{ fontSize: "16px" }}>Eliminate the fear of complex subjects like Maths and Physics.</p></li>
-                          <li style={{ marginTop: "15px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51", fontSize: "16px" }}></i> <p style={{ fontSize: "16px" }}>Develop analytical thinking and logical reasoning skills.</p></li>
-                          <li style={{ marginTop: "15px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51", fontSize: "16px" }}></i> <p style={{ fontSize: "16px" }}>Prepare for future competitive exams like Olympiads, NTSE, and JEE/NEET.</p></li>
-                          <li style={{ marginTop: "15px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51", fontSize: "16px" }}></i> <p style={{ fontSize: "16px" }}>Gain an edge over peers in school internal and board examinations.</p></li>
+                          <li className="mt-15-pl30"><i className="fas fa-check" className="list-icon-green-t6-fs16"></i> <p className="fs-16">Eliminate the fear of complex subjects like Maths and Physics.</p></li>
+                          <li className="mt-15-pl30"><i className="fas fa-check" className="list-icon-green-t6-fs16"></i> <p className="fs-16">Develop analytical thinking and logical reasoning skills.</p></li>
+                          <li className="mt-15-pl30"><i className="fas fa-check" className="list-icon-green-t6-fs16"></i> <p className="fs-16">Prepare for future competitive exams like Olympiads, NTSE, and JEE/NEET.</p></li>
+                          <li className="mt-15-pl30"><i className="fas fa-check" className="list-icon-green-t6-fs16"></i> <p className="fs-16">Gain an edge over peers in school internal and board examinations.</p></li>
                         </ul>
                       </div>
                     )}
@@ -141,24 +141,24 @@ export default function FoundationProgramPage() {
                       <div className="tab-pane fade show active">
                          <div className="row">
                            <div className="col-md-6">
-                              <div style={{ background: "#f9f9f9", padding: "20px", borderRadius: "8px", height: "100%" }}>
+                              <div className="bg-f9-p20-r8-h100">
                                 <h6 className="course-curriculum-title">Mathematics Core</h6>
-                                <ul style={{ fontSize: "14px", color: "#555", paddingLeft: "15px" }}>
-                                  <li style={{ marginBottom: "10px" }}>• Number System, Algebra & Ratio</li>
-                                  <li style={{ marginBottom: "10px" }}>• Geometry, Mensuration & Symmetry</li>
-                                  <li style={{ marginBottom: "10px" }}>• Data Handling & Probability Basics</li>
-                                  <li style={{ marginBottom: "10px" }}>• Practical Geometry & Visualizing Shapes</li>
+                                <ul className="fs-14-gray-pl15">
+                                  <li className="mb-10">• Number System, Algebra & Ratio</li>
+                                  <li className="mb-10">• Geometry, Mensuration & Symmetry</li>
+                                  <li className="mb-10">• Data Handling & Probability Basics</li>
+                                  <li className="mb-10">• Practical Geometry & Visualizing Shapes</li>
                                 </ul>
                               </div>
                            </div>
                            <div className="col-md-6">
-                              <div style={{ background: "#f9f9f9", padding: "20px", borderRadius: "8px", height: "100%" }}>
+                              <div className="bg-f9-p20-r8-h100">
                                 <h6 className="course-curriculum-title">Science Foundations</h6>
-                                <ul style={{ fontSize: "14px", color: "#555", paddingLeft: "15px" }}>
-                                  <li style={{ marginBottom: "10px" }}>• Physics: Motion, Force, Light & Electricity</li>
-                                  <li style={{ marginBottom: "10px" }}>• Chemistry: Matter, Fibre & Changes</li>
-                                  <li style={{ marginBottom: "10px" }}>• Biology: Plants, Animals & Environment</li>
-                                  <li style={{ marginBottom: "10px" }}>• General Knowledge & Lab Safety</li>
+                                <ul className="fs-14-gray-pl15">
+                                  <li className="mb-10">• Physics: Motion, Force, Light & Electricity</li>
+                                  <li className="mb-10">• Chemistry: Matter, Fibre & Changes</li>
+                                  <li className="mb-10">• Biology: Plants, Animals & Environment</li>
+                                  <li className="mb-10">• General Knowledge & Lab Safety</li>
                                 </ul>
                               </div>
                            </div>
@@ -167,16 +167,16 @@ export default function FoundationProgramPage() {
                     )}
                     {activeTab === 'teachers' && (
                       <div className="tab-pane fade show active text-center">
-                        <i className="fas fa-user-tie" style={{ fontSize: "40px", color: "#01228D", marginBottom: "20px" }}></i>
-                        <h5 style={{ fontSize: "20px", fontWeight: "700" }}>Expert Mentorship</h5>
-                        <p style={{ marginTop: "15px", color: "#666" }}>Our faculty consists of experienced educators who specialize in middle school pedagogy. They are trained to make learning fun while maintaining academic rigor.</p>
+                        <i className="fas fa-user-tie" className="fs-40-darkblue-mb20"></i>
+                        <h5 className="fs-20-fw700">Expert Mentorship</h5>
+                        <p className="mt-15-gray666">Our faculty consists of experienced educators who specialize in middle school pedagogy. They are trained to make learning fun while maintaining academic rigor.</p>
                       </div>
                     )}
                     {activeTab === 'reviews' && (
                       <div className="tab-pane fade show active">
-                        <div style={{ background: "#f1f1f1", padding: "25px", borderRadius: "12px", borderLeft: "5px solid #01228D" }}>
-                           <p style={{ fontStyle: "italic", fontSize: "16px", color: "#333" }}>“The way teachers explain concepts here is amazing. My son's performance in Maths improved from 70% to 95% within a year.”</p>
-                           <p style={{ marginTop: "15px", fontWeight: "700", color: "#01228D" }}>— Mrs. Sharma (Parent)</p>
+                        <div className="bg-f1-p25-r12-bl5-darkblue">
+                           <p className="italic-fs16-gray333">“The way teachers explain concepts here is amazing. My son's performance in Maths improved from 70% to 95% within a year.”</p>
+                           <p className="course-review-author">— Mrs. Sharma (Parent)</p>
                         </div>
                       </div>
                     )}
@@ -186,40 +186,40 @@ export default function FoundationProgramPage() {
             </div>
             
             <div className="col-lg-4">
-              <div className="courses-sidebar" style={{ position: "sticky", top: "100px" }}>
+              <div className="courses-sidebar sticky-top-100">
                 {/* Course Features - Premium Sidebar Card */}
-                <div className="courses-features wow fadeInRight" style={{ background: "#fff", border: "1px solid #eee", borderRadius: "16px", boxShadow: "0 15px 35px rgba(0,0,0,0.08)", padding: "30px" }}>
-                  <div className="sidebar-title" style={{ borderBottom: "1px solid #eee", paddingBottom: "15px", marginBottom: "20px" }}>
-                    <h4 className="title" style={{ fontSize: "22px", margin: 0 }}>Course At A Glance</h4>
+                <div className="courses-features wow fadeInRight course-sidebar-widget-v2">
+                  <div className="sidebar-title" className="course-sidebar-header">
+                    <h4 className="title" className="course-sidebar-title-text">Course At A Glance</h4>
                   </div>
                   <ul className="courses-features-items m-0 p-0">
-                    <li style={{ padding: "12px 0", borderBottom: "1px solid #f9f9f9" }}>Fee <strong>₹25,000</strong></li>
-                    <li style={{ padding: "12px 0", borderBottom: "1px solid #f9f9f9" }}>Duration <strong>1 Year</strong></li>
-                    <li style={{ padding: "12px 0", borderBottom: "1px solid #f9f9f9" }}>Schedule <strong>5 Days/Week</strong></li>
-                    <li style={{ padding: "12px 0", borderBottom: "1px solid #f9f9f9" }}>Focus <strong>Maths, Science, SST</strong></li>
-                    <li style={{ padding: "12px 0", borderBottom: "1px solid #f9f9f9" }}>Batch <strong>Limited Seats</strong></li>
-                    <li style={{ padding: "12px 0", border: "none" }}>Rating <strong style={{ color: "#EAB830" }}>★★★★★ (5.0)</strong></li>
+                    <li className="course-sidebar-item-border">Fee <strong>₹25,000</strong></li>
+                    <li className="course-sidebar-item-border">Duration <strong>1 Year</strong></li>
+                    <li className="course-sidebar-item-border">Schedule <strong>5 Days/Week</strong></li>
+                    <li className="course-sidebar-item-border">Focus <strong>Maths, Science, SST</strong></li>
+                    <li className="course-sidebar-item-border">Batch <strong>Limited Seats</strong></li>
+                    <li className="p-12-0-border-none">Rating <strong className="text-star-yellow">★★★★★ (5.0)</strong></li>
                   </ul>
                   <div className="sidebar-btn mt-30">
-                    <a className="main-btn w-100 text-center" href="#" style={{ borderRadius: "10px", padding: "0", height: "50px", lineHeight: "50px", fontSize: "16px", background: "#01228D" }}>Book Free Demo Class</a>
+                    <a className="main-btn w-100 text-center" href="#" className="r10-p0-h50-lh50-fs16-bgdarkblue">Book Free Demo Class</a>
                   </div>
                 </div>
 
                 {/* Related Courses Interlinking Widget */}
                 <div className="related-courses-widget mt-50 wow fadeInRight" data-wow-delay="0.2s">
-                   <h4 className="title" style={{ fontSize: "20px", marginBottom: "25px", fontWeight: "700", color: "#01228D" }}>Other Programs</h4>
+                   <h4 className="title" className="course-sidebar-title-md">Other Programs</h4>
                    <div className="related-list">
                      {relatedCourses.map((course, idx) => (
-                       <Link key={idx} href={course.slug} className="sidebar-course-link" style={{ display: "block", textDecoration: "none", color: "inherit", marginBottom: "20px" }}>
-                          <div className="sidebar-card" style={{ background: "#fff", border: "1px solid #eee", borderRadius: "12px", overflow: "hidden", display: "flex", alignItems: "center", transition: "all 0.3s", padding: "10px" }}>
-                             <div className="img" style={{ width: "70px", height: "70px", borderRadius: "8px", overflow: "hidden", flexShrink: 0 }}>
-                                <img src={course.image} alt={course.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                       <Link key={idx} href={course.slug} className="sidebar-course-link course-sidebar-link-box">
+                          <div className="sidebar-card course-sidebar-card-sm">
+                             <div className="img" className="course-sidebar-img-box">
+                                <img src={course.image} alt={course.title} className="w-100 h-100 object-cover" />
                              </div>
-                             <div className="info" style={{ padding: "0 15px", flexGrow: 1 }}>
-                                <h5 style={{ fontSize: "14px", margin: 0, fontWeight: "600", color: "#333", lineHeight: "1.4" }}>{course.title}</h5>
-                                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "5px" }}>
-                                   <span style={{ fontSize: "12px", color: "#0C8B51", fontWeight: "700" }}>{course.fee}</span>
-                                   <i className="fas fa-chevron-right" style={{ fontSize: "10px", color: "#ccc" }}></i>
+                             <div className="info" className="course-sidebar-info-v2">
+                                <h5 className="course-sidebar-course-title">{course.title}</h5>
+                                <div className="d-flex justify-content-between align-items-center mt-5">
+                                   <span className="fs-12-green-fw700">{course.fee}</span>
+                                   <i className="fas fa-chevron-right" className="fs-10px text-light-gray"></i>
                                 </div>
                              </div>
                           </div>
@@ -234,19 +234,19 @@ export default function FoundationProgramPage() {
       </section>
 
       {/* Modern CTA Section */}
-      <section className="cta-area wow fadeInUp" style={{ paddingBottom: "100px" }}>
+      <section className="cta-area wow fadeInUp" className="pb-100">
         <div className="container">
-          <div className="cta-box bg_cover" style={{ backgroundImage: "url(/assets/images/newsletter-bg-1.webp)", borderRadius: "20px", padding: "60px 40px", boxShadow: "0 20px 40px rgba(0,0,0,0.1)", position: "relative", overflow: "hidden" }}>
-            <div className="overlay" style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(1, 34, 141, 0.96)", zIndex: 1 }}></div>
-            <div className="row align-items-center" style={{ position: "relative", zIndex: 2 }}>
+          <div className="cta-box bg_cover course-cta-box">
+            <div className="overlay" className="course-cta-overlay"></div>
+            <div className="row align-items-center" className="relative-z2">
               <div className="col-lg-8 text-center text-lg-left">
                 <div className="cta-text-wrapper">
-                  <h2 className="title" style={{ fontSize: "32px", color: "#fff", fontWeight: "800" }}>Start Your Journey Towards Excellence</h2>
-                  <p style={{ color: "rgba(255,255,255,0.95)", fontSize: "18px", marginTop: "10px" }}>Join our foundation program and transform your academic potential.</p>
+                  <h2 className="title" className="course-cta-title">Start Your Journey Towards Excellence</h2>
+                  <p className="course-cta-desc">Join our foundation program and transform your academic potential.</p>
                 </div>
               </div>
               <div className="col-lg-4 text-center text-lg-right mt-40 mt-lg-0">
-                 <button className="main-btn" style={{ borderRadius: "12px", background: "#fff", color: "#01228D", border: "none", height: "55px", lineHeight: "55px", padding: "0 35px", fontSize: "16px", fontWeight: "700" }}>Book Free Demo</button>
+                 <button className="main-btn" className="course-cta-btn">Book Free Demo</button>
               </div>
             </div>
           </div>

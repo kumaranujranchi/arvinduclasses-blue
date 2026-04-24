@@ -118,7 +118,7 @@ export default function HomePage() {
       <section className="slider-area slider-03 slider-active">
         <div
           className="single-slider d-flex align-items-center bg_cover"
-          style={{ backgroundImage: "linear-gradient(rgba(7, 41, 77, 0.7), rgba(7, 41, 77, 0.7)), url(/assets/images/homepage1.png)" }}
+          className="home-slider-bg-1"
         >
           <div className="container">
             <div className="slider-content slider-content-3 text-center">
@@ -142,7 +142,7 @@ export default function HomePage() {
         </div>
         <div
           className="single-slider d-flex align-items-center bg_cover"
-          style={{ backgroundImage: "linear-gradient(rgba(7, 41, 77, 0.7), rgba(7, 41, 77, 0.7)), url(/assets/images/homepage2.png)" }}
+          className="home-slider-bg-2"
         >
           <div className="container">
             <div className="slider-content slider-content-3 text-center">
@@ -274,7 +274,7 @@ export default function HomePage() {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-4">
-              <div className="features-image-2" style={{ marginTop: "-45px" }}>
+              <div className="features-image-2" className="mt-minus-45">
                 <img className="wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s" src="/assets/images/homepage_girl_v2.png" alt="Features" />
               </div>
             </div>
@@ -409,7 +409,7 @@ export default function HomePage() {
         <div className="container">
           <div
             className="counter-wrapper-2 bg_cover"
-            style={{ backgroundImage: "url(/assets/images/counter-bg-2.webp)" }}
+            className="home-counter-bg"
           >
             <div className="row">
               {[
@@ -615,7 +615,7 @@ export default function HomePage() {
             className="newsletter-wrapper bg_cover wow zoomIn"
             data-wow-duration="1s"
             data-wow-delay="0.2s"
-            style={{ backgroundImage: "url(/assets/images/newsletter-bg-1.webp)" }}
+            className="home-newsletter-bg"
           >
             <div className="row align-items-center">
               <div className="col-lg-5">

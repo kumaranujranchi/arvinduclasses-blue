@@ -39,50 +39,50 @@ export default function PCBProgramPage() {
       
       {/* Page Banner - Concept and Understanding Focused */}
       <section className="page-banner">
-        <div className="page-banner-bg bg_cover" style={{ backgroundImage: "url(/assets/images/course-banner.png)" }}>
+        <div className="page-banner-bg bg_cover page-banner-bg-image">
           <div className="container">
-            <div className="banner-content text-center wow fadeInDown" style={{ paddingTop: "120px", paddingBottom: "80px" }}>
-              <h2 className="title" style={{ fontSize: "32px", fontWeight: "800", color: "#fff", textShadow: "0 2px 4px rgba(0,0,0,0.3)" }}>Physics, Chemistry & Biology</h2>
-              <div style={{ width: "60px", height: "4px", background: "#2F7AD5", margin: "20px auto" }}></div>
-              <p style={{ color: "#fff", fontSize: "16px", fontWeight: "500" }}>Mastering Science through conceptual clarity and regular practice.</p>
+            <div className="banner-content text-center wow fadeInDown" className="banner-padding-y">
+              <h2 className="title" className="title-white-shadow">Physics, Chemistry & Biology</h2>
+              <div className="banner-divider"></div>
+              <p className="text-white-16-500">Mastering Science through conceptual clarity and regular practice.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Courses Details Start */}
-      <section className="courses-details" style={{ paddingTop: "80px", paddingBottom: "80px", backgroundColor: "#fdfdfd" }}>
+      <section className="courses-details" className="section-padding-y-fdfd">
         <div className="container">
           <div className="row">
             <div className="col-lg-8">
               <div className="courses-details-content">
                 <div className="image wow zoomIn" data-wow-duration="1s">
-                   <img src="/assets/images/courses-details.webp" style={{ borderRadius: "16px", boxShadow: "0 20px 40px rgba(0,0,0,0.12)", width: "100%", height: "auto" }} alt="PCB Program Details" />
+                   <img src="/assets/images/courses-details.webp" className="img-radius-shadow-w100" alt="PCB Program Details" />
                 </div>
 
                 <div className="content-box mt-50 wow fadeInUp">
-                  <h3 className="title" style={{ fontSize: "30px", color: "#01228D", fontWeight: "700" }}>Science Program – Physics, Chemistry & Biology (Class 9–10)</h3>
-                  <p style={{ fontSize: "17px", lineHeight: "1.7", color: "#444", marginTop: "20px" }}>
+                  <h3 className="title" className="title-dark-blue-30">Science Program – Physics, Chemistry & Biology (Class 9–10)</h3>
+                  <p className="text-gray-17-mt20">
                     This program is designed for students who want a deeper understanding of core Science subjects — Physics, Chemistry, and Biology.
                   </p>
-                  <p style={{ fontSize: "17px", lineHeight: "1.7", color: "#444", marginTop: "15px" }}>
+                  <p className="text-gray-17-mt15">
                     Science requires conceptual clarity along with the ability to apply concepts in numerical and theoretical questions. Our teaching approach ensures students understand each topic clearly and can confidently solve exam-level questions.
                   </p>
                 </div>
 
                 <div className="overview-section mt-50 wow fadeInUp">
-                  <h4 style={{ fontSize: "24px", color: "#01228D", fontWeight: "700", marginBottom: "20px" }}>Course Overview</h4>
-                  <p style={{ fontSize: "16px", color: "#555", lineHeight: "1.6" }}>
+                  <h4 className="title-dark-blue-24">Course Overview</h4>
+                  <p className="text-gray-16-lh16">
                     The Science Combo Program focuses on strengthening concepts in Physics, Chemistry, and Biology with structured teaching and regular assessments.
                   </p>
-                  <p style={{ fontSize: "16px", color: "#555", marginTop: "15px" }}>We ensure that students:</p>
-                  <ul className="courses-details-list" style={{ marginTop: "10px" }}>
-                    <li style={{ marginTop: "10px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "4px", color: "#2F7AD5" }}></i> <p style={{ fontSize: "15px" }}>Understand concepts instead of memorizing</p></li>
-                    <li style={{ marginTop: "10px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "4px", color: "#2F7AD5" }}></i> <p style={{ fontSize: "15px" }}>Practice numerical and theory-based questions regularly</p></li>
-                    <li style={{ marginTop: "10px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "4px", color: "#2F7AD5" }}></i> <p style={{ fontSize: "15px" }}>Improve their performance through continuous evaluation</p></li>
-                    <li style={{ marginTop: "10px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "4px", color: "#2F7AD5" }}></i> <p style={{ fontSize: "15px" }}>Develop confidence in handling complex topics</p></li>
+                  <p className="text-gray-16-mt15">We ensure that students:</p>
+                  <ul className="courses-details-list" className="mt-10">
+                    <li className="list-item-mt10-pl30"><i className="fas fa-check" className="list-icon-blue-t4"></i> <p className="fs-15">Understand concepts instead of memorizing</p></li>
+                    <li className="list-item-mt10-pl30"><i className="fas fa-check" className="list-icon-blue-t4"></i> <p className="fs-15">Practice numerical and theory-based questions regularly</p></li>
+                    <li className="list-item-mt10-pl30"><i className="fas fa-check" className="list-icon-blue-t4"></i> <p className="fs-15">Improve their performance through continuous evaluation</p></li>
+                    <li className="list-item-mt10-pl30"><i className="fas fa-check" className="list-icon-blue-t4"></i> <p className="fs-15">Develop confidence in handling complex topics</p></li>
                   </ul>
-                  <p style={{ fontSize: "16px", color: "#555", marginTop: "20px", fontWeight: "600" }}>
+                  <p className="text-gray-16-mt20-bold">
                     This program is ideal for students who want extra support in Science subjects alongside school preparation.
                   </p>
                 </div>
@@ -90,43 +90,43 @@ export default function PCBProgramPage() {
                 {/* Science Mastery Highlights Grid */}
                 <div className="row mt-40">
                   <div className="col-md-6 wow fadeInLeft" data-wow-delay="0.1s">
-                    <div className="highlight-card" style={{ background: "#fff", padding: "25px", borderRadius: "12px", border: "1px solid #eee", borderLeft: "5px solid #2F7AD5", marginBottom: "20px", transition: "all 0.3s" }}>
-                       <h5 style={{ fontSize: "18px", marginBottom: "10px", fontWeight: "700" }}>Theory & Diagram Focus</h5>
-                       <p style={{ fontSize: "14px", color: "#666" }}>Specialized guidance for Biology diagrams and theoretical concepts in Chemistry.</p>
+                    <div className="highlight-card" className="card-highlight-blue">
+                       <h5 className="fs-18-mb10-bold">Theory & Diagram Focus</h5>
+                       <p className="fs-14-gray">Specialized guidance for Biology diagrams and theoretical concepts in Chemistry.</p>
                     </div>
                   </div>
                   <div className="col-md-6 wow fadeInRight" data-wow-delay="0.1s">
-                    <div className="highlight-card" style={{ background: "#fff", padding: "25px", borderRadius: "12px", border: "1px solid #eee", borderLeft: "5px solid #01228D", marginBottom: "20px", transition: "all 0.3s" }}>
-                       <h5 style={{ fontSize: "18px", marginBottom: "10px", fontWeight: "700" }}>Lab & Numerical Support</h5>
-                       <p style={{ fontSize: "14px", color: "#666" }}>Practical lab concept support and intensive numerical practice for Physics.</p>
+                    <div className="highlight-card" className="card-highlight-dark">
+                       <h5 className="fs-18-mb10-bold">Lab & Numerical Support</h5>
+                       <p className="fs-14-gray">Practical lab concept support and intensive numerical practice for Physics.</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="courses-details-tab wow fadeInUp" style={{ marginTop: "40px" }}>
-                  <ul className="nav nav-justified" style={{ background: "#f8f9fa", borderRadius: "10px 10px 0 0", overflow: "hidden" }}>
+                <div className="courses-details-tab wow fadeInUp" className="mt-40">
+                  <ul className="nav nav-justified" className="tab-nav-bg">
                     <li className="nav-item">
-                      <a className={activeTab === 'benefit' ? 'active' : ''} onClick={() => setActiveTab('benefit')} style={{ cursor: 'pointer', padding: "20px 10px", height: "auto", border: "none", fontSize: "16px" }}>Benefits</a>
+                      <a className={activeTab === 'benefit' ? 'active' : ''} onClick={() => setActiveTab('benefit')} className="tab-link-custom">Benefits</a>
                     </li>
                     <li className="nav-item">
-                      <a className={activeTab === 'curriculum' ? 'active' : ''} onClick={() => setActiveTab('curriculum')} style={{ cursor: 'pointer', padding: "20px 10px", height: "auto", border: "none", fontSize: "16px" }}>Curriculum</a>
+                      <a className={activeTab === 'curriculum' ? 'active' : ''} onClick={() => setActiveTab('curriculum')} className="tab-link-custom">Curriculum</a>
                     </li>
                     <li className="nav-item">
-                      <a className={activeTab === 'teachers' ? 'active' : ''} onClick={() => setActiveTab('teachers')} style={{ cursor: 'pointer', padding: "20px 10px", height: "auto", border: "none", fontSize: "16px" }}>Faculty</a>
+                      <a className={activeTab === 'teachers' ? 'active' : ''} onClick={() => setActiveTab('teachers')} className="tab-link-custom">Faculty</a>
                     </li>
                     <li className="nav-item">
-                      <a className={activeTab === 'reviews' ? 'active' : ''} onClick={() => setActiveTab('reviews')} style={{ cursor: 'pointer', padding: "20px 10px", height: "auto", border: "none", fontSize: "16px" }}>Reviews</a>
+                      <a className={activeTab === 'reviews' ? 'active' : ''} onClick={() => setActiveTab('reviews')} className="tab-link-custom">Reviews</a>
                     </li>
                   </ul>
-                  <div className="tab-content" style={{ border: "1px solid #eee", padding: "40px", borderRadius: "0 0 10px 10px", background: "#fff" }}>
+                  <div className="tab-content" className="tab-content-box">
                     {activeTab === 'benefit' && (
                       <div className="tab-pane fade show active">
-                        <ul className="courses-details-list" style={{ margin: 0, padding: 0 }}>
-                          <li style={{ marginTop: "12px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Strong understanding of core Science subjects.</p></li>
-                          <li style={{ marginTop: "12px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Improved performance in school and board exams.</p></li>
-                          <li style={{ marginTop: "12px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Better numerical solving skills for Physics & Chemistry.</p></li>
-                          <li style={{ marginTop: "12px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Clear concepts in Biology and theory-intensive subjects.</p></li>
-                          <li style={{ marginTop: "12px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Strong foundation for higher studies in Science streams.</p></li>
+                        <ul className="courses-details-list" className="m-0 p-0">
+                          <li className="list-item-mt12-pl30"><i className="fas fa-check" className="list-icon-green-t6"></i> <p className="fs-15">Strong understanding of core Science subjects.</p></li>
+                          <li className="list-item-mt12-pl30"><i className="fas fa-check" className="list-icon-green-t6"></i> <p className="fs-15">Improved performance in school and board exams.</p></li>
+                          <li className="list-item-mt12-pl30"><i className="fas fa-check" className="list-icon-green-t6"></i> <p className="fs-15">Better numerical solving skills for Physics & Chemistry.</p></li>
+                          <li className="list-item-mt12-pl30"><i className="fas fa-check" className="list-icon-green-t6"></i> <p className="fs-15">Clear concepts in Biology and theory-intensive subjects.</p></li>
+                          <li className="list-item-mt12-pl30"><i className="fas fa-check" className="list-icon-green-t6"></i> <p className="fs-15">Strong foundation for higher studies in Science streams.</p></li>
                         </ul>
                       </div>
                     )}
@@ -134,34 +134,34 @@ export default function PCBProgramPage() {
                       <div className="tab-pane fade show active">
                          <div className="row">
                            <div className="col-md-6">
-                              <div style={{ background: "#f9f9f9", padding: "20px", borderRadius: "8px", height: "100%", marginBottom: "20px" }}>
-                                <h6 style={{ fontWeight: "700", marginBottom: "15px", color: "#01228D" }}>Physics</h6>
-                                <ul style={{ fontSize: "13px", color: "#555", paddingLeft: "15px" }}>
-                                  <li style={{ marginBottom: "8px" }}>• Motion and Laws of Motion</li>
-                                  <li style={{ marginBottom: "8px" }}>• Work, Energy, and Power</li>
-                                  <li style={{ marginBottom: "8px" }}>• Light and Sound</li>
-                                  <li style={{ marginBottom: "8px" }}>• Electricity (Class 10)</li>
+                              <div className="curriculum-card">
+                                <h6 className="fs-bold-mb15-dark">Physics</h6>
+                                <ul className="fs-13-gray-pl15">
+                                  <li className="mb-8">• Motion and Laws of Motion</li>
+                                  <li className="mb-8">• Work, Energy, and Power</li>
+                                  <li className="mb-8">• Light and Sound</li>
+                                  <li className="mb-8">• Electricity (Class 10)</li>
                                 </ul>
                               </div>
                            </div>
                            <div className="col-md-6">
-                              <div style={{ background: "#f9f9f9", padding: "20px", borderRadius: "8px", height: "100%", marginBottom: "20px" }}>
-                                <h6 style={{ fontWeight: "700", marginBottom: "15px", color: "#01228D" }}>Chemistry</h6>
-                                <ul style={{ fontSize: "13px", color: "#555", paddingLeft: "15px" }}>
-                                  <li style={{ marginBottom: "8px" }}>• Matter and its Properties</li>
-                                  <li style={{ marginBottom: "8px" }}>• Chemical Reactions</li>
-                                  <li style={{ marginBottom: "8px" }}>• Acids, Bases, and Salts</li>
-                                  <li style={{ marginBottom: "8px" }}>• Metals and Non-Metals</li>
+                              <div className="curriculum-card">
+                                <h6 className="fs-bold-mb15-dark">Chemistry</h6>
+                                <ul className="fs-13-gray-pl15">
+                                  <li className="mb-8">• Matter and its Properties</li>
+                                  <li className="mb-8">• Chemical Reactions</li>
+                                  <li className="mb-8">• Acids, Bases, and Salts</li>
+                                  <li className="mb-8">• Metals and Non-Metals</li>
                                 </ul>
                               </div>
                            </div>
                            <div className="col-md-12">
-                              <div style={{ background: "#f9f9f9", padding: "20px", borderRadius: "8px", height: "100%", marginBottom: "20px" }}>
-                                <h6 style={{ fontWeight: "700", marginBottom: "15px", color: "#01228D" }}>Biology</h6>
-                                <ul style={{ fontSize: "13px", color: "#555", paddingLeft: "15px" }}>
-                                  <li style={{ marginBottom: "8px" }}>• Cell Structure & Human Body Systems</li>
-                                  <li style={{ marginBottom: "8px" }}>• Plants and Environment</li>
-                                  <li style={{ marginBottom: "8px" }}>• Reproduction and Ecosystem</li>
+                              <div className="curriculum-card">
+                                <h6 className="fs-bold-mb15-dark">Biology</h6>
+                                <ul className="fs-13-gray-pl15">
+                                  <li className="mb-8">• Cell Structure & Human Body Systems</li>
+                                  <li className="mb-8">• Plants and Environment</li>
+                                  <li className="mb-8">• Reproduction and Ecosystem</li>
                                 </ul>
                               </div>
                            </div>
@@ -170,21 +170,21 @@ export default function PCBProgramPage() {
                     )}
                     {activeTab === 'teachers' && (
                       <div className="tab-pane fade show active">
-                        <p style={{ fontSize: "16px", color: "#444" }}>Our Science faculty focuses on making complex topics simple and easy to understand through structured teaching.</p>
-                        <p style={{ marginTop: "15px", fontWeight: "600" }}>Students benefit from:</p>
-                        <ul className="courses-details-list" style={{ marginTop: "10px", padding: 0 }}>
-                           <li style={{ marginTop: "10px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Concept-based explanation</p></li>
-                           <li style={{ marginTop: "10px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Numerical problem-solving guidance</p></li>
-                           <li style={{ marginTop: "10px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Diagram and theory clarity</p></li>
-                           <li style={{ marginTop: "10px", paddingLeft: "30px" }}><i className="fas fa-check" style={{ top: "6px", color: "#0C8B51" }}></i> <p style={{ fontSize: "15px" }}>Regular doubt-clearing support</p></li>
+                        <p className="fs-16-gray444">Our Science faculty focuses on making complex topics simple and easy to understand through structured teaching.</p>
+                        <p className="mt-15-fw600">Students benefit from:</p>
+                        <ul className="courses-details-list mt-10px p-0">
+                           <li className="list-item-mt10-pl30"><i className="fas fa-check" className="list-icon-green-t6"></i> <p className="fs-15">Concept-based explanation</p></li>
+                           <li className="list-item-mt10-pl30"><i className="fas fa-check" className="list-icon-green-t6"></i> <p className="fs-15">Numerical problem-solving guidance</p></li>
+                           <li className="list-item-mt10-pl30"><i className="fas fa-check" className="list-icon-green-t6"></i> <p className="fs-15">Diagram and theory clarity</p></li>
+                           <li className="list-item-mt10-pl30"><i className="fas fa-check" className="list-icon-green-t6"></i> <p className="fs-15">Regular doubt-clearing support</p></li>
                         </ul>
                       </div>
                     )}
                     {activeTab === 'reviews' && (
                       <div className="tab-pane fade show active">
-                        <div style={{ background: "#f8f9fa", padding: "30px", borderRadius: "12px", borderLeft: "5px solid #2F7AD5" }}>
-                           <p style={{ fontStyle: "italic", fontSize: "17px", color: "#333", lineHeight: "1.6" }}>“The way concepts are explained in Physics and Chemistry made everything much easier to understand. My performance improved a lot after joining.”</p>
-                           <p style={{ marginTop: "15px", fontWeight: "700", color: "#01228D" }}>— Class 9 Student</p>
+                        <div className="course-review-card-blue">
+                           <p className="course-review-text">“The way concepts are explained in Physics and Chemistry made everything much easier to understand. My performance improved a lot after joining.”</p>
+                           <p className="course-review-author">— Class 9 Student</p>
                         </div>
                       </div>
                     )}
@@ -194,41 +194,41 @@ export default function PCBProgramPage() {
             </div>
             
             <div className="col-lg-4">
-              <div className="courses-sidebar" style={{ position: "sticky", top: "100px" }}>
+              <div className="courses-sidebar sticky-top-100">
                 {/* Course Features - Side Panel */}
-                <div className="courses-features wow fadeInRight" style={{ background: "#fff", border: "1px solid #eee", borderRadius: "16px", boxShadow: "0 15px 35px rgba(0,0,0,0.08)", padding: "30px" }}>
-                  <div className="sidebar-title" style={{ borderBottom: "1px solid #eee", paddingBottom: "15px", marginBottom: "20px" }}>
-                    <h4 className="title" style={{ fontSize: "22px", margin: 0 }}>Course Features</h4>
+                <div className="courses-features wow fadeInRight course-sidebar-widget-v2">
+                  <div className="sidebar-title" className="course-sidebar-header">
+                    <h4 className="title" className="course-sidebar-title-text">Course Features</h4>
                   </div>
-                  <ul className="courses-features-items" style={{ margin: 0, padding: 0 }}>
-                    <li style={{ padding: "12px 0", borderBottom: "1px solid #f9f9f9" }}>Fee <strong>₹30,000</strong></li>
-                    <li style={{ padding: "12px 0", borderBottom: "1px solid #f9f9f9" }}>Duration <strong>1 Year</strong></li>
-                    <li style={{ padding: "12px 0", borderBottom: "1px solid #f9f9f9" }}>Classes <strong>5 Days/Week</strong></li>
-                    <li style={{ padding: "12px 0", borderBottom: "1px solid #f9f9f9" }}>Focus <strong>Physics, Chem, Bio</strong></li>
-                    <li style={{ padding: "12px 0", borderBottom: "1px solid #f9f9f9" }}>Boards <strong>CBSE & ICSE</strong></li>
-                    <li style={{ padding: "12px 0", borderBottom: "1px solid #f9f9f9" }}>Labs <strong>Concept Support</strong></li>
-                    <li style={{ padding: "12px 0", border: "none" }}>Rating <strong style={{ color: "#EAB830" }}>★★★★★ (5.0)</strong></li>
+                  <ul className="courses-features-items" className="m-0 p-0">
+                    <li className="course-sidebar-item-border">Fee <strong>₹30,000</strong></li>
+                    <li className="course-sidebar-item-border">Duration <strong>1 Year</strong></li>
+                    <li className="course-sidebar-item-border">Classes <strong>5 Days/Week</strong></li>
+                    <li className="course-sidebar-item-border">Focus <strong>Physics, Chem, Bio</strong></li>
+                    <li className="course-sidebar-item-border">Boards <strong>CBSE & ICSE</strong></li>
+                    <li className="course-sidebar-item-border">Labs <strong>Concept Support</strong></li>
+                    <li className="p-12-0-border-none">Rating <strong className="text-star-yellow">★★★★★ (5.0)</strong></li>
                   </ul>
                   <div className="sidebar-btn mt-30">
-                    <a className="main-btn w-100 text-center" href="#" style={{ borderRadius: "10px", height: "50px", lineHeight: "50px", padding: "0", fontSize: "16px", background: "#01228D" }}>Book Demo Class</a>
+                    <a className="main-btn w-100 text-center" href="#" className="course-sidebar-btn-blue">Book Demo Class</a>
                   </div>
                 </div>
 
                 {/* Related Courses Interlinking Widget */}
                 <div className="related-courses-widget mt-50 wow fadeInRight" data-wow-delay="0.2s">
-                   <h4 className="title" style={{ fontSize: "20px", marginBottom: "25px", fontWeight: "700", color: "#01228D" }}>Recommended Programs</h4>
+                   <h4 className="title" className="course-sidebar-title-md">Recommended Programs</h4>
                    <div className="related-list">
                      {relatedCourses.map((course, idx) => (
-                       <Link key={idx} href={course.slug} className="sidebar-course-link" style={{ display: "block", textDecoration: "none", color: "inherit", marginBottom: "20px" }}>
-                          <div className="sidebar-card" style={{ background: "#fff", border: "1px solid #eee", borderRadius: "12px", overflow: "hidden", display: "flex", alignItems: "center", transition: "all 0.3s", padding: "10px" }}>
-                             <div className="img" style={{ width: "70px", height: "70px", borderRadius: "8px", overflow: "hidden", flexShrink: 0 }}>
-                                <img src={course.image} alt={course.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                       <Link key={idx} href={course.slug} className="sidebar-course-link course-sidebar-link-box">
+                          <div className="sidebar-card course-sidebar-card-sm">
+                             <div className="img" className="course-sidebar-img-box">
+                                <img src={course.image} alt={course.title} className="w-100 h-100 object-cover" />
                              </div>
-                             <div className="info" style={{ padding: "0 15px", flexGrow: 1 }}>
-                                <h5 style={{ fontSize: "14px", margin: 0, fontWeight: "600", color: "#333", lineHeight: "1.4" }}>{course.title}</h5>
-                                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "5px" }}>
+                             <div className="info" className="course-sidebar-info-v2">
+                                <h5 className="course-sidebar-course-title">{course.title}</h5>
+                                <div className="d-flex justify-content-between align-items-center mt-5">
                                    <span style={{ fontSize: "12px", color: course.color, fontWeight: "700" }}>{course.fee}</span>
-                                   <i className="fas fa-chevron-right" style={{ fontSize: "10px", color: "#ccc" }}></i>
+                                   <i className="fas fa-chevron-right" className="fs-10px text-light-gray"></i>
                                 </div>
                              </div>
                           </div>
@@ -243,19 +243,19 @@ export default function PCBProgramPage() {
       </section>
 
       {/* Concept Focused CTA Section */}
-      <section className="cta-area wow fadeInUp" style={{ paddingBottom: "100px" }}>
+      <section className="cta-area wow fadeInUp" className="pb-100">
         <div className="container">
-          <div className="cta-box bg_cover" style={{ backgroundImage: "url(/assets/images/newsletter-bg-1.webp)", borderRadius: "20px", padding: "60px 40px", boxShadow: "0 20px 40px rgba(0,0,0,0.1)", position: "relative", overflow: "hidden" }}>
-            <div className="overlay" style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(1, 34, 141, 0.96)", zIndex: 1 }}></div>
-            <div className="row align-items-center" style={{ position: "relative", zIndex: 2 }}>
+          <div className="cta-box bg_cover course-cta-box">
+            <div className="overlay" className="course-cta-overlay"></div>
+            <div className="row align-items-center" className="relative-z2">
               <div className="col-lg-8 text-center text-lg-left">
                 <div className="cta-text-wrapper">
-                  <h2 className="title" style={{ fontSize: "32px", color: "#fff", fontWeight: "800" }}>Master Science with Clear Concepts</h2>
-                  <p style={{ color: "rgba(255,255,255,0.95)", fontSize: "18px", marginTop: "10px" }}>Join our Science program and build a strong understanding of Physics, Chemistry, and Biology.</p>
+                  <h2 className="title" className="course-cta-title">Master Science with Clear Concepts</h2>
+                  <p className="course-cta-desc">Join our Science program and build a strong understanding of Physics, Chemistry, and Biology.</p>
                 </div>
               </div>
               <div className="col-lg-4 text-center text-lg-right mt-40 mt-lg-0">
-                 <button className="main-btn" style={{ borderRadius: "12px", background: "#fff", color: "#01228D", border: "none", height: "55px", lineHeight: "55px", padding: "0 35px", fontSize: "16px", fontWeight: "700" }}>Book Free Demo</button>
+                 <button className="main-btn" className="course-cta-btn">Book Free Demo</button>
               </div>
             </div>
           </div>

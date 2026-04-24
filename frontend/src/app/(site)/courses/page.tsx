@@ -73,7 +73,7 @@ export default function CoursesPage() {
       <section className="page-banner">
         <div
           className="page-banner-bg bg_cover"
-          style={{ backgroundImage: "url(/assets/images/course-banner.png)" }}
+          className="banner-bg-course"
         >
           <div className="container">
             <div className="banner-content text-center">

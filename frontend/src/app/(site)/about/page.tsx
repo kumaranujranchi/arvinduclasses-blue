@@ -70,7 +70,7 @@ export default function AboutPage() {
       <section className="page-banner">
         <div
           className="page-banner-bg bg_cover"
-          style={{ backgroundImage: "url(/assets/images/aboutus-banner.png)" }}
+          className="banner-bg-about"
         >
           <div className="container">
             <div className="banner-content text-center">
@@ -438,7 +438,7 @@ export default function AboutPage() {
         <div className="container">
           <div
             className="counter-wrapper-2 bg_cover"
-            style={{ backgroundImage: "url(/assets/images/counter-bg-2.webp)" }}
+            className="counter-bg-main"
           >
             <div className="row">
               <div className="col-sm-3 col-6 counter-col">
@@ -602,10 +602,7 @@ export default function AboutPage() {
       <section className="newsletter-area-3 pb-80">
         <div className="container">
           <div
-            className="newsletter-wrapper bg_cover"
-            style={{
-              backgroundImage: "url(/assets/images/newsletter-bg-1.webp)",
-            }}
+            className="newsletter-wrapper bg_cover home-newsletter-bg"
           >
             <div className="row align-items-center">
               <div className="col-lg-5">

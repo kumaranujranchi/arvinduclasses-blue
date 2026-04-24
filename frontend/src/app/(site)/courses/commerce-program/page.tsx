@@ -39,11 +39,11 @@ export default function CommerceProgramPage() {
       
       {/* Page Banner - Professional and Career Focused */}
       <section className="page-banner">
-        <div className="page-banner-bg bg_cover" style={{ backgroundImage: "url(/assets/images/course-banner.png)" }}>
+        <div className="page-banner-bg bg_cover page-banner-bg-image">
           <div className="container">
             <div className="banner-content text-center wow fadeInDown course-detail-banner-content">
               <h2 className="title course-detail-title">Commerce Program (Class 11–12)</h2>
-              <div style={{ width: "60px", height: "4px", background: "#0C8B51", margin: "20px auto" }}></div>
+              <div className="banner-divider-green"></div>
               <p className="course-detail-subtitle">Building a professional future through conceptual clarity.</p>
             </div>
           </div>
@@ -77,10 +77,10 @@ export default function CommerceProgramPage() {
                   </p>
                   <p className="course-overview-text-2">We focus on:</p>
                   <ul className="courses-details-list mt-10px">
-                    <li className="course-list-item"><i className="fas fa-check" style={{ top: "4px", color: "#0C8B51" }}></i> <p className="course-list-text">Building strong conceptual clarity in core subjects</p></li>
-                    <li className="course-list-item"><i className="fas fa-check" style={{ top: "4px", color: "#0C8B51" }}></i> <p className="course-list-text">Step-by-step numerical problem solving in Accountancy</p></li>
-                    <li className="course-list-item"><i className="fas fa-check" style={{ top: "4px", color: "#0C8B51" }}></i> <p className="course-list-text">Understanding economic concepts with real-world examples</p></li>
-                    <li className="course-list-item"><i className="fas fa-check" style={{ top: "4px", color: "#0C8B51" }}></i> <p className="course-list-text">Preparing students for board exams and future career paths</p></li>
+                    <li className="course-list-item"><i className="fas fa-check" className="list-icon-green-t4"></i> <p className="course-list-text">Building strong conceptual clarity in core subjects</p></li>
+                    <li className="course-list-item"><i className="fas fa-check" className="list-icon-green-t4"></i> <p className="course-list-text">Step-by-step numerical problem solving in Accountancy</p></li>
+                    <li className="course-list-item"><i className="fas fa-check" className="list-icon-green-t4"></i> <p className="course-list-text">Understanding economic concepts with real-world examples</p></li>
+                    <li className="course-list-item"><i className="fas fa-check" className="list-icon-green-t4"></i> <p className="course-list-text">Preparing students for board exams and future career paths</p></li>
                   </ul>
                   <p className="course-overview-text-3">
                     This program is ideal for students aiming for high scores and planning careers in Commerce fields such as CA, CS, or Business.
@@ -90,15 +90,15 @@ export default function CommerceProgramPage() {
                 {/* Career Focus Highlights Grid */}
                 <div className="row mt-40">
                   <div className="col-md-6 wow fadeInLeft" data-wow-delay="0.1s">
-                    <div className="highlight-card" style={{ background: "#fff", padding: "25px", borderRadius: "12px", border: "1px solid #eee", borderLeft: "5px solid #0C8B51", marginBottom: "20px", transition: "all 0.3s" }}>
+                    <div className="highlight-card" className="card-highlight-green">
                        <h5 className="course-highlight-title">Career Path Preparation</h5>
-                       <p style={{ fontSize: "14px", color: "#666" }}>Strong foundation for competitive exams like CA Foundation, CS Executive, and University entrances.</p>
+                       <p className="fs-14-gray">Strong foundation for competitive exams like CA Foundation, CS Executive, and University entrances.</p>
                     </div>
                   </div>
                   <div className="col-md-6 wow fadeInRight" data-wow-delay="0.1s">
                     <div className="highlight-card course-highlight-card-dark">
                        <h5 className="course-highlight-title">Expert Collaboration</h5>
-                       <p style={{ fontSize: "14px", color: "#666" }}>Academic support provided in professional collaboration with <strong>Sukrishna Commerce</strong> experts.</p>
+                       <p className="fs-14-gray">Academic support provided in professional collaboration with <strong>Sukrishna Commerce</strong> experts.</p>
                     </div>
                   </div>
                 </div>
@@ -167,10 +167,10 @@ export default function CommerceProgramPage() {
                               </div>
                            </div>
                            <div className="col-md-6">
-                              <div style={{ background: "#f9f9f9", padding: "20px", borderRadius: "8px", height: "100%", marginBottom: "20px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center" }}>
-                                <i className="fas fa-briefcase" style={{ fontSize: "30px", color: "#0C8B51", marginBottom: "10px" }}></i>
-                                <h6 style={{ fontWeight: "700", color: "#01228D" }}>Career Focused</h6>
-                                <p style={{ fontSize: "12px", color: "#666" }}>Complete coverage for CBSE & ICSE Boards with a focus on future professional success.</p>
+                              <div className="card-curriculum-center">
+                                <i className="fas fa-briefcase" className="fs-30-green-mb10"></i>
+                                <h6 className="fw-700-darkblue">Career Focused</h6>
+                                <p className="fs-12-gray666">Complete coverage for CBSE & ICSE Boards with a focus on future professional success.</p>
                               </div>
                            </div>
                          </div>
@@ -180,7 +180,7 @@ export default function CommerceProgramPage() {
                       <div className="tab-pane fade show active">
                         <p className="course-teacher-text-1">Our Commerce faculty is experienced in board-level teaching and focuses on making complex topics simple and practical.</p>
                         <p className="course-teacher-text-2">Students receive:</p>
-                        <ul className="courses-details-list" style={{ marginTop: "10px", padding: 0 }}>
+                        <ul className="courses-details-list mt-10px p-0">
                            <li className="course-list-item"><i className="fas fa-check course-list-icon-green"></i> <p className="course-list-text">Step-by-step explanation of Accountancy problems</p></li>
                            <li className="course-list-item"><i className="fas fa-check course-list-icon-green"></i> <p className="course-list-text">Real-life examples for Economics and Business Studies</p></li>
                            <li className="course-list-item"><i className="fas fa-check course-list-icon-green"></i> <p className="course-list-text">Regular doubt-solving sessions</p></li>
@@ -190,9 +190,9 @@ export default function CommerceProgramPage() {
                     )}
                     {activeTab === 'reviews' && (
                       <div className="tab-pane fade show active">
-                        <div style={{ background: "#f8f9fa", padding: "30px", borderRadius: "12px", borderLeft: "5px solid #0C8B51" }}>
-                           <p style={{ fontStyle: "italic", fontSize: "17px", color: "#333", lineHeight: "1.6" }}>“The teaching at Arvindu Classes made Accountancy much easier for me. The regular tests and practice helped me score well in my board exams.”</p>
-                           <p style={{ marginTop: "15px", fontWeight: "700", color: "#01228D" }}>— Class 12 Student</p>
+                        <div className="review-card-green">
+                           <p className="course-review-text">“The teaching at Arvindu Classes made Accountancy much easier for me. The regular tests and practice helped me score well in my board exams.”</p>
+                           <p className="course-review-author">— Class 12 Student</p>
                         </div>
                       </div>
                     )}
@@ -202,41 +202,41 @@ export default function CommerceProgramPage() {
             </div>
             
             <div className="col-lg-4">
-              <div className="courses-sidebar" style={{ position: "sticky", top: "100px" }}>
+              <div className="courses-sidebar sticky-top-100">
                 {/* Course Features - Side Panel */}
-                <div className="courses-features wow fadeInRight" style={{ background: "#fff", border: "1px solid #eee", borderRadius: "16px", boxShadow: "0 15px 35px rgba(0,0,0,0.08)", padding: "30px" }}>
-                  <div className="sidebar-title" style={{ borderBottom: "1px solid #eee", paddingBottom: "15px", marginBottom: "20px" }}>
-                    <h4 className="title" style={{ fontSize: "22px", margin: 0 }}>Course Features</h4>
+                <div className="courses-features wow fadeInRight course-sidebar-widget-v2">
+                  <div className="sidebar-title" className="course-sidebar-header">
+                    <h4 className="title" className="course-sidebar-title-text">Course Features</h4>
                   </div>
                   <ul className="courses-features-items m-0 p-0">
-                    <li style={{ padding: "12px 0", borderBottom: "1px solid #f9f9f9" }}>Fee <strong>₹40,000</strong></li>
-                    <li style={{ padding: "12px 0", borderBottom: "1px solid #f9f9f9" }}>Duration <strong>1 Year</strong></li>
-                    <li style={{ padding: "12px 0", borderBottom: "1px solid #f9f9f9" }}>Classes <strong>5–6 Days/Week</strong></li>
-                    <li style={{ padding: "12px 0", borderBottom: "1px solid #f9f9f9" }}>Focus <strong>Acc, Eco, B.St</strong></li>
-                    <li style={{ padding: "12px 0", borderBottom: "1px solid #f9f9f9" }}>Boards <strong>CBSE & ICSE</strong></li>
-                    <li style={{ padding: "12px 0", borderBottom: "1px solid #f9f9f9" }}>Collaboration <strong>Sukrishna Commerce</strong></li>
-                    <li style={{ padding: "12px 0", border: "none" }}>Rating <strong style={{ color: "#EAB830" }}>★★★★★ (5.0)</strong></li>
+                    <li className="course-sidebar-item-border">Fee <strong>₹40,000</strong></li>
+                    <li className="course-sidebar-item-border">Duration <strong>1 Year</strong></li>
+                    <li className="course-sidebar-item-border">Classes <strong>5–6 Days/Week</strong></li>
+                    <li className="course-sidebar-item-border">Focus <strong>Acc, Eco, B.St</strong></li>
+                    <li className="course-sidebar-item-border">Boards <strong>CBSE & ICSE</strong></li>
+                    <li className="course-sidebar-item-border">Collaboration <strong>Sukrishna Commerce</strong></li>
+                    <li className="p-12-0-border-none">Rating <strong className="text-star-yellow">★★★★★ (5.0)</strong></li>
                   </ul>
                   <div className="sidebar-btn mt-30">
-                    <a className="main-btn w-100 text-center" href="#" style={{ borderRadius: "10px", height: "50px", lineHeight: "50px", padding: "0", fontSize: "16px", background: "#01228D" }}>Book Demo Class</a>
+                    <a className="main-btn w-100 text-center" href="#" className="course-sidebar-btn-blue">Book Demo Class</a>
                   </div>
                 </div>
 
                 {/* Related Courses Interlinking Widget */}
                 <div className="related-courses-widget mt-50 wow fadeInRight" data-wow-delay="0.2s">
-                   <h4 className="title" style={{ fontSize: "20px", marginBottom: "25px", fontWeight: "700", color: "#01228D" }}>Recommended Programs</h4>
+                   <h4 className="title" className="course-sidebar-title-md">Recommended Programs</h4>
                    <div className="related-list">
                      {relatedCourses.map((course, idx) => (
-                       <Link key={idx} href={course.slug} className="sidebar-course-link" style={{ display: "block", textDecoration: "none", color: "inherit", marginBottom: "20px" }}>
-                          <div className="sidebar-card" style={{ background: "#fff", border: "1px solid #eee", borderRadius: "12px", overflow: "hidden", display: "flex", alignItems: "center", transition: "all 0.3s", padding: "10px" }}>
-                             <div className="img" style={{ width: "70px", height: "70px", borderRadius: "8px", overflow: "hidden", flexShrink: 0 }}>
-                                <img src={course.image} alt={course.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                       <Link key={idx} href={course.slug} className="sidebar-course-link course-sidebar-link-box">
+                          <div className="sidebar-card course-sidebar-card-sm">
+                             <div className="img" className="course-sidebar-img-box">
+                                <img src={course.image} alt={course.title} className="w-100 h-100 object-cover" />
                              </div>
-                             <div className="info" style={{ padding: "0 15px", flexGrow: 1 }}>
-                                <h5 style={{ fontSize: "14px", margin: 0, fontWeight: "600", color: "#333", lineHeight: "1.4" }}>{course.title}</h5>
-                                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "5px" }}>
+                             <div className="info" className="course-sidebar-info-v2">
+                                <h5 className="course-sidebar-course-title">{course.title}</h5>
+                                <div className="d-flex justify-content-between align-items-center mt-5">
                                    <span style={{ fontSize: "12px", color: course.color, fontWeight: "700" }}>{course.fee}</span>
-                                   <i className="fas fa-chevron-right" style={{ fontSize: "10px", color: "#ccc" }}></i>
+                                   <i className="fas fa-chevron-right" className="fs-10px text-light-gray"></i>
                                 </div>
                              </div>
                           </div>
@@ -251,19 +251,19 @@ export default function CommerceProgramPage() {
       </section>
 
       {/* Career Focused CTA Section */}
-      <section className="cta-area wow fadeInUp" style={{ paddingBottom: "100px" }}>
+      <section className="cta-area wow fadeInUp" className="pb-100">
         <div className="container">
-          <div className="cta-box bg_cover" style={{ backgroundImage: "url(/assets/images/newsletter-bg-1.webp)", borderRadius: "20px", padding: "60px 40px", boxShadow: "0 20px 40px rgba(0,0,0,0.1)", position: "relative", overflow: "hidden" }}>
-            <div className="overlay" style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(1, 34, 141, 0.96)", zIndex: 1 }}></div>
-            <div className="row align-items-center" style={{ position: "relative", zIndex: 2 }}>
+          <div className="cta-box bg_cover course-cta-box">
+            <div className="overlay" className="course-cta-overlay"></div>
+            <div className="row align-items-center" className="relative-z2">
               <div className="col-lg-8 text-center text-lg-left">
                 <div className="cta-text-wrapper">
-                  <h2 className="title" style={{ fontSize: "32px", color: "#fff", fontWeight: "800" }}>Build a Strong Career in Commerce</h2>
-                  <p style={{ color: "rgba(255,255,255,0.95)", fontSize: "18px", marginTop: "10px" }}>Get expert guidance and structured preparation for your board exams and future goals.</p>
+                  <h2 className="title" className="course-cta-title">Build a Strong Career in Commerce</h2>
+                  <p className="course-cta-desc">Get expert guidance and structured preparation for your board exams and future goals.</p>
                 </div>
               </div>
               <div className="col-lg-4 text-center text-lg-right mt-40 mt-lg-0">
-                 <button className="main-btn" style={{ borderRadius: "12px", background: "#fff", color: "#01228D", border: "none", height: "55px", lineHeight: "55px", padding: "0 35px", fontSize: "16px", fontWeight: "700" }}>Book Free Demo</button>
+                 <button className="main-btn" className="course-cta-btn">Book Free Demo</button>
               </div>
             </div>
           </div>
