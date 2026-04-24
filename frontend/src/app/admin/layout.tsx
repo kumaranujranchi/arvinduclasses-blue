@@ -64,7 +64,22 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   }
 
   return (
-    <div className="flex h-screen bg-[#f4f6f9] overflow-hidden font-sans">
+    <div className="admin-wrapper flex h-screen bg-[#f4f6f9] overflow-hidden font-sans">
+      <style>{`
+        .admin-wrapper h1, .admin-wrapper h2, .admin-wrapper h3, .admin-wrapper h4, .admin-wrapper h5, .admin-wrapper h6, .admin-wrapper p {
+          margin: 0 !important;
+          padding: 0 !important;
+          font-family: inherit !important;
+          color: inherit;
+        }
+        .admin-wrapper th, .admin-wrapper td {
+          border: none !important;
+          padding: inherit;
+        }
+        .admin-wrapper * {
+          box-sizing: border-box;
+        }
+      `}</style>
       {/* Sidebar */}
       <aside className={`${isSidebarOpen ? "w-72" : "w-20"} transition-all duration-300 bg-white shadow-lg flex flex-col z-50`}>
         <div className="p-6 flex items-center gap-3 border-b border-gray-50 mb-4">

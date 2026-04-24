@@ -3,11 +3,19 @@
 import React, { useState } from 'react';
 import LeadForm from './LeadForm';
 
+import { usePathname } from 'next/navigation';
+
 const StickyButtons = () => {
+  const pathname = usePathname();
   const [formConfig, setFormConfig] = useState<{ isOpen: boolean; type: 'demo' | 'enroll' }>({
     isOpen: false,
     type: 'demo'
   });
+
+  // Hide on admin and login routes
+  if (pathname && (pathname.startsWith('/admin') || pathname.startsWith('/login'))) {
+    return null;
+  }
 
   const openForm = (type: 'demo' | 'enroll') => {
     setFormConfig({ isOpen: true, type });

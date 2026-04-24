@@ -4,8 +4,16 @@ import React from 'react';
 import { useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 
+import { usePathname } from 'next/navigation';
+
 const NoticeBar = () => {
   const notices = useQuery(api.notices.getAll);
+  const pathname = usePathname();
+
+  // Hide on admin and login routes
+  if (pathname && (pathname.startsWith('/admin') || pathname.startsWith('/login'))) {
+    return null;
+  }
 
   // Fallback notices if none in DB or loading
   const defaultNotices = [
