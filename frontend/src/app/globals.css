@@ -247,3 +247,149 @@
 .value-color-3::before { background: #3b82f6; } /* Sky Blue */
 .value-color-4::before { background: #20b2aa; } /* Turquoise */
 
+/* Footer */
+.footer-bg {
+  background-image: url(/assets/images/footer.png);
+}
+
+.footer-copyright-text {
+  font-size: 13px;
+  color: #8a8a8a;
+  margin: 0;
+}
+
+.footer-brand-name {
+  color: #01228D;
+  font-weight: 600;
+}
+
+.footer-heart-icon {
+  color: #ff0000;
+}
+
+.footer-credit-link {
+  color: #333;
+  font-weight: 500;
+}
+
+/* Header */
+.navigation-padding {
+  padding: 10px 0;
+}
+
+.header-accent-line {
+  width: 40px;
+  height: 2px;
+  background: #ffc600;
+}
+
+.badge-new {
+  position: absolute;
+  top: 5px;
+  right: -10px;
+  background: #e53e3e;
+  color: #fff;
+  font-size: 9px;
+  padding: 1px 5px;
+  border-radius: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  z-index: 10;
+  animation: badge-bounce 2s infinite;
+}
+
+@keyframes badge-bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-5px); }
+  60% { transform: translateY(-3px); }
+}
+
+.nav-chevron {
+  font-size: 10px;
+}
+
+.mega-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  border-top: 2px solid #ffc600;
+  z-index: 999;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.mega-menu.show {
+  visibility: visible !important;
+  opacity: 1 !important;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.mega-menu-title {
+  font-size: 18px;
+  color: #07294d;
+  font-weight: 700;
+}
+
+.mega-course-card {
+  text-decoration: none;
+  background: #f8f9fa;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  opacity: 0;
+  transform: translateY(15px);
+}
+
+.mega-menu.show .mega-course-card {
+  animation: slideUp 0.4s ease forwards;
+  animation-delay: var(--delay);
+}
+
+.mega-course-card:hover {
+  background: #fff;
+  border-color: #ffc600;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transform: translateY(-3px) !important;
+}
+
+.mega-course-card .course-info h6 {
+  font-size: 14px;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+.mega-course-card:hover .course-info h6 {
+  color: #ffc600 !important;
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nav-menu li {
+  margin-right: 15px;
+}
+
+.nav-menu li a {
+  padding: 25px 0;
+  font-weight: 600;
+  color: #07294d;
+  transition: all 0.3s ease;
+}
+
+.nav-menu li a:hover,
+.nav-menu li a.active {
+  color: #ffc600;
+}
+
+
+

@@ -52,7 +52,7 @@ export default function Header() {
       </div>
 
       {/* Main Navigation */}
-      <div id="navigation" className="navigation navigation-landscape" style={{ padding: "10px 0" }}>
+      <div id="navigation" className="navigation navigation-landscape navigation-padding">
         <div className="container position-relative">
           <div className="row align-items-center">
             <div className="col-lg-2">
@@ -87,7 +87,7 @@ export default function Header() {
                         className={`${pathname === href ? "active" : ""} d-flex align-items-center`}
                       >
                         {label}
-                        {hasDropdown && <i className="fas fa-chevron-down ms-1" style={{ fontSize: "10px" }}></i>}
+                        {hasDropdown && <i className="fas fa-chevron-down ms-1 nav-chevron"></i>}
                       </Link>
 
                       {hasDropdown && (
@@ -96,7 +96,7 @@ export default function Header() {
                             <div className="row py-4">
                               <div className="col-12 mb-3">
                                 <h5 className="mega-menu-title">Our Programs</h5>
-                                <div className="line" style={{ width: "40px", height: "2px", background: "#ffc600" }}></div>
+                                <div className="line header-accent-line"></div>
                               </div>
                               {courses.map((course, idx) => (
                                 <div key={idx} className="col-lg-4 mb-3">
@@ -137,99 +137,7 @@ export default function Header() {
         </div>
       </div>
 
-      <style jsx>{`
-        .badge-new {
-          position: absolute;
-          top: 5px;
-          right: -10px;
-          background: #e53e3e;
-          color: #fff;
-          font-size: 9px;
-          padding: 1px 5px;
-          border-radius: 10px;
-          font-weight: 800;
-          text-transform: uppercase;
-          z-index: 10;
-          animation: bounce 2s infinite;
-        }
-        @keyframes bounce {
-          0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-          40% {transform: translateY(-5px);}
-          60% {transform: translateY(-3px);}
-        }
-        .mega-menu {
-          position: absolute;
-          top: 100%;
-          left: 0;
-          width: 100%;
-          background: #fff;
-          box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-          border-top: 2px solid #ffc600;
-          z-index: 999;
-          visibility: hidden;
-          opacity: 0;
-          transform: translateY(20px);
-          transition: all 0.3s ease;
-          pointer-events: none;
-        }
-        .mega-menu.show {
-          visibility: visible;
-          opacity: 1;
-          transform: translateY(0);
-          pointer-events: auto;
-        }
-        .mega-menu-title {
-          font-size: 18px;
-          color: #07294d;
-          font-weight: 700;
-        }
-        .mega-course-card {
-          text-decoration: none;
-          background: #f8f9fa;
-          transition: all 0.3s ease;
-          border: 1px solid transparent;
-          opacity: 0;
-          transform: translateY(15px);
-        }
-        .mega-menu.show .mega-course-card {
-          animation: slideUp 0.4s ease forwards;
-          animation-delay: var(--delay);
-        }
-        .mega-course-card:hover {
-          background: #fff;
-          border-color: #ffc600;
-          box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-          transform: translateY(-3px) !important;
-        }
-        .mega-course-card .course-info h6 {
-          font-size: 14px;
-          line-height: 1.4;
-          transition: color 0.3s ease;
-        }
-        .mega-course-card:hover .course-info h6 {
-          color: #ffc600 !important;
-        }
-        
-        @keyframes slideUp {
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
 
-        .nav-menu li {
-          margin-right: 15px;
-        }
-        .nav-menu li a {
-          padding: 25px 0;
-          font-weight: 600;
-          color: #07294d;
-          transition: all 0.3s ease;
-        }
-        .nav-menu li a:hover, .nav-menu li a.active {
-          color: #ffc600;
-        }
-      `}</style>
     </header>
   );
 }
