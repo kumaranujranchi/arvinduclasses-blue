@@ -93,7 +93,7 @@ export default function DigitalMarketingPage() {
               </div>
 
               {/* Differentiators */}
-              <div className="diff-section mb-60 p-40 rounded-lg text-white" style={{ background: "linear-gradient(135deg, #07294d 0%, #004d99 100%)" }}>
+              <div className="diff-section mb-60 rounded-lg text-white" style={{ background: "linear-gradient(135deg, #07294d 0%, #004d99 100%)", padding: "40px" }}>
                 <h4 className="text-white mb-30">What Makes This Course Different</h4>
                 <div className="row">
                   {[
