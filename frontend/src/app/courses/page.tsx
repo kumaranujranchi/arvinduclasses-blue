@@ -25,7 +25,7 @@ export default function CoursesPage() {
       fee: "₹35,000",
       rating: 5,
       bgColor: "#2F7AD5",
-      slug: "#",
+      slug: "science-program",
     },
     {
       tag: "#Commerce",
