@@ -75,16 +75,16 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   }
 
   return (
-    <div className="admin-wrapper flex h-screen bg-[#f4f7fb] overflow-hidden font-sans">
+    <div className="admin-wrapper flex h-screen bg-[#f4f7fb] overflow-hidden font-sans text-slate-900">
       <style>{`
-        .admin-wrapper h1, .admin-wrapper h2, .admin-wrapper h3, .admin-wrapper h4, .admin-wrapper h5, .admin-wrapper h6, .admin-wrapper p {
-          margin: 0 !important;
-          padding: 0 !important;
-          font-family: 'Inter', sans-serif !important;
+        .admin-wrapper h1, .admin-wrapper h2, .admin-wrapper h3, .admin-wrapper h4, .admin-wrapper h5, .admin-wrapper h6, .admin-wrapper p, .admin-wrapper span, .admin-wrapper a {
+          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+        }
+        .admin-wrapper aside p {
+          margin: 0;
         }
         .admin-wrapper * {
           box-sizing: border-box;
-          border-color: #eef2f6;
         }
         .custom-scrollbar::-webkit-scrollbar {
           width: 4px;
@@ -95,6 +95,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         .custom-scrollbar::-webkit-scrollbar-thumb {
           background: #e2e8f0;
           border-radius: 10px;
+        }
+        /* Fix for Bootstrap conflicts */
+        .admin-wrapper .row {
+          margin: 0;
+          display: flex;
+          flex-wrap: wrap;
         }
       `}</style>
 
@@ -123,7 +129,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <nav className="flex-1 px-4 overflow-y-auto custom-scrollbar space-y-6 pb-6">
           {menuGroups.map((group, idx) => (
             <div key={idx} className="space-y-2">
-              <p className="px-4 text-[10px] font-black text-gray-400 uppercase tracking-[2px]">{group.title}</p>
+              <p className="px-4 text-xs font-bold text-gray-400 uppercase tracking-[1.5px] mb-2">{group.title}</p>
               <div className="space-y-1">
                 {group.items.filter(item => item.roles.includes(user.role)).map((item) => {
                   const isActive = pathname === item.href;
@@ -138,7 +144,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                       }`}
                     >
                       <i className={`${item.icon} text-sm ${isActive ? "text-[#01228D]" : "text-[#94a3b8] group-hover:text-[#01228D]"}`}></i>
-                      <span className="font-semibold text-xs tracking-tight">{item.label}</span>
+                      <span className="font-medium text-sm tracking-tight">{item.label}</span>
                     </Link>
                   );
                 })}
