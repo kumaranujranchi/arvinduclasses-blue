@@ -14,6 +14,7 @@ import type * as auth from "../auth.js";
 import type * as banners from "../banners.js";
 import type * as comments from "../comments.js";
 import type * as courses from "../courses.js";
+import type * as fees from "../fees.js";
 import type * as leads from "../leads.js";
 import type * as notices from "../notices.js";
 import type * as posts from "../posts.js";
@@ -34,6 +35,7 @@ declare const fullApi: ApiFromModules<{
   banners: typeof banners;
   comments: typeof comments;
   courses: typeof courses;
+  fees: typeof fees;
   leads: typeof leads;
   notices: typeof notices;
   posts: typeof posts;
