@@ -1424,3 +1424,52 @@ html {
   letter-spacing: 0.5px;
   display: inline-block;
 }
+/* Blog Editor Styles */
+.editor-wrapper {
+  border: 1px solid #f1f5f9;
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+  display: flex;
+  flex-direction: column;
+}
+.editor-internal-scroll .ql-container {
+  height: 500px;
+  overflow-y: auto;
+  resize: vertical;
+  min-height: 300px;
+}
+.editor-internal-scroll .ql-editor {
+  min-height: 100%;
+  padding: 30px !important;
+  font-size: 16px !important;
+  line-height: 1.8 !important;
+  color: #334155 !important;
+}
+.editor-internal-scroll .ql-toolbar {
+  border: none !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+  padding: 12px !important;
+  background: #f8fafc !important;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+/* Fix Alignment */
+.ql-editor .ql-align-center {
+  text-align: center;
+}
+.ql-editor .ql-align-right {
+  text-align: right;
+}
+.ql-editor .ql-align-justify {
+  text-align: justify;
+}
+/* Custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+  border-radius: 10px;
+}

@@ -333,60 +333,6 @@ export default function BlogForm({ initialData, isEdit }: BlogFormProps) {
         </div>
       </div>
 
-      <style jsx global>{`
-        .editor-wrapper {
-          border: 1px solid #f1f5f9;
-          border-radius: 12px;
-          overflow: hidden;
-          background: white;
-          display: flex;
-          flex-direction: column;
-        }
-        .editor-internal-scroll .ql-container {
-          height: 500px;
-          overflow-y: auto;
-          resize: vertical;
-          min-height: 300px;
-        }
-        .editor-internal-scroll .ql-editor {
-          min-height: 100%;
-          padding: 30px !important;
-          font-size: 16px !important;
-          line-height: 1.8 !important;
-          color: #334155 !important;
-        }
-        .editor-internal-scroll .ql-toolbar {
-          border: none !important;
-          border-bottom: 1px solid #f1f5f9 !important;
-          padding: 12px !important;
-          background: #f8fafc !important;
-          position: sticky;
-          top: 0;
-          z-index: 10;
-        }
-        /* Fix Alignment */
-        .ql-editor .ql-align-center {
-          text-align: center;
-        }
-        .ql-editor .ql-align-right {
-          text-align: right;
-        }
-        .ql-editor .ql-align-justify {
-          text-align: justify;
-        }
-        /* Custom scrollbar for editor */
-        .ql-container::-webkit-scrollbar {
-          width: 6px;
-        }
-        .ql-container::-webkit-scrollbar-track {
-          background: #f1f5f9;
-        }
-        .ql-container::-webkit-scrollbar-thumb {
-          background: #cbd5e1;
-          border-radius: 10px;
-        }
-      `}</style>
-
     </form>
   );
 }
