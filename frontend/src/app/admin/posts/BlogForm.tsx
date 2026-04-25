@@ -22,6 +22,7 @@ export default function BlogForm({ initialData, isEdit }: BlogFormProps) {
   const generateUploadUrl = useMutation(api.uploads.generateUploadUrl);
   const createPost = useMutation(api.posts.createPost);
   const updatePost = useMutation(api.posts.updatePost);
+  const getImageUrl = useMutation(api.uploads.getImageUrl);
 
   const [formData, setFormData] = useState({
     title: "",
@@ -101,14 +102,9 @@ export default function BlogForm({ initialData, isEdit }: BlogFormProps) {
 
       const { storageId } = await result.json();
       
-      // 4. Get Public URL (In a real app, you might store storageId or use a helper query)
-      // For this implementation, we'll use the Convex storage URL format directly if possible,
-      // or assume the backend mutation will handle it. 
-      // Actually, let's just use the storageId as the imageUrl for now if the backend expects it,
-      // but usually we want a real URL.
+      const imageUrl = await getImageUrl({ storageId });
       
-      const baseUrl = process.env.NEXT_PUBLIC_CONVEX_URL || "https://hearty-butterfly-166.convex.cloud";
-      const imageUrl = `${baseUrl}/api/storage/${storageId}`;
+      if (!imageUrl) throw new Error("Could not get image URL");
       
       setFormData(prev => ({ ...prev, imageUrl }));
       toast.success("Image uploaded and compressed successfully!");
