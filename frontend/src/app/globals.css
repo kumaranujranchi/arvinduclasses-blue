@@ -264,7 +264,7 @@ html {
 }
 
 .footer-copyright-text {
-  font-size: 13px;
+  font-size: 10px;
   color: #8a8a8a;
   margin: 0;
 }
@@ -279,8 +279,15 @@ html {
 }
 
 .footer-credit-link {
-  color: #333;
-  font-weight: 500;
+  color: #007bff;
+  font-weight: 600;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.footer-credit-link:hover {
+  color: #01228D;
+  text-decoration: none;
 }
 
 /* Header */
@@ -1225,4 +1232,87 @@ html {
 .fs-13-gray555 { font-size: 13px; color: #555; }
 .banner-bg-about { background-image: url(/assets/images/aboutus-banner.png); }
 .counter-bg-main { background-image: url(/assets/images/counter-bg-2.webp); }
-.p20-center { padding: 20px; text-align: center; }
+
+/* Notice Bar Styles */
+.notice-bar-wrapper {
+  width: 100%;
+  background: #01228D;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 10001;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.notice-bar-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.notice-label {
+  background: #EAB830;
+  color: #01228D;
+  padding: 0 15px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 2;
+  box-shadow: 5px 0 15px rgba(0,0,0,0.2);
+  white-space: nowrap;
+}
+
+.ticker-wrap {
+  flex-grow: 1;
+  overflow: hidden;
+  padding-left: 20px;
+}
+
+.ticker {
+  display: inline-block;
+  white-space: nowrap;
+  padding-right: 100%;
+  animation: ticker 40s linear infinite;
+}
+
+.ticker:hover {
+  animation-play-state: paused;
+}
+
+.ticker__item {
+  display: inline-block;
+  padding: 0 30px;
+  font-size: 14px;
+  color: #fff;
+  font-weight: 500;
+}
+
+.separator {
+  color: #EAB830;
+  margin-left: 30px;
+  font-weight: 900;
+  font-size: 18px;
+  vertical-align: middle;
+}
+
+@keyframes ticker {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+@media (max-width: 768px) {
+  .notice-label {
+    padding: 0 10px;
+    font-size: 10px;
+  }
+  .ticker__item {
+    font-size: 12px;
+    padding: 0 15px;
+  }
+}
