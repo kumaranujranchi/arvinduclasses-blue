@@ -7,7 +7,7 @@ import { api } from "../../../../convex/_generated/api";
 import Link from "next/link";
 
 export default function BlogPage() {
-  const posts = useQuery(api.posts.getPublishedPosts);
+  const posts = useQuery(api.posts.getPublishedPosts, {});
 
   return (
     <>
