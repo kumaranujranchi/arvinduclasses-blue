@@ -57,7 +57,7 @@ export default function BlogPage() {
 
       {/* Blog Main Section */}
       <section className="blog-page-area pb-120 pt-80 bg-[#fdfdfd]">
-        <div className="container">
+        <div className="container blog-container">
           <div className="row">
             {/* Posts Column */}
             <div className="col-lg-8 order-2 order-lg-1">
@@ -101,7 +101,7 @@ export default function BlogPage() {
                             </span>
                           </div>
                         </div>
-                        <div className="p-8"> {/* Increased padding from p-6 to p-8 */}
+                        <div className="blog-card-content">
                           <div className="flex items-center gap-4 mb-4">
                             <div className="flex items-center gap-2">
                               <div className="w-6 h-6 rounded-full bg-blue-50 flex items-center justify-center text-[10px] text-blue-600">
@@ -134,7 +134,7 @@ export default function BlogPage() {
                     </div>
                   ))
                 ) : (
-                  <div className="col-12 text-center py-80 bg-white rounded-3xl border border-dashed border-gray-200">
+                  <div className="col-12 text-center py-80 bg-white rounded-3xl border border-dashed border-gray-200 blog-container">
                     <div className="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4">
                       <i className="fas fa-search text-slate-300 text-2xl"></i>
                     </div>

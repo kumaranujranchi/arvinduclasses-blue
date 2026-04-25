@@ -1500,3 +1500,17 @@ html {
 .widget-category ul li button.bg-\[\#01228D\] span {
   background: rgba(255,255,255,0.2);
 }
+
+/* Blog Page Padding Fixes */
+.blog-card-content {
+  padding: 35px !important;
+}
+.blog-container {
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
+@media (max-width: 768px) {
+  .blog-card-content {
+    padding: 25px !important;
+  }
+}
