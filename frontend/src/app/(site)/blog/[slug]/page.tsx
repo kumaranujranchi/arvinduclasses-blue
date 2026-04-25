@@ -33,6 +33,19 @@ export default function BlogPostPage() {
   }, [allPosts]);
 
   const recentPosts = allPosts?.slice(0, 4);
+  
+  const relatedPosts = useMemo(() => {
+    if (!allPosts || !post) return [];
+    return allPosts
+      .filter(p => p._id !== post._id)
+      .map(p => {
+        const commonTags = p.tags?.filter(tag => post.tags?.includes(tag)).length || 0;
+        const sameCategory = (p as any).category === (post as any).category ? 2 : 0;
+        return { ...p, score: commonTags + sameCategory };
+      })
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 3);
+  }, [allPosts, post]);
 
   if (post === undefined) {
     return (
@@ -261,6 +274,59 @@ export default function BlogPostPage() {
             </div>
           </div>
         </section>
+        
+        {/* Related Articles Section */}
+        {relatedPosts.length > 0 && (
+          <section className="related-articles-area pb-120 pt-40">
+            <div className="container blog-container">
+              <div className="section-title-2 mb-60">
+                <h2 className="title text-3xl font-black text-[#01228D]">You might also like</h2>
+                <div className="w-20 h-1.5 bg-[#FFC600] rounded-full mt-4"></div>
+              </div>
+              
+              <div className="row">
+                {relatedPosts.map((rp) => (
+                  <div key={rp._id} className="col-lg-4 col-md-6 mb-30">
+                    <div className="single-blog-item bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-xl transition-all duration-300 h-full flex flex-col">
+                      <div className="blog-image relative">
+                        <Link href={`/blog/${rp.slug}`}>
+                          <img 
+                            src={rp.imageUrl || "/assets/images/blog-1.webp"} 
+                            alt={rp.title} 
+                            className="w-full aspect-video object-cover"
+                          />
+                        </Link>
+                        <div className="absolute top-4 left-4">
+                          <span className="bg-[#01228D] text-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg">
+                            {(rp as any).category || "General"}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="blog-content p-6 flex-1 flex flex-col">
+                        <div className="flex items-center gap-4 mb-4">
+                          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                            <i className="far fa-calendar-alt mr-1"></i>
+                            {new Date(rp.publishedAt || rp.createdAt).toLocaleDateString()}
+                          </span>
+                        </div>
+                        <h4 className="title text-lg font-black text-slate-800 leading-tight mb-4 hover:text-[#01228D] transition-colors">
+                          <Link href={`/blog/${rp.slug}`}>
+                            {rp.title.length > 50 ? rp.title.substring(0, 50) + "..." : rp.title}
+                          </Link>
+                        </h4>
+                        <div className="mt-auto">
+                          <Link href={`/blog/${rp.slug}`} className="text-xs font-black uppercase tracking-widest text-[#01228D] flex items-center gap-2 hover:gap-3 transition-all">
+                            Read article <i className="fas fa-arrow-right text-[10px]"></i>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Newsletter Section */}
         <section className="newsletter-section bg-white pb-120 pt-0">
