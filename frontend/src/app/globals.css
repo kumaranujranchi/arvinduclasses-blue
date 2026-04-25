@@ -1507,8 +1507,11 @@ html {
   padding: 12px 35px 35px 35px !important;
 }
 .blog-container {
-  padding-left: 20px !important;
-  padding-right: 20px !important;
+  max-width: 1400px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 15px !important;
+  padding-right: 15px !important;
 }
 .blog-footer-fix .footer-widget {
   padding-top: 120px !important;

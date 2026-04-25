@@ -164,9 +164,9 @@ export default function BlogPostPage() {
 
               {/* Sidebar Column */}
               <div className="col-lg-3 mt-50 lg:mt-0">
-                <aside className="blog-sidebar pl-0 lg:pl-10">
+                <aside className="blog-sidebar pl-0 lg:pl-4">
                   {/* Search Widget */}
-                  <div className="sidebar-widget bg-white p-8 rounded-3xl border border-gray-100 shadow-sm mb-8">
+                  <div className="sidebar-widget bg-white p-6 rounded-3xl border border-gray-100 shadow-sm mb-8">
                     <h4 className="blog-widget-title">Search</h4>
                     <div className="widget-search relative">
                       <input 
@@ -181,7 +181,7 @@ export default function BlogPostPage() {
                   </div>
 
                   {/* Categories Widget */}
-                  <div className="sidebar-widget bg-white p-8 rounded-3xl border border-gray-100 shadow-sm mb-8">
+                  <div className="sidebar-widget bg-white p-6 rounded-3xl border border-gray-100 shadow-sm mb-8">
                     <h4 className="blog-widget-title">Categories</h4>
                     <div className="widget-category">
                       <ul className="space-y-2">
@@ -200,11 +200,11 @@ export default function BlogPostPage() {
                   </div>
 
                   {/* Recent Posts Widget */}
-                  <div className="sidebar-widget bg-white p-8 rounded-3xl border border-gray-100 shadow-sm mb-8">
+                  <div className="sidebar-widget bg-white p-6 rounded-3xl border border-gray-100 shadow-sm mb-8">
                     <h4 className="blog-widget-title">Recent Posts</h4>
                     <div className="widget-recent-post space-y-4">
                       {recentPosts?.map((p) => (
-                        <div key={p._id} className="single-recent-post flex align-items-center p-4 rounded-xl border border-gray-50 hover:border-blue-100 transition-colors shadow-sm">
+                        <div key={p._id} className="single-recent-post flex align-items-center p-3 rounded-xl border border-gray-50 hover:border-blue-100 transition-colors shadow-sm">
                           <div className="recent-post-image w-16 h-16 flex-shrink-0">
                             <Link href={`/blog/${p.slug}`}>
                               <img 
@@ -214,7 +214,7 @@ export default function BlogPostPage() {
                               />
                             </Link>
                           </div>
-                          <div className="recent-post-content flex-1 pl-4 pr-2">
+                          <div className="recent-post-content flex-1 pl-3 pr-1">
                             <h6 className="title text-xs font-bold text-slate-800 leading-snug hover:text-[#01228D] transition-colors mb-1">
                               <Link href={`/blog/${p.slug}`}>
                                 {p.title.length > 35 ? p.title.substring(0, 35) + "..." : p.title}
@@ -231,7 +231,7 @@ export default function BlogPostPage() {
                   </div>
 
                   {/* Advertisement Placeholder */}
-                  <div className="sidebar-widget bg-gradient-to-br from-[#01228D] to-[#0A45B5] p-8 rounded-[40px] shadow-lg mb-8 relative overflow-hidden text-center">
+                  <div className="sidebar-widget bg-gradient-to-br from-[#01228D] to-[#0A45B5] p-6 rounded-[40px] shadow-lg mb-8 relative overflow-hidden text-center">
                     <div className="relative z-10">
                       <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60 mb-2 block">Special Offer</span>
                       <h4 className="text-xl font-black text-white mb-4">Enroll in Advanced Courses Today!</h4>
@@ -242,7 +242,7 @@ export default function BlogPostPage() {
                   </div>
 
                   {/* Tags Widget */}
-                  <div className="sidebar-widget bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
+                  <div className="sidebar-widget bg-white p-6 rounded-3xl border border-gray-100 shadow-sm">
                     <h4 className="blog-widget-title">Popular Tags</h4>
                     <div className="flex flex-wrap gap-2">
                       {allTags.map((tag, i) => (
