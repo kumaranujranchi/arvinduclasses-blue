@@ -90,7 +90,6 @@ export default function CoursesPage() {
           <div className="container">
             <div className="banner-content text-center">
               <h2 className="title">Our Programs</h2>
-              <p className="text-white mt-3 opacity-75">Empowering students with quality education and practical skills.</p>
             </div>
           </div>
         </div>
@@ -99,7 +98,7 @@ export default function CoursesPage() {
       {/* Filter & Search Bar */}
       <section className="course-filter-area pt-50">
         <div className="container">
-          <div className="bg-white p-4 rounded-3xl shadow-lg -mt-80 relative z-10 border border-gray-100">
+          <div className="bg-white p-6 rounded-3xl shadow-xl relative z-10 border border-gray-100">
             <div className="row align-items-center">
               <div className="col-lg-4 mb-3 mb-lg-0">
                 <div className="relative">
@@ -107,7 +106,7 @@ export default function CoursesPage() {
                   <input 
                     type="text" 
                     placeholder="Search for courses..." 
-                    className="w-full pl-12 pr-4 py-3 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none font-medium"
+                    className="w-full pl-12 pr-4 py-3 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none font-medium text-gray-700"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                   />
@@ -132,6 +131,9 @@ export default function CoursesPage() {
               </div>
             </div>
           </div>
+          <div className="text-center mt-6">
+            <p className="text-slate-500 font-medium">Empowering students with quality education and practical skills.</p>
+          </div>
         </div>
       </section>
 
@@ -140,11 +142,11 @@ export default function CoursesPage() {
         <div className="container">
           <div className="courses-wrapper">
             {filteredCourses.length > 0 ? (
-              <div className="row courses-row">
+              <div className="row courses-row g-4">
                 {filteredCourses.map(({ tag, title, duration, fee, rating, bgColor, slug }, index) => (
-                  <div key={index} className="col-lg-4 col-sm-6 courses-col">
+                  <div key={index} className="col-lg-4 col-sm-6">
                     <div
-                      className="single-courses mt-30 wow fadeInUpBig course-card-wrapper h-full"
+                      className="single-courses wow fadeInUpBig course-card-wrapper h-full rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
                       style={{ backgroundColor: bgColor }}
                     >
                       <div className="flex flex-col h-full justify-between">
@@ -204,7 +206,7 @@ export default function CoursesPage() {
             <div className="col-lg-8">
               <div className="section-title text-center mb-50">
                 <h2 className="title">Why Choose Arvindu Classes?</h2>
-                <p>We provide an educational environment that fosters growth, innovation, and success.</p>
+                <p className="mx-auto max-w-2xl">We provide an educational environment that fosters growth, innovation, and success.</p>
               </div>
             </div>
           </div>
@@ -305,7 +307,7 @@ export default function CoursesPage() {
           <div className="row align-items-center">
             <div className="col-lg-6">
               <div className="achievement-image pr-lg-50">
-                <img src="/assets/images/about-2.webp" alt="Achievement" className="rounded-[2.5rem] shadow-2xl" />
+                <img src="/assets/images/campus-6.webp" alt="Achievement" className="rounded-[2.5rem] shadow-2xl w-full" />
               </div>
             </div>
             <div className="col-lg-6 mt-40 mt-lg-0">

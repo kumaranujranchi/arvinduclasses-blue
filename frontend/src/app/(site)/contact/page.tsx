@@ -94,7 +94,7 @@ export default function ContactPage() {
                     </div>
                     <div className="premium-info-content">
                       <h5>Email</h5>
-                      <p><a href="mailto:info@arvindclasses.in">info@arvindclasses.in</a></p>
+                      <p><a href="mailto:info@arvinduclasses.in">info@arvinduclasses.in</a></p>
                     </div>
                   </div>
 

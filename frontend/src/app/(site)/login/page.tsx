@@ -336,7 +336,7 @@ export default function GlobalLogin() {
                   type="email"
                   required
                   className="input-field"
-                  placeholder="example@arvindu.com"
+                  placeholder="example@arvinduclasses.in"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />

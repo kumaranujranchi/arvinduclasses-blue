@@ -263,7 +263,7 @@ export default function AboutPage() {
                 <p>
                   At Arvindu Classes, we provide a focused and inspiring atmosphere designed for comprehensive academic preparation. Our campus is equipped with modern facilities, distraction-free study zones, and interactive classrooms to maximize your learning potential. <br /> <br /> We ensure every student feels motivated to excel and achieve their career goals under the guidance of our expert educators.
                 </p>
-                <Link href="/courses" className="main-btn">
+                <Link href="/facilities" className="main-btn">
                   Explore
                 </Link>
               </div>
@@ -280,7 +280,7 @@ export default function AboutPage() {
                 <div className="image-3">
                   <img src="/assets/images/about/about-grid-3.png" width="412" height="270" className="about-gallery-img" alt="campus gallery" />
                 </div>
-                <Link href="#" className="more">
+                <Link href="/facilities" className="more">
                   View more <i className="fal fa-long-arrow-right"></i>
                 </Link>
               </div>

@@ -157,4 +157,27 @@ export default defineSchema({
   })
     .index("by_active", ["isActive"])
     .index("by_order", ["order"]),
+
+  // ===== FEES / PAYMENTS =====
+  fees: defineTable({
+    studentId: v.id("users"),
+    courseName: v.string(),
+    totalFee: v.number(),
+    paidAmount: v.number(),
+    discount: v.optional(v.number()),
+    dueDate: v.optional(v.number()),
+    status: v.string(),              // 'paid', 'partial', 'due'
+    updatedAt: v.number(),
+  })
+    .index("by_student", ["studentId"]),
+
+  payments: defineTable({
+    studentId: v.id("users"),
+    amount: v.number(),
+    paymentMethod: v.string(),
+    transactionId: v.optional(v.string()),
+    status: v.string(),              // 'success', 'pending', 'failed'
+    paidAt: v.number(),
+  })
+    .index("by_student", ["studentId"]),
 });

@@ -11,6 +11,25 @@ html {
   display: none !important;
 }
 
+/* Section Title Centering Fix */
+.section-title.text-center {
+  display: block !important;
+}
+.section-title.text-center .title {
+  padding-right: 0 !important;
+  display: block !important;
+  margin-bottom: 20px !important;
+}
+.section-title.text-center .title::before {
+  display: none !important;
+}
+.section-title.text-center p {
+  padding-left: 0 !important;
+  margin: 0 auto !important;
+  display: block !important;
+  max-width: 800px;
+}
+
 
 /* Global resets - all design styles are loaded from /assets/css/style.min.css */
 *, *::before, *::after {
@@ -179,6 +198,20 @@ html {
 
 .premium-info-content a:hover {
   color: #01228D;
+}
+
+/* Mobile Menu Edge Fix */
+@media (max-width: 991px) {
+  .nav-menu {
+    padding-left: 20px !important;
+  }
+  .header-search {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .navigation .nav-toggle {
+    right: 20px !important;
+  }
 }
 
 /* Core Values Hover Effect */
@@ -1522,5 +1555,143 @@ html {
   }
   .blog-footer-fix .footer-widget {
     padding-top: 60px !important;
+  }
+}
+
+/* About Page Mobile Fix for Diamond Gallery */
+@media (max-width: 767px) {
+  .about-image {
+    height: 580px !important;
+    position: relative !important;
+    margin-top: 60px !important;
+    margin-bottom: 60px !important;
+    display: block !important;
+    width: 100% !important;
+  }
+  
+  .about-image .single-image {
+    position: absolute !important;
+    z-index: 2 !important;
+    overflow: hidden !important;
+    border-radius: 20px !important;
+    width: 140px !important;
+    height: 140px !important;
+    display: block !important;
+    /* Force diamond shape */
+    -webkit-transform: rotate(45deg) !important;
+    transform: rotate(45deg) !important;
+  }
+
+  /* Symmetric Diamond Pattern: Top, Left, Right, Bottom */
+  
+  /* Top Image */
+  .about-image .single-image.image-1 {
+    top: 0 !important;
+    left: 50% !important;
+    margin-left: -70px !important;
+    right: auto !important;
+  }
+  
+  /* Left Image */
+  .about-image .single-image.image-3 {
+    top: 130px !important;
+    left: 10% !important;
+    right: auto !important;
+  }
+  
+  /* Right Image */
+  .about-image .single-image.image-2 {
+    top: 130px !important;
+    right: 10% !important;
+    left: auto !important;
+  }
+  
+  /* Bottom Image */
+  .about-image .single-image.image-4 {
+    display: block !important;
+    top: 260px !important;
+    left: 50% !important;
+    margin-left: -70px !important;
+    right: auto !important;
+  }
+
+  .about-image .single-image img {
+    width: 145% !important;
+    height: 145% !important;
+    max-width: none !important;
+    object-fit: cover !important;
+    /* Counter-rotate to make image upright */
+    -webkit-transform: rotate(-45deg) !important;
+    transform: rotate(-45deg) !important;
+    margin-top: -22.5% !important;
+    margin-left: -22.5% !important;
+  }
+
+  /* Decorative borders (squares behind diamonds) */
+  .about-image .single-image::before {
+    border-radius: 15px !important;
+    z-index: -1 !important;
+  }
+
+  /* Icons integrated in between */
+  .about-image .about-icon {
+    position: absolute !important;
+    z-index: 1 !important;
+    opacity: 0.7 !important;
+    width: 40px !important;
+    display: block !important;
+  }
+
+  .about-image .about-icon.icon-1 { top: 70px !important; left: 25% !important; }
+  .about-image .about-icon.icon-2 { top: 70px !important; right: 25% !important; left: auto !important; }
+  .about-image .about-icon.icon-3 { top: 210px !important; left: 25% !important; }
+  .about-image .about-icon.icon-4 { top: 210px !important; right: 25% !important; left: auto !important; }
+}
+
+/* About Page Mobile Fix for Rectangular Gallery */
+@media (max-width: 767px) {
+  .campus-image-2 {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    position: relative !important;
+    padding-left: 40px !important;
+    margin-top: 50px !important;
+    margin-bottom: 50px !important;
+  }
+
+  .campus-image-2 .image-1 {
+    width: 90% !important;
+    margin-left: auto !important;
+    margin-bottom: 10px !important;
+  }
+
+  .campus-image-2 .image-2 {
+    width: 38% !important;
+    margin: 0 !important;
+  }
+
+  .campus-image-2 .image-3 {
+    width: 62% !important;
+    margin: 0 !important;
+  }
+
+  .campus-image-2 .campus-title-2 {
+    font-size: 14px !important;
+    top: 100px !important;
+    left: -70px !important;
+    width: 200px !important;
+    display: block !important;
+    opacity: 0.5 !important;
+    transform: rotate(-90deg) !important;
+    white-space: nowrap !important;
+  }
+
+  .campus-image-2 .more {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    text-align: right !important;
+    margin-top: 20px !important;
+    font-size: 14px !important;
   }
 }

@@ -40,16 +40,16 @@ export default function Header() {
       {/* Top Bar */}
       <div className="header-top">
         <div className="container">
-          <div className="header-top-wrapper d-flex flex-wrap justify-content-sm-between">
-            <div className="header-top-left mt-10">
+          <div className="header-top-wrapper d-flex flex-wrap justify-content-center justify-content-sm-between align-items-center">
+            <div className="header-top-left mt-10 w-100 w-sm-auto text-center text-sm-start">
               <ul className="header-meta">
                 <li>
-                  <a href="mailto:info@arvindclasses.in">info@arvindclasses.in</a>
+                  <a href="mailto:info@arvinduclasses.in">info@arvinduclasses.in</a>
                 </li>
               </ul>
             </div>
-            <div className="header-top-right mt-10">
-              <div className="header-link d-flex align-items-center">
+            <div className="header-top-right mt-10 w-100 w-sm-auto text-center text-sm-end">
+              <div className="header-link d-flex align-items-center justify-content-center justify-content-sm-end">
                 <Link className="notice" href="/notice" style={{ fontSize: '13px', color: '#fff' }}>Notice</Link>
                 {user ? (
                   <>

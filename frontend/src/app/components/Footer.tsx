@@ -14,10 +14,10 @@ export default function Footer() {
                 <h4 className="footer-title">Information</h4>
                 <ul className="link-list">
                   <li><a href="#">Admission</a></li>
-                  <li><a href="#">Tuition fee</a></li>
-                  <li><a href="#">Scholarship</a></li>
+                  <li><Link href="/tuition-fee">Tuition fee</Link></li>
+                  <li><Link href="/scholarship">Scholarship</Link></li>
                   <li><a href="#">Conditions</a></li>
-                  <li><a href="#">Facilities</a></li>
+                  <li><Link href="/facilities">Facilities</Link></li>
                 </ul>
               </div>
             </div>
@@ -65,7 +65,7 @@ export default function Footer() {
                     <p><a href="tel:+918051696333">+91 80516 96333</a></p>
                   </li>
                   <li>
-                    <p><a href="mailto:info@arvindclasses.in">info@arvindclasses.in</a></p>
+                    <p><a href="mailto:info@arvinduclasses.in">info@arvinduclasses.in</a></p>
                   </li>
                 </ul>
               </div>
