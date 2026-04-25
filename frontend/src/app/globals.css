@@ -1503,7 +1503,7 @@ html {
 
 /* Blog Page Padding Fixes */
 .blog-card-content {
-  padding: 35px !important;
+  padding: 20px 35px 35px 35px !important;
 }
 .blog-container {
   padding-left: 20px !important;
@@ -1511,6 +1511,6 @@ html {
 }
 @media (max-width: 768px) {
   .blog-card-content {
-    padding: 25px !important;
+    padding: 15px 25px 25px 25px !important;
   }
 }
