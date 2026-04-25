@@ -50,12 +50,12 @@ export default function NewsletterForm() {
       </button>
 
       {status === "success" && (
-        <p className="mt-4 text-green-400 text-sm font-bold animate-in fade-in slide-in-from-top-2">
+        <p className="mt-4 text-green-600 text-sm font-bold animate-in fade-in slide-in-from-top-2">
           <i className="fas fa-check-circle mr-2"></i> {message}
         </p>
       )}
       {status === "error" && (
-        <p className="mt-4 text-red-400 text-sm font-bold animate-in fade-in slide-in-from-top-2">
+        <p className="mt-4 text-red-600 text-sm font-bold animate-in fade-in slide-in-from-top-2">
           <i className="fas fa-exclamation-circle mr-2"></i> {message}
         </p>
       )}

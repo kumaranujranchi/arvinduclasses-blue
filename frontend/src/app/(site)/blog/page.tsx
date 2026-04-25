@@ -239,26 +239,42 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* Newsletter Section */}
+      {/* Newsletter Section - Redesigned to Notebook/Results Style */}
       <section className="newsletter-area bg-white pb-120 pt-0">
-        <div className="container">
-          <div className="newsletter-wrapper bg-[#01228D] p-8 md:p-10 rounded-[40px] shadow-2xl shadow-blue-900/20 relative overflow-hidden max-w-4xl mx-auto">
+        <div className="container blog-container">
+          <div className="newsletter-wrapper bg-[#FFFDF0] p-10 md:p-14 rounded-[40px] border-2 border-[#FFE8A3] shadow-xl relative overflow-hidden max-w-5xl mx-auto">
+             {/* Grid Overlay */}
+             <div className="absolute inset-0 opacity-[0.15] pointer-events-none" 
+                  style={{ 
+                    backgroundImage: `linear-gradient(#01228D 1px, transparent 1px), linear-gradient(90deg, #01228D 1px, transparent 1px)`,
+                    backgroundSize: '40px 40px'
+                  }}>
+             </div>
+
              <div className="row align-items-center relative z-10">
                <div className="col-lg-6">
                  <div className="section-title-2 mb-0">
-                   <h2 className="title text-2xl md:text-3xl font-black text-white leading-tight">Join our newsletter to <br className="hidden md:block"/> get latest updates</h2>
-                   <p className="mt-4 text-white/80 text-sm md:text-base">We only send quality content that helps students and parents stay informed.</p>
+                   <h2 className="title text-3xl md:text-4xl font-black text-[#01228D] leading-tight mb-2">
+                     Join our newsletter
+                   </h2>
+                   <div className="w-40 h-1.5 bg-[#FFC600] rounded-full mb-6"></div> {/* Brush stroke equivalent */}
+                   <h3 className="text-xl md:text-2xl font-bold text-[#01228D]/80 mb-4">Stay Ahead with Latest Updates</h3>
+                   <p className="text-slate-600 text-sm md:text-base font-medium max-w-md">
+                     We only send quality content that helps students and parents stay informed about their educational journey.
+                   </p>
                  </div>
                </div>
                <div className="col-lg-6">
-                 <div className="mt-8 lg:mt-0 p-3 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20">
-                    <NewsletterForm />
+                 <div className="mt-10 lg:mt-0 p-1 bg-[#01228D]/5 rounded-2xl border border-[#01228D]/10">
+                    <div className="bg-white p-4 rounded-xl shadow-inner">
+                       <NewsletterForm />
+                    </div>
                  </div>
                </div>
              </div>
-             {/* Decorative */}
-             <div className="absolute top-0 right-0 w-64 h-64 bg-blue-400/20 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
-             <div className="absolute bottom-0 left-0 w-48 h-48 bg-orange-400/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl"></div>
+             
+             {/* Decorative pencil-like element or accent */}
+             <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[#FFC600]/10 rounded-full blur-3xl"></div>
           </div>
         </div>
       </section>
