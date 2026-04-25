@@ -1,45 +1,97 @@
 import { mutation, query } from "./_generated/server";
 import { v } from "convex/values";
 
+// Helper to resolve image URL from storageId or full URL
+async function resolveImageUrl(ctx: any, imageUrl: string | undefined) {
+  if (!imageUrl) return undefined;
+  
+  // If it's already a full URL but from a different deployment, try to fix it
+  // or if it's just a storageId, get the URL.
+  // Convex storage IDs usually start with 'utf8:' or are just long strings.
+  // A common pattern is to just try getting the URL if it looks like an ID.
+  
+  if (imageUrl.startsWith("http")) {
+    // If it's a full URL, try to extract the storageId from the end
+    const parts = imageUrl.split("/");
+    const id = parts[parts.length - 1];
+    if (id && (id.length > 20)) { // Convex IDs are long
+       try {
+         const newUrl = await ctx.storage.getUrl(id);
+         return newUrl || imageUrl;
+       } catch (e) {
+         return imageUrl;
+       }
+    }
+    return imageUrl;
+  }
+
+  // If it's not a URL, assume it's a storageId
+  try {
+    return await ctx.storage.getUrl(imageUrl) || imageUrl;
+  } catch (e) {
+    return imageUrl;
+  }
+}
+
 // Get all published posts for site
 export const getAll = query({
   args: {},
   handler: async (ctx) => {
-    return await ctx.db
+    const posts = await ctx.db
       .query("posts")
       .withIndex("by_published", (q) => q.eq("isPublished", true))
       .order("desc")
       .collect();
+    
+    return await Promise.all(posts.map(async (post) => ({
+      ...post,
+      imageUrl: await resolveImageUrl(ctx, post.imageUrl),
+    })));
   },
 });
 
-// Get all posts for admin
+// Get published posts with limit
 export const getPublishedPosts = query({
   args: { limit: v.optional(v.number()) },
   handler: async (ctx, args) => {
-    return await ctx.db
+    const posts = await ctx.db
       .query("posts")
       .withIndex("by_published", (q) => q.eq("isPublished", true))
       .order("desc")
       .take(args.limit ?? 100);
+    
+    return await Promise.all(posts.map(async (post) => ({
+      ...post,
+      imageUrl: await resolveImageUrl(ctx, post.imageUrl),
+    })));
   },
 });
 
 export const getPublishedPostBySlug = query({
   args: { slug: v.string() },
   handler: async (ctx, args) => {
-    return await ctx.db
+    const post = await ctx.db
       .query("posts")
       .withIndex("by_slug", (q) => q.eq("slug", args.slug))
-      .filter((q) => q.eq(q.field("isPublished"), true))
-      .first();
+      .unique();
+    
+    if (!post || !post.isPublished) return null;
+    
+    return {
+      ...post,
+      imageUrl: await resolveImageUrl(ctx, post.imageUrl),
+    };
   },
 });
 
 export const getAllAdmin = query({
   args: {},
   handler: async (ctx) => {
-    return await ctx.db.query("posts").order("desc").collect();
+    const posts = await ctx.db.query("posts").order("desc").collect();
+    return await Promise.all(posts.map(async (post) => ({
+      ...post,
+      imageUrl: await resolveImageUrl(ctx, post.imageUrl),
+    })));
   },
 });
 
@@ -47,10 +99,15 @@ export const getAllAdmin = query({
 export const getBySlug = query({
   args: { slug: v.string() },
   handler: async (ctx, args) => {
-    return await ctx.db
+    const post = await ctx.db
       .query("posts")
       .withIndex("by_slug", (q) => q.eq("slug", args.slug))
       .unique();
+    if (!post) return null;
+    return {
+      ...post,
+      imageUrl: await resolveImageUrl(ctx, post.imageUrl),
+    };
   },
 });
 
@@ -58,7 +115,12 @@ export const getBySlug = query({
 export const getById = query({
   args: { id: v.id("posts") },
   handler: async (ctx, args) => {
-    return await ctx.db.get(args.id);
+    const post = await ctx.db.get(args.id);
+    if (!post) return null;
+    return {
+      ...post,
+      imageUrl: await resolveImageUrl(ctx, post.imageUrl),
+    };
   },
 });
 
