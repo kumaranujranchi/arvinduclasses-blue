@@ -1048,6 +1048,22 @@ html {
 .fs-18px {
   font-size: 18px;
 }
+@media (max-width: 768px) {
+  .dm-diff-section {
+    padding: 25px 15px;
+  }
+  .dm-diff-icon {
+    font-size: 24px;
+  }
+  .fs-14px-mobile {
+    font-size: 13px !important;
+  }
+  .dm-diff-section h4 {
+    font-size: 18px !important;
+    margin-bottom: 20px !important;
+    text-align: center;
+  }
+}
 .dm-btn-large {
   border-radius: 30px;
   background: #ffc600;

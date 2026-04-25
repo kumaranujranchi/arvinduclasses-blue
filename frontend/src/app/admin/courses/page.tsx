@@ -44,10 +44,10 @@ export default function ManageCourses() {
         </div>
         <button 
           onClick={() => setIsAdding(!isAdding)}
-          className="bg-[#07294d] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-black text-[10px] sm:text-xs uppercase tracking-widest shadow-xl shadow-blue-100 flex items-center justify-center gap-3 transition-all active:scale-95 w-full sm:w-auto"
+          className="bg-[#01228D] hover:bg-blue-800 text-white px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl font-bold transition-all shadow-md flex items-center justify-center gap-2 w-full sm:w-auto text-sm"
         >
           <i className={`fas ${isAdding ? "fa-times" : "fa-plus"}`}></i>
-          {isAdding ? "Cancel" : "Add New Course"}
+          <span>{isAdding ? "Cancel" : "Add New Course"}</span>
         </button>
       </div>
 

@@ -2,11 +2,24 @@
 
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import LeadForm from "../../components/LeadForm";
 import Link from "next/link";
 import { useState } from "react";
 
 export default function DigitalMarketingPage() {
   const [activeAccordion, setActiveAccordion] = useState<number | null>(0);
+  const [formConfig, setFormConfig] = useState<{ isOpen: boolean; type: 'demo' | 'enroll' }>({
+    isOpen: false,
+    type: 'demo'
+  });
+
+  const openForm = (type: 'demo' | 'enroll') => {
+    setFormConfig({ isOpen: true, type });
+  };
+
+  const closeForm = () => {
+    setFormConfig({ ...formConfig, isOpen: false });
+  };
 
   return (
     <>
@@ -81,7 +94,7 @@ export default function DigitalMarketingPage() {
               <div className="diff-section mb-60 rounded-lg text-white dm-diff-section">
                 <h4 className="text-white mb-30">What Makes This Course Different</h4>
                 <div className="row">
-                  {[
+                  { [
                     { title: "AI-Driven Training", icon: "fas fa-robot" },
                     { title: "Marketing Concepts First", icon: "fas fa-brain" },
                     { title: "Project-Based Learning", icon: "fas fa-project-diagram" },
@@ -89,10 +102,10 @@ export default function DigitalMarketingPage() {
                     { title: "Freelancing Training", icon: "fas fa-hand-holding-usd" },
                     { title: "Portfolio Support", icon: "fas fa-briefcase" }
                   ].map((item, i) => (
-                    <div key={i} className="col-md-4 mb-30">
+                    <div key={i} className="col-6 col-md-4 mb-30">
                       <div className="diff-item text-center">
                         <i className={`${item.icon} mb-3 dm-diff-icon`}></i>
-                        <h6 className="text-white">{item.title}</h6>
+                        <h6 className="text-white fs-14px-mobile">{item.title}</h6>
                       </div>
                     </div>
                   ))}
@@ -265,7 +278,10 @@ export default function DigitalMarketingPage() {
                     ))}
                   </div>
 
-                  <button className="dm-main-btn w-100 mb-3 py-3 dm-btn-primary">
+                  <button 
+                    className="dm-main-btn w-100 mb-3 py-3 dm-btn-primary border-0 cursor-pointer"
+                    onClick={() => openForm('demo')}
+                  >
                     Book Free Demo
                   </button>
                   
@@ -292,13 +308,22 @@ export default function DigitalMarketingPage() {
         <div className="container text-center relative-z1">
           <h2 className="text-white mb-3">Start Your Career in Digital Marketing with AI</h2>
           <p className="text-white opacity-75 mb-40 fs-18px">Learn practical skills, work on real projects, and become job-ready.</p>
-          <button className="dm-main-btn py-3 px-5 dm-btn-large">
+          <button 
+            className="dm-main-btn py-3 px-5 dm-btn-large border-0 cursor-pointer"
+            onClick={() => openForm('demo')}
+          >
             Book Free Demo Now
           </button>
         </div>
       </section>
 
       <Footer />
+
+      <LeadForm 
+        isOpen={formConfig.isOpen} 
+        onClose={closeForm} 
+        type={formConfig.type} 
+      />
 
     </>
   );

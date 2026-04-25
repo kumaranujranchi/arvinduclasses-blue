@@ -13,6 +13,7 @@ export default function UserManagement() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingUser, setEditingUser] = useState<any>(null);
+  const [expandedId, setExpandedId] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -88,60 +89,61 @@ export default function UserManagement() {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-gray-100 gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-gray-800">User Management</h1>
-          <p className="text-gray-500 text-sm mt-1">Create and manage access roles for the platform.</p>
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-800">User Management</h1>
+          <p className="text-gray-500 text-xs sm:text-sm mt-1">Create and manage access roles for the platform.</p>
         </div>
         <button 
           onClick={() => {
             setEditingUser(null);
             setIsModalOpen(true);
           }}
-          className="bg-[#07294d] hover:bg-[#0a3666] text-white px-6 py-3 rounded-xl font-bold transition-all shadow-md flex items-center gap-2"
+          className="bg-[#01228D] hover:bg-blue-800 text-white px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl font-bold transition-all shadow-md flex items-center justify-center gap-2 w-full sm:w-auto text-sm"
         >
           <i className="fas fa-user-plus"></i>
-          Add New User
+          <span>Add New User</span>
         </button>
       </div>
 
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-        <div className="overflow-x-auto">
+        {/* Desktop Table View */}
+        <div className="hidden md:block overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-gray-50 border-b border-gray-100 text-gray-500 text-xs uppercase tracking-wider">
-                <th className="p-4 font-bold">User Details</th>
-                <th className="p-4 font-bold">Role</th>
-                <th className="p-4 font-bold">Status</th>
-                <th className="p-4 font-bold">Created At</th>
-                <th className="p-4 font-bold text-right">Actions</th>
+              <tr className="bg-gray-50 border-b border-gray-100 text-gray-500 text-[10px] uppercase tracking-widest font-black">
+                <th className="px-6 py-4">User Details</th>
+                <th className="px-6 py-4">Role</th>
+                <th className="px-6 py-4">Status</th>
+                <th className="px-6 py-4">Created At</th>
+                <th className="px-6 py-4 text-right">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
               {users.map((user) => (
                 <tr key={user._id} className="hover:bg-gray-50/50 transition-colors">
-                  <td className="p-4">
+                  <td className="px-6 py-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold">
+                      <div className="w-10 h-10 rounded-2xl bg-blue-50 flex items-center justify-center text-[#01228D] font-bold shadow-sm">
                         {user.name.charAt(0)}
                       </div>
                       <div>
-                        <p className="font-bold text-gray-800">{user.name}</p>
-                        <p className="text-xs text-gray-500">{user.email}</p>
+                        <p className="text-sm font-bold text-slate-800">{user.name}</p>
+                        <p className="text-xs text-slate-400 font-medium">{user.email}</p>
                       </div>
                     </div>
                   </td>
-                  <td className="p-4">
-                    <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${
-                      user.role === 'super_admin' ? 'bg-purple-100 text-purple-700' :
-                      user.role === 'admin' ? 'bg-blue-100 text-blue-700' :
-                      user.role === 'teacher' ? 'bg-green-100 text-green-700' :
-                      'bg-gray-100 text-gray-700'
+                  <td className="px-6 py-4">
+                    <span className={`px-3 py-1.5 rounded-xl text-[10px] font-bold uppercase tracking-wider ${
+                      user.role === 'super_admin' ? 'bg-purple-50 text-purple-700' :
+                      user.role === 'admin' ? 'bg-blue-50 text-blue-700' :
+                      user.role === 'teacher' ? 'bg-green-50 text-green-700' :
+                      'bg-slate-50 text-slate-700'
                     }`}>
                       {user.role.replace("_", " ")}
                     </span>
                   </td>
-                  <td className="p-4">
+                  <td className="px-6 py-4">
                     <button 
                       onClick={() => {
                         const sessionStr = localStorage.getItem("user_session");
@@ -153,57 +155,152 @@ export default function UserManagement() {
                           adminName: admin?.name || "System"
                         });
                       }}
-                      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                        user.isActive ? 'bg-green-500' : 'bg-gray-300'
+                      className={`relative inline-flex h-5 w-10 items-center rounded-full transition-colors ${
+                        user.isActive ? 'bg-green-500' : 'bg-slate-200'
                       }`}
                     >
-                      <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                        user.isActive ? 'translate-x-6' : 'translate-x-1'
+                      <span className={`inline-block h-3.5 w-3.5 transform rounded-full bg-white transition-transform shadow-sm ${
+                        user.isActive ? 'translate-x-6' : 'translate-x-0.5'
                       }`} />
                     </button>
                   </td>
-                  <td className="p-4 text-sm text-gray-500">
+                  <td className="px-6 py-4 text-xs text-slate-400 font-bold">
                     {new Date(user.createdAt).toLocaleDateString()}
                   </td>
-                  <td className="p-4 text-right min-w-[120px]">
+                  <td className="px-6 py-4 text-right">
                     <div className="flex justify-end items-center gap-3">
-                      <button 
-                        onClick={() => handleEdit(user)}
-                        className="flex items-center gap-1.5 text-blue-600 hover:text-blue-800 font-bold text-xs transition-all"
-                      >
-                        <i className="fas fa-edit"></i>
-                        <span>Edit</span>
+                      <button onClick={() => handleEdit(user)} className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 hover:bg-blue-100 flex items-center justify-center transition-all">
+                        <i className="fas fa-edit text-xs"></i>
                       </button>
-
                       <button 
                         onClick={() => {
-                          if (confirm("Are you sure you want to delete this user?")) {
+                          if (confirm("Are you sure?")) {
                             const sessionStr = localStorage.getItem("user_session");
                             const admin = sessionStr ? JSON.parse(sessionStr) : null;
-                            deleteUser({ 
-                              id: user._id,
-                              adminId: admin?.userId || "system",
-                              adminName: admin?.name || "System"
-                            });
+                            deleteUser({ id: user._id, adminId: admin?.userId || "system", adminName: admin?.name || "System" });
                           }
                         }}
-                        className="flex items-center gap-1.5 text-red-500 hover:text-red-700 font-bold text-xs transition-all"
+                        className="w-8 h-8 rounded-lg bg-red-50 text-red-500 hover:bg-red-100 flex items-center justify-center transition-all"
                       >
-                        <i className="fas fa-trash-alt"></i>
-                        <span>Delete</span>
+                        <i className="fas fa-trash-alt text-xs"></i>
                       </button>
                     </div>
                   </td>
                 </tr>
               ))}
-              {users.length === 0 && (
-                <tr>
-                  <td colSpan={5} className="p-8 text-center text-gray-500">No users found.</td>
-                </tr>
-              )}
             </tbody>
           </table>
         </div>
+
+        {/* Mobile List View */}
+        <div className="md:hidden divide-y divide-gray-100">
+          {users.map((user) => {
+            const isExpanded = expandedId === user._id;
+            return (
+              <div key={user._id} className={`transition-all duration-300 ${isExpanded ? 'bg-blue-50/30' : ''}`}>
+                {/* Header - Always Visible */}
+                <div 
+                  onClick={() => setExpandedId(isExpanded ? null : user._id)}
+                  className="p-4 flex items-center justify-between cursor-pointer active:bg-gray-50 transition-colors"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className={`w-10 h-10 rounded-2xl flex items-center justify-center font-bold shadow-sm transition-colors ${
+                      isExpanded ? 'bg-[#01228D] text-white' : 'bg-blue-50 text-[#01228D]'
+                    }`}>
+                      {user.name.charAt(0)}
+                    </div>
+                    <div>
+                      <p className="text-sm font-bold text-slate-800">{user.name}</p>
+                      <p className="text-[10px] text-slate-400 font-medium">{user.email}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className={`px-2 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest ${
+                      user.role === 'super_admin' ? 'bg-purple-50 text-purple-700' :
+                      user.role === 'admin' ? 'bg-blue-50 text-blue-700' :
+                      user.role === 'teacher' ? 'bg-green-50 text-green-700' :
+                      'bg-slate-50 text-slate-700'
+                    }`}>
+                      {user.role.replace("_", " ")}
+                    </span>
+                    <i className={`fas fa-chevron-down text-gray-300 text-xs transition-transform duration-300 ${isExpanded ? 'rotate-180 text-blue-500' : ''}`}></i>
+                  </div>
+                </div>
+
+                {/* Collapsable Details */}
+                {isExpanded && (
+                  <div className="px-4 pb-5 space-y-4 animate-in slide-in-from-top-2 duration-300">
+                    <div className="grid grid-cols-2 gap-4 py-3 border-y border-gray-100/50">
+                      <div className="space-y-1">
+                        <p className="text-[9px] font-black text-gray-400 uppercase tracking-widest">Phone Number</p>
+                        <p className="text-xs font-bold text-gray-700">{user.phone || 'Not provided'}</p>
+                      </div>
+                      <div className="space-y-1">
+                        <p className="text-[9px] font-black text-gray-400 uppercase tracking-widest">Account Status</p>
+                        <div className="flex items-center gap-2 mt-1">
+                           <button 
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              const sessionStr = localStorage.getItem("user_session");
+                              const admin = sessionStr ? JSON.parse(sessionStr) : null;
+                              toggleStatus({ 
+                                id: user._id, 
+                                isActive: !user.isActive,
+                                adminId: admin?.userId || "system",
+                                adminName: admin?.name || "System"
+                              });
+                            }}
+                            className={`relative inline-flex h-4 w-8 items-center rounded-full transition-colors ${
+                              user.isActive ? 'bg-green-500' : 'bg-slate-200'
+                            }`}
+                          >
+                            <span className={`inline-block h-2.5 w-2.5 transform rounded-full bg-white transition-transform shadow-sm ${
+                              user.isActive ? 'translate-x-5' : 'translate-x-0.5'
+                            }`} />
+                          </button>
+                          <span className={`text-[10px] font-bold ${user.isActive ? 'text-green-600' : 'text-slate-400'}`}>
+                            {user.isActive ? 'Active' : 'Disabled'}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="space-y-1">
+                        <p className="text-[9px] font-black text-gray-400 uppercase tracking-widest">Joined On</p>
+                        <p className="text-xs font-bold text-gray-600">{new Date(user.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</p>
+                      </div>
+                    </div>
+
+                    <div className="flex gap-2">
+                      <button 
+                        onClick={(e) => { e.stopPropagation(); handleEdit(user); }}
+                        className="flex-1 py-3 bg-blue-50 text-blue-600 rounded-xl font-bold text-xs flex items-center justify-center gap-2 active:bg-blue-100 transition-colors border border-blue-100/50"
+                      >
+                        <i className="fas fa-edit"></i>
+                        Edit User
+                      </button>
+                      <button 
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          if (confirm("Permanently delete this user?")) {
+                            const sessionStr = localStorage.getItem("user_session");
+                            const admin = sessionStr ? JSON.parse(sessionStr) : null;
+                            deleteUser({ id: user._id, adminId: admin?.userId || "system", adminName: admin?.name || "System" });
+                          }
+                        }}
+                        className="flex-1 py-3 bg-red-50 text-red-500 rounded-xl font-bold text-xs flex items-center justify-center gap-2 active:bg-red-100 transition-colors border border-red-100/50"
+                      >
+                        <i className="fas fa-trash-alt"></i>
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+        {users.length === 0 && (
+          <div className="p-12 text-center text-slate-300 font-bold">No users found.</div>
+        )}
       </div>
 
       {/* User Modal (Add/Edit) */}

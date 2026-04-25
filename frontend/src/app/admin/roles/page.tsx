@@ -55,110 +55,105 @@ export default function RoleManagement() {
 
   return (
     <div className="space-y-8 animate-in fade-in duration-500">
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
           <h1 className="text-3xl font-black text-gray-900 tracking-tight">Role Management</h1>
           <p className="text-gray-500 font-medium mt-1">Define access levels and feature permissions for each user role.</p>
         </div>
-        <button className="px-6 py-3 bg-[#01228D] text-white rounded-2xl text-sm font-bold shadow-lg shadow-blue-100 hover:scale-[1.02] transition-all flex items-center gap-2">
+        <button className="w-full md:w-auto px-6 py-3.5 bg-[#01228D] text-white rounded-2xl text-sm font-bold shadow-lg shadow-blue-100 hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
           <i className="fas fa-plus"></i>
           Create New Role
         </button>
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-8">
-        {/* Roles List */}
-        <div className="w-full lg:w-80 space-y-3">
-          {ROLES.map((role) => (
-            <button
-              key={role.id}
-              onClick={() => setSelectedRole(role.id)}
-              className={`w-full p-5 rounded-[24px] border transition-all text-left group ${
-                selectedRole === role.id
-                  ? 'bg-[#01228D] border-[#01228D] shadow-xl shadow-blue-100'
-                  : 'bg-white border-gray-100 hover:border-blue-200'
-              }`}
-            >
-              <div className="flex items-center justify-between">
-                <span className={`font-black text-base ${selectedRole === role.id ? 'text-white' : 'text-gray-800'}`}>
-                  {role.name}
-                </span>
-                <i className={`fas fa-chevron-right text-xs transition-transform ${selectedRole === role.id ? 'text-blue-200 translate-x-1' : 'text-gray-300'}`}></i>
+      <div className="bg-white p-6 md:p-8 rounded-[32px] shadow-sm border border-gray-50">
+        <div className="flex flex-col md:flex-row md:items-center gap-6 mb-8">
+          <div className="flex-1">
+            <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 block">Select Role to Configure</label>
+            <div className="relative">
+              <select 
+                value={selectedRole}
+                onChange={(e) => setSelectedRole(e.target.value)}
+                className="w-full h-14 pl-6 pr-12 bg-gray-50 border border-gray-100 rounded-2xl text-gray-900 font-bold appearance-none focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all cursor-pointer"
+              >
+                {ROLES.map((role) => (
+                  <option key={role.id} value={role.id}>{role.name}</option>
+                ))}
+              </select>
+              <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
+                <i className="fas fa-chevron-down"></i>
               </div>
-              <div className="mt-3 flex gap-2">
-                <span className={`text-[10px] px-2 py-1 rounded-lg font-bold uppercase tracking-wider ${
-                  selectedRole === role.id ? 'bg-blue-800/50 text-blue-100' : role.color
-                }`}>
-                  {role.id.replace('_', ' ')}
-                </span>
-              </div>
-            </button>
-          ))}
-        </div>
-
-        {/* Permissions Table */}
-        <div className="flex-1 bg-white rounded-[32px] shadow-sm border border-gray-50 overflow-hidden">
-          <div className="p-8 border-b border-gray-50 bg-gray-50/30 flex items-center justify-between">
-            <div>
-              <h3 className="font-black text-xl text-gray-900">Permissions for {ROLES.find(r => r.id === selectedRole)?.name}</h3>
-              <p className="text-gray-400 text-sm font-medium mt-1">Toggle switches to enable or disable features.</p>
             </div>
-            <button className="px-5 py-2.5 bg-green-500 text-white rounded-xl text-xs font-black uppercase tracking-widest shadow-lg shadow-green-100 hover:scale-105 transition-all">
-              Save Changes
-            </button>
+          </div>
+          
+          <div className="hidden md:flex items-center gap-3 pt-6">
+             <span className="text-xs font-bold text-gray-400">Quick Status:</span>
+             <span className={`text-[10px] px-3 py-1.5 rounded-xl font-black uppercase tracking-wider ${ROLES.find(r => r.id === selectedRole)?.color}`}>
+                {selectedRole.replace('_', ' ')}
+             </span>
           </div>
 
-          <div className="overflow-x-auto">
-            <table className="w-full text-left">
-              <thead>
-                <tr className="border-b border-gray-50">
-                  <th className="px-8 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest">Feature / Module</th>
-                  <th className="px-8 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest text-center">View</th>
-                  <th className="px-8 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest text-center">Edit</th>
-                  <th className="px-8 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest text-center">Delete</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-50">
-                {FEATURES.map((feature) => (
-                  <tr key={feature.id} className="hover:bg-gray-50/50 transition-colors">
-                    <td className="px-8 py-6">
-                      <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center text-gray-400">
-                          <i className={`fas ${
-                            feature.id === 'leads' ? 'fa-user-graduate' :
-                            feature.id === 'users' ? 'fa-user-shield' :
-                            feature.id === 'courses' ? 'fa-book' :
-                            feature.id === 'notices' ? 'fa-bullhorn' : 'fa-cog'
-                          }`}></i>
-                        </div>
-                        <div>
-                          <p className="font-black text-gray-800 text-sm">{feature.name}</p>
-                          <p className="text-[11px] text-gray-400 font-bold mt-0.5">{feature.description}</p>
-                        </div>
-                      </div>
-                    </td>
-                    {['view', 'edit', 'delete'].map((type) => (
-                      <td key={type} className="px-8 py-6 text-center">
-                        <button
-                          onClick={() => handleToggle(selectedRole, feature.id, type as any)}
-                          className={`w-12 h-6 rounded-full p-1 transition-all relative ${
-                            permissions[selectedRole]?.[feature.id]?.[type as 'view' | 'edit' | 'delete']
-                              ? 'bg-blue-600'
-                              : 'bg-gray-200'
-                          }`}
-                        >
-                          <div className={`w-4 h-4 bg-white rounded-full transition-all shadow-sm ${
-                            permissions[selectedRole]?.[feature.id]?.[type as 'view' | 'edit' | 'delete']
-                              ? 'translate-x-6'
-                              : 'translate-x-0'
-                          }`} />
-                        </button>
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="pt-6">
+            <button className="w-full md:w-auto px-8 py-3.5 bg-green-500 text-white rounded-2xl text-sm font-black uppercase tracking-widest shadow-lg shadow-green-100 hover:scale-[1.02] transition-all">
+              Save Permissions
+            </button>
+          </div>
+        </div>
+
+        {/* Permissions Grid - Desktop Table / Mobile Cards */}
+        <div className="border border-gray-50 rounded-[28px] overflow-hidden">
+          {/* Desktop Header */}
+          <div className="hidden md:grid grid-cols-12 bg-gray-50/50 border-b border-gray-50 px-8 py-5">
+            <div className="col-span-6 text-[10px] font-black text-gray-400 uppercase tracking-widest">Feature / Module</div>
+            <div className="col-span-2 text-[10px] font-black text-gray-400 uppercase tracking-widest text-center">View</div>
+            <div className="col-span-2 text-[10px] font-black text-gray-400 uppercase tracking-widest text-center">Edit</div>
+            <div className="col-span-2 text-[10px] font-black text-gray-400 uppercase tracking-widest text-center">Delete</div>
+          </div>
+
+          <div className="divide-y divide-gray-50">
+            {FEATURES.map((feature) => (
+              <div key={feature.id} className="grid grid-cols-1 md:grid-cols-12 items-center hover:bg-gray-50/30 transition-colors px-6 md:px-8 py-6 md:py-8 gap-4 md:gap-0">
+                <div className="md:col-span-6">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-2xl bg-white border border-gray-50 shadow-sm flex items-center justify-center text-blue-600 text-lg">
+                      <i className={`fas ${
+                        feature.id === 'leads' ? 'fa-user-graduate' :
+                        feature.id === 'users' ? 'fa-user-shield' :
+                        feature.id === 'courses' ? 'fa-book' :
+                        feature.id === 'notices' ? 'fa-bullhorn' : 'fa-cog'
+                      }`}></i>
+                    </div>
+                    <div>
+                      <p className="font-black text-gray-800 text-base">{feature.name}</p>
+                      <p className="text-[11px] text-gray-400 font-bold mt-0.5">{feature.description}</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Permissions Toggles */}
+                <div className="md:col-span-6 grid grid-cols-3 md:grid-cols-6 gap-2">
+                  {['view', 'edit', 'delete'].map((type) => (
+                    <div key={type} className="md:col-span-2 flex flex-col md:items-center justify-center gap-2">
+                      <span className="md:hidden text-[9px] font-black text-gray-400 uppercase tracking-widest text-center">{type}</span>
+                      <button
+                        onClick={() => handleToggle(selectedRole, feature.id, type as any)}
+                        className={`w-12 h-6 md:w-14 md:h-7 rounded-full p-1 transition-all relative self-center ${
+                          permissions[selectedRole]?.[feature.id]?.[type as 'view' | 'edit' | 'delete']
+                            ? 'bg-blue-600 shadow-md shadow-blue-100'
+                            : 'bg-gray-200'
+                        }`}
+                      >
+                        <div className={`w-4 h-4 md:w-5 md:h-5 bg-white rounded-full transition-all shadow-sm ${
+                          permissions[selectedRole]?.[feature.id]?.[type as 'view' | 'edit' | 'delete']
+                            ? 'translate-x-6 md:translate-x-7'
+                            : 'translate-x-0'
+                        }`} />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

@@ -37,19 +37,20 @@ export default function ActivityLogPage() {
 
   return (
     <div className="space-y-8 animate-in fade-in duration-500 max-w-[1200px] mx-auto pb-10">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 px-2 sm:px-0">
         <div>
-          <h1 className="text-3xl font-black text-slate-800 tracking-tight">System Activity Log</h1>
-          <p className="text-slate-400 font-medium mt-2">Track real-time actions performed by all administrative users.</p>
+          <h1 className="text-2xl sm:text-3xl font-black text-slate-800 tracking-tight leading-tight">System Activity Log</h1>
+          <p className="text-slate-400 font-medium text-sm sm:text-base mt-1">Track real-time actions performed by all administrative users.</p>
         </div>
-        <div className="bg-slate-800 px-6 py-3 rounded-2xl border border-slate-700 flex items-center gap-3 text-white shadow-xl shadow-slate-100">
+        <div className="bg-slate-800 px-4 sm:px-6 py-3 rounded-2xl border border-slate-700 flex items-center gap-3 text-white shadow-xl shadow-slate-100 w-full sm:w-auto">
           <i className="fas fa-history text-blue-400"></i>
-          <span className="text-sm font-black uppercase tracking-widest">Live Audit Trail</span>
+          <span className="text-xs sm:text-sm font-black uppercase tracking-widest">Live Audit Trail</span>
         </div>
       </div>
 
       <div className="bg-white rounded-[32px] border border-gray-100 shadow-sm overflow-hidden">
-        <div className="overflow-x-auto">
+        {/* Desktop View */}
+        <div className="hidden md:block overflow-x-auto">
           <table className="w-full text-left">
             <thead>
               <tr className="bg-slate-50/50">
@@ -106,6 +107,42 @@ export default function ActivityLogPage() {
               )}
             </tbody>
           </table>
+        </div>
+
+        {/* Mobile View */}
+        <div className="md:hidden divide-y divide-gray-100">
+          {logs.length > 0 ? logs.map((log: any) => (
+            <div key={log._id} className="p-4 space-y-4">
+              <div className="flex items-start justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-600 font-black text-xs shadow-sm">
+                    {log.userName.charAt(0)}
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-slate-800">{log.userName}</p>
+                    <p className="text-[10px] text-slate-400 font-bold uppercase">
+                      {new Date(log.createdAt).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' })} • {new Date(log.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })}
+                    </p>
+                  </div>
+                </div>
+                <span className={`px-2 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest border ${getActionColor(log.action)}`}>
+                  {log.action}
+                </span>
+              </div>
+              
+              <div className="bg-slate-50/50 rounded-2xl p-3 space-y-2">
+                <div className="flex items-center gap-2 text-[9px] font-black text-slate-400 uppercase tracking-widest">
+                  <i className={`fas ${getModuleIcon(log.module)} w-3`}></i>
+                  <span>Module: {log.module}</span>
+                </div>
+                <p className="text-xs text-slate-600 font-medium leading-relaxed">{log.description}</p>
+              </div>
+            </div>
+          )) : (
+            <div className="p-12 text-center text-slate-200 uppercase tracking-widest font-black text-xs italic">
+              No activities found.
+            </div>
+          )}
         </div>
       </div>
     </div>

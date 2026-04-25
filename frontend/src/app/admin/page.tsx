@@ -100,14 +100,15 @@ export default function AdminDashboard() {
             <p className="text-xs sm:text-sm text-slate-400 font-medium mt-1">Latest students who reached out via the website.</p>
           </div>
           <div className="flex items-center gap-4">
-            <div className="bg-slate-50 p-1.5 rounded-xl flex border border-slate-100">
-              <button className="px-5 py-2 bg-white shadow-sm text-xs font-bold rounded-lg text-[#01228D]">New</button>
-              <button className="px-5 py-2 text-xs font-bold text-slate-400">Processed</button>
+            <div className="bg-slate-100/50 p-1 rounded-xl flex gap-1 border border-slate-200/50">
+              <button className="px-5 py-2 bg-white shadow-sm text-xs font-bold rounded-lg text-[#01228D] transition-all">New</button>
+              <button className="px-5 py-2 text-xs font-bold text-slate-500 hover:bg-white/50 rounded-lg transition-all">Processed</button>
             </div>
           </div>
         </div>
 
-        <div className="overflow-x-auto">
+        {/* Desktop View */}
+        <div className="hidden md:block overflow-x-auto">
           <table className="w-full text-left">
             <thead>
               <tr className="bg-slate-50/50">
@@ -162,11 +163,52 @@ export default function AdminDashboard() {
             </tbody>
           </table>
         </div>
+
+        {/* Mobile View */}
+        <div className="md:hidden divide-y divide-slate-50 px-4">
+          {stats.recentLeads.length > 0 ? stats.recentLeads.map((lead: any) => (
+            <div key={lead._id} className="py-6 group">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-[#01228D] font-bold shadow-sm">
+                    {lead.name.charAt(0)}
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-slate-800">{lead.name}</p>
+                    <p className="text-xs text-slate-400 font-medium">{lead.phone}</p>
+                  </div>
+                </div>
+                <button className="w-8 h-8 rounded-lg text-slate-400 bg-slate-50 flex items-center justify-center">
+                  <i className="fas fa-ellipsis-v text-xs"></i>
+                </button>
+              </div>
+              
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="text-[11px] font-bold text-slate-600 bg-slate-50 px-3 py-1 rounded-lg border border-slate-100">
+                  {lead.course}
+                </span>
+                <span className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-[10px] font-bold ${
+                  lead.status === 'new' 
+                    ? 'bg-blue-50 text-blue-600' 
+                    : 'bg-green-50 text-green-600'
+                }`}>
+                  <span className={`w-1.5 h-1.5 rounded-full ${lead.status === 'new' ? 'bg-blue-600' : 'bg-green-600 animate-pulse'}`}></span>
+                  {lead.status === 'new' ? 'Pending' : 'Completed'}
+                </span>
+                <span className="text-[11px] text-slate-400 font-bold ml-auto">
+                  {new Date(lead.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })}
+                </span>
+              </div>
+            </div>
+          )) : (
+            <div className="py-20 text-center text-slate-300 font-bold">No leads found yet.</div>
+          )}
+        </div>
         
         {/* Table Footer */}
-        <div className="px-10 py-6 bg-slate-50/50 border-t border-slate-50 flex justify-between items-center">
+        <div className="px-6 md:px-10 py-6 bg-slate-50/50 border-t border-slate-50 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Showing last 5 leads</p>
-          <button className="px-6 py-2 bg-white border border-slate-200 rounded-xl text-xs font-bold text-[#01228D] hover:bg-slate-50 transition-all shadow-sm">View All Leads</button>
+          <button className="w-full md:w-auto px-6 py-2.5 bg-white border border-slate-200 rounded-xl text-xs font-bold text-[#01228D] hover:bg-slate-50 transition-all shadow-sm">View All Leads</button>
         </div>
       </div>
     </div>

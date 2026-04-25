@@ -304,23 +304,71 @@ export default function GlobalLogin() {
         .footer-dot { color: #e0e0e0; font-size: 10px; }
 
         @media (max-width: 480px) {
+          .login-page {
+            padding: 12px;
+          }
           .login-card {
-            padding: 32px 24px 28px;
+            padding: 24px 20px 20px;
             border-radius: 20px;
           }
+          .logo-area {
+            margin-bottom: 16px;
+          }
+          .logo-img {
+            height: 38px;
+          }
+          .heading-area {
+            margin-bottom: 20px;
+          }
           .main-title {
-            font-size: 24px;
+            font-size: 22px;
+            margin-bottom: 4px;
+          }
+          .sub-title {
+            font-size: 9px;
+          }
+          .divider {
+            margin-bottom: 20px;
+          }
+          .field-group {
+            margin-bottom: 14px;
+          }
+          .field-label {
+            font-size: 10px;
+            margin-bottom: 6px;
+          }
+          .input-field {
+            height: 44px;
+            font-size: 13px;
+            padding: 0 40px 0 42px;
+            border-radius: 12px;
+          }
+          .input-icon {
+            left: 14px;
+            font-size: 13px;
+          }
+          .forgot-row {
+            margin-bottom: 20px;
+            margin-top: 4px;
+          }
+          .forgot-link {
+            font-size: 11.5px;
           }
           .submit-btn {
             height: 48px;
             font-size: 14px;
+            border-radius: 12px;
           }
-          .input-field {
-            height: 48px;
-            font-size: 13px;
+          .back-link-row {
+            margin-top: 20px;
+            padding-top: 16px;
           }
-          .logo-img {
-            height: 44px;
+          .back-link {
+            font-size: 11px;
+          }
+          .footer-text {
+            margin-top: 16px;
+            font-size: 9px;
           }
         }
       `}</style>

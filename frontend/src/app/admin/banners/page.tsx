@@ -122,10 +122,10 @@ export default function BannersManagement() {
         </div>
         <button
           onClick={() => handleOpenModal()}
-          className="bg-[#01228D] text-white px-6 py-3 rounded-2xl font-bold text-sm shadow-lg shadow-blue-200 hover:scale-105 transition-all flex items-center justify-center gap-2 w-full sm:w-auto"
+          className="bg-[#01228D] hover:bg-blue-800 text-white px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl font-bold transition-all shadow-md flex items-center justify-center gap-2 w-full sm:w-auto text-sm"
         >
           <i className="fas fa-plus"></i>
-          Add New Banner
+          <span>Add New Banner</span>
         </button>
       </div>
 

@@ -11,6 +11,7 @@ export default function BlogAdminPage() {
   const deletePost = useMutation(api.posts.deletePost);
   
   const [user, setUser] = useState<any>(null);
+  const [expandedId, setExpandedId] = useState<string | null>(null);
 
   React.useEffect(() => {
     const sessionStr = localStorage.getItem("user_session");
@@ -49,7 +50,9 @@ export default function BlogAdminPage() {
       </div>
 
       <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-        <div className="overflow-x-auto">
+      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+        {/* Desktop View */}
+        <div className="hidden md:block overflow-x-auto">
           <table className="w-full text-left">
             <thead className="bg-gray-50 border-b border-gray-100">
               <tr>
@@ -140,6 +143,94 @@ export default function BlogAdminPage() {
             </tbody>
           </table>
         </div>
+
+        {/* Mobile Accordion View */}
+        <div className="md:hidden divide-y divide-gray-100">
+          {posts === undefined ? (
+             <div className="p-8 text-center text-slate-400 animate-pulse">Loading posts...</div>
+          ) : posts.length === 0 ? (
+            <div className="p-12 text-center text-slate-400">
+              <i className="fas fa-blog fa-2x mb-3 opacity-20"></i>
+              <p className="text-sm font-medium">No blog posts found</p>
+            </div>
+          ) : (
+            posts.map((post) => {
+              const isExpanded = expandedId === post._id;
+              return (
+                <div key={post._id} className={`transition-all duration-300 ${isExpanded ? 'bg-blue-50/20' : ''}`}>
+                  <div 
+                    onClick={() => setExpandedId(isExpanded ? null : post._id)}
+                    className="p-4 flex items-center justify-between cursor-pointer active:bg-gray-50"
+                  >
+                    <div className="flex items-center gap-3">
+                      {post.imageUrl ? (
+                        <img src={post.imageUrl} className="w-12 h-12 rounded-xl object-cover border border-gray-100 shadow-sm" alt="" />
+                      ) : (
+                        <div className="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center text-gray-300 border border-gray-100">
+                          <i className="fas fa-image"></i>
+                        </div>
+                      )}
+                      <div className="max-w-[180px]">
+                        <p className="text-sm font-bold text-slate-800 line-clamp-1">{post.title}</p>
+                        <div className="flex items-center gap-2 mt-1">
+                          {post.isPublished ? (
+                            <span className="flex items-center gap-1 text-[8px] font-black uppercase tracking-widest text-green-600">
+                              <span className="w-1 h-1 bg-green-500 rounded-full"></span>
+                              Published
+                            </span>
+                          ) : (
+                            <span className="flex items-center gap-1 text-[8px] font-black uppercase tracking-widest text-slate-400">
+                              <span className="w-1 h-1 bg-slate-400 rounded-full"></span>
+                              Draft
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                    <i className={`fas fa-chevron-down text-gray-300 text-xs transition-transform duration-300 ${isExpanded ? 'rotate-180 text-blue-500' : ''}`}></i>
+                  </div>
+
+                  {isExpanded && (
+                    <div className="px-4 pb-5 space-y-4 animate-in slide-in-from-top-2 duration-300">
+                      <div className="grid grid-cols-2 gap-4 py-3 border-y border-gray-50">
+                        <div className="space-y-1">
+                          <p className="text-[9px] font-black text-gray-400 uppercase tracking-widest">Author</p>
+                          <p className="text-xs font-bold text-gray-700">{post.author}</p>
+                        </div>
+                        <div className="space-y-1">
+                          <p className="text-[9px] font-black text-gray-400 uppercase tracking-widest">Date</p>
+                          <p className="text-xs font-bold text-gray-600">{new Date(post.createdAt).toLocaleDateString()}</p>
+                        </div>
+                        <div className="col-span-2 space-y-1">
+                          <p className="text-[9px] font-black text-gray-400 uppercase tracking-widest">URL Slug</p>
+                          <p className="text-[10px] font-medium text-blue-600 truncate">/{post.slug}</p>
+                        </div>
+                      </div>
+
+                      <div className="flex gap-2">
+                        <Link 
+                          href={`/admin/posts/edit/${post._id}`}
+                          className="flex-1 py-3 bg-blue-50 text-blue-600 rounded-xl font-bold text-xs flex items-center justify-center gap-2 active:bg-blue-100 transition-colors border border-blue-100/50"
+                        >
+                          <i className="fas fa-edit"></i>
+                          Edit Post
+                        </Link>
+                        <button 
+                          onClick={(e) => { e.stopPropagation(); handleDelete(post._id, post.title); }}
+                          className="flex-1 py-3 bg-red-50 text-red-500 rounded-xl font-bold text-xs flex items-center justify-center gap-2 active:bg-red-100 transition-colors border border-red-100/50"
+                        >
+                          <i className="fas fa-trash-alt"></i>
+                          Delete
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })
+          )}
+        </div>
+      </div>
       </div>
     </div>
   );

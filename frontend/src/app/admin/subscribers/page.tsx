@@ -16,18 +16,19 @@ export default function SubscribersPage() {
 
   return (
     <div className="space-y-8 animate-in fade-in duration-500 max-w-[1200px] mx-auto pb-10">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 px-2 sm:px-0">
         <div>
-          <h1 className="text-3xl font-black text-slate-800 tracking-tight">Newsletter Subscribers</h1>
-          <p className="text-slate-400 font-medium mt-2">Manage your email marketing audience.</p>
+          <h1 className="text-2xl sm:text-3xl font-black text-slate-800 tracking-tight leading-tight">Newsletter Subscribers</h1>
+          <p className="text-slate-400 font-medium text-sm sm:text-base mt-1">Manage your email marketing audience.</p>
         </div>
-        <div className="bg-blue-50 px-6 py-3 rounded-2xl border border-blue-100 flex items-center gap-3">
+        <div className="bg-blue-50 px-4 sm:px-6 py-3 rounded-2xl border border-blue-100 flex items-center gap-3 w-full sm:w-auto">
           <i className="fas fa-envelope-open-text text-blue-600"></i>
-          <span className="text-sm font-black text-blue-900">{subscribers.length} Total Subscribers</span>
+          <span className="text-xs sm:text-sm font-black text-blue-900">{subscribers.length} Total Subscribers</span>
         </div>
       </div>
 
-      <div className="bg-white rounded-[32px] border border-gray-100 shadow-sm overflow-hidden">
+      {/* Desktop View */}
+      <div className="hidden md:block bg-white rounded-[32px] border border-gray-100 shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left">
             <thead>
@@ -72,6 +73,40 @@ export default function SubscribersPage() {
             </tbody>
           </table>
         </div>
+      </div>
+
+      {/* Mobile View */}
+      <div className="md:hidden space-y-4">
+        {subscribers.length > 0 ? subscribers.map((sub: any) => (
+          <div key={sub._id} className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm">
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-[#01228D]">
+                  <i className="far fa-envelope"></i>
+                </div>
+                <div>
+                  <p className="text-sm font-bold text-slate-800 break-all">{sub.email}</p>
+                  <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-1">
+                    {new Date(sub.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}
+                  </p>
+                </div>
+              </div>
+              <button className="w-10 h-10 rounded-xl bg-red-50 text-red-500 flex items-center justify-center">
+                <i className="far fa-trash-alt text-xs"></i>
+              </button>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-green-50 text-green-600">
+                <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+                Active
+              </span>
+            </div>
+          </div>
+        )) : (
+          <div className="py-20 bg-white rounded-3xl border border-gray-100 text-center px-4">
+            <p className="text-slate-300 font-bold">No subscribers found yet.</p>
+          </div>
+        )}
       </div>
     </div>
   );
