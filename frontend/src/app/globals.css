@@ -1509,8 +1509,14 @@ html {
   padding-left: 20px !important;
   padding-right: 20px !important;
 }
+.blog-footer-fix .footer-widget {
+  padding-top: 120px !important;
+}
 @media (max-width: 768px) {
   .blog-card-content {
     padding: 10px 25px 25px 25px !important;
+  }
+  .blog-footer-fix .footer-widget {
+    padding-top: 60px !important;
   }
 }
