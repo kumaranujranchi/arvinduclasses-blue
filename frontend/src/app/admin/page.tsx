@@ -40,29 +40,29 @@ export default function AdminDashboard() {
       <div className="flex flex-col xl:flex-row gap-8">
         
         {/* Welcome Card */}
-        <div className="xl:flex-[2] bg-[#01228D] rounded-[32px] p-10 flex items-center justify-between overflow-hidden relative shadow-2xl shadow-blue-900/20 min-h-[300px]">
-          <div className="relative z-10 text-white">
-            <h1 className="text-3xl font-bold">Welcome Back, {userName}!</h1>
-            <p className="text-blue-100 mt-4 max-w-[400px] text-lg leading-relaxed">
+        <div className="xl:flex-[2] bg-[#01228D] rounded-[32px] p-6 sm:p-10 flex flex-col sm:flex-row items-center justify-between overflow-hidden relative shadow-2xl shadow-blue-900/20 min-h-[300px]">
+          <div className="relative z-10 text-white text-center sm:text-left">
+            <h1 className="text-2xl sm:text-3xl font-bold">Welcome Back, {userName}!</h1>
+            <p className="text-blue-100 mt-4 max-w-[400px] text-base sm:text-lg leading-relaxed">
               You have {stats.newLeads} new admissions this month. Keep up the great work!
             </p>
-            <div className="mt-10 flex gap-10">
+            <div className="mt-8 sm:mt-10 flex justify-center sm:justify-start gap-6 sm:gap-10">
               <div className="flex flex-col">
-                <span className="text-3xl font-black">{stats.totalLeads}</span>
-                <span className="text-xs font-medium text-blue-200 uppercase tracking-widest mt-2">Total Inquiries</span>
+                <span className="text-2xl sm:text-3xl font-black">{stats.totalLeads}</span>
+                <span className="text-[10px] font-medium text-blue-200 uppercase tracking-widest mt-2">Total Inquiries</span>
               </div>
-              <div className="flex flex-col border-l border-blue-400/30 pl-10">
-                <span className="text-3xl font-black">{stats.newLeads}</span>
-                <span className="text-xs font-medium text-blue-200 uppercase tracking-widest mt-2">New Admits</span>
+              <div className="flex flex-col border-l border-blue-400/30 pl-6 sm:pl-10">
+                <span className="text-2xl sm:text-3xl font-black">{stats.newLeads}</span>
+                <span className="text-[10px] font-medium text-blue-200 uppercase tracking-widest mt-2">New Admits</span>
               </div>
             </div>
-            <button className="mt-10 px-8 py-3 bg-white text-[#01228D] text-sm font-bold rounded-2xl shadow-xl hover:bg-blue-50 transition-all active:scale-95">
+            <button className="mt-8 sm:mt-10 px-8 py-3 bg-white text-[#01228D] text-sm font-bold rounded-2xl shadow-xl hover:bg-blue-50 transition-all active:scale-95 w-full sm:w-auto">
               Download Reports
             </button>
           </div>
           
           {/* Illustration */}
-          <div className="hidden md:block relative w-64 h-64 mr-4">
+          <div className="hidden lg:block relative w-64 h-64 mr-4">
             <img 
               src="https://img.freepik.com/free-vector/analytics-concept-illustration_114360-4416.jpg" 
               alt="Dashboard" 
@@ -76,15 +76,15 @@ export default function AdminDashboard() {
 
         {/* Mini Stats Grid - Explicitly wrapped to prevent overlap */}
         <div className="xl:flex-1">
-          <div className="grid grid-cols-2 gap-6 h-full">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 h-full">
           {statCards.map((card, i) => (
-            <div key={i} className="bg-white p-6 rounded-[28px] border border-gray-100 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
-              <div className={`w-12 h-12 ${card.bg} ${card.color} rounded-2xl flex items-center justify-center text-lg group-hover:scale-110 transition-transform`}>
+            <div key={i} className="bg-white p-6 rounded-[28px] border border-gray-100 shadow-sm hover:shadow-md transition-all flex flex-row sm:flex-col justify-between sm:justify-between items-center sm:items-start group">
+              <div className={`w-12 h-12 ${card.bg} ${card.color} rounded-2xl flex items-center justify-center text-lg group-hover:scale-110 transition-transform flex-shrink-0`}>
                 <i className={card.icon}></i>
               </div>
-              <div className="mt-6">
-                <h4 className="text-2xl font-black text-slate-800 leading-none">{card.value}</h4>
-                <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mt-3">{card.label}</p>
+              <div className="mt-0 sm:mt-6 text-right sm:text-left">
+                <h4 className="text-xl sm:text-2xl font-black text-slate-800 leading-none">{card.value}</h4>
+                <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mt-2 sm:mt-3">{card.label}</p>
               </div>
             </div>
           ))}
@@ -94,10 +94,10 @@ export default function AdminDashboard() {
 
       {/* Main Content: Recent Leads Table */}
       <div className="bg-white rounded-[32px] border border-gray-100 shadow-sm overflow-hidden">
-        <div className="px-10 py-8 border-b border-gray-50 flex items-center justify-between">
+        <div className="px-6 sm:px-10 py-6 sm:py-8 border-b border-gray-50 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h3 className="text-xl font-bold text-slate-800">Recent Inquiries</h3>
-            <p className="text-sm text-slate-400 font-medium mt-1">Latest students who reached out via the website.</p>
+            <h3 className="text-lg sm:text-xl font-bold text-slate-800">Recent Inquiries</h3>
+            <p className="text-xs sm:text-sm text-slate-400 font-medium mt-1">Latest students who reached out via the website.</p>
           </div>
           <div className="flex items-center gap-4">
             <div className="bg-slate-50 p-1.5 rounded-xl flex border border-slate-100">

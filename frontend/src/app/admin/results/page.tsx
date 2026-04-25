@@ -36,14 +36,14 @@ export default function ManageResults() {
 
   return (
     <div className="space-y-8 animate-in fade-in duration-500">
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 px-2 sm:px-0">
         <div>
-          <h1 className="text-3xl font-black text-gray-900 tracking-tight">Manage Toppers</h1>
-          <p className="text-gray-500 font-medium mt-1">Showcase your best students on the website results page.</p>
+          <h1 className="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight">Manage Toppers</h1>
+          <p className="text-gray-500 font-medium text-sm sm:text-base mt-1">Showcase your best students on the website results page.</p>
         </div>
         <button 
           onClick={() => setIsAdding(!isAdding)}
-          className={`px-8 py-4 rounded-2xl font-black text-xs uppercase tracking-widest shadow-xl flex items-center gap-3 transition-all active:scale-95 ${
+          className={`px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-black text-[10px] sm:text-xs uppercase tracking-widest shadow-xl flex items-center justify-center gap-3 transition-all active:scale-95 w-full sm:w-auto ${
             isAdding 
               ? "bg-white text-gray-500 border border-gray-100" 
               : "bg-[#07294d] text-white shadow-blue-100"
@@ -56,8 +56,8 @@ export default function ManageResults() {
 
       {/* Add Form */}
       {isAdding && (
-        <div className="bg-white p-10 rounded-3xl shadow-xl border border-blue-50 animate-in slide-in-from-top duration-500">
-          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="bg-white p-6 sm:p-10 rounded-3xl shadow-xl border border-blue-50 animate-in slide-in-from-top duration-500 mx-2 sm:mx-0">
+          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             <div className="space-y-2">
               <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Student Full Name</label>
               <input 
@@ -126,40 +126,40 @@ export default function ManageResults() {
           <table className="w-full text-left">
             <thead>
               <tr className="bg-gray-50/50 border-b border-gray-50">
-                <th className="px-10 py-6 text-[10px] font-black text-gray-400 uppercase tracking-widest">Student Details</th>
-                <th className="px-10 py-6 text-[10px] font-black text-gray-400 uppercase tracking-widest text-center">Rank</th>
-                <th className="px-10 py-6 text-[10px] font-black text-gray-400 uppercase tracking-widest">Stream & Session</th>
-                <th className="px-10 py-6 text-[10px] font-black text-gray-400 uppercase tracking-widest">Score</th>
-                <th className="px-10 py-6 text-[10px] font-black text-gray-400 uppercase tracking-widest text-right">Actions</th>
+                <th className="px-4 sm:px-10 py-4 sm:py-6 text-[10px] font-black text-gray-400 uppercase tracking-widest">Student Details</th>
+                <th className="px-4 sm:px-10 py-4 sm:py-6 text-[10px] font-black text-gray-400 uppercase tracking-widest text-center">Rank</th>
+                <th className="px-4 sm:px-10 py-4 sm:py-6 text-[10px] font-black text-gray-400 uppercase tracking-widest">Stream & Session</th>
+                <th className="px-4 sm:px-10 py-4 sm:py-6 text-[10px] font-black text-gray-400 uppercase tracking-widest">Score</th>
+                <th className="px-4 sm:px-10 py-4 sm:py-6 text-[10px] font-black text-gray-400 uppercase tracking-widest text-right">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-50 font-sans">
               {toppers.length > 0 ? toppers.map((topper) => (
                 <tr key={topper._id} className="hover:bg-gray-50/50 transition-colors group">
-                  <td className="px-10 py-8">
-                    <div className="flex items-center gap-5">
-                      <div className="w-14 h-14 rounded-2xl bg-[#07294d] flex items-center justify-center text-white font-black text-xl border-4 border-white shadow-lg shadow-blue-100 overflow-hidden">
+                  <td className="px-4 sm:px-10 py-6 sm:py-8">
+                    <div className="flex items-center gap-4 sm:gap-5">
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#07294d] flex items-center justify-center text-white font-black text-xl border-4 border-white shadow-lg shadow-blue-100 overflow-hidden flex-shrink-0">
                         <img src={`https://ui-avatars.com/api/?name=${topper.name}&background=07294d&color=fff&bold=true`} alt={topper.name} />
                       </div>
                       <div>
-                        <p className="font-black text-gray-800 text-base leading-none">{topper.name}</p>
-                        <p className="text-[10px] text-blue-500 font-black mt-2 uppercase tracking-widest">Verified Student</p>
+                        <p className="font-black text-gray-800 text-sm sm:text-base leading-none">{topper.name}</p>
+                        <p className="text-[9px] sm:text-[10px] text-blue-500 font-black mt-2 uppercase tracking-widest">Verified Student</p>
                       </div>
                     </div>
                   </td>
-                  <td className="px-10 py-8 text-center">
-                    <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-yellow-400 text-[#07294d] font-black text-sm shadow-md shadow-yellow-100">
+                  <td className="px-4 sm:px-10 py-6 sm:py-8 text-center">
+                    <div className="inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-yellow-400 text-[#07294d] font-black text-xs sm:text-sm shadow-md shadow-yellow-100">
                       #{topper.rank}
                     </div>
                   </td>
-                  <td className="px-10 py-8">
-                    <p className="text-sm font-bold text-gray-700">{topper.stream}</p>
-                    <p className="text-[10px] text-gray-400 font-bold mt-1 uppercase tracking-widest">{topper.testMonth}</p>
+                  <td className="px-4 sm:px-10 py-6 sm:py-8">
+                    <p className="text-xs sm:text-sm font-bold text-gray-700">{topper.stream}</p>
+                    <p className="text-[9px] sm:text-[10px] text-gray-400 font-bold mt-1 uppercase tracking-widest">{topper.testMonth}</p>
                   </td>
-                  <td className="px-10 py-8">
-                    <span className="text-sm font-black text-[#07294d] bg-gray-100 px-4 py-2 rounded-xl border border-gray-100">{topper.score}</span>
+                  <td className="px-4 sm:px-10 py-6 sm:py-8">
+                    <span className="text-xs sm:text-sm font-black text-[#07294d] bg-gray-100 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl border border-gray-100 whitespace-nowrap">{topper.score}</span>
                   </td>
-                  <td className="px-10 py-8 text-right">
+                  <td className="px-4 sm:px-10 py-6 sm:py-8 text-right">
                     <div className="flex items-center justify-end gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
                       <button 
                         onClick={() => toggleStatus({ id: topper._id, isActive: !topper.isActive })}

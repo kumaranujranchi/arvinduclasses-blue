@@ -12,6 +12,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   const [user, setUser] = useState<any>(null);
 
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
   useEffect(() => {
     const sessionStr = localStorage.getItem("user_session");
     if (!sessionStr) {
@@ -32,6 +34,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       router.push("/login");
     }
   }, [pathname, router]);
+
+  // Close sidebar on navigation (for mobile)
+  useEffect(() => {
+    setIsSidebarOpen(false);
+  }, [pathname]);
 
   const handleLogout = () => {
     localStorage.removeItem("user_session");
@@ -100,14 +107,31 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         }
       `}</style>
 
-      {/* Sidebar - Thinner and cleaner like the reference */}
-      <aside className="w-64 bg-white border-r border-gray-100 flex flex-col h-full z-50">
+      {/* Sidebar Overlay for Mobile */}
+      {isSidebarOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-[60] lg:hidden transition-opacity duration-300"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
+
+      {/* Sidebar - Responsive Design */}
+      <aside className={`
+        fixed inset-y-0 left-0 w-64 bg-white border-r border-gray-100 flex flex-col h-full z-[70] 
+        transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static
+        ${isSidebarOpen ? "translate-x-0 shadow-2xl" : "-translate-x-full"}
+      `}>
         {/* Logo Section */}
-        <div className="p-6 flex items-center gap-3">
-          <div className="w-8 h-8 bg-[#01228D] rounded-lg flex items-center justify-center">
-            <img src="/assets/images/arvindu-favicon.png" alt="L" className="w-5 h-5 brightness-200" />
+        <div className="p-6 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 bg-[#01228D] rounded-lg flex items-center justify-center">
+              <img src="/assets/images/arvindu-favicon.png" alt="L" className="w-5 h-5 brightness-200" />
+            </div>
+            <span className="font-bold text-lg text-[#1e293b] tracking-tight">Arvindu Classes</span>
           </div>
-          <span className="font-bold text-lg text-[#1e293b] tracking-tight">Arvindu Classes</span>
+          <button onClick={() => setIsSidebarOpen(false)} className="lg:hidden text-gray-400 hover:text-gray-600">
+            <i className="fas fa-times"></i>
+          </button>
         </div>
 
         {/* User Quick Info */}
@@ -162,22 +186,33 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       </aside>
 
       {/* Main Content Area */}
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="flex-1 flex flex-col overflow-hidden w-full">
         {/* Top Header Bar */}
-        <header className="bg-white border-b border-gray-100 px-8 py-4 flex items-center justify-between z-20">
-          <div className="flex items-center gap-3 text-slate-400 font-bold text-xs uppercase tracking-widest">
-            <i className="far fa-calendar-check text-blue-500"></i>
-            <AdminClock />
+        <header className="bg-white border-b border-gray-100 px-4 lg:px-8 py-4 flex items-center justify-between z-20">
+          <div className="flex items-center gap-4">
+            <button 
+              onClick={() => setIsSidebarOpen(true)}
+              className="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl bg-gray-50 text-gray-600 hover:bg-gray-100"
+            >
+              <i className="fas fa-bars"></i>
+            </button>
+            <div className="flex items-center gap-3 text-slate-400 font-bold text-xs uppercase tracking-widest overflow-hidden">
+              <i className="far fa-calendar-check text-blue-500 flex-shrink-0"></i>
+              <div className="truncate">
+                <AdminClock />
+              </div>
+            </div>
           </div>
           <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2 px-3 py-1.5 bg-green-50 text-green-600 rounded-full text-[10px] font-black uppercase tracking-widest">
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-green-50 text-green-600 rounded-full text-[10px] font-black uppercase tracking-widest whitespace-nowrap">
               <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
-              System Live
+              <span className="hidden sm:inline">System Live</span>
+              <span className="sm:hidden">Live</span>
             </div>
           </div>
         </header>
 
-        <main className="flex-1 overflow-y-auto p-6 lg:p-8 custom-scrollbar">
+        <main className="flex-1 overflow-y-auto p-4 lg:p-8 custom-scrollbar bg-[#f8fafc]">
           {children}
         </main>
       </div>

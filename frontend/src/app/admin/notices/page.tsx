@@ -30,14 +30,14 @@ export default function ManageNotices() {
 
   return (
     <div className="space-y-8 animate-in fade-in duration-500">
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 px-2 sm:px-0">
         <div>
-          <h1 className="text-3xl font-black text-gray-900 tracking-tight">Announcements</h1>
-          <p className="text-gray-500 font-medium mt-1">Manage the scrolling news ticker and important alerts.</p>
+          <h1 className="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight">Announcements</h1>
+          <p className="text-gray-500 font-medium text-sm sm:text-base mt-1">Manage the scrolling news ticker and important alerts.</p>
         </div>
         <button 
           onClick={() => setIsAdding(!isAdding)}
-          className="bg-[#07294d] text-white px-8 py-4 rounded-2xl font-black text-xs uppercase tracking-widest shadow-xl shadow-blue-100 flex items-center gap-3 transition-all active:scale-95"
+          className="bg-[#07294d] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-black text-[10px] sm:text-xs uppercase tracking-widest shadow-xl shadow-blue-100 flex items-center justify-center gap-3 transition-all active:scale-95 w-full sm:w-auto"
         >
           <i className={`fas ${isAdding ? "fa-times" : "fa-plus"}`}></i>
           {isAdding ? "Close" : "New Notice"}
@@ -45,7 +45,7 @@ export default function ManageNotices() {
       </div>
 
       {isAdding && (
-        <div className="bg-white p-10 rounded-3xl shadow-xl border border-blue-50 animate-in slide-in-from-top duration-500">
+        <div className="bg-white p-6 sm:p-10 rounded-3xl shadow-xl border border-blue-50 animate-in slide-in-from-top duration-500 mx-2 sm:mx-0">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="space-y-2">
@@ -85,7 +85,7 @@ export default function ManageNotices() {
             </div>
 
             <div className="flex justify-end">
-              <button type="submit" className="px-10 py-4 bg-[#ffc600] text-[#07294d] rounded-2xl font-black text-xs uppercase tracking-widest shadow-lg shadow-yellow-500/20 hover:shadow-xl transition-all active:scale-95">
+              <button type="submit" className="w-full sm:w-auto px-10 py-4 bg-[#ffc600] text-[#07294d] rounded-2xl font-black text-xs uppercase tracking-widest shadow-lg shadow-yellow-500/20 hover:shadow-xl transition-all active:scale-95">
                 Publish Notice
               </button>
             </div>

@@ -17,14 +17,14 @@ export default function ManageLeads() {
 
   return (
     <div className="space-y-8 animate-in fade-in duration-500">
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 px-2 sm:px-0">
         <div>
-          <h1 className="text-3xl font-black text-gray-900 tracking-tight">Student Leads</h1>
-          <p className="text-gray-500 font-medium mt-1">Review and manage student enquiries and demo bookings.</p>
+          <h1 className="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight">Student Leads</h1>
+          <p className="text-gray-500 font-medium text-sm sm:text-base mt-1">Review and manage student enquiries and demo bookings.</p>
         </div>
-        <div className="flex items-center gap-3 bg-white p-2 rounded-2xl border border-gray-50 shadow-sm">
-          <div className="px-4 py-2 bg-blue-50 text-blue-600 rounded-xl text-xs font-black uppercase">Total: {leads.length}</div>
-          <div className="px-4 py-2 bg-green-50 text-green-600 rounded-xl text-xs font-black uppercase">Active: {leads.filter(l => l.status === 'new').length}</div>
+        <div className="flex items-center gap-3 bg-white p-2 rounded-2xl border border-gray-50 shadow-sm w-full sm:w-auto overflow-x-auto">
+          <div className="px-3 sm:px-4 py-2 bg-blue-50 text-blue-600 rounded-xl text-[10px] sm:text-xs font-black uppercase whitespace-nowrap">Total: {leads.length}</div>
+          <div className="px-3 sm:px-4 py-2 bg-green-50 text-green-600 rounded-xl text-[10px] sm:text-xs font-black uppercase whitespace-nowrap">Active: {leads.filter(l => l.status === 'new').length}</div>
         </div>
       </div>
 
@@ -33,41 +33,41 @@ export default function ManageLeads() {
           <table className="w-full text-left">
             <thead>
               <tr className="bg-gray-50/50 border-b border-gray-50">
-                <th className="px-10 py-6 text-[10px] font-black text-gray-400 uppercase tracking-widest">Student Info</th>
-                <th className="px-10 py-6 text-[10px] font-black text-gray-400 uppercase tracking-widest">Applied Course</th>
-                <th className="px-10 py-6 text-[10px] font-black text-gray-400 uppercase tracking-widest">Type & Locality</th>
-                <th className="px-10 py-6 text-[10px] font-black text-gray-400 uppercase tracking-widest">Status</th>
-                <th className="px-10 py-6 text-[10px] font-black text-gray-400 uppercase tracking-widest text-right">Applied Date</th>
+                <th className="px-6 sm:px-10 py-4 sm:py-6 text-[10px] font-black text-gray-400 uppercase tracking-widest">Student Info</th>
+                <th className="px-6 sm:px-10 py-4 sm:py-6 text-[10px] font-black text-gray-400 uppercase tracking-widest">Applied Course</th>
+                <th className="px-6 sm:px-10 py-4 sm:py-6 text-[10px] font-black text-gray-400 uppercase tracking-widest">Type & Locality</th>
+                <th className="px-6 sm:px-10 py-4 sm:py-6 text-[10px] font-black text-gray-400 uppercase tracking-widest">Status</th>
+                <th className="px-6 sm:px-10 py-4 sm:py-6 text-[10px] font-black text-gray-400 uppercase tracking-widest text-right">Applied Date</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-50 font-sans">
               {leads.length > 0 ? leads.map((lead) => (
                 <tr key={lead._id} className="hover:bg-gray-50/50 transition-colors group">
-                  <td className="px-10 py-8">
-                    <div className="flex items-center gap-5">
-                      <div className="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 font-black text-xl border-4 border-white shadow-lg shadow-blue-100">
+                  <td className="px-6 sm:px-10 py-6 sm:py-8">
+                    <div className="flex items-center gap-4 sm:gap-5">
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 font-black text-lg sm:text-xl border-4 border-white shadow-lg shadow-blue-100 flex-shrink-0">
                         {lead.name.charAt(0)}
                       </div>
                       <div>
-                        <p className="font-black text-gray-800 text-base leading-none">{lead.name}</p>
-                        <p className="text-[11px] text-gray-400 font-bold mt-2">{lead.email} | {lead.phone}</p>
+                        <p className="font-black text-gray-800 text-sm sm:text-base leading-none">{lead.name}</p>
+                        <p className="text-[10px] sm:text-[11px] text-gray-400 font-bold mt-2">{lead.email} | {lead.phone}</p>
                       </div>
                     </div>
                   </td>
-                  <td className="px-10 py-8">
+                  <td className="px-6 sm:px-10 py-6 sm:py-8">
                     {lead.course ? (
-                      <span className="text-sm font-black text-blue-700 bg-blue-50 px-4 py-2 rounded-xl border border-blue-100 inline-block">
+                      <span className="text-xs sm:text-sm font-black text-blue-700 bg-blue-50 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl border border-blue-100 inline-block whitespace-nowrap">
                         {lead.course}
                       </span>
                     ) : (
                       <span className="text-xs font-bold text-gray-400 italic">No Course</span>
                     )}
                   </td>
-                  <td className="px-10 py-8">
-                    <p className="text-sm font-bold text-gray-700 capitalize">{lead.type}</p>
-                    <p className="text-[10px] text-gray-400 font-bold mt-1 uppercase tracking-widest">{lead.locality}</p>
+                  <td className="px-6 sm:px-10 py-6 sm:py-8">
+                    <p className="text-xs sm:text-sm font-bold text-gray-700 capitalize">{lead.type}</p>
+                    <p className="text-[9px] sm:text-[10px] text-gray-400 font-bold mt-1 uppercase tracking-widest">{lead.locality}</p>
                   </td>
-                  <td className="px-10 py-8">
+                  <td className="px-6 sm:px-10 py-6 sm:py-8">
                     <select 
                       value={lead.status}
                       onChange={(e) => {

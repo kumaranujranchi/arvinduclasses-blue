@@ -115,14 +115,14 @@ export default function BannersManagement() {
 
   return (
     <div className="space-y-8 animate-in fade-in duration-500">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-black text-[#1e293b] tracking-tight">Homepage Banners</h1>
-          <p className="text-slate-500 font-medium text-sm">Manage the slider images and text on your homepage.</p>
+          <h1 className="text-xl sm:text-2xl font-black text-[#1e293b] tracking-tight">Homepage Banners</h1>
+          <p className="text-slate-500 font-medium text-xs sm:text-sm">Manage the slider images and text on your homepage.</p>
         </div>
         <button
           onClick={() => handleOpenModal()}
-          className="bg-[#01228D] text-white px-6 py-3 rounded-2xl font-bold text-sm shadow-lg shadow-blue-200 hover:scale-105 transition-all flex items-center gap-2"
+          className="bg-[#01228D] text-white px-6 py-3 rounded-2xl font-bold text-sm shadow-lg shadow-blue-200 hover:scale-105 transition-all flex items-center justify-center gap-2 w-full sm:w-auto"
         >
           <i className="fas fa-plus"></i>
           Add New Banner
@@ -195,9 +195,9 @@ export default function BannersManagement() {
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm animate-in fade-in duration-300">
           <div className="bg-white w-full max-w-xl rounded-[2.5rem] shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300">
             <form onSubmit={handleSubmit}>
-              <div className="p-8 pb-4 flex items-center justify-between border-b border-gray-50">
-                <h2 className="text-xl font-black text-[#1e293b] tracking-tight">
-                  {editingBanner ? "Edit Banner" : "Add New Banner"}
+              <div className="p-6 sm:p-8 pb-4 flex items-center justify-between border-b border-gray-50">
+                <h2 className="text-lg sm:text-xl font-black text-[#1e293b] tracking-tight">
+                   {editingBanner ? "Edit Banner" : "Add New Banner"}
                 </h2>
                 <button 
                   type="button"
@@ -208,7 +208,7 @@ export default function BannersManagement() {
                 </button>
               </div>
 
-              <div className="p-8 space-y-6 max-h-[70vh] overflow-y-auto custom-scrollbar">
+              <div className="p-6 sm:p-8 space-y-4 sm:space-y-6 max-h-[70vh] overflow-y-auto custom-scrollbar">
                 <div className="space-y-2">
                   <label className="text-[10px] font-black uppercase tracking-[1.5px] text-slate-400 ml-1">Banner Title</label>
                   <input
@@ -216,7 +216,7 @@ export default function BannersManagement() {
                     type="text"
                     value={formData.title}
                     onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                    className="w-full px-5 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-[#01228D] transition-all font-medium text-slate-600"
+                    className="w-full px-5 py-3 sm:py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-[#01228D] transition-all font-medium text-slate-600 text-sm sm:text-base"
                     placeholder="e.g. Education is the power of Humanity"
                   />
                 </div>
@@ -227,7 +227,7 @@ export default function BannersManagement() {
                     type="text"
                     value={formData.subtitle}
                     onChange={(e) => setFormData({ ...formData, subtitle: e.target.value })}
-                    className="w-full px-5 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-[#01228D] transition-all font-medium text-slate-600"
+                    className="w-full px-5 py-3 sm:py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-[#01228D] transition-all font-medium text-slate-600 text-sm sm:text-base"
                     placeholder="Brief description below title"
                   />
                 </div>
@@ -239,19 +239,19 @@ export default function BannersManagement() {
                     type="text"
                     value={formData.imageUrl}
                     onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
-                    className="w-full px-5 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-[#01228D] transition-all font-medium text-slate-600"
+                    className="w-full px-5 py-3 sm:py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-[#01228D] transition-all font-medium text-slate-600 text-sm sm:text-base"
                     placeholder="https://example.com/image.jpg"
                   />
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <label className="text-[10px] font-black uppercase tracking-[1.5px] text-slate-400 ml-1">Button Text</label>
                     <input
                       type="text"
                       value={formData.buttonText}
                       onChange={(e) => setFormData({ ...formData, buttonText: e.target.value })}
-                      className="w-full px-5 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-[#01228D] transition-all font-medium text-slate-600"
+                      className="w-full px-5 py-3 sm:py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-[#01228D] transition-all font-medium text-slate-600 text-sm sm:text-base"
                       placeholder="e.g. View Courses"
                     />
                   </div>
@@ -261,7 +261,7 @@ export default function BannersManagement() {
                       type="text"
                       value={formData.buttonLink}
                       onChange={(e) => setFormData({ ...formData, buttonLink: e.target.value })}
-                      className="w-full px-5 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-[#01228D] transition-all font-medium text-slate-600"
+                      className="w-full px-5 py-3 sm:py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-[#01228D] transition-all font-medium text-slate-600 text-sm sm:text-base"
                       placeholder="/courses"
                     />
                   </div>
@@ -274,12 +274,12 @@ export default function BannersManagement() {
                     type="number"
                     value={formData.order}
                     onChange={(e) => setFormData({ ...formData, order: parseInt(e.target.value) })}
-                    className="w-full px-5 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-[#01228D] transition-all font-medium text-slate-600"
+                    className="w-full px-5 py-3 sm:py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-[#01228D] transition-all font-medium text-slate-600 text-sm sm:text-base"
                   />
                 </div>
               </div>
 
-              <div className="p-8 bg-slate-50 flex gap-4">
+              <div className="p-6 sm:p-8 bg-slate-50 flex flex-col sm:flex-row gap-4">
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(false)}
@@ -289,7 +289,7 @@ export default function BannersManagement() {
                 </button>
                 <button
                   type="submit"
-                  className="flex-2 px-10 py-4 rounded-2xl font-bold text-sm text-white bg-[#01228D] shadow-lg shadow-blue-100 hover:scale-105 transition-all"
+                  className="flex-[2] px-10 py-4 rounded-2xl font-bold text-sm text-white bg-[#01228D] shadow-lg shadow-blue-100 hover:scale-105 transition-all"
                 >
                   {editingBanner ? "Save Changes" : "Create Banner"}
                 </button>

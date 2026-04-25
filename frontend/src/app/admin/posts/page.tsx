@@ -34,17 +34,17 @@ export default function BlogAdminPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Blog Management</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-slate-900">Blog Management</h1>
           <p className="text-slate-500 text-sm">Create, edit and manage your blog posts</p>
         </div>
         <Link 
           href="/admin/posts/new" 
-          className="bg-[#01228D] text-white px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-blue-800 transition-all shadow-sm flex items-center gap-2"
+          className="bg-[#01228D] text-white px-5 py-2.5 rounded-xl font-bold text-sm hover:bg-blue-800 transition-all shadow-sm flex items-center justify-center gap-2 w-full sm:w-auto"
         >
           <i className="fas fa-plus"></i>
-          Create New Post
+          <span>Create New Post</span>
         </Link>
       </div>
 
