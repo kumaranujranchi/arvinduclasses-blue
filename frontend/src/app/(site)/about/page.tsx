@@ -40,6 +40,8 @@ export default function AboutPage() {
             arrows: true,
             prevArrow: false,
             nextArrow: '<span class="next">Next <i class="far fa-long-arrow-right"></i></span>',
+            autoplay: true,
+            autoplaySpeed: 2000,
           });
         }
 
@@ -53,6 +55,8 @@ export default function AboutPage() {
             arrows: false,
             focusOnSelect: true,
             speed: 800,
+            autoplay: true,
+            autoplaySpeed: 2000,
           });
         }
       } else {

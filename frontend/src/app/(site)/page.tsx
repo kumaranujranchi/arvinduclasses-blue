@@ -74,7 +74,7 @@ export default function HomePage() {
         if ($(".testimonials-image").length && !$(".testimonials-image").hasClass("slick-initialized")) {
           $(".testimonials-image").slick({
             autoplay: true,
-            autoplaySpeed: 4000,
+            autoplaySpeed: 2000,
             dots: false,
             arrows: false,
             fade: true,
@@ -84,7 +84,8 @@ export default function HomePage() {
         }
         if ($(".testimonials-content").length && !$(".testimonials-content").hasClass("slick-initialized")) {
           $(".testimonials-content").slick({
-            autoplay: false,
+            autoplay: true,
+            autoplaySpeed: 2000,
             dots: false,
             arrows: false,
             fade: true,
