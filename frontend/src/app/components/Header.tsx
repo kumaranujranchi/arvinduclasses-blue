@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -26,6 +26,14 @@ const courses = [
 export default function Header() {
   const pathname = usePathname();
   const [isHovered, setIsHovered] = useState(false);
+  const [user, setUser] = useState<any>(null);
+
+  useEffect(() => {
+    const session = localStorage.getItem("user_session");
+    if (session) {
+      setUser(JSON.parse(session));
+    }
+  }, []);
 
   return (
     <header className="header-area">
@@ -41,10 +49,22 @@ export default function Header() {
               </ul>
             </div>
             <div className="header-top-right mt-10">
-              <div className="header-link">
+              <div className="header-link d-flex align-items-center">
                 <Link className="notice" href="/notice">Notice</Link>
-                <Link className="login" href="/login">Login</Link>
-                <Link className="register" href="/register">Register</Link>
+                {user ? (
+                  <>
+                    <span className="ms-3 me-3 text-dark fw-bold d-none d-md-inline">Hi, {user.name}</span>
+                    <button className="login bg-transparent border-0" onClick={() => {
+                      localStorage.removeItem("user_session");
+                      setUser(null);
+                    }}>Logout</button>
+                  </>
+                ) : (
+                  <>
+                    <Link className="login" href="/login">Login</Link>
+                    <Link className="register" href="/register">Register</Link>
+                  </>
+                )}
               </div>
             </div>
           </div>

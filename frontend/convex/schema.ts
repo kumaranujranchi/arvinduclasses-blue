@@ -115,12 +115,23 @@ export default defineSchema({
     role: v.string(),
     isActive: v.boolean(),
     phone: v.optional(v.string()),
+    profilePicUrl: v.optional(v.string()),
     createdBy: v.optional(v.string()), // userId of creator
     lastLogin: v.optional(v.number()),
     createdAt: v.number(),
   })
     .index("by_email", ["email"])
     .index("by_role", ["role"]),
+
+  // ===== BLOG COMMENTS =====
+  comments: defineTable({
+    postId: v.id("posts"),
+    userId: v.id("users"),
+    content: v.string(),
+    createdAt: v.number(),
+  })
+    .index("by_post", ["postId"])
+    .index("by_user", ["userId"]),
 
   activityLog: defineTable({
     userId: v.string(),

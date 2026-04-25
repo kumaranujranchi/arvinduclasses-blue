@@ -8,6 +8,7 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import { useMemo } from "react";
 import NewsletterForm from "../../../components/NewsletterForm";
+import BlogComments from "../../../components/BlogComments";
 
 export default function BlogPostPage() {
   const params = useParams();
@@ -158,72 +159,7 @@ export default function BlogPostPage() {
                   </div>
                 </div>
 
-                {/* Comments Section */}
-                <div className="comments-area bg-white rounded-[40px] border border-gray-100 shadow-sm p-8 md:p-12 mb-50">
-                  <h3 className="text-2xl font-black text-slate-800 mb-10">Comments (03)</h3>
-                  <div className="space-y-8 mt-10">
-                    {/* Single Comment */}
-                    <div className="flex gap-6 pb-8 border-b border-gray-50">
-                      <div className="w-16 h-16 rounded-2xl overflow-hidden flex-shrink-0 border-2 border-blue-50 shadow-sm">
-                        <img src="/assets/images/user-1.webp" alt="User" className="w-full h-full object-cover" />
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex items-center justify-between mb-2">
-                          <h5 className="text-base font-black text-slate-800">Alemiti Griffith</h5>
-                          <button className="text-[10px] font-black uppercase tracking-widest text-[#01228D] hover:underline">Reply</button>
-                        </div>
-                        <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3 block">2 hours ago</span>
-                        <p className="text-slate-600 text-sm leading-relaxed">
-                          This is a fantastic article! The insights shared here are extremely valuable for anyone starting their research journey.
-                        </p>
-                      </div>
-                    </div>
-                    {/* Reply Comment */}
-                    <div className="flex gap-6 pl-12 pb-8 border-b border-gray-50">
-                      <div className="w-16 h-16 rounded-2xl overflow-hidden flex-shrink-0 border-2 border-orange-50 shadow-sm">
-                        <img src="/assets/images/user-2.webp" alt="User" className="w-full h-full object-cover" />
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex items-center justify-between mb-2">
-                          <h5 className="text-base font-black text-slate-800">John Smith</h5>
-                          <button className="text-[10px] font-black uppercase tracking-widest text-[#01228D] hover:underline">Reply</button>
-                        </div>
-                        <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3 block">1 hour ago</span>
-                        <p className="text-slate-600 text-sm leading-relaxed">
-                          Agreed! I particularly liked the section on data collection methodologies. Very well explained.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Comment Form */}
-                <div className="comment-form bg-white rounded-[40px] border border-gray-100 shadow-sm p-8 md:p-12">
-                  <h3 className="text-2xl font-black text-slate-800 mb-2">Leave a message here</h3>
-                  <p className="text-slate-500 text-sm mb-10">Your email address will not be published. Required fields are marked *</p>
-                  
-                  <form className="mt-8 space-y-6">
-                    <div className="row">
-                      <div className="col-md-6 mb-4">
-                        <input type="text" placeholder="Name *" className="w-full h-14 bg-gray-50 border border-gray-100 rounded-xl px-4 text-sm focus:ring-2 focus:ring-[#01228D] transition-all outline-none" />
-                      </div>
-                      <div className="col-md-6 mb-4">
-                        <input type="email" placeholder="Email *" className="w-full h-14 bg-gray-50 border border-gray-100 rounded-xl px-4 text-sm focus:ring-2 focus:ring-[#01228D] transition-all outline-none" />
-                      </div>
-                      <div className="col-12 mb-4">
-                        <input type="text" placeholder="Website" className="w-full h-14 bg-gray-50 border border-gray-100 rounded-xl px-4 text-sm focus:ring-2 focus:ring-[#01228D] transition-all outline-none" />
-                      </div>
-                      <div className="col-12 mb-6">
-                        <textarea placeholder="Your Message *" className="w-full h-40 bg-gray-50 border border-gray-100 rounded-xl p-4 text-sm focus:ring-2 focus:ring-[#01228D] transition-all outline-none resize-none"></textarea>
-                      </div>
-                      <div className="col-12">
-                        <button type="button" className="px-10 py-4 bg-[#01228D] text-white rounded-xl font-black uppercase tracking-widest text-xs hover:shadow-xl hover:-translate-y-1 transition-all">
-                          Post Comment
-                        </button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
+                <BlogComments postId={post._id} />
               </div>
 
               {/* Sidebar Column */}

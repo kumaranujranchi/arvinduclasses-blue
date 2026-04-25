@@ -47,6 +47,59 @@ export const login = mutation({
       name: user.name,
       email: user.email,
       role: user.role,
+      profilePicUrl: user.profilePicUrl,
+    };
+  },
+});
+
+/**
+ * Register a new user from the frontend (for blog comments, etc)
+ */
+export const register = mutation({
+  args: {
+    name: v.string(),
+    email: v.string(),
+    password: v.string(),
+    phone: v.optional(v.string()),
+    profilePicUrl: v.optional(v.string()),
+  },
+  handler: async (ctx, args) => {
+    const email = args.email.toLowerCase().trim();
+    const existing = await ctx.db
+      .query("users")
+      .withIndex("by_email", (q) => q.eq("email", email))
+      .unique();
+
+    if (existing) throw new ConvexError(`An account with email "${email}" already exists.`);
+
+    const userId = await ctx.db.insert("users", {
+      name: args.name,
+      email,
+      password: args.password,
+      role: "student",
+      phone: args.phone,
+      profilePicUrl: args.profilePicUrl,
+      isActive: true,
+      lastLogin: Date.now(),
+      createdAt: Date.now(),
+    });
+
+    // Log Activity
+    await ctx.db.insert("activityLog", {
+      userId: userId,
+      userName: args.name,
+      action: "REGISTER",
+      module: "AUTH",
+      description: `New user registered: ${args.name}`,
+      createdAt: Date.now(),
+    });
+
+    return {
+      userId,
+      name: args.name,
+      email,
+      role: "student",
+      profilePicUrl: args.profilePicUrl,
     };
   },
 });
@@ -61,6 +114,7 @@ export const createUser = mutation({
     password: v.string(),
     role: v.string(),
     phone: v.optional(v.string()),
+    profilePicUrl: v.optional(v.string()),
     createdBy: v.string(), // userId of the creator
     creatorName: v.string(), // Name of the creator
   },
@@ -79,6 +133,7 @@ export const createUser = mutation({
       password: args.password,
       role: args.role,
       phone: args.phone,
+      profilePicUrl: args.profilePicUrl,
       isActive: true,
       createdBy: args.createdBy,
       lastLogin: undefined,
