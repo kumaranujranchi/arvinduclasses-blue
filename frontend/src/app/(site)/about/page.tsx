@@ -413,9 +413,9 @@ export default function AboutPage() {
             </div>
             <div className="campus-image-col">
               <div className="campus-image">
-                <div className=" single-campus">
+                <div className="single-campus">
                   <img
-                    src="/assets/images/campus-1.webp"
+                    src="/assets/images/campus-1 copy.webp"
                     width="585"
                     height="392"
                     alt="Campus"
@@ -423,7 +423,39 @@ export default function AboutPage() {
                 </div>
                 <div className="single-campus">
                   <img
-                    src="/assets/images/campus-2.webp"
+                    src="/assets/images/campus-2 copy.webp"
+                    width="585"
+                    height="392"
+                    alt="Campus"
+                  />
+                </div>
+                <div className="single-campus">
+                  <img
+                    src="/assets/images/campus-3.webp"
+                    width="585"
+                    height="392"
+                    alt="Campus"
+                  />
+                </div>
+                <div className="single-campus">
+                  <img
+                    src="/assets/images/campus-4.webp"
+                    width="585"
+                    height="392"
+                    alt="Campus"
+                  />
+                </div>
+                <div className="single-campus">
+                  <img
+                    src="/assets/images/campus-5.webp"
+                    width="585"
+                    height="392"
+                    alt="Campus"
+                  />
+                </div>
+                <div className="single-campus">
+                  <img
+                    src="/assets/images/campus-6.webp"
                     width="585"
                     height="392"
                     alt="Campus"
