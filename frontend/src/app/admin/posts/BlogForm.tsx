@@ -30,6 +30,7 @@ export default function BlogForm({ initialData, isEdit }: BlogFormProps) {
     excerpt: "",
     content: "",
     author: "",
+    category: "Education", // Default category
     imageUrl: "",
     tags: [] as string[],
     isPublished: false,
@@ -57,6 +58,7 @@ export default function BlogForm({ initialData, isEdit }: BlogFormProps) {
         excerpt: initialData.excerpt || "",
         content: initialData.content || "",
         author: initialData.author || "",
+        category: initialData.category || "Education",
         imageUrl: initialData.imageUrl || "",
         tags: initialData.tags || [],
         isPublished: initialData.isPublished || false,
@@ -139,18 +141,21 @@ export default function BlogForm({ initialData, isEdit }: BlogFormProps) {
 
     setIsSubmitting(true);
     try {
-      const payload = {
+      const data = {
         ...formData,
         adminId: user.userId || user.id || user._id,
         adminName: user.name,
       };
 
       if (isEdit) {
-        await updatePost({ id: initialData._id, ...payload });
-        toast.success("Post updated successfully");
+        await updatePost({
+          id: initialData._id,
+          ...data,
+        });
+        toast.success("Post updated successfully!");
       } else {
-        await createPost(payload);
-        toast.success("Post created successfully");
+        await createPost(data);
+        toast.success("Post created successfully!");
       }
       router.push("/admin/posts");
     } catch (error) {
@@ -243,14 +248,32 @@ export default function BlogForm({ initialData, isEdit }: BlogFormProps) {
               <button
                 type="button"
                 onClick={() => setFormData(prev => ({ ...prev, isPublished: !prev.isPublished }))}
-                className={`relative inline-flex h-5 w-10 items-center rounded-full transition-colors focus:outline-none ${
-                  formData.isPublished ? "bg-green-500" : "bg-gray-200"
-                }`}
+                className={`w-12 h-6 rounded-full transition-all relative ${formData.isPublished ? 'bg-blue-600' : 'bg-gray-200'}`}
               >
-                <span className={`inline-block h-3.5 w-3.5 transform rounded-full bg-white transition-transform ${formData.isPublished ? "translate-x-5.5" : "translate-x-1"}`} />
+                <div className={`absolute top-1 w-4 h-4 rounded-full bg-white transition-all ${formData.isPublished ? 'left-7' : 'left-1'}`} />
               </button>
             </div>
-            <button
+          </div>
+
+          {/* Category Widget */}
+          <div className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm space-y-4">
+            <h3 className="text-xs font-bold text-slate-800 border-b border-gray-50 pb-2">Category</h3>
+            <select
+              value={formData.category}
+              onChange={(e) => setFormData(prev => ({ ...prev, category: e.target.value }))}
+              className="w-full px-4 py-3 rounded-xl border border-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-sm font-bold bg-gray-50 text-slate-700 cursor-pointer"
+            >
+              <option value="Education">Education</option>
+              <option value="Science">Science</option>
+              <option value="Commerce">Commerce</option>
+              <option value="Arts">Arts</option>
+              <option value="Career">Career Guidance</option>
+              <option value="News">Latest News</option>
+              <option value="Events">School Events</option>
+            </select>
+            <p className="text-[10px] text-slate-400 font-medium italic">Selecting a category helps students find your post faster in the sidebar filter.</p>
+          </div>
+          <button
               type="submit"
               disabled={isSubmitting}
               className="w-full bg-[#01228D] text-white py-3 rounded-xl font-bold text-sm hover:bg-blue-800 transition-all shadow-sm flex items-center justify-center gap-2 disabled:opacity-50"

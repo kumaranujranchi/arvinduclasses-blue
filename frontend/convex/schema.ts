@@ -26,6 +26,7 @@ export default defineSchema({
     content: v.string(),
     excerpt: v.string(),
     author: v.string(),
+    category: v.string(), // Added category field
     imageUrl: v.optional(v.string()),
     tags: v.array(v.string()),
     isPublished: v.boolean(),

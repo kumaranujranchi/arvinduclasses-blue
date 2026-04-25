@@ -5,23 +5,38 @@ import Footer from "../../components/Footer";
 import { useQuery } from "convex/react";
 import { api } from "../../../../convex/_generated/api";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import NewsletterForm from "../../components/NewsletterForm";
 
 export default function BlogPage() {
   const posts = useQuery(api.posts.getPublishedPosts, {});
-  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
-  // Derived data for sidebar
+  // Derive categories dynamically from posts
+  const dynamicCategories = useMemo(() => {
+    if (!posts) return [];
+    const counts: Record<string, number> = {};
+    posts.forEach(post => {
+      const cat = (post as any).category || "Uncategorized";
+      counts[cat] = (counts[cat] || 0) + 1;
+    });
+    return Object.entries(counts).map(([name, count]) => ({ name, count }));
+  }, [posts]);
+
+  // Derive unique tags dynamically
+  const allTags = useMemo(() => {
+    if (!posts) return [];
+    return Array.from(new Set(posts.flatMap((p) => p.tags || [])));
+  }, [posts]);
+
+  // Filter posts based on selected category
+  const filteredPosts = useMemo(() => {
+    if (!posts) return [];
+    if (!selectedCategory) return posts;
+    return posts.filter(post => (post as any).category === selectedCategory);
+  }, [posts, selectedCategory]);
+
   const recentPosts = posts?.slice(0, 4);
-  const allTags = Array.from(new Set(posts?.flatMap((p) => p.tags) || []));
-  const categories = [
-    { name: "Education", count: 15 },
-    { name: "Learning", count: 8 },
-    { name: "Online Courses", count: 12 },
-    { name: "Scholarships", count: 5 },
-    { name: "Skill Development", count: 9 },
-  ];
 
   return (
     <>
@@ -42,7 +57,7 @@ export default function BlogPage() {
       </section>
 
       {/* Blog Main Section */}
-      <section className="blog-page-area pb-120 pt-80">
+      <section className="blog-page-area pb-120 pt-80 bg-[#fdfdfd]">
         <div className="container">
           <div className="row">
             {/* Sidebar Column */}
@@ -54,11 +69,22 @@ export default function BlogPage() {
                   <h4 className="widget-title">Categories</h4>
                   <div className="widget-category">
                     <ul>
-                      {categories.map((cat, i) => (
+                      <li>
+                        <button 
+                          onClick={() => setSelectedCategory(null)}
+                          className={`w-full text-left flex justify-between items-center px-4 py-3 rounded-xl border transition-all font-bold text-sm mb-2 ${!selectedCategory ? 'bg-[#01228D] text-white border-[#01228D]' : 'bg-white text-slate-600 border-gray-100 hover:bg-blue-50'}`}
+                        >
+                          All Posts <span>({posts?.length || 0})</span>
+                        </button>
+                      </li>
+                      {dynamicCategories.map((cat, i) => (
                         <li key={i}>
-                          <Link href="#">
+                          <button 
+                            onClick={() => setSelectedCategory(cat.name)}
+                            className={`w-full text-left flex justify-between items-center px-4 py-3 rounded-xl border transition-all font-bold text-sm mb-2 ${selectedCategory === cat.name ? 'bg-[#01228D] text-white border-[#01228D]' : 'bg-white text-slate-600 border-gray-100 hover:bg-blue-50'}`}
+                          >
                             {cat.name} <span>({cat.count})</span>
-                          </Link>
+                          </button>
                         </li>
                       ))}
                     </ul>
@@ -66,64 +92,48 @@ export default function BlogPage() {
                 </div>
 
                 {/* Recent Posts Widget */}
-                <div className="sidebar-widget mt-30">
+                <div className="sidebar-widget mt-40">
                   <h4 className="widget-title">Recent Post</h4>
                   <div className="widget-recent-post">
                     {recentPosts?.map((post) => (
-                      <div key={post._id} className="single-recent-post d-flex align-items-center">
+                      <div key={post._id} className="single-recent-post d-flex align-items-center mb-4 bg-white p-2 rounded-xl border border-gray-50 hover:border-blue-100 transition-colors shadow-sm">
                         <div className="recent-post-image">
                           <Link href={`/blog/${post.slug}`}>
                             <img 
                               src={post.imageUrl || "/assets/images/blog-1.webp"} 
                               alt={post.title} 
-                              style={{ width: '80px', height: '80px', objectFit: 'cover', borderRadius: '8px' }}
+                              className="w-20 h-20 object-cover rounded-lg"
                             />
                           </Link>
                         </div>
-                        <div className="recent-post-content flex-1">
-                          <h6 className="title">
+                        <div className="recent-post-content flex-1 pl-4">
+                          <h6 className="title text-sm font-bold text-slate-800 leading-snug hover:text-[#01228D] transition-colors mb-1">
                             <Link href={`/blog/${post.slug}`}>
                               {post.title.length > 40 ? post.title.substring(0, 40) + "..." : post.title}
                             </Link>
                           </h6>
-                          <Link href={`/blog/${post.slug}`} className="more">Read more</Link>
+                          <Link href={`/blog/${post.slug}`} className="text-[10px] font-black uppercase tracking-widest text-[#01228D]">Read more</Link>
                         </div>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Promo Widget */}
-                <div className="sidebar-widget mt-30">
-                  <div className="sidebar-promo-banner relative overflow-hidden rounded-2xl group">
-                    <img 
-                      src="https://img.freepik.com/free-vector/special-offer-modern-sale-banner-template_1017-20667.jpg" 
-                      alt="Promo" 
-                      className="w-full transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-6">
-                      <span className="text-white/80 text-xs font-bold tracking-widest uppercase">Special Offer</span>
-                      <h4 className="text-white font-bold text-xl mt-1">Mega Discount for Students</h4>
-                      <button className="mt-4 bg-white text-[#01228D] py-2 px-6 rounded-lg font-bold text-sm self-start hover:bg-blue-50 transition-colors">Shop Now</button>
-                    </div>
-                  </div>
-                </div>
-
                 {/* Tags Widget */}
-                <div className="sidebar-widget mt-30">
-                  <h4 className="widget-title">Tags</h4>
+                <div className="sidebar-widget mt-40">
+                  <h4 className="widget-title">Popular Tags</h4>
                   <div className="widget-tags">
-                    <ul>
-                      {allTags.length > 0 ? allTags.map((tag, i) => (
-                        <li key={i}><Link href="#">{tag}</Link></li>
-                      )) : (
-                        <>
-                          <li><Link href="#">Books</Link></li>
-                          <li><Link href="#">Event</Link></li>
-                          <li><Link href="#">Pen</Link></li>
-                          <li><Link href="#">Science</Link></li>
-                        </>
-                      )}
+                    <ul className="flex flex-wrap gap-2">
+                      {allTags.map((tag, i) => (
+                        <li key={i}>
+                          <Link 
+                            href="#" 
+                            className="px-4 py-2 bg-white border border-gray-100 rounded-lg text-xs font-bold text-slate-500 hover:bg-[#01228D] hover:text-white hover:border-[#01228D] transition-all"
+                          >
+                            {tag}
+                          </Link>
+                        </li>
+                      ))}
                     </ul>
                   </div>
                 </div>
@@ -132,76 +142,96 @@ export default function BlogPage() {
 
             {/* Posts Column */}
             <div className="col-lg-8 order-1 order-lg-2">
+              <div className="flex items-center justify-between mb-8">
+                 <h3 className="text-xl font-black text-slate-800">
+                   {selectedCategory ? `Browsing: ${selectedCategory}` : "Explore All Blogs"}
+                 </h3>
+                 <div className="h-px bg-gray-100 flex-1 mx-6 hidden sm:block"></div>
+                 <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">{filteredPosts.length} Results</span>
+              </div>
+
               <div className="row">
                 {posts === undefined ? (
                   // Loading State
                   [...Array(4)].map((_, i) => (
-                    <div key={i} className="col-md-6">
-                      <div className="single-blog mt-30 animate-pulse">
-                        <div className="blog-image bg-gray-200 h-[220px] rounded-xl"></div>
-                        <div className="blog-content pt-4 space-y-3">
-                          <div className="h-4 bg-gray-200 rounded w-1/3"></div>
-                          <div className="h-6 bg-gray-200 rounded w-full"></div>
+                    <div key={i} className="col-md-6 mb-8">
+                      <div className="animate-pulse bg-white rounded-3xl p-4 border border-gray-100">
+                        <div className="bg-gray-100 h-48 rounded-2xl mb-4"></div>
+                        <div className="space-y-3 px-2">
+                          <div className="h-4 bg-gray-100 rounded w-1/3"></div>
+                          <div className="h-6 bg-gray-100 rounded w-full"></div>
                         </div>
                       </div>
                     </div>
                   ))
-                ) : posts.length > 0 ? (
-                  posts.map((post) => (
-                    <div key={post._id} className="col-md-6">
-                      <div className="single-blog mt-30 shadow-sm border border-gray-50 rounded-2xl overflow-hidden hover:shadow-md transition-all">
-                        <div className="blog-image">
+                ) : filteredPosts.length > 0 ? (
+                  filteredPosts.map((post) => (
+                    <div key={post._id} className="col-md-6 mb-8">
+                      <div className="group bg-white rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-500 overflow-hidden">
+                        <div className="relative overflow-hidden aspect-[4/3]">
                           <Link href={`/blog/${post.slug}`}>
                             <img 
                               src={post.imageUrl || "/assets/images/blog-1.webp"} 
                               alt={post.title} 
-                              style={{ width: '100%', height: '220px', objectFit: 'cover' }}
+                              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                             />
                           </Link>
+                          <div className="absolute top-4 left-4">
+                            <span className="bg-white/90 backdrop-blur-md text-[#01228D] px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-sm">
+                              {(post as any).category || "General"}
+                            </span>
+                          </div>
                         </div>
-                        <div className="blog-content p-20">
-                          <ul className="meta flex gap-4 text-xs font-bold text-slate-400 mb-3">
-                            <li className="flex items-center gap-1">
-                              <i className="far fa-calendar-alt text-blue-500"></i>
-                              {new Date(post.publishedAt || post.createdAt).toLocaleDateString("en-GB", {
-                                day: "2-digit",
-                                month: "short",
-                                year: "numeric",
-                              })}
-                            </li>
-                            <li className="flex items-center gap-1">
-                              <i className="far fa-user text-blue-500"></i>
-                              By: {post.author}
-                            </li>
-                          </ul>
-                          <h4 className="blog-title text-lg font-bold text-slate-800 leading-snug hover:text-[#01228D] transition-colors mb-4">
+                        <div className="p-6">
+                          <div className="flex items-center gap-4 mb-4">
+                            <div className="flex items-center gap-2">
+                              <div className="w-6 h-6 rounded-full bg-blue-50 flex items-center justify-center text-[10px] text-blue-600">
+                                <i className="far fa-calendar-alt"></i>
+                              </div>
+                              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                                {new Date(post.publishedAt || post.createdAt).toLocaleDateString("en-GB", {
+                                  day: "2-digit",
+                                  month: "short",
+                                })}
+                              </span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <div className="w-6 h-6 rounded-full bg-orange-50 flex items-center justify-center text-[10px] text-orange-600">
+                                <i className="far fa-user"></i>
+                              </div>
+                              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">By {post.author}</span>
+                            </div>
+                          </div>
+                          <h4 className="text-lg font-black text-slate-800 leading-tight mb-4 group-hover:text-[#01228D] transition-colors">
                             <Link href={`/blog/${post.slug}`}>
-                              {post.title.length > 60 ? post.title.substring(0, 60) + "..." : post.title}
+                              {post.title.length > 55 ? post.title.substring(0, 55) + "..." : post.title}
                             </Link>
                           </h4>
-                          <Link href={`/blog/${post.slug}`} className="more text-xs font-black uppercase tracking-widest text-[#01228D] hover:translate-x-2 transition-transform inline-flex items-center gap-2">
-                            Read more <i className="fas fa-arrow-right"></i>
+                          <Link href={`/blog/${post.slug}`} className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-[#01228D] group-hover:gap-4 transition-all">
+                            Read Article <i className="fas fa-arrow-right"></i>
                           </Link>
                         </div>
                       </div>
                     </div>
                   ))
                 ) : (
-                  <div className="col-12 text-center py-80">
-                    <h3 className="text-slate-400">No blog posts found.</h3>
-                    <p className="text-slate-500 mt-2">Check back later for new updates!</p>
+                  <div className="col-12 text-center py-80 bg-white rounded-3xl border border-dashed border-gray-200">
+                    <div className="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <i className="fas fa-search text-slate-300 text-2xl"></i>
+                    </div>
+                    <h3 className="text-slate-500 font-bold">No posts in this category</h3>
+                    <p className="text-slate-400 text-sm mt-2">Try selecting another category or view all posts.</p>
                   </div>
                 )}
               </div>
 
               {/* Pagination */}
-              {posts && posts.length > 0 && (
+              {filteredPosts.length > 0 && (
                 <div className="pagination-area mt-50">
                   <ul className="pagination justify-content-center flex gap-3">
-                    <li><button className="active w-10 h-10 rounded-full border border-gray-100 flex items-center justify-center font-bold text-xs bg-[#01228D] text-white">01</button></li>
-                    <li><button className="w-10 h-10 rounded-full border border-gray-100 flex items-center justify-center font-bold text-xs hover:bg-gray-50 transition-colors">02</button></li>
-                    <li><button className="w-10 h-10 rounded-full border border-gray-100 flex items-center justify-center font-bold text-xs hover:bg-gray-50 transition-colors">03</button></li>
-                    <li><button className="w-10 h-10 rounded-full border border-gray-100 flex items-center justify-center font-bold text-xs hover:bg-gray-50 transition-colors"><i className="fas fa-chevron-right"></i></button></li>
+                    <li><button className="active w-12 h-12 rounded-2xl border border-gray-100 flex items-center justify-center font-black text-xs bg-[#01228D] text-white shadow-lg shadow-blue-900/20">01</button></li>
+                    <li><button className="w-12 h-12 rounded-2xl border border-gray-100 flex items-center justify-center font-black text-xs bg-white text-slate-400 hover:bg-blue-50 hover:text-[#01228D] transition-all">02</button></li>
+                    <li><button className="w-12 h-12 rounded-2xl border border-gray-100 flex items-center justify-center font-black text-xs bg-white text-slate-400 hover:bg-blue-50 hover:text-[#01228D] transition-all"><i className="fas fa-chevron-right"></i></button></li>
                   </ul>
                 </div>
               )}
@@ -211,26 +241,25 @@ export default function BlogPage() {
       </section>
 
       {/* Newsletter Section */}
-      <section className="newsletter-area bg-[#F4F7FA] py-80">
+      <section className="newsletter-area bg-white pb-120 pt-40">
         <div className="container">
-          <div className="newsletter-wrapper bg-white p-10 rounded-[40px] shadow-xl shadow-blue-900/5 relative overflow-hidden border border-blue-50">
+          <div className="newsletter-wrapper bg-[#01228D] p-12 rounded-[50px] shadow-2xl shadow-blue-900/20 relative overflow-hidden">
              <div className="row align-items-center relative z-10">
                <div className="col-lg-6">
                  <div className="section-title-2 mb-0">
-                   <h2 className="title text-3xl font-black">Subscribe our Newsletter</h2>
-                   <span className="line !w-20 mt-4"></span>
-                   <p className="mt-6 text-slate-500 font-medium">Join our community to get the latest updates, educational tips and exclusive scholarships directly in your inbox.</p>
+                   <h2 className="title text-4xl font-black text-white leading-tight">Join our newsletter to <br/> get latest updates</h2>
+                   <p className="mt-6 text-white/70 text-lg">We only send quality content that helps students and parents stay informed about Arvindu Classes.</p>
                  </div>
                </div>
                <div className="col-lg-6">
-                 <div className="mt-8 lg:mt-0">
+                 <div className="mt-8 lg:mt-0 p-4 bg-white/10 backdrop-blur-md rounded-3xl border border-white/20">
                     <NewsletterForm />
                  </div>
                </div>
              </div>
              {/* Decorative */}
-             <div className="absolute -top-24 -right-24 w-64 h-64 bg-blue-50 rounded-full opacity-50 blur-3xl"></div>
-             <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-orange-50 rounded-full opacity-50 blur-3xl"></div>
+             <div className="absolute top-0 right-0 w-96 h-96 bg-blue-400/20 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
+             <div className="absolute bottom-0 left-0 w-64 h-64 bg-orange-400/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl"></div>
           </div>
         </div>
       </section>
@@ -239,85 +268,30 @@ export default function BlogPage() {
       
       <style jsx>{`
         .widget-title {
-          font-size: 20px;
-          font-weight: 800;
-          color: #01228D;
-          margin-bottom: 25px;
-          padding-bottom: 15px;
-          border-bottom: 2px solid #f4f7fa;
-          position: relative;
+          font-size: 18px;
+          font-weight: 900;
+          color: #1e293b;
+          margin-bottom: 30px;
+          display: flex;
+          align-items: center;
+          gap: 12px;
         }
-        .widget-title::after {
+        .widget-title::before {
           content: '';
-          position: absolute;
-          bottom: -2px;
-          left: 0;
-          width: 50px;
-          height: 2px;
+          display: block;
+          width: 4px;
+          height: 24px;
           background: #01228D;
+          border-radius: 2px;
         }
-        .widget-category ul li {
-          margin-bottom: 12px;
+        .widget-category ul li button span {
+          background: rgba(0,0,0,0.05);
+          padding: 2px 10px;
+          border-radius: 20px;
+          font-size: 10px;
         }
-        .widget-category ul li a {
-          display: flex;
-          justify-content: space-between;
-          font-size: 14px;
-          font-weight: 600;
-          color: #555;
-          padding: 10px 15px;
-          background: #fdfdfd;
-          border: 1px solid #f4f7fa;
-          border-radius: 10px;
-          transition: all 0.3s;
-        }
-        .widget-category ul li a:hover {
-          background: #01228D;
-          color: #fff;
-          border-color: #01228D;
-        }
-        .widget-category ul li a span {
-          opacity: 0.6;
-        }
-        .single-recent-post {
-          margin-bottom: 20px;
-          gap: 15px;
-        }
-        .recent-post-content .title {
-          font-size: 14px;
-          font-weight: 700;
-          line-height: 1.4;
-          margin-bottom: 5px;
-        }
-        .recent-post-content .more {
-          font-size: 11px;
-          font-weight: 800;
-          text-transform: uppercase;
-          color: #01228D;
-          letter-spacing: 1px;
-        }
-        .widget-tags ul {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 8px;
-        }
-        .widget-tags ul li a {
-          font-size: 12px;
-          font-weight: 700;
-          padding: 8px 16px;
-          background: #f4f7fa;
-          border-radius: 8px;
-          color: #666;
-          transition: all 0.3s;
-        }
-        .widget-tags ul li a:hover {
-          background: #01228D;
-          color: #fff;
-        }
-        .pagination-area ul li button.active {
-          background: #01228D;
-          color: #fff;
-          border-color: #01228D;
+        .widget-category ul li button.bg-[#01228D] span {
+          background: rgba(255,255,255,0.2);
         }
       `}</style>
     </>
