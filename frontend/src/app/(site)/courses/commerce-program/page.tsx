@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from "next/link";
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
+import LeadForm from "../../../components/LeadForm";
 
 // Mock data for related courses
 const relatedCourses = [
@@ -32,6 +33,18 @@ const relatedCourses = [
 
 export default function CommerceProgramPage() {
   const [activeTab, setActiveTab] = useState('benefit');
+  const [formConfig, setFormConfig] = useState<{ isOpen: boolean; type: 'demo' | 'enroll' }>({
+    isOpen: false,
+    type: 'demo'
+  });
+
+  const openForm = (type: 'demo' | 'enroll') => {
+    setFormConfig({ isOpen: true, type });
+  };
+
+  const closeForm = () => {
+    setFormConfig({ ...formConfig, isOpen: false });
+  };
 
   return (
     <>
@@ -218,7 +231,12 @@ export default function CommerceProgramPage() {
                     <li className="p-12-0-border-none">Rating <strong className="text-star-yellow">★★★★★ (5.0)</strong></li>
                   </ul>
                   <div className="sidebar-btn mt-30">
-                    <a className="main-btn w-100 text-center course-sidebar-btn-blue" href="#">Book Demo Class</a>
+                    <button 
+                      className="main-btn w-100 text-center course-sidebar-btn-blue border-0 cursor-pointer" 
+                      onClick={() => openForm('demo')}
+                    >
+                      Book Demo Class
+                    </button>
                   </div>
                 </div>
 
@@ -263,7 +281,12 @@ export default function CommerceProgramPage() {
                 </div>
               </div>
               <div className="col-lg-4 text-center text-lg-right mt-40 mt-lg-0">
-                 <button className="main-btn course-cta-btn">Book Free Demo</button>
+                 <button 
+                  className="main-btn course-cta-btn"
+                  onClick={() => openForm('demo')}
+                 >
+                   Book Free Demo
+                 </button>
               </div>
             </div>
           </div>
@@ -271,6 +294,12 @@ export default function CommerceProgramPage() {
       </section>
 
       <Footer />
+      
+      <LeadForm 
+        isOpen={formConfig.isOpen} 
+        onClose={closeForm} 
+        type={formConfig.type} 
+      />
       
       <style jsx>{`
         .nav-item a { transition: all 0.3s ease; color: #666 !important; }

@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from "next/link";
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
+import LeadForm from "../../../components/LeadForm";
 
 // Mock data for related courses
 const relatedCourses = [
@@ -32,6 +33,18 @@ const relatedCourses = [
 
 export default function FoundationProgramPage() {
   const [activeTab, setActiveTab] = useState('benefit');
+  const [formConfig, setFormConfig] = useState<{ isOpen: boolean; type: 'demo' | 'enroll' }>({
+    isOpen: false,
+    type: 'demo'
+  });
+
+  const openForm = (type: 'demo' | 'enroll') => {
+    setFormConfig({ isOpen: true, type });
+  };
+
+  const closeForm = () => {
+    setFormConfig({ ...formConfig, isOpen: false });
+  };
 
   return (
     <>
@@ -201,7 +214,12 @@ export default function FoundationProgramPage() {
                     <li className="p-12-0-border-none">Rating <strong className="text-star-yellow">★★★★★ (5.0)</strong></li>
                   </ul>
                   <div className="sidebar-btn mt-30">
-                    <a className="main-btn w-100 text-center r10-p0-h50-lh50-fs16-bgdarkblue" href="#">Book Free Demo Class</a>
+                    <button 
+                      className="main-btn w-100 text-center r10-p0-h50-lh50-fs16-bgdarkblue border-0 cursor-pointer" 
+                      onClick={() => openForm('demo')}
+                    >
+                      Book Free Demo Class
+                    </button>
                   </div>
                 </div>
 
@@ -246,7 +264,12 @@ export default function FoundationProgramPage() {
                 </div>
               </div>
               <div className="col-lg-4 text-center text-lg-right mt-40 mt-lg-0">
-                 <button className="main-btn course-cta-btn">Book Free Demo</button>
+                 <button 
+                  className="main-btn course-cta-btn"
+                  onClick={() => openForm('demo')}
+                 >
+                   Book Free Demo
+                 </button>
               </div>
             </div>
           </div>
@@ -254,6 +277,12 @@ export default function FoundationProgramPage() {
       </section>
 
       <Footer />
+      
+      <LeadForm 
+        isOpen={formConfig.isOpen} 
+        onClose={closeForm} 
+        type={formConfig.type} 
+      />
       
       {/* Dynamic Scoped Styles */}
       <style jsx>{`
