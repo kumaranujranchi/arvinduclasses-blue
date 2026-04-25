@@ -45,12 +45,11 @@ export default function BlogPage() {
       {/* Page Banner */}
       <section className="page-banner">
         <div 
-          className="page-banner-bg bg_cover" 
-          style={{ backgroundImage: "url(/assets/images/page-banner.webp)" }}
+          className="page-banner-bg bg_cover banner-bg-about" 
         >
           <div className="container">
             <div className="banner-content text-center">
-              <h2 className="title">Blog Left Sidebar</h2>
+              <h2 className="title">Our Blog</h2>
             </div>
           </div>
         </div>
@@ -60,88 +59,8 @@ export default function BlogPage() {
       <section className="blog-page-area pb-120 pt-80 bg-[#fdfdfd]">
         <div className="container">
           <div className="row">
-            {/* Sidebar Column */}
-            <div className="col-lg-4 order-2 order-lg-1">
-              <aside className="blog-sidebar pr-30">
-                
-                {/* Categories Widget */}
-                <div className="sidebar-widget mt-30">
-                  <h4 className="widget-title">Categories</h4>
-                  <div className="widget-category">
-                    <ul>
-                      <li>
-                        <button 
-                          onClick={() => setSelectedCategory(null)}
-                          className={`w-full text-left flex justify-between items-center px-4 py-3 rounded-xl border transition-all font-bold text-sm mb-2 ${!selectedCategory ? 'bg-[#01228D] text-white border-[#01228D]' : 'bg-white text-slate-600 border-gray-100 hover:bg-blue-50'}`}
-                        >
-                          All Posts <span>({posts?.length || 0})</span>
-                        </button>
-                      </li>
-                      {dynamicCategories.map((cat, i) => (
-                        <li key={i}>
-                          <button 
-                            onClick={() => setSelectedCategory(cat.name)}
-                            className={`w-full text-left flex justify-between items-center px-4 py-3 rounded-xl border transition-all font-bold text-sm mb-2 ${selectedCategory === cat.name ? 'bg-[#01228D] text-white border-[#01228D]' : 'bg-white text-slate-600 border-gray-100 hover:bg-blue-50'}`}
-                          >
-                            {cat.name} <span>({cat.count})</span>
-                          </button>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                {/* Recent Posts Widget */}
-                <div className="sidebar-widget mt-40">
-                  <h4 className="widget-title">Recent Post</h4>
-                  <div className="widget-recent-post">
-                    {recentPosts?.map((post) => (
-                      <div key={post._id} className="single-recent-post d-flex align-items-center mb-4 bg-white p-2 rounded-xl border border-gray-50 hover:border-blue-100 transition-colors shadow-sm">
-                        <div className="recent-post-image">
-                          <Link href={`/blog/${post.slug}`}>
-                            <img 
-                              src={post.imageUrl || "/assets/images/blog-1.webp"} 
-                              alt={post.title} 
-                              className="w-20 h-20 object-cover rounded-lg"
-                            />
-                          </Link>
-                        </div>
-                        <div className="recent-post-content flex-1 pl-4">
-                          <h6 className="title text-sm font-bold text-slate-800 leading-snug hover:text-[#01228D] transition-colors mb-1">
-                            <Link href={`/blog/${post.slug}`}>
-                              {post.title.length > 40 ? post.title.substring(0, 40) + "..." : post.title}
-                            </Link>
-                          </h6>
-                          <Link href={`/blog/${post.slug}`} className="text-[10px] font-black uppercase tracking-widest text-[#01228D]">Read more</Link>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Tags Widget */}
-                <div className="sidebar-widget mt-40">
-                  <h4 className="widget-title">Popular Tags</h4>
-                  <div className="widget-tags">
-                    <ul className="flex flex-wrap gap-2">
-                      {allTags.map((tag, i) => (
-                        <li key={i}>
-                          <Link 
-                            href="#" 
-                            className="px-4 py-2 bg-white border border-gray-100 rounded-lg text-xs font-bold text-slate-500 hover:bg-[#01228D] hover:text-white hover:border-[#01228D] transition-all"
-                          >
-                            {tag}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </aside>
-            </div>
-
             {/* Posts Column */}
-            <div className="col-lg-8 order-1 order-lg-2">
+            <div className="col-lg-8 order-2 order-lg-1">
               <div className="flex items-center justify-between mb-8">
                  <h3 className="text-xl font-black text-slate-800">
                    {selectedCategory ? `Browsing: ${selectedCategory}` : "Explore All Blogs"}
@@ -182,7 +101,7 @@ export default function BlogPage() {
                             </span>
                           </div>
                         </div>
-                        <div className="p-6">
+                        <div className="p-8"> {/* Increased padding from p-6 to p-8 */}
                           <div className="flex items-center gap-4 mb-4">
                             <div className="flex items-center gap-2">
                               <div className="w-6 h-6 rounded-full bg-blue-50 flex items-center justify-center text-[10px] text-blue-600">
@@ -236,64 +155,115 @@ export default function BlogPage() {
                 </div>
               )}
             </div>
+
+            {/* Sidebar Column */}
+            <div className="col-lg-4 order-1 order-lg-2">
+              <aside className="blog-sidebar pl-30">
+                
+                {/* Categories Widget */}
+                <div className="sidebar-widget mt-0">
+                  <h4 className="blog-widget-title">Categories</h4>
+                  <div className="widget-category">
+                    <ul>
+                      <li>
+                        <button 
+                          onClick={() => setSelectedCategory(null)}
+                          className={`w-full text-left flex justify-between items-center px-4 py-3 rounded-xl border transition-all font-bold text-sm mb-2 ${!selectedCategory ? 'bg-[#01228D] text-white border-[#01228D]' : 'bg-white text-slate-600 border-gray-100 hover:bg-blue-50'}`}
+                        >
+                          All Posts <span>({posts?.length || 0})</span>
+                        </button>
+                      </li>
+                      {dynamicCategories.map((cat, i) => (
+                        <li key={i}>
+                          <button 
+                            onClick={() => setSelectedCategory(cat.name)}
+                            className={`w-full text-left flex justify-between items-center px-4 py-3 rounded-xl border transition-all font-bold text-sm mb-2 ${selectedCategory === cat.name ? 'bg-[#01228D] text-white border-[#01228D]' : 'bg-white text-slate-600 border-gray-100 hover:bg-blue-50'}`}
+                          >
+                            {cat.name} <span>({cat.count})</span>
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Recent Posts Widget */}
+                <div className="sidebar-widget mt-40">
+                  <h4 className="blog-widget-title">Recent Posts</h4>
+                  <div className="widget-recent-post">
+                    {recentPosts?.map((post) => (
+                      <div key={post._id} className="single-recent-post d-flex align-items-center mb-4 bg-white p-2 rounded-xl border border-gray-50 hover:border-blue-100 transition-colors shadow-sm">
+                        <div className="recent-post-image">
+                          <Link href={`/blog/${post.slug}`}>
+                            <img 
+                              src={post.imageUrl || "/assets/images/blog-1.webp"} 
+                              alt={post.title} 
+                              className="w-16 h-16 object-cover rounded-lg"
+                            />
+                          </Link>
+                        </div>
+                        <div className="recent-post-content flex-1 pl-4">
+                          <h6 className="title text-xs font-bold text-slate-800 leading-snug hover:text-[#01228D] transition-colors mb-1">
+                            <Link href={`/blog/${post.slug}`}>
+                              {post.title.length > 35 ? post.title.substring(0, 35) + "..." : post.title}
+                            </Link>
+                          </h6>
+                          <Link href={`/blog/${post.slug}`} className="text-[9px] font-black uppercase tracking-widest text-[#01228D]">Read more</Link>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Tags Widget */}
+                <div className="sidebar-widget mt-40">
+                  <h4 className="blog-widget-title">Popular Tags</h4>
+                  <div className="widget-tags">
+                    <ul className="flex flex-wrap gap-2">
+                      {allTags.map((tag, i) => (
+                        <li key={i}>
+                          <Link 
+                            href="#" 
+                            className="px-4 py-2 bg-white border border-gray-100 rounded-lg text-xs font-bold text-slate-500 hover:bg-[#01228D] hover:text-white hover:border-[#01228D] transition-all"
+                          >
+                            {tag}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </aside>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Newsletter Section */}
-      <section className="newsletter-area bg-white pb-120 pt-40">
+      <section className="newsletter-area bg-white pb-120 pt-0">
         <div className="container">
-          <div className="newsletter-wrapper bg-[#01228D] p-12 rounded-[50px] shadow-2xl shadow-blue-900/20 relative overflow-hidden">
+          <div className="newsletter-wrapper bg-[#01228D] p-8 md:p-10 rounded-[40px] shadow-2xl shadow-blue-900/20 relative overflow-hidden max-w-4xl mx-auto">
              <div className="row align-items-center relative z-10">
                <div className="col-lg-6">
                  <div className="section-title-2 mb-0">
-                   <h2 className="title text-4xl font-black text-white leading-tight">Join our newsletter to <br/> get latest updates</h2>
-                   <p className="mt-6 text-white/70 text-lg">We only send quality content that helps students and parents stay informed about Arvindu Classes.</p>
+                   <h2 className="title text-2xl md:text-3xl font-black text-white leading-tight">Join our newsletter to <br className="hidden md:block"/> get latest updates</h2>
+                   <p className="mt-4 text-white/80 text-sm md:text-base">We only send quality content that helps students and parents stay informed.</p>
                  </div>
                </div>
                <div className="col-lg-6">
-                 <div className="mt-8 lg:mt-0 p-4 bg-white/10 backdrop-blur-md rounded-3xl border border-white/20">
+                 <div className="mt-8 lg:mt-0 p-3 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20">
                     <NewsletterForm />
                  </div>
                </div>
              </div>
              {/* Decorative */}
-             <div className="absolute top-0 right-0 w-96 h-96 bg-blue-400/20 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
-             <div className="absolute bottom-0 left-0 w-64 h-64 bg-orange-400/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl"></div>
+             <div className="absolute top-0 right-0 w-64 h-64 bg-blue-400/20 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
+             <div className="absolute bottom-0 left-0 w-48 h-48 bg-orange-400/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl"></div>
           </div>
         </div>
       </section>
 
       <Footer />
-      
-      <style jsx>{`
-        .widget-title {
-          font-size: 18px;
-          font-weight: 900;
-          color: #1e293b;
-          margin-bottom: 30px;
-          display: flex;
-          align-items: center;
-          gap: 12px;
-        }
-        .widget-title::before {
-          content: '';
-          display: block;
-          width: 4px;
-          height: 24px;
-          background: #01228D;
-          border-radius: 2px;
-        }
-        .widget-category ul li button span {
-          background: rgba(0,0,0,0.05);
-          padding: 2px 10px;
-          border-radius: 20px;
-          font-size: 10px;
-        }
-        .widget-category ul li button.bg-[#01228D] span {
-          background: rgba(255,255,255,0.2);
-        }
-      `}</style>
     </>
   );
 }

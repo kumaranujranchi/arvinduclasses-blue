@@ -1473,3 +1473,30 @@ html {
   background: #e2e8f0;
   border-radius: 10px;
 }
+/* Blog Page Specific Styles */
+.blog-widget-title {
+  font-size: 18px;
+  font-weight: 900;
+  color: #1e293b;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.blog-widget-title::before {
+  content: '';
+  display: block;
+  width: 4px;
+  height: 24px;
+  background: #01228D;
+  border-radius: 2px;
+}
+.widget-category ul li button span {
+  background: rgba(0,0,0,0.05);
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 10px;
+}
+.widget-category ul li button.bg-\[\#01228D\] span {
+  background: rgba(255,255,255,0.2);
+}
