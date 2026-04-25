@@ -53,8 +53,8 @@ export default function Header() {
                 <Link className="notice" href="/notice">Notice</Link>
                 {user ? (
                   <>
-                    <span className="ms-3 me-3 text-dark fw-bold d-none d-md-inline">Hi, {user.name}</span>
-                    <button className="login bg-transparent border-0" onClick={() => {
+                    <span className="ms-3 me-3 text-white d-none d-md-inline" style={{ fontSize: '13px' }}>Hi, {user.name}</span>
+                    <button className="login bg-transparent border-0 p-0" style={{ fontSize: '13px' }} onClick={() => {
                       localStorage.removeItem("user_session");
                       setUser(null);
                     }}>Logout</button>
