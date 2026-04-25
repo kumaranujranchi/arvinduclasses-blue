@@ -2081,9 +2081,7 @@ html {
     .header-top .header-meta { display: none !important; }
 
     .navigation {
-        position: sticky !important;
-        top: 0 !important;
-        left: 0 !important;
+        position: relative !important;
         width: 100% !important;
         height: 70px !important;
         z-index: 10005 !important;
@@ -2153,4 +2151,31 @@ html {
 @media (min-width: 992px) {
     .navigation.sticky { position: fixed !important; top: 0 !important; }
 }
+
+/* =====================================================
+   MOBILE STICKY NAV (JS-driven via nav-is-sticky class)
+   ===================================================== */
+@media (max-width: 991px) {
+    /* When sticky class is applied, fix the nav to top */
+    .navigation.nav-is-sticky {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        z-index: 10005 !important;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.12) !important;
+        animation: mobileNavSlideDown 0.25s ease-out forwards;
+    }
+
+    @keyframes mobileNavSlideDown {
+        from { transform: translateY(-100%); opacity: 0; }
+        to   { transform: translateY(0);    opacity: 1; }
+    }
+
+    /* Add body padding so content doesn't jump under fixed nav */
+    body.mobile-nav-sticky-active {
+        padding-top: 70px !important;
+    }
+}
+
 

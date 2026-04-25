@@ -29,12 +29,26 @@ export default function Header() {
   const [user, setUser] = useState<any>(null);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
     const session = localStorage.getItem("user_session");
     if (session) {
       setUser(JSON.parse(session));
     }
+
+    // Sticky nav on mobile scroll
+    const handleScroll = () => {
+      if (window.innerWidth < 992) {
+        // 80px = approx height of NoticeBar (~38px) + header-top (~42px)
+        const shouldStick = window.scrollY > 80;
+        setIsSticky(shouldStick);
+        document.body.classList.toggle("mobile-nav-sticky-active", shouldStick);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Close menu on navigation
@@ -80,7 +94,7 @@ export default function Header() {
       </div>
 
       {/* Main Navigation */}
-      <div id="navigation" className="navigation navigation-landscape navigation-padding">
+      <div id="navigation" className={`navigation navigation-landscape navigation-padding${isSticky ? " nav-is-sticky" : ""}`}>
         <div className="container position-relative">
           <div className="row align-items-center">
             <div className="col-lg-2 col-6">
