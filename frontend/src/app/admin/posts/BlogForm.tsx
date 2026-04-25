@@ -145,7 +145,7 @@ export default function BlogForm({ initialData, isEdit }: BlogFormProps) {
     try {
       const payload = {
         ...formData,
-        adminId: user.id || user._id,
+        adminId: user.userId || user.id || user._id,
         adminName: user.name,
       };
 

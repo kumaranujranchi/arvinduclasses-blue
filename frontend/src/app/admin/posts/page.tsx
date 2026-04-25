@@ -23,7 +23,7 @@ export default function BlogAdminPage() {
     try {
       await deletePost({
         id,
-        adminId: user.id || user._id,
+        adminId: user.userId || user.id || user._id,
         adminName: user.name,
       });
       toast.success("Post deleted successfully");
