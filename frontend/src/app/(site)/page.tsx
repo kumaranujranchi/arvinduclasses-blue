@@ -11,6 +11,7 @@ import { api } from "../../../convex/_generated/api";
 
 export default function HomePage() {
   const banners = useQuery(api.banners.getBanners, { onlyActive: true });
+  const posts = useQuery(api.posts.getPublishedPosts, { limit: 6 });
 
   useEffect(() => {
     const initSlick = () => {
@@ -114,7 +115,7 @@ export default function HomePage() {
       }
     };
     initSlick();
-  }, [banners]);
+  }, [banners, posts]);
 
   return (
     <>
