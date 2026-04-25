@@ -30,7 +30,7 @@ export default function BlogForm({ initialData, isEdit }: BlogFormProps) {
     excerpt: "",
     content: "",
     author: "",
-    category: "Education", // Default category
+    category: "Education",
     imageUrl: "",
     tags: [] as string[],
     isPublished: false,
@@ -82,7 +82,6 @@ export default function BlogForm({ initialData, isEdit }: BlogFormProps) {
 
     setIsUploading(true);
     try {
-      // 1. Compression & Convert to WebP
       const options = {
         maxSizeMB: 0.5,
         maxWidthOrHeight: 1280,
@@ -91,11 +90,8 @@ export default function BlogForm({ initialData, isEdit }: BlogFormProps) {
       };
       
       const compressedFile = await imageCompression(file, options);
-      
-      // 2. Get Upload URL
       const postUrl = await generateUploadUrl();
 
-      // 3. Upload to Convex Storage
       const result = await fetch(postUrl, {
         method: "POST",
         headers: { "Content-Type": "image/webp" },
@@ -103,13 +99,12 @@ export default function BlogForm({ initialData, isEdit }: BlogFormProps) {
       });
 
       const { storageId } = await result.json();
-      
       const imageUrl = await getImageUrl({ storageId });
       
       if (!imageUrl) throw new Error("Could not get image URL");
       
       setFormData(prev => ({ ...prev, imageUrl }));
-      toast.success("Image uploaded and compressed successfully!");
+      toast.success("Image uploaded successfully!");
     } catch (error) {
       console.error(error);
       toast.error("Failed to upload image");
@@ -166,7 +161,6 @@ export default function BlogForm({ initialData, isEdit }: BlogFormProps) {
     }
   };
 
-  // Quill modules
   const modules = {
     toolbar: [
       [{ header: [1, 2, 3, 4, 5, 6, false] }],
@@ -238,9 +232,9 @@ export default function BlogForm({ initialData, isEdit }: BlogFormProps) {
           </div>
         </div>
 
-        {/* Vertical Sticky Sidebar (Toolbar + Settings) */}
+        {/* Vertical Sticky Sidebar */}
         <div className="lg:col-span-4 space-y-6 sticky top-0 h-[calc(100vh-120px)] overflow-y-auto custom-scrollbar pr-2">
-          {/* Publish Action */}
+          {/* Actions */}
           <div className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm space-y-4">
             <h3 className="text-xs font-bold text-slate-800 border-b border-gray-50 pb-2">Actions</h3>
             <div className="flex items-center justify-between">
@@ -253,9 +247,21 @@ export default function BlogForm({ initialData, isEdit }: BlogFormProps) {
                 <div className={`absolute top-1 w-4 h-4 rounded-full bg-white transition-all ${formData.isPublished ? 'left-7' : 'left-1'}`} />
               </button>
             </div>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full bg-[#01228D] text-white py-3 rounded-xl font-bold text-sm hover:bg-blue-800 transition-all shadow-sm flex items-center justify-center gap-2 disabled:opacity-50"
+            >
+              {isSubmitting ? (
+                <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+              ) : (
+                <i className="fas fa-save"></i>
+              )}
+              {isEdit ? "Update Changes" : "Create Blog Post"}
+            </button>
           </div>
 
-          {/* Category Widget */}
+          {/* Category Selection */}
           <div className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm space-y-4">
             <h3 className="text-xs font-bold text-slate-800 border-b border-gray-50 pb-2">Category</h3>
             <select
@@ -271,23 +277,9 @@ export default function BlogForm({ initialData, isEdit }: BlogFormProps) {
               <option value="News">Latest News</option>
               <option value="Events">School Events</option>
             </select>
-            <p className="text-[10px] text-slate-400 font-medium italic">Selecting a category helps students find your post faster in the sidebar filter.</p>
-          </div>
-          <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full bg-[#01228D] text-white py-3 rounded-xl font-bold text-sm hover:bg-blue-800 transition-all shadow-sm flex items-center justify-center gap-2 disabled:opacity-50"
-            >
-              {isSubmitting ? (
-                <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-              ) : (
-                <i className="fas fa-save"></i>
-              )}
-              {isEdit ? "Update Changes" : "Create Blog Post"}
-            </button>
           </div>
 
-          {/* Featured Image */}
+          {/* Cover Image */}
           <div className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm space-y-4">
             <h3 className="text-xs font-bold text-slate-800 border-b border-gray-50 pb-2">Cover Image</h3>
             <div className="relative group aspect-video bg-gray-50 rounded-xl overflow-hidden border-2 border-dashed border-gray-100 flex flex-col items-center justify-center gap-2 cursor-pointer hover:bg-gray-100 transition-all">
@@ -300,31 +292,30 @@ export default function BlogForm({ initialData, isEdit }: BlogFormProps) {
                 </>
               ) : (
                 <>
-                  <div className="w-8 h-8 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center">
-                    {isUploading ? <div className="w-4 h-4 border-2 border-blue-200 border-t-blue-500 rounded-full animate-spin"></div> : <i className="fas fa-cloud-upload-alt text-sm"></i>}
+                  <div className="w-10 h-10 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center">
+                    {isUploading ? <div className="w-5 h-5 border-2 border-blue-200 border-t-blue-500 rounded-full animate-spin"></div> : <i className="fas fa-cloud-upload-alt"></i>}
                   </div>
-                  <p className="text-[9px] font-bold text-slate-500">Upload WebP (Max 500KB)</p>
-                  <p className="text-[8px] text-slate-400">Recommended: 1200 x 630px</p>
+                  <p className="text-[10px] font-bold text-slate-500">Upload WebP (Max 500KB)</p>
                 </>
               )}
               <input type="file" accept="image/*" onChange={handleImageUpload} disabled={isUploading} className="absolute inset-0 opacity-0 cursor-pointer" />
             </div>
           </div>
 
-          {/* Meta Data */}
+          {/* Post Details */}
           <div className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm space-y-4">
             <h3 className="text-xs font-bold text-slate-800 border-b border-gray-50 pb-2">Post Details</h3>
             <div>
-              <label className="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-1 block">Author</label>
-              <input type="text" value={formData.author} onChange={(e) => setFormData(prev => ({ ...prev, author: e.target.value }))} className="w-full px-3 py-2 rounded-lg border border-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500/20 text-xs font-bold text-slate-600" />
+              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2 block">Author</label>
+              <input type="text" value={formData.author} onChange={(e) => setFormData(prev => ({ ...prev, author: e.target.value }))} className="w-full px-4 py-3 rounded-xl border border-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500/20 text-xs font-bold text-slate-600" />
             </div>
             <div>
-              <label className="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-1 block">Tags</label>
-              <input type="text" value={tagInput} onChange={(e) => setTagInput(e.target.value)} onKeyDown={handleAddTag} placeholder="Type & Enter" className="w-full px-3 py-2 rounded-lg border border-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500/20 text-xs font-bold text-slate-600 mb-2" />
+              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2 block">Tags</label>
+              <input type="text" value={tagInput} onChange={(e) => setTagInput(e.target.value)} onKeyDown={handleAddTag} placeholder="Type & Enter" className="w-full px-4 py-3 rounded-xl border border-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500/20 text-xs font-bold text-slate-600 mb-2" />
               <div className="flex flex-wrap gap-2">
                 {formData.tags.map(tag => (
-                  <span key={tag} className="inline-flex items-center gap-1 px-2 py-0.5 bg-blue-50 text-blue-600 rounded text-[9px] font-bold">
-                    {tag} <button type="button" onClick={() => removeTag(tag)}><i className="fas fa-times"></i></button>
+                  <span key={tag} className="inline-flex items-center gap-1 px-3 py-1 bg-blue-50 text-blue-600 rounded-lg text-[10px] font-bold">
+                    {tag} <button type="button" onClick={() => removeTag(tag)} className="hover:text-blue-800"><i className="fas fa-times"></i></button>
                   </span>
                 ))}
               </div>
@@ -332,7 +323,6 @@ export default function BlogForm({ initialData, isEdit }: BlogFormProps) {
           </div>
         </div>
       </div>
-
     </form>
   );
 }
