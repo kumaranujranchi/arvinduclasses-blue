@@ -77,7 +77,7 @@ export default function BlogPostPage() {
           <div className="container blog-container">
             <div className="row">
               {/* Main Content Column */}
-              <div className="col-lg-8">
+              <div className="col-lg-9">
                 <div className="blog-details-wrapper bg-white rounded-[40px] border border-gray-100 shadow-sm overflow-hidden mb-50">
                   {/* Featured Image */}
                   <div className="details-image relative">
@@ -163,7 +163,7 @@ export default function BlogPostPage() {
               </div>
 
               {/* Sidebar Column */}
-              <div className="col-lg-4 mt-50 lg:mt-0">
+              <div className="col-lg-3 mt-50 lg:mt-0">
                 <aside className="blog-sidebar pl-0 lg:pl-10">
                   {/* Search Widget */}
                   <div className="sidebar-widget bg-white p-8 rounded-3xl border border-gray-100 shadow-sm mb-8">
