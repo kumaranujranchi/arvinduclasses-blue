@@ -3,7 +3,7 @@
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { useQuery } from "convex/react";
-import { api } from "../../../../../convex/_generated/api";
+import { api } from "../../../../convex/_generated/api";
 import Link from "next/link";
 
 export default function BlogPage() {
