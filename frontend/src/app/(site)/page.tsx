@@ -284,23 +284,23 @@ export default function HomePage() {
           <div className="courses-wrapper wow fadeInUpBig" data-wow-duration="1s" data-wow-delay="0.3s">
             <div className="row">
               {[
-                { img: "courses-1.webp", tag: "#Science", title: "Computer Science & Engineering" },
-                { img: "courses-2.webp", tag: "#Science", title: "Bachelor of Business Administration" },
-                { img: "courses-3.webp", tag: "#Science", title: "Social & Digital Marketing" },
-                { img: "courses-4.webp", tag: "#Science", title: "Bachelor of Applied Mathematics" },
-              ].map(({ img, tag, title }) => (
+                { tag: "#Foundation", title: "Foundation Program (Class 6–8)", slug: "foundation-program", img: "courses-1.webp" },
+                { tag: "#Science", title: "Science Program (Class 9–10)", slug: "science-program", img: "courses-2.webp" },
+                { tag: "#Commerce", title: "Commerce (Class 11–12)", slug: "commerce-program", img: "courses-3.webp" },
+                { tag: "#Mathematics", title: "Applied Mathematics (9–12)", slug: "applied-mathematics", img: "courses-4.webp" },
+              ].map(({ tag, title, slug, img }) => (
                 <div key={title} className="col-lg-3 col-sm-6 courses-col">
                   <div className="single-courses-2 mt-30">
                     <div className="courses-image">
-                      <Link href="/courses"><img src={`/assets/images/courses/${img}`} width="270" height="170" alt="courses" /></Link>
+                      <Link href={`/courses/${slug}`}><img src={`/assets/images/courses/${img}`} width="270" height="170" alt="courses" /></Link>
                     </div>
                     <div className="courses-content">
                       <a href="#" className="category">{tag}</a>
-                      <h4 className="courses-title"><Link href="/courses">{title}</Link></h4>
+                      <h4 className="courses-title"><Link href={`/courses/${slug}`}>{title}</Link></h4>
                       <div className="duration-rating">
                         <div className="duration-fee">
                           <p className="duration">Duration: <span>1 year</span></p>
-                          <p className="fee">Fee: <span>₹5,000</span></p>
+                          <p className="fee">Fee: <span>Enquire</span></p>
                         </div>
                         <div className="rating">
                           <span>Rating: </span>
@@ -311,7 +311,7 @@ export default function HomePage() {
                       </div>
                       <div className="courses-link">
                         <a className="apply" href="#">Online Apply</a>
-                        <Link className="more" href="/courses">Read more <i className="fas fa-chevron-right"></i></Link>
+                        <Link className="more" href={`/courses/${slug}`}>Read more <i className="fas fa-chevron-right"></i></Link>
                       </div>
                     </div>
                   </div>
@@ -496,45 +496,6 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-
-      {/* ====== Online Library Start ====== */}
-      <section className="online-library-area">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-lg-5 col-md-8">
-              <div className="section-title-2 text-center">
-                <h2 className="title">Online Library</h2>
-                <span className="line"></span>
-                <p>Browse our curated collection of study materials, books, and resources for all competitive exams.</p>
-              </div>
-            </div>
-          </div>
-          <div className="online-library-wrapper wow fadeInUpBig" data-wow-duration="1s" data-wow-delay="0.3s">
-            <div className="row">
-              {[
-                { img: "product-1.webp", title: "JEE Study Kit", price: "₹299" },
-                { img: "product-2.webp", title: "NEET Guide Book", price: "₹349" },
-                { img: "product-3.webp", title: "Math Workbook", price: "₹199" },
-                { img: "product-4.webp", title: "Science Capsule", price: "₹249" },
-              ].map(({ img, title, price }) => (
-                <div key={title} className="col-lg-3 col-sm-6">
-                  <div className="single-library text-center mt-30">
-                    <div className="library-image">
-                      <a href="#"><img src={`/assets/images/product/${img}`} width="271" height="281" alt="Product" /></a>
-                      <span className="discount">-30%</span>
-                    </div>
-                    <div className="library-content">
-                      <h4 className="library-title"><a href="#">{title}</a></h4>
-                      <span className="price">Price: {price}</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* ====== Online Library Ends ====== */}
 
       <FeatureScrolling />
 
