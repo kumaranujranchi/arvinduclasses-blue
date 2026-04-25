@@ -163,6 +163,30 @@ export default function RegisterPage() {
           font-weight: 600;
           text-decoration: none;
         }
+        @media (max-width: 480px) {
+          .login-card {
+            padding: 32px 24px 28px;
+            border-radius: 20px;
+          }
+          .main-title {
+            font-size: 24px;
+          }
+          .subtitle {
+            font-size: 13px;
+            margin-bottom: 20px;
+          }
+          .form-control {
+            height: 48px;
+            font-size: 14px;
+          }
+          .btn-submit {
+            height: 48px;
+            font-size: 15px;
+          }
+          .form-group {
+            margin-bottom: 16px;
+          }
+        }
       `}</style>
 
       <div className="login-page">

@@ -53,7 +53,7 @@ export default function ScholarshipPage() {
       </section>
 
       {/* ====== Scholarship Intro Start ====== */}
-      <section className="scholarship-intro pt-100 pb-100 position-relative overflow-hidden">
+      <section className="scholarship-intro pt-100 pb-50 pb-lg-100 position-relative overflow-hidden">
         <div className="intro-pattern"></div>
         <div className="container position-relative z-index-1">
           <div className="row align-items-center">
@@ -84,7 +84,7 @@ export default function ScholarshipPage() {
       </section>
 
       {/* ====== Scholarship Cards Start ====== */}
-      <section className="scholarship-programs pb-100 bg-light pt-100">
+      <section className="scholarship-programs pt-50 pb-50 pt-lg-100 pb-lg-100 bg-light">
         <div className="container">
           <div className="section-title text-center mb-50">
             <h2 className="title">Available <span>Programs</span></h2>
@@ -113,7 +113,7 @@ export default function ScholarshipPage() {
       </section>
 
       {/* ====== How to Apply ====== */}
-      <section className="how-to-apply pt-100 pb-100">
+      <section className="how-to-apply pt-80 pb-80">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-lg-8">
@@ -125,28 +125,20 @@ export default function ScholarshipPage() {
           </div>
 
           <div className="row justify-content-center">
-            <div className="col-lg-10">
-              <div className="process-wrapper d-flex flex-wrap justify-content-between gap-4">
-                <div className="process-step text-center flex-1" style={{ minWidth: '200px' }}>
-                  <div className="step-num mx-auto mb-20 w-16 h-16 rounded-full bg-blue-700 text-white flex items-center justify-content-center text-xl font-bold shadow-lg">1</div>
-                  <h5 className="mb-10 font-bold">Registration</h5>
-                  <p className="text-sm text-muted">Fill out the online application form or visit our office.</p>
-                </div>
-                <div className="process-step text-center flex-1" style={{ minWidth: '200px' }}>
-                  <div className="step-num mx-auto mb-20 w-16 h-16 rounded-full bg-blue-700 text-white flex items-center justify-content-center text-xl font-bold shadow-lg">2</div>
-                  <h5 className="mb-10 font-bold">Assessment</h5>
-                  <p className="text-sm text-muted">Appear for the ATS examination or submit documents.</p>
-                </div>
-                <div className="process-step text-center flex-1" style={{ minWidth: '200px' }}>
-                  <div className="step-num mx-auto mb-20 w-16 h-16 rounded-full bg-blue-700 text-white flex items-center justify-content-center text-xl font-bold shadow-lg">3</div>
-                  <h5 className="mb-10 font-bold">Verification</h5>
-                  <p className="text-sm text-muted">Our committee verifies your documents and results.</p>
-                </div>
-                <div className="process-step text-center flex-1" style={{ minWidth: '200px' }}>
-                  <div className="step-num mx-auto mb-20 w-16 h-16 rounded-full bg-blue-700 text-white flex items-center justify-content-center text-xl font-bold shadow-lg">4</div>
-                  <h5 className="mb-10 font-bold">Award</h5>
-                  <p className="text-sm text-muted">Get your scholarship adjusted in your tuition fees.</p>
-                </div>
+            <div className="col-lg-12">
+              <div className="process-wrapper d-flex flex-nowrap overflow-auto pb-40 gap-4 scholarship-process-mobile">
+                {[
+                  { num: 1, title: "Registration", desc: "Fill out the online application form or visit our office." },
+                  { num: 2, title: "Assessment", desc: "Appear for the ATS examination or submit documents." },
+                  { num: 3, title: "Verification", desc: "Our committee verifies your documents and results." },
+                  { num: 4, title: "Award", desc: "Get your scholarship adjusted in your tuition fees." }
+                ].map((step, idx) => (
+                  <div key={idx} className="process-step text-center flex-shrink-0" style={{ width: '220px' }}>
+                    <div className="step-num mx-auto mb-20 w-16 h-16 rounded-full bg-blue-700 text-white flex items-center justify-content-center text-xl font-bold shadow-lg">{step.num}</div>
+                    <h5 className="mb-10 font-bold">{step.title}</h5>
+                    <p className="text-sm text-muted">{step.desc}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -175,6 +167,29 @@ export default function ScholarshipPage() {
       <Footer />
 
       <style jsx>{`
+        .scholarship-process-mobile::-webkit-scrollbar {
+          height: 5px;
+        }
+        .scholarship-process-mobile::-webkit-scrollbar-track {
+          background: #f1f1f1;
+        }
+        .scholarship-process-mobile::-webkit-scrollbar-thumb {
+          background: #01228D;
+          border-radius: 10px;
+        }
+        
+        @media (min-width: 992px) {
+          .scholarship-process-mobile {
+            flex-wrap: wrap !important;
+            justify-content: space-between !important;
+            overflow: visible !important;
+          }
+          .process-step {
+            flex: 1 !important;
+            width: auto !important;
+          }
+        }
+
         .cta-pattern {
           position: absolute;
           top: 0;

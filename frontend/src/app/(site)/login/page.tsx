@@ -302,6 +302,27 @@ export default function GlobalLogin() {
 
         .footer-link:hover { color: #6b7280; }
         .footer-dot { color: #e0e0e0; font-size: 10px; }
+
+        @media (max-width: 480px) {
+          .login-card {
+            padding: 32px 24px 28px;
+            border-radius: 20px;
+          }
+          .main-title {
+            font-size: 24px;
+          }
+          .submit-btn {
+            height: 48px;
+            font-size: 14px;
+          }
+          .input-field {
+            height: 48px;
+            font-size: 13px;
+          }
+          .logo-img {
+            height: 44px;
+          }
+        }
       `}</style>
 
       <div className="login-page">

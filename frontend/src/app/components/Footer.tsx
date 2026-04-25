@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="container">
           <div className="row">
             {/* Information */}
-            <div className="col-md-3 col-sm-6">
+            <div className="col-md-3 col-6">
               <div className="footer-link mt-45">
                 <h4 className="footer-title">Information</h4>
                 <ul className="link-list">
@@ -23,7 +23,7 @@ export default function Footer() {
             </div>
 
             {/* Useful Links */}
-            <div className="col-md-3 col-sm-6">
+            <div className="col-md-3 col-6">
               <div className="footer-link mt-45">
                 <h4 className="footer-title">Useful Link</h4>
                 <ul className="link-list">
@@ -36,25 +36,9 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Pages */}
-            <div className="col-md-3 col-sm-6">
-              <div className="footer-link mt-45">
-                <h4 className="footer-title">Pages</h4>
-                <ul className="link-list">
-                  <li><Link href="/about">About Us</Link></li>
-                  <li><Link href="/blog">Blog</Link></li>
-                  <li><a href="#">Teacher Details</a></li>
-                  <li><a href="#">Gallery</a></li>
-                  <li><a href="#">Testimonial</a></li>
-                  <li><Link href="/notice">Notice</Link></li>
-                  <li><Link href="/login">Login</Link></li>
-                  <li><Link href="/register">Register</Link></li>
-                </ul>
-              </div>
-            </div>
 
             {/* Contact Info */}
-            <div className="col-md-3 col-sm-6">
+            <div className="col-md-3 col-12">
               <div className="footer-link mt-45">
                 <h4 className="footer-title">Contact Info</h4>
                 <ul className="link-list">
@@ -82,7 +66,7 @@ export default function Footer() {
                 <li><a href="#"><i className="fab fa-linkedin-in"></i></a></li>
               </ul>
             </div>
-            <div className="footer-menu">
+            <div className="footer-menu d-none d-md-block">
               <ul className="menu">
                 <li><Link href="/">Home</Link></li>
                 <li><Link href="/about">About</Link></li>

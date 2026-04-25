@@ -1561,10 +1561,10 @@ html {
 /* About Page Mobile Fix for Diamond Gallery */
 @media (max-width: 767px) {
   .about-image {
-    height: 580px !important;
+    height: 480px !important;
     position: relative !important;
-    margin-top: 60px !important;
-    margin-bottom: 60px !important;
+    margin-top: 40px !important;
+    margin-bottom: 10px !important;
     display: block !important;
     width: 100% !important;
   }
@@ -1572,14 +1572,25 @@ html {
   .about-image .single-image {
     position: absolute !important;
     z-index: 2 !important;
-    overflow: hidden !important;
+    overflow: visible !important; /* Changed to visible to show the ::before element */
     border-radius: 20px !important;
-    width: 140px !important;
-    height: 140px !important;
+    width: 120px !important;
+    height: 120px !important;
     display: block !important;
     /* Force diamond shape */
     -webkit-transform: rotate(45deg) !important;
     transform: rotate(45deg) !important;
+  }
+
+  /* Decorative borders (squares behind diamonds) */
+  .about-image .single-image::before {
+    position: absolute !important;
+    content: "" !important;
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 20px !important;
+    z-index: -1 !important;
+    display: block !important;
   }
 
   /* Symmetric Diamond Pattern: Top, Left, Right, Bottom */
@@ -1588,31 +1599,51 @@ html {
   .about-image .single-image.image-1 {
     top: 0 !important;
     left: 50% !important;
-    margin-left: -70px !important;
+    margin-left: -60px !important;
     right: auto !important;
+  }
+  .about-image .single-image.image-1::before {
+    right: -10px !important;
+    top: -10px !important;
+    background-color: #01228D !important;
   }
   
   /* Left Image */
   .about-image .single-image.image-3 {
-    top: 130px !important;
-    left: 10% !important;
+    top: 110px !important;
+    left: 8% !important;
     right: auto !important;
+  }
+  .about-image .single-image.image-3::before {
+    bottom: -8px !important;
+    left: -8px !important;
+    background-color: #0C8B51 !important;
   }
   
   /* Right Image */
   .about-image .single-image.image-2 {
-    top: 130px !important;
-    right: 10% !important;
+    top: 110px !important;
+    right: 8% !important;
     left: auto !important;
+  }
+  .about-image .single-image.image-2::before {
+    right: -8px !important;
+    bottom: -8px !important;
+    background-color: #27B8A7 !important;
   }
   
   /* Bottom Image */
   .about-image .single-image.image-4 {
     display: block !important;
-    top: 260px !important;
+    top: 220px !important;
     left: 50% !important;
-    margin-left: -70px !important;
+    margin-left: -60px !important;
     right: auto !important;
+  }
+  .about-image .single-image.image-4::before {
+    top: -8px !important;
+    left: -8px !important;
+    background-color: #2F7AD5 !important;
   }
 
   .about-image .single-image img {
@@ -1620,17 +1651,14 @@ html {
     height: 145% !important;
     max-width: none !important;
     object-fit: cover !important;
+    border-radius: 20px !important;
     /* Counter-rotate to make image upright */
     -webkit-transform: rotate(-45deg) !important;
     transform: rotate(-45deg) !important;
     margin-top: -22.5% !important;
     margin-left: -22.5% !important;
-  }
-
-  /* Decorative borders (squares behind diamonds) */
-  .about-image .single-image::before {
-    border-radius: 15px !important;
-    z-index: -1 !important;
+    position: relative !important;
+    z-index: 2 !important;
   }
 
   /* Icons integrated in between */
@@ -1642,10 +1670,10 @@ html {
     display: block !important;
   }
 
-  .about-image .about-icon.icon-1 { top: 70px !important; left: 25% !important; }
-  .about-image .about-icon.icon-2 { top: 70px !important; right: 25% !important; left: auto !important; }
-  .about-image .about-icon.icon-3 { top: 210px !important; left: 25% !important; }
-  .about-image .about-icon.icon-4 { top: 210px !important; right: 25% !important; left: auto !important; }
+  .about-image .about-icon.icon-1 { top: 60px !important; left: 25% !important; }
+  .about-image .about-icon.icon-2 { top: 60px !important; right: 25% !important; left: auto !important; }
+  .about-image .about-icon.icon-3 { top: 180px !important; left: 25% !important; }
+  .about-image .about-icon.icon-4 { top: 180px !important; right: 25% !important; left: auto !important; }
 }
 
 /* About Page Mobile Fix for Rectangular Gallery */
@@ -1695,3 +1723,434 @@ html {
     font-size: 14px !important;
   }
 }
+
+/* Teachers Mobile Horizontal Scroll */
+.teachers-row::-webkit-scrollbar {
+  display: none;
+}
+
+/* Testimonial Mobile Fix */
+@media (max-width: 767px) {
+  .single-testimonial-content .content-text {
+    padding-left: 35px !important;
+  }
+  .single-testimonial-content .content-text i {
+    font-size: 20px !important;
+    opacity: 0.8 !important;
+    left: 0 !important;
+    top: 0 !important;
+    position: absolute !important;
+  }
+}
+
+
+/* Feature Icons Mobile Fix */
+@media (max-width: 767px) {
+  .features-items .features-items-wrapper .single-features-item .item-icon img {
+    height: 40px !important;
+    width: auto !important;
+    object-fit: contain !important;
+  }
+  .features-items .features-items-wrapper .single-features-item .item-content p {
+    font-size: 13px !important;
+    line-height: 1.2 !important;
+  }
+}
+
+/* Mobile Mega Menu Fix */
+@media (max-width: 991px) {
+  .mega-menu {
+    position: static !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    transform: none !important;
+    box-shadow: none !important;
+    border-top: none !important;
+    transition: all 0.3s ease !important;
+    display: none !important;
+  }
+
+  .mega-menu.show {
+    visibility: visible !important;
+    opacity: 1 !important;
+    height: auto !important;
+    display: block !important;
+    padding: 10px 0 !important;
+    background: #ffffff !important;
+    border-radius: 8px !important;
+    margin-top: 5px !important;
+    border: 1px solid #eee !important;
+  }
+
+  .mega-menu .container {
+    padding: 0 15px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .mega-menu .row {
+    margin: 0 !important;
+  }
+
+  .mega-menu .mega-course-card {
+    background: #fdfdfd !important;
+    margin-bottom: 8px !important;
+    padding: 12px !important;
+    border: 1px solid #f0f0f0 !important;
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  .mega-menu .mega-menu-title {
+    font-size: 16px !important;
+    margin-bottom: 10px !important;
+    color: #07294d !important;
+  }
+  
+  .nav-chevron {
+    transition: transform 0.3s ease !important;
+  }
+  
+  .rotate-180 {
+    transform: rotate(180deg) !important;
+  }
+}
+
+/* React Mobile Menu Styles */
+@media (max-width: 991px) {
+  .nav-menus-wrapper {
+    position: fixed !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 300px !important;
+    height: 100vh !important;
+    background: #01228D !important;
+    z-index: 9999 !important;
+    transition: all 0.4s ease !important;
+    overflow-y: auto !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .nav-menus-wrapper.nav-menus-wrapper-open {
+    left: 0 !important;
+  }
+
+  .nav-menu {
+    padding: 60px 20px 20px !important;
+    width: 100% !important;
+  }
+
+  .nav-menu li {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+  }
+
+  .nav-menu li a {
+    color: #fff !important;
+    padding: 15px 0 !important;
+    font-size: 16px !important;
+    width: 100% !important;
+  }
+
+  .nav-dropdown-toggle {
+    color: #fff !important;
+    padding: 15px !important;
+    cursor: pointer !important;
+  }
+
+  .nav-menus-wrapper-close {
+    position: absolute !important;
+    top: 20px !important;
+    right: 20px !important;
+    color: #fff !important;
+    font-size: 24px !important;
+    cursor: pointer !important;
+  }
+
+  .nav-toggle {
+    display: block !important;
+    width: 30px !important;
+    height: 30px !important;
+    position: relative !important;
+    cursor: pointer !important;
+    margin-left: auto !important;
+  }
+
+  .nav-toggle::before {
+    content: '\f0c9' !important;
+    font-family: 'Font Awesome 5 Free' !important;
+    font-weight: 900 !important;
+    font-size: 24px !important;
+    color: #01228D !important;
+  }
+
+  .nav-toggle-active::before {
+    content: '\f00d' !important;
+  }
+
+  /* Sub-menu (Mega Menu) on Mobile */
+  .mega-menu {
+    display: none !important;
+    position: static !important;
+    width: 100% !important;
+    background: #fff !important;
+    border-radius: 10px !important;
+    margin: 10px 0 !important;
+    padding: 15px !important;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.1) !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    height: auto !important;
+    transform: none !important;
+  }
+
+  .mega-menu.show {
+    display: block !important;
+  }
+
+  .mega-menu-title {
+    color: #01228D !important;
+    font-size: 16px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .mega-course-card {
+    background: #f8faff !important;
+    margin-bottom: 10px !important;
+    border: 1px solid #eef2ff !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  .mega-course-card .course-info h6 {
+    color: #333 !important;
+  }
+}
+
+/* Fix for double hamburger/cross buttons */
+.navigation .nav-toggle {
+    display: none !important; /* Hide template's default toggle */
+}
+
+@media (max-width: 991px) {
+    /* My React toggle */
+    .nav-toggle {
+        display: block !important;
+        z-index: 10001 !important; /* Above the blue menu */
+        position: absolute !important;
+        right: 15px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+    }
+
+    .nav-toggle-active {
+        position: fixed !important; /* Stay in place when menu is open */
+        top: 25px !important;
+        right: 25px !important;
+        transform: none !important;
+        color: #fff !important;
+    }
+
+    .nav-toggle-active::before {
+        color: #fff !important; /* Make cross white on blue background */
+    }
+
+    /* Hide the redundant close button inside the menu */
+    .nav-menus-wrapper-close {
+        display: none !important;
+    }
+
+    /* Adjust menu top padding to avoid ticker overlap */
+    .nav-menus-wrapper {
+        padding-top: 80px !important;
+    }
+}
+
+/* Final Fix for Mobile Toggle and Overlaps */
+.nav-toggle {
+    display: none !important; /* Force hide template toggle */
+}
+
+@media (max-width: 991px) {
+    .react-nav-toggle {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10001;
+        font-size: 24px;
+        color: #01228D;
+        cursor: pointer;
+    }
+
+    .react-nav-toggle.active {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        transform: none;
+        color: #fff !important;
+    }
+
+    .nav-menus-wrapper {
+        padding-top: 70px !important; /* Avoid overlap with ticker */
+    }
+}
+
+/* Aggressive hide for template hamburger */
+.nav-toggle, 
+.navigation .nav-toggle, 
+[class*="nav-toggle"], 
+.mobile-nav-toggle {
+    display: none !important;
+}
+
+/* My React trigger should be visible */
+.react-nav-toggle {
+    display: flex !important;
+}
+
+/* ==========================================================================
+   MOBILE UI OPTIMIZATIONS (CONSOLIDATED)
+   ========================================================================== */
+
+@media (max-width: 991px) {
+    /* 1. Course Detail Tabs Fix */
+    .course-tab-nav {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        padding: 5px 10px 15px !important;
+        margin-bottom: 20px !important;
+        border-bottom: 1px solid #eee;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .course-tab-nav .nav-item {
+        flex: 0 0 auto !important;
+        width: auto !important;
+        margin-right: 10px !important;
+    }
+
+    .course-tab-link {
+        padding: 10px 20px !important;
+        border-radius: 30px !important;
+        background: #f8faff !important;
+        border: 1px solid #eef2ff !important;
+        font-size: 14px !important;
+        display: block !important;
+    }
+
+    .course-tab-link.active {
+        background: #01228D !important;
+        color: #fff !important;
+        box-shadow: 0 4px 12px rgba(1, 34, 141, 0.2) !important;
+    }
+
+    .course-tab-nav::-webkit-scrollbar { display: none; }
+
+    /* 2. Header & Navigation Structure */
+    body { padding-top: 0 !important; }
+
+    .notice-bar-wrapper {
+        position: static !important;
+        z-index: 10000 !important;
+    }
+
+    .header-top {
+        position: static !important;
+        display: block !important;
+        background: #01228D !important;
+        padding: 8px 0 !important;
+        z-index: 9999 !important;
+    }
+
+    .header-top .header-link { justify-content: center !important; }
+    .header-top .header-meta { display: none !important; }
+
+    .navigation {
+        position: sticky !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 70px !important;
+        z-index: 10005 !important;
+        background: #fff !important;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+        display: flex !important;
+        align-items: center !important;
+        padding: 0 !important;
+    }
+
+    /* 3. Mobile Menu Toggle */
+    .react-nav-toggle {
+        position: absolute !important;
+        top: 50% !important;
+        right: 15px !important;
+        transform: translateY(-50%) !important;
+        z-index: 10008 !important;
+        display: flex !important;
+        color: #01228D !important;
+        font-size: 24px !important;
+        cursor: pointer !important;
+    }
+
+    .react-nav-toggle.active {
+        position: fixed !important;
+        top: 20px !important;
+        right: 20px !important;
+        color: #fff !important;
+        transform: none !important;
+        z-index: 10010 !important;
+    }
+
+    /* 4. Mobile Navigation Overlay */
+    .react-mobile-nav {
+        position: fixed !important;
+        top: 0 !important;
+        left: -100% !important;
+        width: 100% !important;
+        height: 100vh !important;
+        background: #01228D !important;
+        z-index: 10009 !important;
+        transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        padding: 100px 20px 40px !important;
+        overflow-y: auto !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    .react-mobile-nav.open { left: 0 !important; }
+
+    .mobile-menu-list { list-style: none !important; padding: 0 !important; }
+    .mobile-menu-item { border-bottom: 1px solid rgba(255,255,255,0.1) !important; padding: 15px 0 !important; }
+    .mobile-link { color: #fff !important; font-size: 18px !important; font-weight: 500 !important; text-decoration: none !important; }
+    .mobile-dropdown-trigger { color: #fff !important; padding: 5px 15px !important; }
+    .mobile-submenu { list-style: none !important; padding-left: 20px !important; margin-top: 10px !important; background: rgba(255,255,255,0.05) !important; border-radius: 8px !important; }
+    .mobile-sublink { display: block !important; padding: 10px 0 !important; color: rgba(255,255,255,0.8) !important; font-size: 15px !important; }
+    .rotate-180 { transform: rotate(180deg) !important; }
+
+    .mobile-auth-links { margin-top: 30px !important; padding-bottom: 40px !important; }
+}
+
+/* Cleanup template toggle */
+.navigation .nav-toggle, #navigation .nav-toggle { display: none !important; }
+
+/* Sticky behavior cleanup */
+.navigation.sticky { position: static !important; }
+@media (min-width: 992px) {
+    .navigation.sticky { position: fixed !important; top: 0 !important; }
+}
+

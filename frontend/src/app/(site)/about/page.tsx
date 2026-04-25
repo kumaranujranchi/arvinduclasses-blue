@@ -85,7 +85,7 @@ export default function AboutPage() {
       {/* ====== Page Banner Ends ====== */}
 
       {/* ====== About Section Start ====== */}
-      <section className="about-area pt-80 pb-80">
+      <section className="about-area pt-80 pb-20">
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-5">
@@ -198,7 +198,7 @@ export default function AboutPage() {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-6">
-              <div className="problem-solving mt-40">
+              <div className="problem-solving mt-10">
                 <h3 className="sub-title">The Problem We Are Solving</h3>
                 <span className="line"></span>
                 <p className="mt-20">Many students face common challenges:</p>
@@ -538,14 +538,14 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
-          <div className="teachers-wrapper">
-            <div className="row teachers-row">
+          <div className="teachers-mobile-wrapper">
+            <div className="row teachers-row flex-nowrap overflow-auto pb-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
               {[
                 { name: 'Prof. Sunita Verma', desig: 'Science Head', img: 'teacher-1.png' },
                 { name: 'Dr. Arvind Singh', desig: 'Mathematics Expert', img: 'teacher-2.png' },
                 { name: 'Ms. Anjali Sharma', desig: 'Commerce Specialist', img: 'teacher-3.png' }
               ].map((teacher, idx) => (
-                <div key={idx} className="col-md-4 col-sm-6 teachers-col">
+                <div key={idx} className="col-9 col-sm-6 col-md-4 teachers-col flex-shrink-0">
                   <div className="single-teacher mt-30 text-center">
                     <div className="teacher-social">
                       <ul className="social">

@@ -276,7 +276,7 @@ export default function HomePage() {
         <div className="container">
           <div className="row">
             <div className="col-lg-8">
-              <div className="section-title mt-40">
+              <div className="section-title mt-10">
                 <h2 className="title">Here is our <br /> Top Courses</h2>
                 <p>Explore our most popular coaching programs designed for competitive exam success.</p>
               </div>

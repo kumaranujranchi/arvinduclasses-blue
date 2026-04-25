@@ -27,6 +27,8 @@ export default function Header() {
   const pathname = usePathname();
   const [isHovered, setIsHovered] = useState(false);
   const [user, setUser] = useState<any>(null);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const session = localStorage.getItem("user_session");
@@ -35,25 +37,31 @@ export default function Header() {
     }
   }, []);
 
+  // Close menu on navigation
+  useEffect(() => {
+    setIsMenuOpen(false);
+    setActiveDropdown(null);
+  }, [pathname]);
+
   return (
     <header className="header-area">
-      {/* Top Bar */}
+      {/* Top Bar - Now visible on mobile too but styled better */}
       <div className="header-top">
         <div className="container">
-          <div className="header-top-wrapper d-flex flex-wrap justify-content-center justify-content-sm-between align-items-center">
-            <div className="header-top-left mt-10 w-100 w-sm-auto text-center text-sm-start">
+          <div className="header-top-wrapper d-flex flex-wrap justify-content-between align-items-center">
+            <div className="header-top-left d-none d-sm-block">
               <ul className="header-meta">
                 <li>
                   <a href="mailto:info@arvinduclasses.in">info@arvinduclasses.in</a>
                 </li>
               </ul>
             </div>
-            <div className="header-top-right mt-10 w-100 w-sm-auto text-center text-sm-end">
+            <div className="header-top-right w-100 w-sm-auto">
               <div className="header-link d-flex align-items-center justify-content-center justify-content-sm-end">
                 <Link className="notice" href="/notice" style={{ fontSize: '13px', color: '#fff' }}>Notice</Link>
                 {user ? (
                   <>
-                    <span className="ms-3 me-3 text-white d-none d-md-inline" style={{ fontSize: '13px' }}>Hi, {user.name}</span>
+                    <span className="ms-3 me-3 text-white" style={{ fontSize: '13px' }}>Hi, {user.name}</span>
                     <button className="login bg-transparent border-0 p-0 text-white" style={{ fontSize: '13px' }} onClick={() => {
                       localStorage.removeItem("user_session");
                       setUser(null);
@@ -75,7 +83,7 @@ export default function Header() {
       <div id="navigation" className="navigation navigation-landscape navigation-padding">
         <div className="container position-relative">
           <div className="row align-items-center">
-            <div className="col-lg-2">
+            <div className="col-lg-2 col-6">
               <div className="header-logo">
                 <Link href="/">
                   <Image
@@ -88,9 +96,10 @@ export default function Header() {
                 </Link>
               </div>
             </div>
-            <div className="col-lg-8 position-static">
-              <div className="nav-toggle"></div>
-              <nav className="nav-menus-wrapper">
+            
+            <div className="col-lg-8 col-6 position-static">
+              {/* Desktop Menu */}
+              <nav className="nav-menus-wrapper d-none d-lg-block">
                 <ul className="nav-menu">
                   {navLinks.map(({ href, label, hasDropdown, isNew }) => (
                     <li 
@@ -99,13 +108,8 @@ export default function Header() {
                       onMouseEnter={() => hasDropdown && setIsHovered(true)}
                       onMouseLeave={() => hasDropdown && setIsHovered(false)}
                     >
-                      {isNew && (
-                        <span className="badge-new">New</span>
-                      )}
-                      <Link
-                        href={href}
-                        className={`${pathname === href ? "active" : ""} d-flex align-items-center`}
-                      >
+                      {isNew && <span className="badge-new">New</span>}
+                      <Link href={href} className={`${pathname === href ? "active" : ""} d-flex align-items-center`}>
                         {label}
                         {hasDropdown && <i className="fas fa-chevron-down ms-1 nav-chevron"></i>}
                       </Link>
@@ -120,7 +124,7 @@ export default function Header() {
                               </div>
                               {courses.map((course, idx) => (
                                 <div key={idx} className="col-lg-4 mb-3">
-                                  <Link href={`/courses/${course.slug}`} className="mega-course-card d-flex align-items-center p-3 rounded" style={{ "--delay": `${idx * 0.1}s` } as any}>
+                                  <Link href={`/courses/${course.slug}`} className="mega-course-card d-flex align-items-center p-3 rounded">
                                     <div className="icon-box me-3 rounded-circle d-flex align-items-center justify-content-center" style={{ backgroundColor: `${course.color}20`, color: course.color, width: "45px", height: "45px", minWidth: "45px" }}>
                                       <i className={course.icon}></i>
                                     </div>
@@ -131,9 +135,6 @@ export default function Header() {
                                   </Link>
                                 </div>
                               ))}
-                              <div className="col-12 mt-3 pt-3 border-top text-center">
-                                <Link href="/courses" className="text-primary font-weight-bold">View All Courses <i className="fas fa-arrow-right ms-1"></i></Link>
-                              </div>
                             </div>
                           </div>
                         </div>
@@ -143,7 +144,8 @@ export default function Header() {
                 </ul>
               </nav>
             </div>
-            <div className="col-lg-2 position-static">
+
+            <div className="col-lg-2 d-none d-lg-block">
               <div className="header-search">
                 <form action="#">
                   <input type="text" placeholder="Search" />
@@ -154,10 +156,62 @@ export default function Header() {
               </div>
             </div>
           </div>
+
+          {/* Mobile UI */}
+          <div 
+            className={`react-nav-toggle ${isMenuOpen ? "active" : ""} d-lg-none`}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            <i className={`fas ${isMenuOpen ? "fa-times" : "fa-bars"}`}></i>
+          </div>
+
+          <nav className={`react-mobile-nav ${isMenuOpen ? "open" : ""} d-lg-none`}>
+            <ul className="mobile-menu-list">
+              {navLinks.map(({ href, label, hasDropdown }) => (
+                <li key={href} className="mobile-menu-item">
+                  <div className="d-flex justify-content-between align-items-center">
+                    <Link href={href} className="mobile-link" onClick={() => !hasDropdown && setIsMenuOpen(false)}>
+                      {label}
+                    </Link>
+                    {hasDropdown && (
+                      <span className="mobile-dropdown-trigger" onClick={() => setActiveDropdown(activeDropdown === href ? null : href)}>
+                        <i className={`fas fa-chevron-down ${activeDropdown === href ? "rotate-180" : ""}`}></i>
+                      </span>
+                    )}
+                  </div>
+                  {hasDropdown && activeDropdown === href && (
+                    <ul className="mobile-submenu">
+                      {courses.map((course, idx) => (
+                        <li key={idx}>
+                          <Link href={`/courses/${course.slug}`} className="mobile-sublink" onClick={() => setIsMenuOpen(false)}>
+                            {course.title}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ul>
+            
+            {/* Added Login/Register to mobile menu for convenience too */}
+            <div className="mobile-auth-links mt-40">
+                {user ? (
+                   <button className="main-btn w-100" onClick={() => {
+                     localStorage.removeItem("user_session");
+                     setUser(null);
+                     setIsMenuOpen(false);
+                   }}>Logout</button>
+                ) : (
+                  <div className="d-flex gap-2">
+                    <Link href="/login" className="main-btn w-50 text-center" onClick={() => setIsMenuOpen(false)}>Login</Link>
+                    <Link href="/register" className="main-btn w-50 text-center" onClick={() => setIsMenuOpen(false)}>Register</Link>
+                  </div>
+                )}
+            </div>
+          </nav>
         </div>
       </div>
-
-
     </header>
   );
 }
