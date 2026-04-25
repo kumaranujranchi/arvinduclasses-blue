@@ -50,19 +50,19 @@ export default function Header() {
             </div>
             <div className="header-top-right mt-10">
               <div className="header-link d-flex align-items-center">
-                <Link className="notice" href="/notice">Notice</Link>
+                <Link className="notice" href="/notice" style={{ fontSize: '13px', color: '#fff' }}>Notice</Link>
                 {user ? (
                   <>
                     <span className="ms-3 me-3 text-white d-none d-md-inline" style={{ fontSize: '13px' }}>Hi, {user.name}</span>
-                    <button className="login bg-transparent border-0 p-0" style={{ fontSize: '13px' }} onClick={() => {
+                    <button className="login bg-transparent border-0 p-0 text-white" style={{ fontSize: '13px' }} onClick={() => {
                       localStorage.removeItem("user_session");
                       setUser(null);
                     }}>Logout</button>
                   </>
                 ) : (
                   <>
-                    <Link className="login" href="/login">Login</Link>
-                    <Link className="register" href="/register">Register</Link>
+                    <Link className="login" href="/login" style={{ fontSize: '13px', color: '#fff' }}>Login</Link>
+                    <Link className="register" href="/register" style={{ fontSize: '13px', color: '#fff' }}>Register</Link>
                   </>
                 )}
               </div>
