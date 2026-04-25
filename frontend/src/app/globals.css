@@ -1356,3 +1356,71 @@ html {
     padding: 0 15px;
   }
 }
+/* Notice Page Styles */
+.banner-bg-notice { background-image: url(/assets/images/course-banner.png); }
+
+.notice-list-area {
+  background-color: #f8f9fa;
+}
+
+.notice-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  border-left: 5px solid #01228D;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.notice-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.notice-card.important {
+  border-left-color: #ff0000;
+  background-color: #fff9f9;
+}
+
+.notice-date {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.notice-date i {
+  margin-right: 8px;
+}
+
+.notice-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #01228D;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.notice-content {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.important-badge {
+  background: #ff0000;
+  color: #fff;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 700;
+  margin-left: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-block;
+}
