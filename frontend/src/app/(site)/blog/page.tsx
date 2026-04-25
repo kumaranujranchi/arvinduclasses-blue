@@ -241,7 +241,7 @@ export default function BlogPage() {
         </section>
 
         {/* Newsletter Section - Redesigned to Notebook/Results Style */}
-        <section className="newsletter-area bg-white pb-120 pt-0">
+        <section className="newsletter-section bg-white pb-120 pt-0">
           <div className="container blog-container">
             <div className="newsletter-wrapper bg-[#FFFDF0] p-10 md:p-14 rounded-[40px] border-2 border-[#FFE8A3] shadow-xl relative overflow-hidden max-w-5xl mx-auto">
                {/* Grid Overlay */}
