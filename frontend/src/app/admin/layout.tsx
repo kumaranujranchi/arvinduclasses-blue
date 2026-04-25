@@ -95,6 +95,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           background: #e2e8f0;
           border-radius: 10px;
         }
+        aside a {
+          text-decoration: none !important;
+        }
       `}</style>
 
       {/* Sidebar - Thinner and cleaner like the reference */}
@@ -130,7 +133,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                     <Link
                       key={item.href}
                       href={item.href}
-                      className={`flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-200 group ${
+                      className={`flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-200 group no-underline ${
                         isActive 
                           ? "bg-[#f0f4ff] text-[#01228D]" 
                           : "text-[#64748b] hover:bg-gray-50 hover:text-[#01228D]"
