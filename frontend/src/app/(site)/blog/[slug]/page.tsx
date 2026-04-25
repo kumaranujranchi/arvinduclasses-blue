@@ -372,6 +372,35 @@ export default function BlogPostPage() {
           font-size: 17px;
           line-height: 1.8;
           color: #475569;
+          word-break: break-word;
+          overflow-wrap: break-word;
+        }
+        /* Strip inline background colors pasted from rich text editors */
+        .ql-editor p, 
+        .ql-editor span, 
+        .ql-editor h1, 
+        .ql-editor h2, 
+        .ql-editor h3, 
+        .ql-editor h4, 
+        .ql-editor h5, 
+        .ql-editor h6,
+        .ql-editor li {
+          background-color: transparent !important;
+        }
+        /* Responsive Tables to prevent layout breaking */
+        .ql-editor table {
+          display: block;
+          width: 100% !important;
+          max-width: 100%;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+          border-collapse: collapse;
+          margin: 2rem 0;
+        }
+        .ql-editor table td, .ql-editor table th {
+          border: 1px solid #f1f5f9;
+          padding: 1rem;
+          min-width: 120px;
         }
         .ql-editor h1, .ql-editor h2, .ql-editor h3 {
           margin-top: 1.5em;
