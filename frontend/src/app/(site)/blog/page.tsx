@@ -87,7 +87,7 @@ export default function BlogPage() {
                   filteredPosts.map((post) => (
                     <div key={post._id} className="col-md-6 mb-8">
                       <div className="group bg-white rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-500 overflow-hidden">
-                        <div className="relative overflow-hidden aspect-[4/3]">
+                        <div className="relative overflow-hidden aspect-video">
                           <Link href={`/blog/${post.slug}`}>
                             <img 
                               src={post.imageUrl || "/assets/images/blog-1.webp"} 
