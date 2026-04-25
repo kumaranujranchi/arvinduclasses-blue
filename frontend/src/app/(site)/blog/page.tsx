@@ -1,18 +1,14 @@
+"use client";
+
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-
-export const metadata = {
-  title: "Blog - Arvindu Classes",
-  description: "Read the latest news, articles and updates from Arvindu Classes.",
-};
-
-const posts = [
-  { image: "/assets/images/blog-1.webp", title: "Latest Micro Biological basic Workshop for Research", date: "25 May, 2024" },
-  { image: "/assets/images/blog-2.webp", title: "Latest Micro Biological basic Workshop for Research", date: "18 May, 2024" },
-  { image: "/assets/images/blog-3.webp", title: "Latest Micro Biological basic Workshop for Research", date: "10 May, 2024" },
-];
+import { useQuery } from "convex/react";
+import { api } from "../../../../../convex/_generated/api";
+import Link from "next/link";
 
 export default function BlogPage() {
+  const posts = useQuery(api.posts.getPublishedPosts);
+
   return (
     <>
       <Header />
@@ -29,32 +25,66 @@ export default function BlogPage() {
       </section>
 
       {/* Blog Grid */}
-      <section className="blog-area">
+      <section className="blog-area pb-120">
         <div className="container">
           <div className="row">
-            {posts.map(({ image, title, date }, index) => (
-              <div key={index} className="col-lg-4 col-sm-6">
-                <div className="single-blog mt-30">
-                  <div className="blog-image">
-                    <a href="#">
-                      <img src={image} width={370} height={250} alt="blog" />
-                    </a>
-                  </div>
-                  <div className="blog-content">
-                    <ul className="meta">
-                      <li><a href="#">{date}</a></li>
-                      <li><a href="#">By: Admin</a></li>
-                    </ul>
-                    <h4 className="blog-title">
-                      <a href="#">{title}</a>
-                    </h4>
-                    <a href="#" className="more">
-                      Read more <i className="fas fa-chevron-right"></i>
-                    </a>
+            {posts === undefined ? (
+              // Loading State
+              [...Array(6)].map((_, i) => (
+                <div key={i} className="col-lg-4 col-sm-6">
+                  <div className="single-blog mt-30 animate-pulse">
+                    <div className="blog-image bg-gray-200 h-[250px] rounded-lg"></div>
+                    <div className="blog-content space-y-3 pt-4">
+                      <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+                      <div className="h-6 bg-gray-200 rounded w-full"></div>
+                    </div>
                   </div>
                 </div>
+              ))
+            ) : posts.length > 0 ? (
+              posts.map((post) => (
+                <div key={post._id} className="col-lg-4 col-sm-6">
+                  <div className="single-blog mt-30">
+                    <div className="blog-image">
+                      <Link href={`/blog/${post.slug}`}>
+                        <img 
+                          src={post.imageUrl || "/assets/images/blog-1.webp"} 
+                          width={370} 
+                          height={250} 
+                          alt={post.title} 
+                          style={{ height: '250px', objectFit: 'cover' }}
+                        />
+                      </Link>
+                    </div>
+                    <div className="blog-content">
+                      <ul className="meta">
+                        <li>
+                          <a href="#">
+                            {new Date(post.publishedAt || post.createdAt).toLocaleDateString("en-GB", {
+                              day: "2-digit",
+                              month: "short",
+                              year: "numeric",
+                            })}
+                          </a>
+                        </li>
+                        <li><a href="#">By: {post.author}</a></li>
+                      </ul>
+                      <h4 className="blog-title">
+                        <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                      </h4>
+                      <Link href={`/blog/${post.slug}`} className="more">
+                        Read more <i className="fas fa-chevron-right"></i>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div className="col-12 text-center py-50">
+                <h3 className="text-slate-400">No blog posts found.</h3>
+                <p className="text-slate-500 mt-2">Check back later for new updates!</p>
               </div>
-            ))}
+            )}
           </div>
         </div>
       </section>

@@ -604,57 +604,50 @@ export default function HomePage() {
             </div>
           </div>
           <div className="blog-wrapper">
-            <div className="row-wrapper blog-active">
-              <div className="custom-col">
-                <div className="single-blog mt-30">
-                  <div className="blog-image">
-                    <a href="#"><img src="/assets/images/blog-1.webp" width="370" height="250" alt="blog" /></a>
+            {posts && posts.length > 0 ? (
+              <div className="row-wrapper blog-active">
+                {posts.map((post) => (
+                  <div key={post._id} className="custom-col">
+                    <div className="single-blog mt-30">
+                      <div className="blog-image">
+                        <Link href={`/blog/${post.slug}`}>
+                          <img 
+                            src={post.imageUrl || "/assets/images/blog-1.webp"} 
+                            width="370" 
+                            height="250" 
+                            alt={post.title} 
+                            style={{ height: '250px', objectFit: 'cover' }}
+                          />
+                        </Link>
+                      </div>
+                      <div className="blog-content">
+                        <ul className="meta">
+                          <li>
+                            <a href="#">
+                              {new Date(post.publishedAt || post.createdAt).toLocaleDateString("en-GB", {
+                                day: "2-digit",
+                                month: "short",
+                                year: "numeric",
+                              })}
+                            </a>
+                          </li>
+                          <li><a href="#">By: {post.author}</a></li>
+                        </ul>
+                        <h4 className="blog-title">
+                          <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                        </h4>
+                        <Link href={`/blog/${post.slug}`} className="more">Read more <i className="fas fa-chevron-right"></i></Link>
+                      </div>
+                    </div>
                   </div>
-                  <div className="blog-content">
-                    <ul className="meta">
-                      <li><a href="#">15 Apr, 2025</a></li>
-                      <li><a href="#">By: Arvindu Sir</a></li>
-                      <li><a href="#">8 Comments</a></li>
-                    </ul>
-                    <h4 className="blog-title"><a href="#">How to Crack JEE Mains in 3 Months — A Complete Strategy</a></h4>
-                    <a href="#" className="more">Read more <i className="fas fa-chevron-right"></i></a>
-                  </div>
-                </div>
+                ))}
               </div>
-              <div className="custom-col">
-                <div className="single-blog mt-30">
-                  <div className="blog-image">
-                    <a href="#"><img src="/assets/images/blog-2.webp" width="370" height="250" alt="blog" /></a>
-                  </div>
-                  <div className="blog-content">
-                    <ul className="meta">
-                      <li><a href="#">10 Apr, 2025</a></li>
-                      <li><a href="#">By: Arvindu Sir</a></li>
-                      <li><a href="#">5 Comments</a></li>
-                    </ul>
-                    <h4 className="blog-title"><a href="#">Top 5 Time Management Tips for NEET Aspirants</a></h4>
-                    <a href="#" className="more">Read more <i className="fas fa-chevron-right"></i></a>
-                  </div>
-                </div>
+            ) : (
+              <div className="text-center py-10 text-slate-400">
+                <p>No published posts yet.</p>
               </div>
-              <div className="custom-col">
-                <div className="single-blog mt-30">
-                  <div className="blog-image">
-                    <a href="#"><img src="/assets/images/blog-3.webp" width="370" height="250" alt="blog" /></a>
-                  </div>
-                  <div className="blog-content">
-                    <ul className="meta">
-                      <li><a href="#">5 Apr, 2025</a></li>
-                      <li><a href="#">By: Arvindu Sir</a></li>
-                      <li><a href="#">12 Comments</a></li>
-                    </ul>
-                    <h4 className="blog-title"><a href="#">Why Regular Mock Tests Are Key to Board Exam Success</a></h4>
-                    <a href="#" className="more">Read more <i className="fas fa-chevron-right"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <a href="#" className="more-post">45+ more post</a>
+            )}
+            <Link href="/blog" className="more-post">{posts ? `${posts.length}+ more post` : 'View all posts'}</Link>
           </div>
         </div>
       </section>

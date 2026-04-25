@@ -50,10 +50,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       title: "Management",
       items: [
         { label: "Users", href: "/admin/users", icon: "fas fa-user-shield", roles: ["super_admin"] },
-        { label: "Roles Management", href: "/admin/roles", icon: "fas fa-users-gear", roles: ["super_admin"] },
+        { label: "Roles Management", href: "/admin/roles", icon: "fas fa-user-cog", roles: ["super_admin"] },
         { label: "Leads", href: "/admin/leads", icon: "fas fa-users", roles: ["super_admin", "admin", "sales", "counsellor"] },
         { label: "Site Banners", href: "/admin/banners", icon: "fas fa-images", roles: ["super_admin", "admin"] },
         { label: "Subscribers", href: "/admin/subscribers", icon: "fas fa-mail-bulk", roles: ["super_admin", "admin", "sales"] },
+        { label: "Blog Management", href: "/admin/posts", icon: "fas fa-blog", roles: ["super_admin", "admin"] },
         { label: "Activity Log", href: "/admin/activity", icon: "fas fa-history", roles: ["super_admin"] },
       ]
     },

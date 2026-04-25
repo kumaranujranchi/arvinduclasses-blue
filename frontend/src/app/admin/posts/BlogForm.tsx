@@ -1,0 +1,373 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
+import { useMutation, useQuery } from "convex/react";
+import { api } from "../../../../convex/_generated/api";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
+import imageCompression from "browser-image-compression";
+
+// Dynamic import for React Quill to avoid SSR issues
+const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
+import "react-quill-new/dist/quill.snow.css";
+
+interface BlogFormProps {
+  initialData?: any;
+  isEdit?: boolean;
+}
+
+export default function BlogForm({ initialData, isEdit }: BlogFormProps) {
+  const router = useRouter();
+  const generateUploadUrl = useMutation(api.uploads.generateUploadUrl);
+  const createPost = useMutation(api.posts.createPost);
+  const updatePost = useMutation(api.posts.updatePost);
+
+  const [formData, setFormData] = useState({
+    title: "",
+    slug: "",
+    excerpt: "",
+    content: "",
+    author: "",
+    imageUrl: "",
+    tags: [] as string[],
+    isPublished: false,
+  });
+
+  const [tagInput, setTagInput] = useState("");
+  const [isUploading, setIsUploading] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [user, setUser] = useState<any>(null);
+
+  useEffect(() => {
+    const sessionStr = localStorage.getItem("user_session");
+    if (sessionStr) {
+      const parsed = JSON.parse(sessionStr);
+      setUser(parsed);
+      if (!isEdit) {
+        setFormData(prev => ({ ...prev, author: parsed.name }));
+      }
+    }
+
+    if (initialData) {
+      setFormData({
+        title: initialData.title || "",
+        slug: initialData.slug || "",
+        excerpt: initialData.excerpt || "",
+        content: initialData.content || "",
+        author: initialData.author || "",
+        imageUrl: initialData.imageUrl || "",
+        tags: initialData.tags || [],
+        isPublished: initialData.isPublished || false,
+      });
+    }
+  }, [initialData, isEdit]);
+
+  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const title = e.target.value;
+    const slug = title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/(^-|-$)+/g, "");
+    
+    setFormData(prev => ({ ...prev, title, slug }));
+  };
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setIsUploading(true);
+    try {
+      // 1. Compression & Convert to WebP
+      const options = {
+        maxSizeMB: 0.5,
+        maxWidthOrHeight: 1280,
+        useWebWorker: true,
+        fileType: "image/webp" as string,
+      };
+      
+      const compressedFile = await imageCompression(file, options);
+      
+      // 2. Get Upload URL
+      const postUrl = await generateUploadUrl();
+
+      // 3. Upload to Convex Storage
+      const result = await fetch(postUrl, {
+        method: "POST",
+        headers: { "Content-Type": "image/webp" },
+        body: compressedFile,
+      });
+
+      const { storageId } = await result.json();
+      
+      // 4. Get Public URL (In a real app, you might store storageId or use a helper query)
+      // For this implementation, we'll use the Convex storage URL format directly if possible,
+      // or assume the backend mutation will handle it. 
+      // Actually, let's just use the storageId as the imageUrl for now if the backend expects it,
+      // but usually we want a real URL.
+      
+      const baseUrl = process.env.NEXT_PUBLIC_CONVEX_URL || "https://hearty-butterfly-166.convex.cloud";
+      const imageUrl = `${baseUrl}/api/storage/${storageId}`;
+      
+      setFormData(prev => ({ ...prev, imageUrl }));
+      toast.success("Image uploaded and compressed successfully!");
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to upload image");
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
+  const handleAddTag = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" && tagInput.trim()) {
+      e.preventDefault();
+      if (!formData.tags.includes(tagInput.trim())) {
+        setFormData(prev => ({ ...prev, tags: [...prev.tags, tagInput.trim()] }));
+      }
+      setTagInput("");
+    }
+  };
+
+  const removeTag = (tagToRemove: string) => {
+    setFormData(prev => ({ ...prev, tags: prev.tags.filter(t => t !== tagToRemove) }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.title || !formData.content) {
+      toast.error("Title and content are required");
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      const payload = {
+        ...formData,
+        adminId: user.id || user._id,
+        adminName: user.name,
+      };
+
+      if (isEdit) {
+        await updatePost({ id: initialData._id, ...payload });
+        toast.success("Post updated successfully");
+      } else {
+        await createPost(payload);
+        toast.success("Post created successfully");
+      }
+      router.push("/admin/posts");
+    } catch (error) {
+      console.error(error);
+      toast.error(isEdit ? "Failed to update post" : "Failed to create post");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  // Quill modules
+  const modules = {
+    toolbar: [
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
+      ["bold", "italic", "underline", "strike"],
+      [{ align: [] }],
+      [{ list: "ordered" }, { list: "bullet" }],
+      [{ color: [] }, { background: [] }],
+      ["blockquote", "code-block"],
+      ["link", "image", "table"],
+      ["clean"],
+    ],
+    table: true,
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-8 max-w-5xl mx-auto pb-20">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        {/* Main Editor Section */}
+        <div className="lg:col-span-8 space-y-6">
+          <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-4">
+            <div>
+              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2 block">Post Title</label>
+              <input
+                type="text"
+                value={formData.title}
+                onChange={handleTitleChange}
+                placeholder="Enter a catchy title..."
+                className="w-full px-4 py-3 rounded-xl border border-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-lg font-bold"
+              />
+            </div>
+
+            <div>
+              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2 block">Slug</label>
+              <div className="flex items-center gap-2 text-slate-400 bg-gray-50 px-4 py-2 rounded-lg border border-gray-100">
+                <span className="text-xs">/blog/</span>
+                <input
+                  type="text"
+                  value={formData.slug}
+                  onChange={(e) => setFormData(prev => ({ ...prev, slug: e.target.value }))}
+                  className="bg-transparent border-none focus:outline-none text-xs font-bold text-slate-600 flex-1"
+                />
+              </div>
+            </div>
+
+            <div className="relative">
+              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2 block">Content & Editor</label>
+              <div className="prose-editor-wrapper">
+                <div className="bg-gray-50 rounded-xl overflow-hidden border border-gray-100">
+                  <ReactQuill
+                    theme="snow"
+                    value={formData.content}
+                    onChange={(content) => setFormData(prev => ({ ...prev, content }))}
+                    modules={modules}
+                    className="editor-internal-scroll"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+            <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2 block">Excerpt (Short Description)</label>
+            <textarea
+              value={formData.excerpt}
+              onChange={(e) => setFormData(prev => ({ ...prev, excerpt: e.target.value }))}
+              placeholder="Brief summary of the post..."
+              className="w-full px-4 py-3 rounded-xl border border-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-sm h-24 resize-none"
+            />
+          </div>
+        </div>
+
+        {/* Vertical Sticky Sidebar (Toolbar + Settings) */}
+        <div className="lg:col-span-4 space-y-6 sticky top-0 h-[calc(100vh-120px)] overflow-y-auto custom-scrollbar pr-2">
+          {/* Publish Action */}
+          <div className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm space-y-4">
+            <h3 className="text-xs font-bold text-slate-800 border-b border-gray-50 pb-2">Actions</h3>
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-bold text-slate-500">Is Published?</span>
+              <button
+                type="button"
+                onClick={() => setFormData(prev => ({ ...prev, isPublished: !prev.isPublished }))}
+                className={`relative inline-flex h-5 w-10 items-center rounded-full transition-colors focus:outline-none ${
+                  formData.isPublished ? "bg-green-500" : "bg-gray-200"
+                }`}
+              >
+                <span className={`inline-block h-3.5 w-3.5 transform rounded-full bg-white transition-transform ${formData.isPublished ? "translate-x-5.5" : "translate-x-1"}`} />
+              </button>
+            </div>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full bg-[#01228D] text-white py-3 rounded-xl font-bold text-sm hover:bg-blue-800 transition-all shadow-sm flex items-center justify-center gap-2 disabled:opacity-50"
+            >
+              {isSubmitting ? (
+                <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+              ) : (
+                <i className="fas fa-save"></i>
+              )}
+              {isEdit ? "Update Changes" : "Create Blog Post"}
+            </button>
+          </div>
+
+          {/* Featured Image */}
+          <div className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm space-y-4">
+            <h3 className="text-xs font-bold text-slate-800 border-b border-gray-50 pb-2">Cover Image</h3>
+            <div className="relative group aspect-video bg-gray-50 rounded-xl overflow-hidden border-2 border-dashed border-gray-100 flex flex-col items-center justify-center gap-2 cursor-pointer hover:bg-gray-100 transition-all">
+              {formData.imageUrl ? (
+                <>
+                  <img src={formData.imageUrl} className="w-full h-full object-cover" alt="Preview" />
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <button type="button" onClick={() => setFormData(prev => ({ ...prev, imageUrl: "" }))} className="bg-white text-red-500 p-2 rounded-lg hover:bg-red-50"><i className="fas fa-trash"></i></button>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="w-8 h-8 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center">
+                    {isUploading ? <div className="w-4 h-4 border-2 border-blue-200 border-t-blue-500 rounded-full animate-spin"></div> : <i className="fas fa-cloud-upload-alt text-sm"></i>}
+                  </div>
+                  <p className="text-[9px] font-bold text-slate-500">Upload WebP (Max 500KB)</p>
+                  <p className="text-[8px] text-slate-400">Recommended: 1200 x 630px</p>
+                </>
+              )}
+              <input type="file" accept="image/*" onChange={handleImageUpload} disabled={isUploading} className="absolute inset-0 opacity-0 cursor-pointer" />
+            </div>
+          </div>
+
+          {/* Meta Data */}
+          <div className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm space-y-4">
+            <h3 className="text-xs font-bold text-slate-800 border-b border-gray-50 pb-2">Post Details</h3>
+            <div>
+              <label className="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-1 block">Author</label>
+              <input type="text" value={formData.author} onChange={(e) => setFormData(prev => ({ ...prev, author: e.target.value }))} className="w-full px-3 py-2 rounded-lg border border-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500/20 text-xs font-bold text-slate-600" />
+            </div>
+            <div>
+              <label className="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-1 block">Tags</label>
+              <input type="text" value={tagInput} onChange={(e) => setTagInput(e.target.value)} onKeyDown={handleAddTag} placeholder="Type & Enter" className="w-full px-3 py-2 rounded-lg border border-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500/20 text-xs font-bold text-slate-600 mb-2" />
+              <div className="flex flex-wrap gap-2">
+                {formData.tags.map(tag => (
+                  <span key={tag} className="inline-flex items-center gap-1 px-2 py-0.5 bg-blue-50 text-blue-600 rounded text-[9px] font-bold">
+                    {tag} <button type="button" onClick={() => removeTag(tag)}><i className="fas fa-times"></i></button>
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <style jsx global>{`
+        .editor-wrapper {
+          border: 1px solid #f1f5f9;
+          border-radius: 12px;
+          overflow: hidden;
+          background: white;
+          display: flex;
+          flex-direction: column;
+        }
+        .editor-internal-scroll .ql-container {
+          height: 500px;
+          overflow-y: auto;
+          resize: vertical;
+          min-height: 300px;
+        }
+        .editor-internal-scroll .ql-editor {
+          min-height: 100%;
+          padding: 30px !important;
+          font-size: 16px !important;
+          line-height: 1.8 !important;
+          color: #334155 !important;
+        }
+        .editor-internal-scroll .ql-toolbar {
+          border: none !important;
+          border-bottom: 1px solid #f1f5f9 !important;
+          padding: 12px !important;
+          background: #f8fafc !important;
+          position: sticky;
+          top: 0;
+          z-index: 10;
+        }
+        /* Fix Alignment */
+        .ql-editor .ql-align-center {
+          text-align: center;
+        }
+        .ql-editor .ql-align-right {
+          text-align: right;
+        }
+        .ql-editor .ql-align-justify {
+          text-align: justify;
+        }
+        /* Custom scrollbar for editor */
+        .ql-container::-webkit-scrollbar {
+          width: 6px;
+        }
+        .ql-container::-webkit-scrollbar-track {
+          background: #f1f5f9;
+        }
+        .ql-container::-webkit-scrollbar-thumb {
+          background: #cbd5e1;
+          border-radius: 10px;
+        }
+      `}</style>
+
+    </form>
+  );
+}

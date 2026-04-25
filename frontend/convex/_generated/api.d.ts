@@ -18,6 +18,7 @@ import type * as notices from "../notices.js";
 import type * as posts from "../posts.js";
 import type * as seed from "../seed.js";
 import type * as toppers from "../toppers.js";
+import type * as uploads from "../uploads.js";
 
 import type {
   ApiFromModules,
@@ -36,6 +37,7 @@ declare const fullApi: ApiFromModules<{
   posts: typeof posts;
   seed: typeof seed;
   toppers: typeof toppers;
+  uploads: typeof uploads;
 }>;
 
 /**
