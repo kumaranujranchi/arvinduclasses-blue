@@ -268,7 +268,7 @@ export default function BlogPostPage() {
                     <h4 className="blog-widget-title">Recent Posts</h4>
                     <div className="widget-recent-post space-y-4">
                       {recentPosts?.map((p) => (
-                        <div key={p._id} className="single-recent-post flex align-items-center p-2 rounded-xl border border-gray-50 hover:border-blue-100 transition-colors">
+                        <div key={p._id} className="single-recent-post flex align-items-center p-4 rounded-xl border border-gray-50 hover:border-blue-100 transition-colors shadow-sm">
                           <div className="recent-post-image w-16 h-16 flex-shrink-0">
                             <Link href={`/blog/${p.slug}`}>
                               <img 
@@ -278,7 +278,7 @@ export default function BlogPostPage() {
                               />
                             </Link>
                           </div>
-                          <div className="recent-post-content flex-1 pl-4">
+                          <div className="recent-post-content flex-1 pl-4 pr-2">
                             <h6 className="title text-xs font-bold text-slate-800 leading-snug hover:text-[#01228D] transition-colors mb-1">
                               <Link href={`/blog/${p.slug}`}>
                                 {p.title.length > 35 ? p.title.substring(0, 35) + "..." : p.title}
@@ -313,7 +313,7 @@ export default function BlogPostPage() {
                         <Link 
                           key={i}
                           href="#" 
-                          className="px-4 py-2 bg-gray-50 border border-gray-100 rounded-lg text-[10px] font-black uppercase tracking-widest text-slate-500 hover:bg-[#01228D] hover:text-white hover:border-[#01228D] transition-all"
+                          className="px-4 py-2 bg-gray-50 border border-gray-100 rounded-lg text-[10px] font-black uppercase tracking-widest text-slate-500 hover:bg-blue-50 hover:text-[#01228D] hover:border-[#01228D] transition-all inline-block"
                         >
                           {tag}
                         </Link>

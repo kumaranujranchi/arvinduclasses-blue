@@ -102,7 +102,7 @@ export default function BlogPage() {
                               </span>
                             </div>
                           </div>
-                          <div className="blog-card-content">
+                          <div className="blog-card-content p-6 md:p-8">
                             <div className="flex items-center gap-4 mb-4">
                               <div className="flex items-center gap-2">
                                 <div className="w-6 h-6 rounded-full bg-blue-50 flex items-center justify-center text-[10px] text-blue-600">
@@ -169,7 +169,7 @@ export default function BlogPage() {
                         <li>
                           <button 
                             onClick={() => setSelectedCategory(null)}
-                            className={`w-full text-left flex justify-between items-center px-4 py-3 rounded-xl border transition-all font-bold text-sm mb-2 ${!selectedCategory ? 'bg-[#01228D] text-white border-[#01228D]' : 'bg-white text-slate-600 border-gray-100 hover:bg-blue-50'}`}
+                            className={`w-full text-left flex justify-between items-center px-4 py-3 rounded-xl border transition-all font-bold text-sm mb-2 ${!selectedCategory ? 'bg-blue-50 text-[#01228D] border-[#01228D] ring-1 ring-[#01228D]' : 'bg-white text-slate-600 border-gray-100 hover:bg-blue-50 hover:text-[#01228D]'}`}
                           >
                             All Posts <span>({posts?.length || 0})</span>
                           </button>
@@ -178,7 +178,7 @@ export default function BlogPage() {
                           <li key={i}>
                             <button 
                               onClick={() => setSelectedCategory(cat.name)}
-                              className={`w-full text-left flex justify-between items-center px-4 py-3 rounded-xl border transition-all font-bold text-sm mb-2 ${selectedCategory === cat.name ? 'bg-[#01228D] text-white border-[#01228D]' : 'bg-white text-slate-600 border-gray-100 hover:bg-blue-50'}`}
+                              className={`w-full text-left flex justify-between items-center px-4 py-3 rounded-xl border transition-all font-bold text-sm mb-2 ${selectedCategory === cat.name ? 'bg-blue-50 text-[#01228D] border-[#01228D] ring-1 ring-[#01228D]' : 'bg-white text-slate-600 border-gray-100 hover:bg-blue-50 hover:text-[#01228D]'}`}
                             >
                               {cat.name} <span>({cat.count})</span>
                             </button>
@@ -193,8 +193,8 @@ export default function BlogPage() {
                     <h4 className="blog-widget-title">Recent Posts</h4>
                     <div className="widget-recent-post">
                       {recentPosts?.map((post) => (
-                        <div key={post._id} className="single-recent-post d-flex align-items-center mb-4 bg-white p-2 rounded-xl border border-gray-50 hover:border-blue-100 transition-colors shadow-sm">
-                          <div className="recent-post-image">
+                        <div key={post._id} className="single-recent-post flex items-center mb-4 bg-white p-4 rounded-xl border border-gray-50 hover:border-blue-100 transition-colors shadow-sm">
+                          <div className="recent-post-image flex-shrink-0">
                             <Link href={`/blog/${post.slug}`}>
                               <img 
                                 src={post.imageUrl || "/assets/images/blog-1.webp"} 
@@ -203,7 +203,7 @@ export default function BlogPage() {
                               />
                             </Link>
                           </div>
-                          <div className="recent-post-content flex-1 pl-4">
+                          <div className="recent-post-content flex-1 pl-4 pr-2">
                             <h6 className="title text-xs font-bold text-slate-800 leading-snug hover:text-[#01228D] transition-colors mb-1">
                               <Link href={`/blog/${post.slug}`}>
                                 {post.title.length > 35 ? post.title.substring(0, 35) + "..." : post.title}
@@ -225,7 +225,7 @@ export default function BlogPage() {
                           <li key={i}>
                             <Link 
                               href="#" 
-                              className="px-4 py-2 bg-white border border-gray-100 rounded-lg text-xs font-bold text-slate-500 hover:bg-[#01228D] hover:text-white hover:border-[#01228D] transition-all"
+                              className="px-4 py-2 bg-white border border-gray-100 rounded-lg text-xs font-bold text-slate-500 hover:bg-blue-50 hover:text-[#01228D] hover:border-[#01228D] transition-all inline-block"
                             >
                               {tag}
                             </Link>
