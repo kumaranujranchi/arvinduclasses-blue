@@ -704,7 +704,7 @@ html {
 
 /* Course Card specific styles */
 .course-card-wrapper {
-  min-height: 330px;
+  min-height: 240px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

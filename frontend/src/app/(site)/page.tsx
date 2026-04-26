@@ -50,6 +50,24 @@ export default function HomePage() {
       slug: "applied-mathematics",
       category: "Subject",
       imageUrl: "/assets/images/courses/courses-4.webp"
+    },
+    {
+      tag: "#Science",
+      title: "Physics, Chemistry & Biology",
+      duration: "1 Year",
+      fee: "₹30,000",
+      slug: "pcb-program",
+      category: "Subject",
+      imageUrl: "/assets/images/courses/courses-5.webp"
+    },
+    {
+      tag: "#Commerce",
+      title: "B.Com Academic Support",
+      duration: "3 Years",
+      fee: "₹45,000",
+      slug: "bcom-support",
+      category: "Degree",
+      imageUrl: "/assets/images/courses/courses-6.webp"
     }
   ];
 
@@ -400,29 +418,31 @@ export default function HomePage() {
             </div>
           </div>
           <div className="courses-wrapper">
-            <div className="row">
+            <div className="row g-4">
               {staticCourses.map((course, idx) => {
                 const bgColors = ["#01228D", "#0C8B51", "#2F7AD5", "#27B8A7", "#EAB830", "#753B76"];
                 const bgColor = bgColors[idx % bgColors.length];
                 
                 return (
-                  <div key={idx} className="col-lg-4 col-sm-6 courses-col">
-                    <div className="single-courses mt-30 wow fadeInUpBig course-card-wrapper h-full" 
+                  <div key={idx} className="col-lg-4 col-md-6 col-sm-12 courses-col">
+                    <div className="single-courses mt-10 wow fadeInUpBig course-card-wrapper h-full !p-6 rounded-xl" 
                       style={{ backgroundColor: bgColor }}
                     >
                       <div className="courses-content flex flex-col h-full justify-between">
                         <div>
-                          <span className="category">{course.tag}</span>
-                          <h4 className="courses-title">
+                          <span className="category text-[11px] opacity-80 uppercase tracking-wider font-bold">{course.tag}</span>
+                          <h4 className="courses-title !text-[20px] !leading-tight !mt-2 !mb-4">
                             <Link href={`/courses/${course.slug}`}>{course.title}</Link>
                           </h4>
-                          <div className="duration-fee">
-                            <p className="duration">Duration: <span>{course.duration}</span></p>
-                            <p className="fee">Fee: <span>{course.fee}</span></p>
+                          <div className="duration-fee !mb-0">
+                            <p className="duration text-sm">Duration: <span>{course.duration}</span></p>
+                            <p className="fee text-sm">Fee: <span>{course.fee}</span></p>
                           </div>
                         </div>
-                        <div className="courses-link">
-                          <Link className="more" href={`/courses/${course.slug}`}>Details <i className="fas fa-chevron-right"></i></Link>
+                        <div className="courses-link border-t border-white/20 pt-3 mt-4">
+                          <Link className="more text-sm font-bold flex items-center gap-2" href={`/courses/${course.slug}`}>
+                            Details <i className="fas fa-chevron-right text-[10px]"></i>
+                          </Link>
                         </div>
                       </div>
                     </div>
