@@ -143,42 +143,11 @@ export default function HomePage() {
               key={banner._id}
               className="single-slider d-flex align-items-center bg_cover"
               style={{ 
-                backgroundImage: `linear-gradient(rgba(7, 41, 77, 0.7), rgba(7, 41, 77, 0.7)), url(${banner.imageUrl})`,
+                backgroundImage: `url(${banner.imageUrl})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center'
               }}
             >
-              <div className="container">
-                <div className="slider-content slider-content-3 text-center">
-                  <h2 className="title" data-animation="fadeInUp" data-delay="0.2s">
-                    {banner.title}
-                  </h2>
-                  {banner.subtitle && (
-                    <p className="text-white mb-30" data-animation="fadeInUp" data-delay="0.4s">
-                      {banner.subtitle}
-                    </p>
-                  )}
-                  <ul className="slider-btn">
-                    <li>
-                      <a 
-                        data-animation="fadeInUp" 
-                        data-delay="0.6s" 
-                        className="main-btn main-btn-2" 
-                        href={banner.buttonLink || "/courses"}
-                      >
-                        {banner.buttonText || "View Courses"}
-                      </a>
-                    </li>
-                    {(!banner.buttonText) && (
-                      <li>
-                        <a data-animation="fadeInUp" data-delay="1s" className="main-btn" href="/about">
-                          Learn more
-                        </a>
-                      </li>
-                    )}
-                  </ul>
-                </div>
-              </div>
             </div>
           ))
         ) : (
@@ -186,48 +155,10 @@ export default function HomePage() {
             <div
               className="single-slider d-flex align-items-center bg_cover home-slider-bg-1"
             >
-              <div className="container">
-                <div className="slider-content slider-content-3 text-center">
-                  <h2 className="title" data-animation="fadeInUp" data-delay="0.2s">
-                    Education is the power of Humanity
-                  </h2>
-                  <ul className="slider-btn">
-                    <li>
-                      <a data-animation="fadeInUp" data-delay="0.6s" className="main-btn main-btn-2" href="/courses">
-                        View Courses
-                      </a>
-                    </li>
-                    <li>
-                      <a data-animation="fadeInUp" data-delay="1s" className="main-btn" href="/about">
-                        Learn more
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
             </div>
             <div
               className="single-slider d-flex align-items-center bg_cover home-slider-bg-2"
             >
-              <div className="container">
-                <div className="slider-content slider-content-3 text-center">
-                  <h2 className="title" data-animation="fadeInUp" data-delay="0.2s">
-                    Best Educational Environment for Your Success
-                  </h2>
-                  <ul className="slider-btn">
-                    <li>
-                      <a data-animation="fadeInUp" data-delay="0.6s" className="main-btn main-btn-2" href="/courses">
-                        View Courses
-                      </a>
-                    </li>
-                    <li>
-                      <a data-animation="fadeInUp" data-delay="1s" className="main-btn" href="/about">
-                        Learn more
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
             </div>
           </>
         )}
