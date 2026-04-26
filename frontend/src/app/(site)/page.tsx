@@ -479,8 +479,27 @@ export default function HomePage() {
         <section 
           key="trending-banners-ready"
           className="trending-banners-area pt-100 pb-100"
+          style={{ position: 'relative', overflow: 'hidden' }}
         >
-          <div className="container">
+          {/* Modern Grid Background Effect */}
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundImage: `
+              linear-gradient(to right, rgba(51, 104, 198, 0.08) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(51, 104, 198, 0.08) 1px, transparent 1px)
+            `,
+            backgroundSize: '40px 40px',
+            maskImage: 'radial-gradient(circle, transparent 20%, black 100%)',
+            WebkitMaskImage: 'radial-gradient(circle, transparent 20%, black 100%)',
+            zIndex: 0,
+            pointerEvents: 'none'
+          }}></div>
+
+          <div className="container" style={{ position: 'relative', zIndex: 1 }}>
             <div className="section-title-2 text-center mb-40">
               <h2 className="title" style={{ fontSize: '28px', fontWeight: '600' }}>What&apos;s Trending</h2>
               <span className="line mx-auto"></span>
@@ -660,6 +679,45 @@ export default function HomePage() {
         </div>
       </section>
       {/* ====== Blog Ends ====== */}
+
+      {/* ====== Lower Side Banner Start ====== */}
+      <section 
+        className="lower-banner-area pt-80 pb-80" 
+        style={{ position: 'relative', overflow: 'hidden', backgroundColor: '#fff' }}
+      >
+        {/* Modern Grid Background Effect */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundImage: `
+            linear-gradient(to right, rgba(51, 104, 198, 0.1) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(51, 104, 198, 0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: '45px 45px',
+          maskImage: 'radial-gradient(circle, transparent 15%, black 100%)',
+          WebkitMaskImage: 'radial-gradient(circle, transparent 15%, black 100%)',
+          zIndex: 0,
+          pointerEvents: 'none'
+        }}></div>
+
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+          <div className="row justify-content-center">
+            <div className="col-lg-10">
+              <div className="banner-img wow fadeInUp" data-wow-delay="0.2s">
+                <img 
+                  src="/assets/images/lower-side-banner.png" 
+                  alt="Special Banner" 
+                  style={{ width: '100%', height: 'auto', borderRadius: '20px', boxShadow: '0 15px 40px rgba(0,0,0,0.1)' }} 
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* ====== Lower Side Banner End ====== */}
 
       {/* ====== Newsletter ====== */}
       <section className="newsletter-area-2">
