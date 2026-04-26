@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="container">
           <div className="row">
             {/* Information */}
-            <div className="col-md-3 col-6">
+            <div className="col-md-2 col-6">
               <div className="footer-link mt-45">
                 <h4 className="footer-title">Information</h4>
                 <ul className="link-list">
@@ -23,7 +23,7 @@ export default function Footer() {
             </div>
 
             {/* Useful Links */}
-            <div className="col-md-3 col-6">
+            <div className="col-md-2 col-6">
               <div className="footer-link mt-45">
                 <h4 className="footer-title">Useful Link</h4>
                 <ul className="link-list">
@@ -56,40 +56,47 @@ export default function Footer() {
             </div>
 
             {/* Mobile App & Certification */}
-            <div className="col-md-3 col-12">
+            <div className="col-md-5 col-12">
               <div className="footer-link mt-45">
-                <h4 className="footer-title">Mobile App</h4>
-                <p className="text-white mb-15" style={{ fontSize: '13px', fontStyle: 'italic', opacity: 0.8 }}>Coming Soon on</p>
-                <div className="app-badges mb-30">
-                  <div style={{ marginBottom: '10px' }}>
-                    <img 
-                      src="/assets/images/play-store-badge.png" 
-                      alt="Get it on Google Play" 
-                      style={{ width: '160px', height: 'auto', borderRadius: '8px', transition: 'transform 0.3s' }} 
-                    />
+                <div className="row">
+                  <div className="col-sm-5 col-12">
+                    <h4 className="footer-title">Certified by</h4>
+                    <div className="certification-card" style={{ 
+                      backgroundColor: '#fff', 
+                      padding: '15px', 
+                      borderRadius: '12px', 
+                      display: 'inline-block',
+                      boxShadow: '0 8px 25px rgba(0,0,0,0.2)',
+                      marginTop: '5px',
+                      marginBottom: '20px'
+                    }}>
+                      <img 
+                        src="/assets/images/iso-logo-v2.png" 
+                        alt="ISO 27001:2022 Certified" 
+                        style={{ width: '120px', height: 'auto' }} 
+                      />
+                    </div>
                   </div>
-                  <div>
-                    <img 
-                      src="/assets/images/app-store-badge.png" 
-                      alt="Download on the App Store" 
-                      style={{ width: '160px', height: 'auto', borderRadius: '8px', transition: 'transform 0.3s' }} 
-                    />
+                  <div className="col-sm-7 col-12">
+                    <h4 className="footer-title">Mobile App</h4>
+                    <p className="text-white mb-15" style={{ fontSize: '13px', fontStyle: 'italic', opacity: 0.8 }}>Coming Soon on</p>
+                    <div className="app-badges d-flex flex-column gap-2">
+                      <div style={{ marginBottom: '8px' }}>
+                        <img 
+                          src="/assets/images/play-store-badge.png" 
+                          alt="Get it on Google Play" 
+                          style={{ width: '150px', height: 'auto', borderRadius: '8px' }} 
+                        />
+                      </div>
+                      <div>
+                        <img 
+                          src="/assets/images/app-store-badge.png" 
+                          alt="Download on the App Store" 
+                          style={{ width: '150px', height: 'auto', borderRadius: '8px' }} 
+                        />
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <h4 className="footer-title mt-20">Certified by</h4>
-                <div className="certification-card" style={{ 
-                  backgroundColor: '#fff', 
-                  padding: '15px', 
-                  borderRadius: '12px', 
-                  display: 'inline-block',
-                  boxShadow: '0 8px 25px rgba(0,0,0,0.2)',
-                  marginTop: '5px'
-                }}>
-                  <img 
-                    src="/assets/images/iso-logo-v2.png" 
-                    alt="ISO 27001:2022 Certified" 
-                    style={{ width: '130px', height: 'auto' }} 
-                  />
                 </div>
               </div>
             </div>
