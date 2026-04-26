@@ -141,24 +141,58 @@ export default function HomePage() {
           banners.map((banner, index) => (
             <div
               key={banner._id}
-              className="single-slider d-flex align-items-center bg_cover"
-              style={{ 
-                backgroundImage: `url(${banner.imageUrl})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center'
-              }}
+              className="single-slider d-flex align-items-center"
+              style={{ position: 'relative', overflow: 'hidden' }}
             >
+              <img 
+                src={banner.imageUrl} 
+                alt="Banner" 
+                style={{ 
+                  width: '100%', 
+                  height: '100%', 
+                  objectFit: 'cover', 
+                  position: 'absolute', 
+                  top: 0, 
+                  left: 0 
+                }}
+              />
             </div>
           ))
         ) : (
           <>
             <div
-              className="single-slider d-flex align-items-center bg_cover home-slider-bg-1"
+              className="single-slider d-flex align-items-center home-slider-bg-1"
+              style={{ position: 'relative', overflow: 'hidden' }}
             >
+               <img 
+                src="/assets/images/homepage1.png" 
+                alt="Banner" 
+                style={{ 
+                  width: '100%', 
+                  height: '100%', 
+                  objectFit: 'cover', 
+                  position: 'absolute', 
+                  top: 0, 
+                  left: 0 
+                }}
+              />
             </div>
             <div
-              className="single-slider d-flex align-items-center bg_cover home-slider-bg-2"
+              className="single-slider d-flex align-items-center home-slider-bg-2"
+              style={{ position: 'relative', overflow: 'hidden' }}
             >
+               <img 
+                src="/assets/images/homepage2.png" 
+                alt="Banner" 
+                style={{ 
+                  width: '100%', 
+                  height: '100%', 
+                  objectFit: 'cover', 
+                  position: 'absolute', 
+                  top: 0, 
+                  left: 0 
+                }}
+              />
             </div>
           </>
         )}
