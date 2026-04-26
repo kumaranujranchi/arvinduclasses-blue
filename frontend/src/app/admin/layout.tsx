@@ -74,6 +74,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       ]
     },
     {
+      title: "Account",
+      items: [
+        { label: "My Profile", href: "/admin/profile", icon: "fas fa-user-circle", roles: ["super_admin", "admin", "teacher", "counsellor", "accounts", "sales", "operations"] },
+      ]
+    },
+    {
       title: "External",
       items: [
         { label: "Go to Website", href: "/", icon: "fas fa-external-link-alt", roles: ["super_admin", "admin", "teacher", "counsellor", "accounts", "sales", "operations"] },

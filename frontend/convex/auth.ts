@@ -270,3 +270,48 @@ export const getUserById = query({
     return await ctx.db.get(args.userId);
   },
 });
+
+/**
+ * Update current user's profile.
+ */
+export const updateProfile = mutation({
+  args: {
+    userId: v.id("users"),
+    name: v.optional(v.string()),
+    password: v.optional(v.string()),
+    phone: v.optional(v.string()),
+    profilePicUrl: v.optional(v.string()),
+  },
+  handler: async (ctx, args) => {
+    const { userId, ...updates } = args;
+    
+    const filtered = Object.fromEntries(
+      Object.entries(updates).filter(([, v]) => v !== undefined)
+    );
+    
+    if (Object.keys(filtered).length === 0) return;
+
+    await ctx.db.patch(userId, filtered);
+
+    const user = await ctx.db.get(userId);
+    
+    // Log Activity
+    await ctx.db.insert("activityLog", {
+      userId: userId,
+      userName: user?.name || "Unknown",
+      action: "UPDATE",
+      module: "PROFILE",
+      description: `User updated their own profile settings`,
+      createdAt: Date.now(),
+    });
+    
+    return {
+      userId: user?._id,
+      name: user?.name,
+      email: user?.email,
+      role: user?.role,
+      profilePicUrl: user?.profilePicUrl,
+      phone: user?.phone,
+    };
+  },
+});
