@@ -21,10 +21,8 @@ export default function HomePage() {
 
   useEffect(() => {
     const initSlick = () => {
-      // @ts-ignore
-      if (typeof window !== "undefined" && window.$ && window.$.fn && window.$.fn.slick) {
-        // @ts-ignore
-        const $ = window.$;
+      if (typeof window !== "undefined" && (window as any).$) {
+        const $ = (window as any).$;
 
         // Hero Slider
         if ($(".slider-active").length) {
@@ -120,8 +118,7 @@ export default function HomePage() {
             ],
           });
         }
-      } else {
-        setTimeout(initSlick, 50);
+        
         // Trending Banners
         if ($(".trending-banner-active").length) {
           if ($(".trending-banner-active").hasClass("slick-initialized")) {
@@ -138,6 +135,8 @@ export default function HomePage() {
             arrows: false,
           });
         }
+      } else {
+        setTimeout(initSlick, 50);
       }
     };
     initSlick();
