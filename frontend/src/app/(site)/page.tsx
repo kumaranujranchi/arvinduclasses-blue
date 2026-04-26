@@ -22,7 +22,7 @@ export default function HomePage() {
       fee: "₹25,000",
       slug: "foundation-program",
       category: "School",
-      imageUrl: "/assets/images/courses/courses-1.webp"
+      imageUrl: "/assets/images/courses/course-foundation.png"
     },
     {
       tag: "#Science",
@@ -31,7 +31,7 @@ export default function HomePage() {
       fee: "₹35,000",
       slug: "science-program",
       category: "School",
-      imageUrl: "/assets/images/courses/courses-2.webp"
+      imageUrl: "/assets/images/courses/course-science.png"
     },
     {
       tag: "#Commerce",
@@ -40,7 +40,7 @@ export default function HomePage() {
       fee: "₹40,000",
       slug: "commerce-program",
       category: "College",
-      imageUrl: "/assets/images/courses/courses-3.webp"
+      imageUrl: "/assets/images/courses/course-commerce.png"
     },
     {
       tag: "#Mathematics",
@@ -49,7 +49,7 @@ export default function HomePage() {
       fee: "₹20,000",
       slug: "applied-mathematics",
       category: "Subject",
-      imageUrl: "/assets/images/courses/courses-4.webp"
+      imageUrl: "/assets/images/courses/course-math.png"
     },
     {
       tag: "#Science",
