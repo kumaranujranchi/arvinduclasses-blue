@@ -320,36 +320,36 @@ export default function HomePage() {
           </div>
           <div className="courses-wrapper wow fadeInUpBig" data-wow-duration="1s" data-wow-delay="0.3s">
             <div className="row">
-              {staticCourses.slice(0, 4).map((course, idx) => (
-                <div key={idx} className="col-lg-3 col-sm-6 courses-col">
-                  <div className="single-courses-2 mt-30 shadow-sm hover:shadow-xl transition-all duration-300">
-                    <div className="courses-image">
-                      <Link href={`/courses/${course.slug}`}>
-                        <img 
-                          src={course.imageUrl} 
-                          className="w-full h-40 object-cover" 
-                          alt={course.title} 
-                        />
-                      </Link>
-                    </div>
-                    <div className="courses-content">
-                      <span className="category !bg-[#01228D] !text-white px-2 py-1 rounded text-[10px] inline-block mb-2">{course.category}</span>
-                      <h4 className="courses-title">
-                        <Link href={`/courses/${course.slug}`}>{course.title}</Link>
-                      </h4>
-                      <div className="duration-rating">
-                        <div className="duration-fee">
-                          <p className="duration">Duration: <span>{course.duration}</span></p>
-                          <p className="fee">Fee: <span>{course.fee}</span></p>
-                        </div>
+              {staticCourses.slice(0, 4).map((course, idx) => {
+                const bgColors = ["#01228D", "#0C8B51", "#2F7AD5", "#27B8A7", "#EAB830", "#753B76"];
+                const bgColor = bgColors[idx % bgColors.length];
+                
+                return (
+                  <div key={idx} className="col-lg-3 col-sm-6 courses-col">
+                    <div className="single-courses mt-30 shadow-sm hover:shadow-xl transition-all duration-300 rounded-xl overflow-hidden" 
+                    >
+                      <div className="courses-image">
+                        <Link href={`/courses/${course.slug}`}>
+                          <img 
+                            src={course.imageUrl} 
+                            className="w-full h-40 object-cover" 
+                            alt={course.title} 
+                          />
+                        </Link>
                       </div>
-                      <div className="courses-link">
-                        <Link className="more" href={`/courses/${course.slug}`}>Details <i className="fas fa-chevron-right"></i></Link>
+                      <div className="courses-content !p-6 text-white" style={{ backgroundColor: bgColor }}>
+                        <span className="category text-[10px] opacity-90 uppercase tracking-wider font-bold mb-2 inline-block">{course.tag}</span>
+                        <h4 className="courses-title !text-white !text-[18px] !leading-tight !mb-4">
+                          <Link href={`/courses/${course.slug}`} className="text-white hover:text-white/80">{course.title}</Link>
+                        </h4>
+                        <div className="courses-link border-t border-white/20 pt-3">
+                          <Link className="more text-xs font-bold text-white hover:text-white/80" href={`/courses/${course.slug}`}>Details <i className="fas fa-chevron-right text-[8px]"></i></Link>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
@@ -425,26 +425,18 @@ export default function HomePage() {
                 
                 return (
                   <div key={idx} className="col-lg-4 col-md-6 col-sm-12 courses-col">
-                    <div className="single-courses mt-10 wow fadeInUpBig course-card-wrapper h-full rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100" 
+                    <div className="single-courses mt-10 wow fadeInUpBig course-card-wrapper h-full !p-6 rounded-xl" 
+                      style={{ backgroundColor: bgColor }}
                     >
-                      <div className="courses-image">
-                        <Link href={`/courses/${course.slug}`}>
-                          <img 
-                            src={course.imageUrl} 
-                            className="w-full h-44 object-cover" 
-                            alt={course.title} 
-                          />
-                        </Link>
-                      </div>
-                      <div className="courses-content flex flex-col h-full justify-between !p-6 text-white" style={{ backgroundColor: bgColor }}>
+                      <div className="courses-content flex flex-col h-full justify-between">
                         <div>
-                          <span className="category text-[11px] opacity-90 uppercase tracking-wider font-bold">{course.tag}</span>
+                          <span className="category text-[11px] opacity-80 uppercase tracking-wider font-bold text-white">{course.tag}</span>
                           <h4 className="courses-title !text-[20px] !leading-tight !mt-2 !mb-4">
                             <Link href={`/courses/${course.slug}`} className="text-white hover:text-white/80">{course.title}</Link>
                           </h4>
-                          <div className="duration-fee !mb-0">
-                            <p className="duration text-sm text-white/90">Duration: <span className="text-white font-bold">{course.duration}</span></p>
-                            <p className="fee text-sm text-white/90">Fee: <span className="text-white font-bold">{course.fee}</span></p>
+                          <div className="duration-fee !mb-0 text-white">
+                            <p className="duration text-sm opacity-90">Duration: <span className="font-bold">{course.duration}</span></p>
+                            <p className="fee text-sm opacity-90">Fee: <span className="font-bold">{course.fee}</span></p>
                           </div>
                         </div>
                         <div className="courses-link border-t border-white/20 pt-3 mt-4">
