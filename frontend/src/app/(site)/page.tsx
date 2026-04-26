@@ -326,19 +326,19 @@ export default function HomePage() {
                 
                 return (
                   <div key={idx} className="col-lg-3 col-md-6 col-sm-12 courses-col mb-4">
-                    <div className="single-courses mt-30 shadow-sm hover:shadow-xl transition-all duration-300 rounded-2xl !p-5 flex flex-col h-full text-white" 
+                    <div className="single-courses mt-30 shadow-sm hover:shadow-xl transition-all duration-300 rounded-2xl flex flex-col h-full text-white overflow-hidden border border-white/10" 
                       style={{ backgroundColor: bgColor }}
                     >
-                      <div className="courses-image mb-4">
-                        <Link href={`/courses/${course.slug}`}>
+                      <div className="courses-image h-48 w-full">
+                        <Link href={`/courses/${course.slug}`} className="block h-full w-full">
                           <img 
                             src={course.imageUrl} 
-                            className="w-full h-40 object-cover rounded-xl border border-white/10" 
+                            className="w-full h-full object-cover" 
                             alt={course.title} 
                           />
                         </Link>
                       </div>
-                      <div className="courses-content flex flex-col flex-grow justify-between">
+                      <div className="courses-content flex flex-col flex-grow justify-between p-6">
                         <div>
                           <span className="category text-[10px] opacity-80 uppercase tracking-wider font-bold mb-2 inline-block">{course.tag}</span>
                           <h4 className="courses-title !text-white !text-[18px] !leading-tight !mb-6">
