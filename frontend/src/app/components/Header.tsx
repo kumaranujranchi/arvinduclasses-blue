@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 
 const navLinks = [
@@ -30,6 +30,8 @@ export default function Header() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const router = useRouter();
 
   useEffect(() => {
     const session = localStorage.getItem("user_session");
@@ -163,8 +165,18 @@ export default function Header() {
 
             <div className="col-lg-2 d-none d-lg-block">
               <div className="header-search">
-                <form action="#">
-                  <input type="text" placeholder="Search" />
+                <form onSubmit={(e) => {
+                  e.preventDefault();
+                  if (searchQuery.trim()) {
+                    router.push(`/courses?search=${encodeURIComponent(searchQuery.trim())}`);
+                  }
+                }}>
+                  <input 
+                    type="text" 
+                    placeholder="Search" 
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                  />
                   <button type="submit">
                     <i className="fas fa-search"></i>
                   </button>

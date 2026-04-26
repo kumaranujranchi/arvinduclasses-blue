@@ -1,13 +1,22 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
-export default function CoursesPage() {
+function CoursesContent() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const query = searchParams.get("search");
+    if (query) {
+      setSearchTerm(query);
+    }
+  }, [searchParams]);
 
   const courses = [
     {
@@ -82,8 +91,6 @@ export default function CoursesPage() {
 
   return (
     <>
-      <Header />
-
       {/* Page Banner */}
       <section className="page-banner">
         <div className="page-banner-bg bg_cover banner-bg-course">
@@ -333,7 +340,17 @@ export default function CoursesPage() {
           </div>
         </div>
       </section>
+    </>
+  );
+}
 
+export default function CoursesPage() {
+  return (
+    <>
+      <Header />
+      <Suspense fallback={<div>Loading...</div>}>
+        <CoursesContent />
+      </Suspense>
       <Footer />
       <a href="#" className="back-to-top" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <i className="fa fa-chevron-up"></i>
