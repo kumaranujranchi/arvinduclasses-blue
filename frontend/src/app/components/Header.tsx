@@ -173,7 +173,7 @@ export default function Header() {
                 }}>
                   <input 
                     type="text" 
-                    placeholder="Search" 
+                    placeholder="Search courses" 
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                   />
