@@ -82,25 +82,14 @@ export default function BannersManagement() {
       let imageUrl = editingBanner?.imageUrl || "";
 
       if (selectedFile) {
-        console.log("Starting image compression...");
-        // 1. Compression
-        const options = {
-          maxSizeMB: 2,
-          maxWidthOrHeight: 2560,
-          useWebWorker: true,
-          initialQuality: 0.9,
-        };
-        const compressedFile = await imageCompression(selectedFile, options);
-        console.log("Compression complete. Size:", compressedFile.size);
-
-        // 2. Upload to Convex
-        console.log("Generating upload URL...");
+        // Upload to Convex directly without compression to maintain 100% quality
+        console.log("Generating upload URL for original file...");
         const uploadUrl = await generateUploadUrl();
-        console.log("Uploading to storage...");
+        console.log("Uploading original file to storage...");
         const result = await fetch(uploadUrl, {
           method: "POST",
-          headers: { "Content-Type": compressedFile.type },
-          body: compressedFile,
+          headers: { "Content-Type": selectedFile.type },
+          body: selectedFile,
         });
         
         if (!result.ok) throw new Error("Upload to storage failed");
