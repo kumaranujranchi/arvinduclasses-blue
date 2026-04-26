@@ -41,7 +41,8 @@ export default function AboutPage() {
             prevArrow: false,
             nextArrow: '<span class="next">Next <i class="far fa-long-arrow-right"></i></span>',
             autoplay: true,
-            autoplaySpeed: 2000,
+            autoplaySpeed: 3000,
+            infinite: true,
           });
         }
 
@@ -56,7 +57,8 @@ export default function AboutPage() {
             focusOnSelect: true,
             speed: 800,
             autoplay: true,
-            autoplaySpeed: 2000,
+            autoplaySpeed: 3000,
+            infinite: true,
           });
         }
       } else {
@@ -604,6 +606,22 @@ export default function AboutPage() {
                           alt="testimonials"
                         />
                       </div>
+                      <div className="single-testimonial-image">
+                        <img
+                          src="/assets/images/testimonial_priya.png"
+                          width="313"
+                          height="579"
+                          alt="testimonials"
+                        />
+                      </div>
+                      <div className="single-testimonial-image">
+                        <img
+                          src="/assets/images/testimonial_rohan.png"
+                          width="313"
+                          height="579"
+                          alt="testimonials"
+                        />
+                      </div>
                     </div>
                   </div>
                   <div className="col-lg-6 col-md-7">
@@ -620,6 +638,30 @@ export default function AboutPage() {
                         <div className="content-meta">
                           <h5 className="name">Shashi Ranjan</h5>
                           <p className="designation">Grade 12 Student</p>
+                        </div>
+                      </div>
+                      <div className="single-testimonial-content">
+                        <div className="content-text">
+                          <i className="fas fa-quote-right"></i>
+                          <p>
+                            "The teachers here are incredibly dedicated and patient. I improved my NEET score significantly in just 6 months at Arvindu Classes."
+                          </p>
+                        </div>
+                        <div className="content-meta">
+                          <h5 className="name">Priya Verma</h5>
+                          <p className="designation">NEET Qualifier</p>
+                        </div>
+                      </div>
+                      <div className="single-testimonial-content">
+                        <div className="content-text">
+                          <i className="fas fa-quote-right"></i>
+                          <p>
+                            "Arvindu Classes has been the best decision of my academic journey. The structured approach helped me crack JEE with a great rank!"
+                          </p>
+                        </div>
+                        <div className="content-meta">
+                          <h5 className="name">Rohan Sharma</h5>
+                          <p className="designation">JEE Advanced</p>
                         </div>
                       </div>
                     </div>
