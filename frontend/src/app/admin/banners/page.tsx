@@ -27,10 +27,18 @@ export default function BannersManagement() {
   });
 
   const getAdminInfo = () => {
+    if (typeof window === "undefined") return { id: "system", name: "System Admin" };
     const session = localStorage.getItem("user_session");
     if (session) {
-      const user = JSON.parse(session);
-      return { id: user.id || user._id, name: user.name };
+      try {
+        const user = JSON.parse(session);
+        return { 
+          id: String(user.id || user._id || "system"), 
+          name: String(user.name || "Admin") 
+        };
+      } catch (e) {
+        console.error("Error parsing user session", e);
+      }
     }
     return { id: "system", name: "System Admin" };
   };
@@ -100,7 +108,9 @@ export default function BannersManagement() {
         console.log("Upload complete. Storage ID:", storageId);
 
         // 3. Get Public URL
-        imageUrl = await getImageUrl({ storageId });
+        const url = await getImageUrl({ storageId });
+        if (!url) throw new Error("Failed to get public URL for image");
+        imageUrl = url;
         console.log("Public URL retrieved:", imageUrl);
       }
 

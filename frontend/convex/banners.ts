@@ -25,8 +25,8 @@ export const addBanner = mutation({
     buttonText: v.optional(v.string()),
     buttonLink: v.optional(v.string()),
     order: v.number(),
-    adminId: v.string(),
-    adminName: v.string(),
+    adminId: v.optional(v.string()),
+    adminName: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
     const { adminId, adminName, ...bannerData } = args;
@@ -37,8 +37,8 @@ export const addBanner = mutation({
     });
 
     await ctx.db.insert("activityLog", {
-      userId: adminId,
-      userName: adminName,
+      userId: adminId ?? "system",
+      userName: adminName ?? "System Admin",
       action: "CREATE",
       module: "BANNERS",
       description: `Added new banner: ${args.title}`,
@@ -59,16 +59,16 @@ export const updateBanner = mutation({
     buttonLink: v.optional(v.string()),
     order: v.number(),
     isActive: v.boolean(),
-    adminId: v.string(),
-    adminName: v.string(),
+    adminId: v.optional(v.string()),
+    adminName: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
     const { id, adminId, adminName, ...bannerData } = args;
     await ctx.db.patch(id, bannerData);
 
     await ctx.db.insert("activityLog", {
-      userId: adminId,
-      userName: adminName,
+      userId: adminId ?? "system",
+      userName: adminName ?? "System Admin",
       action: "UPDATE",
       module: "BANNERS",
       description: `Updated banner: ${args.title}`,
