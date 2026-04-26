@@ -534,7 +534,7 @@ export default function HomePage() {
       </div>
 
       {/* ====== Testimonials Start ====== */}
-      <section className="testimonials-area">
+      <section className="testimonials-area pt-100 pb-100">
         <div className="container">
           <div className="row">
             <div className="col-lg-6">
@@ -600,7 +600,7 @@ export default function HomePage() {
       {/* ====== Testimonials Ends ====== */}
 
       {/* ====== Blog Start ====== */}
-      <section className="blog-area-2">
+      <section className="blog-area-2 pt-100 pb-100">
         <h4 className="trending-title">Trending blogs</h4>
         <div className="container">
           <div className="row">
