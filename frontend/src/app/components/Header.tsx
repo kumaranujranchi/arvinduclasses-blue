@@ -60,22 +60,22 @@ export default function Header() {
   return (
     <header className="header-area">
       {/* Top Bar - Now visible on mobile too but styled better */}
-      <div className="header-top">
+      <div className="header-top" style={{ padding: '0', minHeight: '32px', display: 'flex', alignItems: 'flex-end' }}>
         <div className="container">
-          <div className="header-top-wrapper d-flex flex-wrap justify-content-between align-items-center">
-            <div className="header-top-left d-none d-sm-block">
-              <ul className="header-meta">
-                <li>
-                  <a href="mailto:info@arvinduclasses.in">info@arvinduclasses.in</a>
-                </li>
-              </ul>
+          <div className="header-top-wrapper d-flex justify-content-between align-items-end w-100" style={{ paddingBottom: '6px' }}>
+            <div className="header-top-left d-none d-sm-flex align-items-end">
+              <a href="mailto:info@arvinduclasses.in" style={{ fontSize: '13px', color: '#fff', textDecoration: 'none', lineHeight: '1' }}>
+                info@arvinduclasses.in
+              </a>
             </div>
-            <div className="header-top-right w-100 w-sm-auto">
-              <div className="header-link d-flex align-items-center justify-content-center justify-content-sm-end">
-                <Link className="notice" href="/notice" style={{ fontSize: '13px', color: '#fff' }}>Notice</Link>
+            <div className="header-top-right">
+              <div className="header-link d-flex align-items-end justify-content-end" style={{ lineHeight: '1', gap: '20px' }}>
+                <Link className="notice" href="/notice" style={{ fontSize: '13px', color: '#fff', margin: 0 }}>Notice</Link>
                 {user ? (
                   <>
-                    <span className="ms-3 me-3 text-white" style={{ fontSize: '13px' }}>Hi, {user.name}</span>
+                    <span style={{ color: 'rgba(255,255,255,0.3)' }}>|</span>
+                    <span className="text-white" style={{ fontSize: '13px' }}>Hi, {user.name}</span>
+                    <span style={{ color: 'rgba(255,255,255,0.3)' }}>|</span>
                     <button className="login bg-transparent border-0 p-0 text-white" style={{ fontSize: '13px' }} onClick={() => {
                       localStorage.removeItem("user_session");
                       setUser(null);
@@ -83,8 +83,10 @@ export default function Header() {
                   </>
                 ) : (
                   <>
-                    <Link className="login" href="/login" style={{ fontSize: '13px', color: '#fff' }}>Login</Link>
-                    <Link className="register" href="/register" style={{ fontSize: '13px', color: '#fff' }}>Register</Link>
+                    <span style={{ color: 'rgba(255,255,255,0.3)' }}>|</span>
+                    <Link className="login" href="/login" style={{ fontSize: '13px', color: '#fff', margin: 0 }}>Login</Link>
+                    <span style={{ color: 'rgba(255,255,255,0.3)' }}>|</span>
+                    <Link className="register" href="/register" style={{ fontSize: '13px', color: '#fff', margin: 0 }}>Register</Link>
                   </>
                 )}
               </div>

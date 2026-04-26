@@ -1135,8 +1135,10 @@ html {
 .course-highlight-list-item { margin-bottom: 5px; }
 
 .course-tab-container { margin-top: 40px; }
-.course-tab-nav { background: #f8f9fa; border-radius: 10px 10px 0 0; overflow: hidden; }
-.course-tab-link { cursor: pointer; padding: 20px 10px; height: auto; border: none; font-size: 16px; }
+.course-tab-nav { background: #01228D; border-radius: 10px 10px 0 0; overflow: hidden; }
+.course-tab-link { cursor: pointer; padding: 20px 10px; height: auto; border: none; font-size: 16px; color: rgba(255, 255, 255, 0.8) !important; }
+.course-tab-link:hover { color: #fff !important; }
+.course-tab-link.active { background: #fff !important; color: #01228D !important; font-weight: 700; }
 .course-tab-content-wrapper { border: 1px solid #eee; padding: 40px; border-radius: 0 0 10px 10px; background: #fff; }
 .course-curriculum-card { background: #f9f9f9; padding: 20px; border-radius: 8px; height: 100%; margin-bottom: 20px; }
 .course-curriculum-title { font-weight: 700; margin-bottom: 15px; color: #01228D; }
@@ -1233,7 +1235,7 @@ html {
 .fs-18-mb10-bold { font-size: 18px; margin-bottom: 10px; font-weight: 700; }
 .fs-14-gray { font-size: 14px; color: #666; }
 .mt-40 { margin-top: 40px; }
-.tab-nav-bg { background: #f8f9fa; border-radius: 10px 10px 0 0; overflow: hidden; }
+.tab-nav-bg { background: #01228D; border-radius: 10px 10px 0 0; overflow: hidden; }
 .tab-content-box { border: 1px solid #eee; padding: 40px; border-radius: 0 0 10px 10px; background: #fff; }
 .curriculum-card { background: #f9f9f9; padding: 20px; border-radius: 8px; height: 100%; margin-bottom: 20px; }
 .fs-bold-mb15-dark { font-weight: 700; margin-bottom: 15px; color: #01228D; }
@@ -1248,7 +1250,9 @@ html {
 .sidebar-list-item { margin-bottom: 10px; font-size: 14px; color: #555; display: flex; align-items: center; }
 .color-blue-w20 { color: #2F7AD5; width: 20px; }
 .btn-blue-600-trans { background: #2F7AD5; color: #fff; border-radius: 8px; padding: 12px; font-weight: 600; transition: all 0.3s; border: none; }
-.tab-link-custom { cursor: pointer; padding: 20px 10px; height: auto; border: none; font-size: 16px; background: none; }
+.tab-link-custom { cursor: pointer; padding: 20px 10px; height: auto; border: none; font-size: 16px; background: none; color: rgba(255, 255, 255, 0.8) !important; }
+.tab-link-custom:hover { color: #fff !important; }
+.tab-link-custom.active { background: #fff !important; color: #01228D !important; font-weight: 700; }
 .border-bottom-f0 { border-bottom: 1px solid #f0f0f0; }
 .table-header-custom { background-color: #f8f9fa; fontWeight: 600; color: #01228D; }
 .result-avatar { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; margin-right: 12px; border: 2px solid #eee; }

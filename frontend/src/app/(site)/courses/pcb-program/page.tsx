@@ -294,7 +294,8 @@ export default function PCBProgramPage() {
       />
       
       <style jsx>{`
-        .nav-item a { transition: all 0.3s ease; color: #666 !important; }
+        .nav-item a { transition: all 0.3s ease; color: rgba(255, 255, 255, 0.8) !important; }
+        .nav-item a:hover { color: #fff !important; }
         .nav-item a.active { background: #fff !important; color: #2F7AD5 !important; font-weight: 700; box-shadow: 0 -5px 15px rgba(0,0,0,0.03); }
         .highlight-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.08) !important; }
         .sidebar-card:hover { transform: translateX(5px); box-shadow: 0 8px 20px rgba(0,0,0,0.06); border-color: #2F7AD5 !important; }

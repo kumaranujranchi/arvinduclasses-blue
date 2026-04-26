@@ -288,7 +288,10 @@ export default function FoundationProgramPage() {
       <style jsx>{`
         .nav-item a {
            transition: all 0.3s ease;
-           color: #666 !important;
+           color: rgba(255, 255, 255, 0.8) !important;
+        }
+        .nav-item a:hover {
+          color: #fff !important;
         }
         .nav-item a.active {
           background: #fff !important;
