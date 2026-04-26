@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useQuery, useMutation } from "convex/react";
 import { api } from "../../../../convex/_generated/api";
 import { toast } from "react-hot-toast";
+import imageCompression from "browser-image-compression";
 
 export default function BannersManagement() {
   const banners = useQuery(api.banners.getBanners, {});
@@ -11,17 +12,17 @@ export default function BannersManagement() {
   const updateBanner = useMutation(api.banners.updateBanner);
   const deleteBanner = useMutation(api.banners.deleteBanner);
   const toggleBannerStatus = useMutation(api.banners.toggleBannerStatus);
+  const generateUploadUrl = useMutation(api.uploads.generateUploadUrl);
+  const getImageUrl = useMutation(api.uploads.getImageUrl);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingBanner, setEditingBanner] = useState<any>(null);
+  const [isUploading, setIsUploading] = useState(false);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   // Form State
   const [formData, setFormData] = useState({
-    title: "",
-    subtitle: "",
-    imageUrl: "",
-    buttonText: "",
-    buttonLink: "",
     order: 0,
   });
 
@@ -38,36 +39,82 @@ export default function BannersManagement() {
     if (banner) {
       setEditingBanner(banner);
       setFormData({
-        title: banner.title,
-        subtitle: banner.subtitle || "",
-        imageUrl: banner.imageUrl,
-        buttonText: banner.buttonText || "",
-        buttonLink: banner.buttonLink || "",
         order: banner.order,
       });
+      setImagePreview(banner.imageUrl);
     } else {
       setEditingBanner(null);
       setFormData({
-        title: "",
-        subtitle: "",
-        imageUrl: "",
-        buttonText: "",
-        buttonLink: "",
         order: (banners?.length || 0) + 1,
       });
+      setImagePreview(null);
     }
+    setSelectedFile(null);
     setIsModalOpen(true);
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setSelectedFile(file);
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreview(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const admin = getAdminInfo();
+    setIsUploading(true);
 
     try {
+      let imageUrl = editingBanner?.imageUrl || "";
+
+      if (selectedFile) {
+        // 1. Compression
+        const options = {
+          maxSizeMB: 0.8,
+          maxWidthOrHeight: 1920,
+          useWebWorker: true,
+        };
+        const compressedFile = await imageCompression(selectedFile, options);
+
+        // 2. Upload to Convex
+        const uploadUrl = await generateUploadUrl();
+        const result = await fetch(uploadUrl, {
+          method: "POST",
+          headers: { "Content-Type": compressedFile.type },
+          body: compressedFile,
+        });
+        const { storageId } = await result.json();
+
+        // 3. Get Public URL
+        imageUrl = await getImageUrl({ storageId });
+      }
+
+      if (!imageUrl && !selectedFile) {
+        toast.error("Please upload an image");
+        return;
+      }
+
+      const defaultData = {
+        title: formData.order % 2 === 0 
+          ? "Best Educational Environment for Your Success" 
+          : "Education is the power of Humanity",
+        subtitle: "",
+        buttonText: "",
+        buttonLink: "/courses",
+      };
+
       if (editingBanner) {
         await updateBanner({
           id: editingBanner._id,
-          ...formData,
+          ...defaultData,
+          imageUrl,
+          order: formData.order,
           isActive: editingBanner.isActive,
           adminId: admin.id,
           adminName: admin.name,
@@ -75,7 +122,9 @@ export default function BannersManagement() {
         toast.success("Banner updated successfully");
       } else {
         await addBanner({
-          ...formData,
+          ...defaultData,
+          imageUrl,
+          order: formData.order,
           adminId: admin.id,
           adminName: admin.name,
         });
@@ -83,7 +132,10 @@ export default function BannersManagement() {
       }
       setIsModalOpen(false);
     } catch (error) {
+      console.error(error);
       toast.error("Failed to save banner");
+    } finally {
+      setIsUploading(false);
     }
   };
 
@@ -209,62 +261,37 @@ export default function BannersManagement() {
               </div>
 
               <div className="p-6 sm:p-8 space-y-4 sm:space-y-6 max-h-[70vh] overflow-y-auto custom-scrollbar">
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-[1.5px] text-slate-400 ml-1">Banner Title</label>
-                  <input
-                    required
-                    type="text"
-                    value={formData.title}
-                    onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                    className="w-full px-5 py-3 sm:py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-[#01228D] transition-all font-medium text-slate-600 text-sm sm:text-base"
-                    placeholder="e.g. Education is the power of Humanity"
-                  />
-                </div>
+                <div className="space-y-4">
+                  <label className="text-[10px] font-black uppercase tracking-[1.5px] text-slate-400 ml-1">Banner Image</label>
+                  
+                  {imagePreview && (
+                    <div className="relative w-full h-48 rounded-3xl overflow-hidden border border-slate-100 shadow-sm">
+                      <img src={imagePreview} alt="Preview" className="w-full h-full object-cover" />
+                      <button 
+                        type="button"
+                        onClick={() => { setSelectedFile(null); setImagePreview(null); }}
+                        className="absolute top-2 right-2 w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center hover:bg-red-600 transition-all"
+                      >
+                        <i className="fas fa-trash text-xs"></i>
+                      </button>
+                    </div>
+                  )}
 
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-[1.5px] text-slate-400 ml-1">Subtitle (Optional)</label>
-                  <input
-                    type="text"
-                    value={formData.subtitle}
-                    onChange={(e) => setFormData({ ...formData, subtitle: e.target.value })}
-                    className="w-full px-5 py-3 sm:py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-[#01228D] transition-all font-medium text-slate-600 text-sm sm:text-base"
-                    placeholder="Brief description below title"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-[1.5px] text-slate-400 ml-1">Image URL</label>
-                  <input
-                    required
-                    type="text"
-                    value={formData.imageUrl}
-                    onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
-                    className="w-full px-5 py-3 sm:py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-[#01228D] transition-all font-medium text-slate-600 text-sm sm:text-base"
-                    placeholder="https://example.com/image.jpg"
-                  />
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-[1.5px] text-slate-400 ml-1">Button Text</label>
-                    <input
-                      type="text"
-                      value={formData.buttonText}
-                      onChange={(e) => setFormData({ ...formData, buttonText: e.target.value })}
-                      className="w-full px-5 py-3 sm:py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-[#01228D] transition-all font-medium text-slate-600 text-sm sm:text-base"
-                      placeholder="e.g. View Courses"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-[1.5px] text-slate-400 ml-1">Button Link</label>
-                    <input
-                      type="text"
-                      value={formData.buttonLink}
-                      onChange={(e) => setFormData({ ...formData, buttonLink: e.target.value })}
-                      className="w-full px-5 py-3 sm:py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-[#01228D] transition-all font-medium text-slate-600 text-sm sm:text-base"
-                      placeholder="/courses"
-                    />
-                  </div>
+                  {!imagePreview && (
+                    <div className="relative w-full h-48 rounded-3xl border-2 border-dashed border-slate-200 flex flex-col items-center justify-center bg-slate-50 hover:bg-slate-100 transition-all group cursor-pointer">
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleFileChange}
+                        className="absolute inset-0 opacity-0 cursor-pointer"
+                      />
+                      <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm mb-3 group-hover:scale-110 transition-all">
+                        <i className="fas fa-cloud-upload-alt text-[#01228D]"></i>
+                      </div>
+                      <p className="text-xs font-bold text-slate-500">Click or drag to upload banner image</p>
+                      <p className="text-[10px] text-slate-300 mt-1 uppercase tracking-wider">JPG, PNG or WEBP (Max 10MB)</p>
+                    </div>
+                  )}
                 </div>
 
                 <div className="space-y-2">
@@ -275,6 +302,7 @@ export default function BannersManagement() {
                     value={formData.order}
                     onChange={(e) => setFormData({ ...formData, order: parseInt(e.target.value) })}
                     className="w-full px-5 py-3 sm:py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-[#01228D] transition-all font-medium text-slate-600 text-sm sm:text-base"
+                    placeholder="e.g. 1"
                   />
                 </div>
               </div>
@@ -289,9 +317,17 @@ export default function BannersManagement() {
                 </button>
                 <button
                   type="submit"
-                  className="flex-[2] px-10 py-4 rounded-2xl font-bold text-sm text-white bg-[#01228D] shadow-lg shadow-blue-100 hover:scale-105 transition-all"
+                  disabled={isUploading}
+                  className="flex-[2] px-10 py-4 rounded-2xl font-bold text-sm text-white bg-[#01228D] shadow-lg shadow-blue-100 hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
-                  {editingBanner ? "Save Changes" : "Create Banner"}
+                  {isUploading ? (
+                    <>
+                      <i className="fas fa-spinner fa-spin"></i>
+                      <span>Processing...</span>
+                    </>
+                  ) : (
+                    editingBanner ? "Save Changes" : "Create Banner"
+                  )}
                 </button>
               </div>
             </form>
