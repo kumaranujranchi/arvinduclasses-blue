@@ -111,7 +111,7 @@ export default function Footer() {
       <div className="footer-copyright">
         <div className="container">
           <div className="copyright text-center">
-            <p className="footer-copyright-text">
+            <p className="footer-copyright-text" style={{ fontSize: '10px' }}>
               &copy; 2026 <span className="footer-brand-name">Arvindu Classes</span> Made with{" "}
               <i className="fa fa-heart footer-heart-icon"></i> by{" "}
               <a href="http://www.synergybrandarchitect.in" target="_blank" rel="noopener noreferrer" className="footer-credit-link">
