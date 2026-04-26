@@ -74,6 +74,7 @@ export default function BannersManagement() {
       let imageUrl = editingBanner?.imageUrl || "";
 
       if (selectedFile) {
+        console.log("Starting image compression...");
         // 1. Compression
         const options = {
           maxSizeMB: 0.8,
@@ -81,18 +82,26 @@ export default function BannersManagement() {
           useWebWorker: true,
         };
         const compressedFile = await imageCompression(selectedFile, options);
+        console.log("Compression complete. Size:", compressedFile.size);
 
         // 2. Upload to Convex
+        console.log("Generating upload URL...");
         const uploadUrl = await generateUploadUrl();
+        console.log("Uploading to storage...");
         const result = await fetch(uploadUrl, {
           method: "POST",
           headers: { "Content-Type": compressedFile.type },
           body: compressedFile,
         });
+        
+        if (!result.ok) throw new Error("Upload to storage failed");
+        
         const { storageId } = await result.json();
+        console.log("Upload complete. Storage ID:", storageId);
 
         // 3. Get Public URL
         imageUrl = await getImageUrl({ storageId });
+        console.log("Public URL retrieved:", imageUrl);
       }
 
       if (!imageUrl && !selectedFile) {
@@ -131,9 +140,10 @@ export default function BannersManagement() {
         toast.success("Banner added successfully");
       }
       setIsModalOpen(false);
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
-      toast.error("Failed to save banner");
+      const errorMsg = error?.message || "Failed to save banner";
+      toast.error(errorMsg);
     } finally {
       setIsUploading(false);
     }
@@ -289,6 +299,7 @@ export default function BannersManagement() {
                         <i className="fas fa-cloud-upload-alt text-[#01228D]"></i>
                       </div>
                       <p className="text-xs font-bold text-slate-500">Click or drag to upload banner image</p>
+                      <p className="text-[10px] text-slate-400 mt-2 font-bold uppercase tracking-wider bg-blue-50 px-2 py-1 rounded">Recommended: 1920 x 800 px</p>
                       <p className="text-[10px] text-slate-300 mt-1 uppercase tracking-wider">JPG, PNG or WEBP (Max 10MB)</p>
                     </div>
                   )}
