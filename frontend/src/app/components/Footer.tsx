@@ -54,6 +54,32 @@ export default function Footer() {
                 </ul>
               </div>
             </div>
+
+            {/* Mobile App & Certification */}
+            <div className="col-md-3 col-12">
+              <div className="footer-link mt-45">
+                <h4 className="footer-title">Mobile App</h4>
+                <p className="text-white mb-10" style={{ fontSize: '14px' }}>Mobile App is coming Soon</p>
+                <div className="app-badges mb-20">
+                  <img src="/assets/images/app-store-badges.png" alt="App Store & Play Store" style={{ width: '100%', maxWidth: '200px', height: 'auto' }} />
+                </div>
+                <h4 className="footer-title mt-30">Certification</h4>
+                <div className="certification-logo">
+                  <img 
+                    src="/assets/images/iso-logo.png" 
+                    alt="ISO Certified" 
+                    style={{ 
+                      width: '140px', 
+                      height: 'auto', 
+                      backgroundColor: 'rgba(255,255,255,0.95)', 
+                      padding: '10px', 
+                      borderRadius: '8px',
+                      boxShadow: '0 4px 15px rgba(0,0,0,0.1)'
+                    }} 
+                  />
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Footer Bottom */}
