@@ -13,7 +13,45 @@ export default function HomePage() {
   const [mounted, setMounted] = useState(false);
   const banners = useQuery(api.banners.getBanners, { onlyActive: true });
   const posts = useQuery(api.posts.getPublishedPosts, { limit: 6 });
-  const courses = useQuery(api.courses.getAll);
+
+  const staticCourses = [
+    {
+      tag: "#Foundation",
+      title: "Foundation Program (Class 6–8)",
+      duration: "1 Year",
+      fee: "₹25,000",
+      slug: "foundation-program",
+      category: "School",
+      imageUrl: "/assets/images/courses/courses-1.webp"
+    },
+    {
+      tag: "#Science",
+      title: "Science Program (Class 9–10)",
+      duration: "1 Year",
+      fee: "₹35,000",
+      slug: "science-program",
+      category: "School",
+      imageUrl: "/assets/images/courses/courses-2.webp"
+    },
+    {
+      tag: "#Commerce",
+      title: "Commerce (Class 11–12)",
+      duration: "1 Year",
+      fee: "₹40,000",
+      slug: "commerce-program",
+      category: "College",
+      imageUrl: "/assets/images/courses/courses-3.webp"
+    },
+    {
+      tag: "#Mathematics",
+      title: "Applied Mathematics (9–12)",
+      duration: "1 Year",
+      fee: "₹20,000",
+      slug: "applied-mathematics",
+      category: "Subject",
+      imageUrl: "/assets/images/courses/courses-4.webp"
+    }
+  ];
 
   useEffect(() => {
     setMounted(true);
@@ -264,57 +302,36 @@ export default function HomePage() {
           </div>
           <div className="courses-wrapper wow fadeInUpBig" data-wow-duration="1s" data-wow-delay="0.3s">
             <div className="row">
-              {courses === undefined ? (
-                // Loading skeletons
-                [...Array(4)].map((_, idx) => (
-                  <div key={idx} className="col-lg-3 col-sm-6 courses-col">
-                    <div className="single-courses-2 mt-30 animate-pulse">
-                      <div className="bg-gray-200 h-40 rounded-t-xl"></div>
-                      <div className="p-4 space-y-3">
-                        <div className="h-4 bg-gray-200 w-1/4 rounded"></div>
-                        <div className="h-6 bg-gray-200 w-3/4 rounded"></div>
-                        <div className="h-4 bg-gray-200 w-full rounded"></div>
+              {staticCourses.slice(0, 4).map((course, idx) => (
+                <div key={idx} className="col-lg-3 col-sm-6 courses-col">
+                  <div className="single-courses-2 mt-30 shadow-sm hover:shadow-xl transition-all duration-300">
+                    <div className="courses-image">
+                      <Link href={`/courses/${course.slug}`}>
+                        <img 
+                          src={course.imageUrl} 
+                          className="w-full h-40 object-cover" 
+                          alt={course.title} 
+                        />
+                      </Link>
+                    </div>
+                    <div className="courses-content">
+                      <span className="category !bg-[#01228D] !text-white px-2 py-1 rounded text-[10px] inline-block mb-2">{course.category}</span>
+                      <h4 className="courses-title">
+                        <Link href={`/courses/${course.slug}`}>{course.title}</Link>
+                      </h4>
+                      <div className="duration-rating">
+                        <div className="duration-fee">
+                          <p className="duration">Duration: <span>{course.duration}</span></p>
+                          <p className="fee">Fee: <span>{course.fee}</span></p>
+                        </div>
+                      </div>
+                      <div className="courses-link">
+                        <Link className="more" href={`/courses/${course.slug}`}>Details <i className="fas fa-chevron-right"></i></Link>
                       </div>
                     </div>
                   </div>
-                ))
-              ) : courses.length > 0 ? (
-                courses.slice(0, 4).map((course, idx) => (
-                  <div key={course._id} className="col-lg-3 col-sm-6 courses-col">
-                    <div className="single-courses-2 mt-30 shadow-sm hover:shadow-xl transition-all duration-300">
-                      <div className="courses-image">
-                        <Link href={`/courses/${course.slug}`}>
-                          <img 
-                            src={course.imageUrl || "/assets/images/courses/courses-1.webp"} 
-                            className="w-full h-40 object-cover" 
-                            alt={course.title} 
-                          />
-                        </Link>
-                      </div>
-                      <div className="courses-content">
-                        <span className="category !bg-[#01228D] !text-white px-2 py-1 rounded text-[10px] inline-block mb-2">{course.category}</span>
-                        <h4 className="courses-title">
-                          <Link href={`/courses/${course.slug}`}>{course.title}</Link>
-                        </h4>
-                        <div className="duration-rating">
-                          <div className="duration-fee">
-                            <p className="duration">Duration: <span>{course.duration}</span></p>
-                            <p className="fee">Fee: <span>₹{course.fee.toLocaleString()}</span></p>
-                          </div>
-                        </div>
-                        <div className="courses-link">
-                          <Link className="apply" href={`/courses/${course.slug}`}>Online Apply</Link>
-                          <Link className="more" href={`/courses/${course.slug}`}>Read more <i className="fas fa-chevron-right"></i></Link>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <div className="col-12 text-center py-5">
-                  <p>No courses available at the moment.</p>
                 </div>
-              )}
+              ))}
             </div>
           </div>
         </div>
@@ -384,48 +401,34 @@ export default function HomePage() {
           </div>
           <div className="courses-wrapper">
             <div className="row">
-              {courses === undefined ? (
-                // Loading skeletons
-                [...Array(6)].map((_, idx) => (
+              {staticCourses.map((course, idx) => {
+                const bgColors = ["#01228D", "#0C8B51", "#2F7AD5", "#27B8A7", "#EAB830", "#753B76"];
+                const bgColor = bgColors[idx % bgColors.length];
+                
+                return (
                   <div key={idx} className="col-lg-4 col-sm-6 courses-col">
-                    <div className="single-courses mt-30 animate-pulse bg-gray-100 h-64 rounded-xl"></div>
-                  </div>
-                ))
-              ) : courses.length > 0 ? (
-                courses.slice(0, 6).map((course, idx) => {
-                  const bgColors = ["#01228D", "#0C8B51", "#2F7AD5", "#27B8A7", "#EAB830", "#753B76"];
-                  const bgColor = bgColors[idx % bgColors.length];
-                  
-                  return (
-                    <div key={course._id} className="col-lg-4 col-sm-6 courses-col">
-                      <div className="single-courses mt-30 wow fadeInUpBig course-card-wrapper h-full" 
-                        style={{ backgroundColor: bgColor }}
-                      >
-                        <div className="courses-content flex flex-col h-full justify-between">
-                          <div>
-                            <span className="category">{course.category}</span>
-                            <h4 className="courses-title">
-                              <Link href={`/courses/${course.slug}`}>{course.title}</Link>
-                            </h4>
-                            <div className="duration-fee">
-                              <p className="duration">Duration: <span>{course.duration}</span></p>
-                              <p className="fee">Fee: <span>₹{course.fee.toLocaleString()}</span></p>
-                            </div>
+                    <div className="single-courses mt-30 wow fadeInUpBig course-card-wrapper h-full" 
+                      style={{ backgroundColor: bgColor }}
+                    >
+                      <div className="courses-content flex flex-col h-full justify-between">
+                        <div>
+                          <span className="category">{course.tag}</span>
+                          <h4 className="courses-title">
+                            <Link href={`/courses/${course.slug}`}>{course.title}</Link>
+                          </h4>
+                          <div className="duration-fee">
+                            <p className="duration">Duration: <span>{course.duration}</span></p>
+                            <p className="fee">Fee: <span>{course.fee}</span></p>
                           </div>
-                          <div className="courses-link">
-                            <Link className="apply" href={`/courses/${course.slug}`}>Online Apply</Link>
-                            <Link className="more" href={`/courses/${course.slug}`}>Read more <i className="fas fa-chevron-right"></i></Link>
-                          </div>
+                        </div>
+                        <div className="courses-link">
+                          <Link className="more" href={`/courses/${course.slug}`}>Details <i className="fas fa-chevron-right"></i></Link>
                         </div>
                       </div>
                     </div>
-                  );
-                })
-              ) : (
-                <div className="col-12 text-center py-5">
-                  <p>No courses found.</p>
-                </div>
-              )}
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

@@ -68,8 +68,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     {
       title: "Academic",
       items: [
-        { label: "Results", href: "/admin/results", icon: "fas fa-trophy", roles: ["super_admin", "admin", "operations"] },
-        { label: "Courses", href: "/admin/courses", icon: "fas fa-book-open", roles: ["super_admin", "admin", "operations"] },
         { label: "Announcements", href: "/admin/notices", icon: "fas fa-bullhorn", roles: ["super_admin", "admin", "operations"] },
       ]
     },
