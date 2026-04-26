@@ -74,7 +74,7 @@ export default function Header() {
                 {user ? (
                   <>
                     <span style={{ color: 'rgba(255,255,255,0.3)' }}>|</span>
-                    <span className="text-white" style={{ fontSize: '13px' }}>Hi, {user.name}</span>
+                    <Link href="/admin" className="text-white" style={{ fontSize: '13px', textDecoration: 'none' }}>Hi, {user.name}</Link>
                     <span style={{ color: 'rgba(255,255,255,0.3)' }}>|</span>
                     <button className="login bg-transparent border-0 p-0 text-white" style={{ fontSize: '13px' }} onClick={() => {
                       localStorage.removeItem("user_session");
