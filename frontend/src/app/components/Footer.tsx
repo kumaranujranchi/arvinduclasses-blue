@@ -80,19 +80,19 @@ export default function Footer() {
                   <div className="col-sm-7 col-12">
                     <h4 className="footer-title">Mobile App</h4>
                     <p className="text-white mb-15" style={{ fontSize: '13px', fontStyle: 'italic', opacity: 0.8 }}>Coming Soon on</p>
-                    <div className="app-badges d-flex flex-column gap-2">
-                      <div style={{ marginBottom: '8px' }}>
+                    <div className="app-badges d-flex flex-row gap-2 align-items-center flex-wrap">
+                      <div style={{ flex: '1', maxWidth: '130px' }}>
                         <img 
                           src="/assets/images/play-store-badge.png" 
                           alt="Get it on Google Play" 
-                          style={{ width: '150px', height: 'auto', borderRadius: '8px' }} 
+                          style={{ width: '100%', height: 'auto', borderRadius: '8px' }} 
                         />
                       </div>
-                      <div>
+                      <div style={{ flex: '1', maxWidth: '130px' }}>
                         <img 
                           src="/assets/images/app-store-badge.png" 
                           alt="Download on the App Store" 
-                          style={{ width: '150px', height: 'auto', borderRadius: '8px' }} 
+                          style={{ width: '100%', height: 'auto', borderRadius: '8px' }} 
                         />
                       </div>
                     </div>
