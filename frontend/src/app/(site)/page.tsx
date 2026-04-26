@@ -21,8 +21,9 @@ export default function HomePage() {
 
   useEffect(() => {
     const initSlick = () => {
-      if (typeof window !== "undefined" && (window as any).$) {
-        const $ = (window as any).$;
+      const win = window as any;
+      if (typeof window !== "undefined" && win.$ && win.$.fn && win.$.fn.slick) {
+        const $ = win.$;
 
         // Hero Slider
         if ($(".slider-active").length) {
@@ -505,16 +506,16 @@ export default function HomePage() {
       {/* ====== Campus Visit Ends ====== */}
       
       {/* ====== Trending Banners Start ====== */}
-      <section 
-        key={mounted && banners !== undefined ? "trending-ready" : "trending-loading"}
-        className="trending-banners-area pt-100 pb-100"
-      >
-        <div className="container">
-          <div className="section-title-2 text-center mb-40">
-            <h2 className="title" style={{ fontSize: '28px', fontWeight: '600' }}>What&apos;s Trending</h2>
-            <span className="line mx-auto"></span>
-          </div>
-          {mounted && banners && banners.length > 0 && (
+      {mounted && banners && banners.length > 0 && (
+        <section 
+          key="trending-banners-ready"
+          className="trending-banners-area pt-100 pb-100"
+        >
+          <div className="container">
+            <div className="section-title-2 text-center mb-40">
+              <h2 className="title" style={{ fontSize: '28px', fontWeight: '600' }}>What&apos;s Trending</h2>
+              <span className="line mx-auto"></span>
+            </div>
             <div className="trending-banner-active">
               {banners.map((banner) => (
                 <div key={banner._id + "-trending"} className="single-trending-banner px-2">
@@ -529,9 +530,9 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
-          )}
-        </div>
-      </section>
+          </div>
+        </section>
+      )}
       {/* ====== Trending Banners End ====== */}
 
       {/* ====== Counter ====== */}
