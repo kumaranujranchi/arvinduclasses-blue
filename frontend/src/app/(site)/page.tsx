@@ -425,22 +425,30 @@ export default function HomePage() {
                 
                 return (
                   <div key={idx} className="col-lg-4 col-md-6 col-sm-12 courses-col">
-                    <div className="single-courses mt-10 wow fadeInUpBig course-card-wrapper h-full !p-6 rounded-xl" 
-                      style={{ backgroundColor: bgColor }}
+                    <div className="single-courses mt-10 wow fadeInUpBig course-card-wrapper h-full rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100" 
                     >
-                      <div className="courses-content flex flex-col h-full justify-between">
+                      <div className="courses-image">
+                        <Link href={`/courses/${course.slug}`}>
+                          <img 
+                            src={course.imageUrl} 
+                            className="w-full h-44 object-cover" 
+                            alt={course.title} 
+                          />
+                        </Link>
+                      </div>
+                      <div className="courses-content flex flex-col h-full justify-between !p-6 text-white" style={{ backgroundColor: bgColor }}>
                         <div>
-                          <span className="category text-[11px] opacity-80 uppercase tracking-wider font-bold">{course.tag}</span>
+                          <span className="category text-[11px] opacity-90 uppercase tracking-wider font-bold">{course.tag}</span>
                           <h4 className="courses-title !text-[20px] !leading-tight !mt-2 !mb-4">
-                            <Link href={`/courses/${course.slug}`}>{course.title}</Link>
+                            <Link href={`/courses/${course.slug}`} className="text-white hover:text-white/80">{course.title}</Link>
                           </h4>
                           <div className="duration-fee !mb-0">
-                            <p className="duration text-sm">Duration: <span>{course.duration}</span></p>
-                            <p className="fee text-sm">Fee: <span>{course.fee}</span></p>
+                            <p className="duration text-sm text-white/90">Duration: <span className="text-white font-bold">{course.duration}</span></p>
+                            <p className="fee text-sm text-white/90">Fee: <span className="text-white font-bold">{course.fee}</span></p>
                           </div>
                         </div>
                         <div className="courses-link border-t border-white/20 pt-3 mt-4">
-                          <Link className="more text-sm font-bold flex items-center gap-2" href={`/courses/${course.slug}`}>
+                          <Link className="more text-sm font-bold flex items-center gap-2 text-white hover:text-white/80" href={`/courses/${course.slug}`}>
                             Details <i className="fas fa-chevron-right text-[10px]"></i>
                           </Link>
                         </div>
