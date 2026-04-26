@@ -505,26 +505,31 @@ export default function HomePage() {
       {/* ====== Campus Visit Ends ====== */}
       
       {/* ====== Trending Banners Start ====== */}
-      <section className="trending-banners-area pt-100 pb-100">
+      <section 
+        key={mounted && banners !== undefined ? "trending-ready" : "trending-loading"}
+        className="trending-banners-area pt-100 pb-100"
+      >
         <div className="container">
           <div className="section-title-2 text-center mb-40">
             <h2 className="title" style={{ fontSize: '28px', fontWeight: '600' }}>What&apos;s Trending</h2>
             <span className="line mx-auto"></span>
           </div>
-          <div className="trending-banner-active">
-            {banners && banners.length > 0 && banners.map((banner) => (
-              <div key={banner._id + "-trending"} className="single-trending-banner px-2">
-                <div className="trending-banner-img">
-                   <img 
-                    src={banner.imageUrl} 
-                    alt="Trending Banner" 
-                    className="w-full h-auto"
-                    style={{ borderRadius: '25px', boxShadow: '0 15px 45px rgba(0,0,0,0.12)', border: '1px solid #eee' }}
-                  />
+          {mounted && banners && banners.length > 0 && (
+            <div className="trending-banner-active">
+              {banners.map((banner) => (
+                <div key={banner._id + "-trending"} className="single-trending-banner px-2">
+                  <div className="trending-banner-img">
+                     <img 
+                      src={banner.imageUrl} 
+                      alt="Trending Banner" 
+                      className="w-full h-auto"
+                      style={{ borderRadius: '25px', boxShadow: '0 15px 45px rgba(0,0,0,0.12)', border: '1px solid #eee' }}
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
       {/* ====== Trending Banners End ====== */}
