@@ -134,10 +134,10 @@ export default function HomePage() {
 
       {/* ====== Slider ====== */}
       <section 
-        key={mounted && banners ? "banners-loaded" : "banners-loading"}
+        key={mounted && banners !== undefined ? "banners-ready" : "banners-loading"}
         className="slider-area slider-03 slider-active"
       >
-        {banners && banners.length > 0 ? (
+        {mounted && banners && banners.length > 0 ? (
           banners.map((banner, index) => (
             <div
               key={banner._id}
