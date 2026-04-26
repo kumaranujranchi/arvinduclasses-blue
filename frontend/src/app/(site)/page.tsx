@@ -321,29 +321,34 @@ export default function HomePage() {
           <div className="courses-wrapper wow fadeInUpBig" data-wow-duration="1s" data-wow-delay="0.3s">
             <div className="row">
               {staticCourses.slice(0, 4).map((course, idx) => {
-                const bgColors = ["#01228D", "#0C8B51", "#2F7AD5", "#27B8A7", "#EAB830", "#753B76"];
+                const bgColors = ["#01228D", "#0C8B51", "#2F7AD5", "#27B8A7"];
                 const bgColor = bgColors[idx % bgColors.length];
                 
                 return (
-                  <div key={idx} className="col-lg-3 col-sm-6 courses-col">
-                    <div className="single-courses mt-30 shadow-sm hover:shadow-xl transition-all duration-300 rounded-xl overflow-hidden" 
+                  <div key={idx} className="col-lg-3 col-md-6 col-sm-12 courses-col mb-4">
+                    <div className="single-courses mt-30 shadow-sm hover:shadow-xl transition-all duration-300 rounded-2xl !p-5 flex flex-col h-full text-white" 
+                      style={{ backgroundColor: bgColor }}
                     >
-                      <div className="courses-image">
+                      <div className="courses-image mb-4">
                         <Link href={`/courses/${course.slug}`}>
                           <img 
                             src={course.imageUrl} 
-                            className="w-full h-40 object-cover" 
+                            className="w-full h-40 object-cover rounded-xl border border-white/10" 
                             alt={course.title} 
                           />
                         </Link>
                       </div>
-                      <div className="courses-content !p-6 text-white" style={{ backgroundColor: bgColor }}>
-                        <span className="category text-[10px] opacity-90 uppercase tracking-wider font-bold mb-2 inline-block">{course.tag}</span>
-                        <h4 className="courses-title !text-white !text-[18px] !leading-tight !mb-4">
-                          <Link href={`/courses/${course.slug}`} className="text-white hover:text-white/80">{course.title}</Link>
-                        </h4>
-                        <div className="courses-link border-t border-white/20 pt-3">
-                          <Link className="more text-xs font-bold text-white hover:text-white/80" href={`/courses/${course.slug}`}>Details <i className="fas fa-chevron-right text-[8px]"></i></Link>
+                      <div className="courses-content flex flex-col flex-grow justify-between">
+                        <div>
+                          <span className="category text-[10px] opacity-80 uppercase tracking-wider font-bold mb-2 inline-block">{course.tag}</span>
+                          <h4 className="courses-title !text-white !text-[18px] !leading-tight !mb-6">
+                            <Link href={`/courses/${course.slug}`} className="text-white hover:text-white/80">{course.title}</Link>
+                          </h4>
+                        </div>
+                        <div className="courses-link border-t border-white/20 pt-4 mt-auto">
+                          <Link className="more text-sm font-bold text-white hover:text-white/80 flex items-center gap-2" href={`/courses/${course.slug}`}>
+                            Details <i className="fas fa-chevron-right text-[10px]"></i>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -430,17 +435,17 @@ export default function HomePage() {
                     >
                       <div className="courses-content flex flex-col h-full justify-between">
                         <div>
-                          <span className="category text-[11px] opacity-80 uppercase tracking-wider font-bold text-white">{course.tag}</span>
+                          <span className="category text-[11px] opacity-80 uppercase tracking-wider font-bold">{course.tag}</span>
                           <h4 className="courses-title !text-[20px] !leading-tight !mt-2 !mb-4">
-                            <Link href={`/courses/${course.slug}`} className="text-white hover:text-white/80">{course.title}</Link>
+                            <Link href={`/courses/${course.slug}`}>{course.title}</Link>
                           </h4>
-                          <div className="duration-fee !mb-0 text-white">
-                            <p className="duration text-sm opacity-90">Duration: <span className="font-bold">{course.duration}</span></p>
-                            <p className="fee text-sm opacity-90">Fee: <span className="font-bold">{course.fee}</span></p>
+                          <div className="duration-fee !mb-0">
+                            <p className="duration text-sm">Duration: <span>{course.duration}</span></p>
+                            <p className="fee text-sm">Fee: <span>{course.fee}</span></p>
                           </div>
                         </div>
                         <div className="courses-link border-t border-white/20 pt-3 mt-4">
-                          <Link className="more text-sm font-bold flex items-center gap-2 text-white hover:text-white/80" href={`/courses/${course.slug}`}>
+                          <Link className="more text-sm font-bold flex items-center gap-2" href={`/courses/${course.slug}`}>
                             Details <i className="fas fa-chevron-right text-[10px]"></i>
                           </Link>
                         </div>
