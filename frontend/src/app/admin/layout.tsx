@@ -72,6 +72,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         { label: "Courses", href: "/admin/courses", icon: "fas fa-book-open", roles: ["super_admin", "admin", "operations"] },
         { label: "Announcements", href: "/admin/notices", icon: "fas fa-bullhorn", roles: ["super_admin", "admin", "operations"] },
       ]
+    },
+    {
+      title: "External",
+      items: [
+        { label: "Go to Website", href: "/", icon: "fas fa-external-link-alt", roles: ["super_admin", "admin", "teacher", "counsellor", "accounts", "sales", "operations"] },
+      ]
     }
   ];
 
@@ -272,6 +278,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             </div>
 
             <div className="flex items-center gap-3">
+              {/* Go to Website link */}
+              <Link href="/" className="hidden md:flex items-center gap-2 px-4 py-1.5 bg-white text-[#01228D] rounded-full text-xs font-bold border border-blue-100 hover:bg-blue-50 transition-all no-underline shadow-sm">
+                <i className="fas fa-external-link-alt"></i>
+                <span>Go to Website</span>
+              </Link>
               {/* Greeting pill */}
               <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold" style={{background:'linear-gradient(135deg,#f0f4ff,#e0e7ff)',color:'#4f46e5'}}>
                 <i className="fas fa-bolt text-yellow-400"></i>
