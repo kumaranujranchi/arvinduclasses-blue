@@ -22,7 +22,11 @@ export default function HomePage() {
         const $ = window.$;
 
         // Hero Slider
-        if ($(".slider-active").length && !$(".slider-active").hasClass("slick-initialized")) {
+        if ($(".slider-active").length) {
+          if ($(".slider-active").hasClass("slick-initialized")) {
+            $(".slider-active").slick("unslick");
+          }
+
           function doAnimations(elements: any) {
             var animationEndEvents = "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend";
             elements.each(function (this: HTMLElement) {
