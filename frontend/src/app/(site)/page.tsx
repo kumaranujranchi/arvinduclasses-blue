@@ -307,59 +307,6 @@ export default function HomePage() {
       </section>
       {/* ====== About Ends ====== */}
 
-      {/* ====== Top Course (with images) Start ====== */}
-      <section className="top-courses-area">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-8">
-              <div className="section-title mt-10">
-                <h2 className="title">Here is our <br /> Top Courses</h2>
-                <p>Explore our most popular coaching programs designed for competitive exam success.</p>
-              </div>
-            </div>
-          </div>
-          <div className="courses-wrapper wow fadeInUpBig" data-wow-duration="1s" data-wow-delay="0.3s">
-            <div className="row">
-              {staticCourses.slice(0, 4).map((course, idx) => {
-                const bgColors = ["#01228D", "#0C8B51", "#2F7AD5", "#27B8A7"];
-                const bgColor = bgColors[idx % bgColors.length];
-                
-                return (
-                  <div key={idx} className="col-lg-3 col-md-6 col-sm-12 courses-col mb-4">
-                    <div className="single-courses mt-30 shadow-sm hover:shadow-xl transition-all duration-300 rounded-2xl flex flex-col h-full text-white overflow-hidden border border-white/10" 
-                      style={{ backgroundColor: bgColor }}
-                    >
-                      <div className="courses-image h-48 w-full">
-                        <Link href={`/courses/${course.slug}`} className="block h-full w-full">
-                          <img 
-                            src={course.imageUrl} 
-                            className="w-full h-full object-cover" 
-                            alt={course.title} 
-                          />
-                        </Link>
-                      </div>
-                      <div className="courses-content flex flex-col flex-grow justify-between p-6">
-                        <div>
-                          <span className="category text-[10px] opacity-80 uppercase tracking-wider font-bold mb-2 inline-block">{course.tag}</span>
-                          <h4 className="courses-title !text-white !text-[18px] !leading-tight !mb-6">
-                            <Link href={`/courses/${course.slug}`} className="text-white hover:text-white/80">{course.title}</Link>
-                          </h4>
-                        </div>
-                        <div className="courses-link border-t border-white/20 pt-4 mt-auto">
-                          <Link className="more text-sm font-bold text-white hover:text-white/80 flex items-center gap-2" href={`/courses/${course.slug}`}>
-                            Details <i className="fas fa-chevron-right text-[10px]"></i>
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* ====== Top Course Ends ====== */}
 
       {/* ====== Features Start ====== */}
       <div className="features-area-2">
