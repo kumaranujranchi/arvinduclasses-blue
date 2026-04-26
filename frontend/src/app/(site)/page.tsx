@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -10,9 +10,14 @@ import { useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 
 export default function HomePage() {
+  const [mounted, setMounted] = useState(false);
   const banners = useQuery(api.banners.getBanners, { onlyActive: true });
   const posts = useQuery(api.posts.getPublishedPosts, { limit: 6 });
   const courses = useQuery(api.courses.getAll);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const initSlick = () => {
@@ -120,7 +125,7 @@ export default function HomePage() {
       }
     };
     initSlick();
-  }, [banners, posts]);
+  }, [banners, posts, mounted]);
 
   return (
     <>
@@ -128,7 +133,10 @@ export default function HomePage() {
       <Header />
 
       {/* ====== Slider ====== */}
-      <section className="slider-area slider-03 slider-active">
+      <section 
+        key={mounted && banners ? "banners-loaded" : "banners-loading"}
+        className="slider-area slider-03 slider-active"
+      >
         {banners && banners.length > 0 ? (
           banners.map((banner, index) => (
             <div
