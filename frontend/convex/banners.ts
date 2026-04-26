@@ -80,8 +80,8 @@ export const updateBanner = mutation({
 export const deleteBanner = mutation({
   args: {
     id: v.id("banners"),
-    adminId: v.string(),
-    adminName: v.string(),
+    adminId: v.optional(v.string()),
+    adminName: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
     const banner = await ctx.db.get(args.id);
@@ -90,8 +90,8 @@ export const deleteBanner = mutation({
     await ctx.db.delete(args.id);
 
     await ctx.db.insert("activityLog", {
-      userId: args.adminId,
-      userName: args.adminName,
+      userId: args.adminId ?? "system",
+      userName: args.adminName ?? "System Admin",
       action: "DELETE",
       module: "BANNERS",
       description: `Deleted banner: ${banner.title}`,
@@ -104,8 +104,8 @@ export const toggleBannerStatus = mutation({
   args: {
     id: v.id("banners"),
     isActive: v.boolean(),
-    adminId: v.string(),
-    adminName: v.string(),
+    adminId: v.optional(v.string()),
+    adminName: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
     const banner = await ctx.db.get(args.id);
@@ -114,8 +114,8 @@ export const toggleBannerStatus = mutation({
     await ctx.db.patch(args.id, { isActive: args.isActive });
 
     await ctx.db.insert("activityLog", {
-      userId: args.adminId,
-      userName: args.adminName,
+      userId: args.adminId ?? "system",
+      userName: args.adminName ?? "System Admin",
       action: "UPDATE",
       module: "BANNERS",
       description: `${args.isActive ? "Enabled" : "Disabled"} banner: ${banner.title}`,
