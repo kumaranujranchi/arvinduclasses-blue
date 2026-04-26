@@ -616,8 +616,8 @@ export default function HomePage() {
               <div className="row-wrapper blog-active">
                 {posts.map((post) => (
                   <div key={post._id} className="custom-col">
-                    <div className="single-blog mt-30">
-                      <div className="blog-image">
+                    <div className="single-blog mt-30" style={{ borderRadius: '15px', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.05)' }}>
+                      <div className="blog-image" style={{ borderRadius: '15px 15px 0 0', overflow: 'hidden' }}>
                         <Link href={`/blog/${post.slug}`}>
                           <img 
                             src={post.imageUrl || "/assets/images/blog-1.webp"} 
@@ -628,7 +628,7 @@ export default function HomePage() {
                           />
                         </Link>
                       </div>
-                      <div className="blog-content">
+                      <div className="blog-content" style={{ padding: '25px', backgroundColor: '#f9f9f9' }}>
                         <ul className="meta">
                           <li>
                             <a href="#">
