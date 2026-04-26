@@ -1195,11 +1195,46 @@ html {
 @media (max-width: 767px) { .single-slider { min-height: 350px; } }
 
 /* Trending Banners Styles */
-.trending-banners-area { background-color: #f8f9fa; }
+.trending-banners-area { background-color: #fdfdfd; }
 .single-trending-banner { outline: none; }
 .trending-banner-img img { display: block; margin: 0 auto; transition: transform 0.3s ease; }
-.trending-banner-active .slick-dots { bottom: -40px; }
-.trending-banner-active .slick-dots li button:before { font-size: 12px; color: #07294d; }
+
+/* Custom Slick Dots for Trending Section */
+.trending-banner-active .slick-dots {
+  display: flex !important;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 30px 0 0 0;
+  position: relative;
+  bottom: 0;
+}
+
+.trending-banner-active .slick-dots li {
+  margin: 0 4px;
+}
+
+.trending-banner-active .slick-dots li button {
+  font-size: 0;
+  line-height: 0;
+  display: block;
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  cursor: pointer;
+  color: transparent;
+  border: 0;
+  outline: none;
+  background: #cbd5e1;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.trending-banner-active .slick-dots li.slick-active button {
+  background: #07294d;
+  width: 30px;
+  border-radius: 5px;
+}
 .mt-minus-45 { margin-top: -45px; }
 .home-counter-bg {
   background-color: #07294d !important;
