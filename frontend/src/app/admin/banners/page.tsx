@@ -85,9 +85,10 @@ export default function BannersManagement() {
         console.log("Starting image compression...");
         // 1. Compression
         const options = {
-          maxSizeMB: 0.8,
-          maxWidthOrHeight: 1920,
+          maxSizeMB: 2,
+          maxWidthOrHeight: 2560,
           useWebWorker: true,
+          initialQuality: 0.9,
         };
         const compressedFile = await imageCompression(selectedFile, options);
         console.log("Compression complete. Size:", compressedFile.size);
