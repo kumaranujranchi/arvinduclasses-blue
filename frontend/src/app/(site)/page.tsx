@@ -504,6 +504,8 @@ export default function HomePage() {
       )}
       {/* ====== Trending Banners End ====== */}
 
+      <FeatureScrolling />
+
       {/* ====== Counter ====== */}
       <div className="counter-area-2">
         <div className="container">
@@ -530,8 +532,6 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-
-      <FeatureScrolling />
 
       {/* ====== Testimonials Start ====== */}
       <section className="testimonials-area">
