@@ -59,23 +59,36 @@ export default function Footer() {
             <div className="col-md-3 col-12">
               <div className="footer-link mt-45">
                 <h4 className="footer-title">Mobile App</h4>
-                <p className="text-white mb-10" style={{ fontSize: '14px' }}>Mobile App is coming Soon</p>
-                <div className="app-badges mb-20">
-                  <img src="/assets/images/app-store-badges.png" alt="App Store & Play Store" style={{ width: '100%', maxWidth: '200px', height: 'auto' }} />
+                <p className="text-white mb-15" style={{ fontSize: '13px', fontStyle: 'italic', opacity: 0.8 }}>Coming Soon on</p>
+                <div className="app-badges mb-30">
+                  <div style={{ marginBottom: '10px' }}>
+                    <img 
+                      src="/assets/images/play-store-badge.png" 
+                      alt="Get it on Google Play" 
+                      style={{ width: '160px', height: 'auto', borderRadius: '8px', transition: 'transform 0.3s' }} 
+                    />
+                  </div>
+                  <div>
+                    <img 
+                      src="/assets/images/app-store-badge.png" 
+                      alt="Download on the App Store" 
+                      style={{ width: '160px', height: 'auto', borderRadius: '8px', transition: 'transform 0.3s' }} 
+                    />
+                  </div>
                 </div>
-                <h4 className="footer-title mt-30">Certification</h4>
-                <div className="certification-logo">
+                <h4 className="footer-title mt-20">Certified by</h4>
+                <div className="certification-card" style={{ 
+                  backgroundColor: '#fff', 
+                  padding: '15px', 
+                  borderRadius: '12px', 
+                  display: 'inline-block',
+                  boxShadow: '0 8px 25px rgba(0,0,0,0.2)',
+                  marginTop: '5px'
+                }}>
                   <img 
-                    src="/assets/images/iso-logo.png" 
-                    alt="ISO Certified" 
-                    style={{ 
-                      width: '140px', 
-                      height: 'auto', 
-                      backgroundColor: 'rgba(255,255,255,0.95)', 
-                      padding: '10px', 
-                      borderRadius: '8px',
-                      boxShadow: '0 4px 15px rgba(0,0,0,0.1)'
-                    }} 
+                    src="/assets/images/iso-logo-v2.png" 
+                    alt="ISO 27001:2022 Certified" 
+                    style={{ width: '130px', height: 'auto' }} 
                   />
                 </div>
               </div>
