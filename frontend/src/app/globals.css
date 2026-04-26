@@ -1186,18 +1186,20 @@ html {
 .course-cta-desc { color: rgba(255,255,255,0.95); font-size: 18px; margin-top: 10px; }
 .course-cta-btn { border-radius: 12px; background: #fff !important; color: #01228D !important; border: none; height: 55px; line-height: 55px; padding: 0 35px; font-size: 16px; fontWeight: 700; }
 
-.home-slider-bg-1 { background-image: url(/assets/images/homepage1.png) !important; }
-.home-slider-bg-2 { background-image: url(/assets/images/homepage2.png) !important; }
+.home-slider-bg-1 { background-image: linear-gradient(rgba(7, 41, 77, 0.7), rgba(7, 41, 77, 0.7)), url(/assets/images/homepage1.png) !important; }
+.home-slider-bg-2 { background-image: linear-gradient(rgba(7, 41, 77, 0.7), rgba(7, 41, 77, 0.7)), url(/assets/images/homepage2.png) !important; }
 .single-slider { 
   min-height: 800px; 
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transform: translateZ(0) scale(1.0, 1.0);
 }
 @media (max-width: 991px) { .single-slider { min-height: 500px; } }
 @media (max-width: 767px) { .single-slider { min-height: 350px; } }
+
+/* Trending Banners Styles */
+.trending-banners-area { background-color: #f8f9fa; }
+.single-trending-banner { outline: none; }
+.trending-banner-img img { display: block; margin: 0 auto; transition: transform 0.3s ease; }
+.trending-banner-active .slick-dots { bottom: -40px; }
+.trending-banner-active .slick-dots li button:before { font-size: 12px; color: #07294d; }
 .mt-minus-45 { margin-top: -45px; }
 .home-counter-bg {
   background-color: #07294d !important;

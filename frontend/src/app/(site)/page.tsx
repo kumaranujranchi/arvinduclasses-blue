@@ -122,6 +122,22 @@ export default function HomePage() {
         }
       } else {
         setTimeout(initSlick, 50);
+        // Trending Banners
+        if ($(".trending-banner-active").length) {
+          if ($(".trending-banner-active").hasClass("slick-initialized")) {
+            $(".trending-banner-active").slick("unslick");
+          }
+          $(".trending-banner-active").slick({
+            dots: true,
+            infinite: true,
+            speed: 800,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 5000,
+            arrows: false,
+          });
+        }
       }
     };
     initSlick();
@@ -141,58 +157,76 @@ export default function HomePage() {
           banners.map((banner, index) => (
             <div
               key={banner._id}
-              className="single-slider d-flex align-items-center"
-              style={{ position: 'relative', overflow: 'hidden' }}
+              className="single-slider d-flex align-items-center bg_cover"
+              style={{ 
+                backgroundImage: `linear-gradient(rgba(7, 41, 77, 0.7), rgba(7, 41, 77, 0.7)), url(${banner.imageUrl})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+              }}
             >
-              <img 
-                src={banner.imageUrl} 
-                alt="Banner" 
-                style={{ 
-                  width: '100%', 
-                  height: '100%', 
-                  objectFit: 'cover', 
-                  position: 'absolute', 
-                  top: 0, 
-                  left: 0 
-                }}
-              />
+              <div className="container">
+                <div className="slider-content slider-content-3 text-center">
+                  <h2 className="title" data-animation="fadeInUp" data-delay="0.2s">
+                    {banner.title}
+                  </h2>
+                  {banner.subtitle && (
+                    <p className="text-white mb-30" data-animation="fadeInUp" data-delay="0.4s">
+                      {banner.subtitle}
+                    </p>
+                  )}
+                  <ul className="slider-btn">
+                    <li>
+                      <a 
+                        data-animation="fadeInUp" 
+                        data-delay="0.6s" 
+                        className="main-btn main-btn-2" 
+                        href={banner.buttonLink || "/courses"}
+                      >
+                        {banner.buttonText || "View Courses"}
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           ))
         ) : (
           <>
             <div
-              className="single-slider d-flex align-items-center home-slider-bg-1"
-              style={{ position: 'relative', overflow: 'hidden' }}
+              className="single-slider d-flex align-items-center bg_cover home-slider-bg-1"
             >
-               <img 
-                src="/assets/images/homepage1.png" 
-                alt="Banner" 
-                style={{ 
-                  width: '100%', 
-                  height: '100%', 
-                  objectFit: 'cover', 
-                  position: 'absolute', 
-                  top: 0, 
-                  left: 0 
-                }}
-              />
+              <div className="container">
+                <div className="slider-content slider-content-3 text-center">
+                  <h2 className="title" data-animation="fadeInUp" data-delay="0.2s">
+                    Education is the power of Humanity
+                  </h2>
+                  <ul className="slider-btn">
+                    <li>
+                      <a data-animation="fadeInUp" data-delay="0.6s" className="main-btn main-btn-2" href="/courses">
+                        View Courses
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
             <div
-              className="single-slider d-flex align-items-center home-slider-bg-2"
-              style={{ position: 'relative', overflow: 'hidden' }}
+              className="single-slider d-flex align-items-center bg_cover home-slider-bg-2"
             >
-               <img 
-                src="/assets/images/homepage2.png" 
-                alt="Banner" 
-                style={{ 
-                  width: '100%', 
-                  height: '100%', 
-                  objectFit: 'cover', 
-                  position: 'absolute', 
-                  top: 0, 
-                  left: 0 
-                }}
-              />
+              <div className="container">
+                <div className="slider-content slider-content-3 text-center">
+                  <h2 className="title" data-animation="fadeInUp" data-delay="0.2s">
+                    Best Educational Environment for Your Success
+                  </h2>
+                  <ul className="slider-btn">
+                    <li>
+                      <a data-animation="fadeInUp" data-delay="0.6s" className="main-btn main-btn-2" href="/courses">
+                        View Courses
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </>
         )}
@@ -470,6 +504,31 @@ export default function HomePage() {
         </div>
       </section>
       {/* ====== Campus Visit Ends ====== */}
+      
+      {/* ====== Trending Banners Start ====== */}
+      <section className="trending-banners-area pt-100 pb-100">
+        <div className="container">
+          <div className="section-title-2 text-center mb-40">
+            <h2 className="title" style={{ fontSize: '28px', fontWeight: '600' }}>What&apos;s Trending</h2>
+            <span className="line mx-auto"></span>
+          </div>
+          <div className="trending-banner-active">
+            {banners && banners.length > 0 && banners.map((banner) => (
+              <div key={banner._id + "-trending"} className="single-trending-banner px-2">
+                <div className="trending-banner-img">
+                   <img 
+                    src={banner.imageUrl} 
+                    alt="Trending Banner" 
+                    className="w-full h-auto"
+                    style={{ borderRadius: '25px', boxShadow: '0 15px 45px rgba(0,0,0,0.12)', border: '1px solid #eee' }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      {/* ====== Trending Banners End ====== */}
 
       {/* ====== Counter ====== */}
       <div className="counter-area-2">
