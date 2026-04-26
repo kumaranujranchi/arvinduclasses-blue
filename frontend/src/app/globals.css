@@ -1188,7 +1188,14 @@ html {
 
 .home-slider-bg-1 { background-image: url(/assets/images/homepage1.png) !important; }
 .home-slider-bg-2 { background-image: url(/assets/images/homepage2.png) !important; }
-.single-slider { min-height: 800px; }
+.single-slider { 
+  min-height: 800px; 
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0) scale(1.0, 1.0);
+}
 @media (max-width: 991px) { .single-slider { min-height: 500px; } }
 @media (max-width: 767px) { .single-slider { min-height: 350px; } }
 .mt-minus-45 { margin-top: -45px; }
