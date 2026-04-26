@@ -167,6 +167,11 @@ export default function HomePage() {
                     View Courses
                   </a>
                 </li>
+                <li>
+                  <a data-animation="fadeInUp" data-delay="1s" className="main-btn" href="/about">
+                    Learn more
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
@@ -183,6 +188,11 @@ export default function HomePage() {
                 <li>
                   <a data-animation="fadeInUp" data-delay="0.6s" className="main-btn main-btn-2" href="/courses">
                     View Courses
+                  </a>
+                </li>
+                <li>
+                  <a data-animation="fadeInUp" data-delay="1s" className="main-btn" href="/about">
+                    Learn more
                   </a>
                 </li>
               </ul>
