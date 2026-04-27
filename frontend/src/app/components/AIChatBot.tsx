@@ -119,10 +119,13 @@ export default function AIChatBot() {
 
       console.log("API Key Debug (first 4):", API_KEY.trim().substring(0, 4));
       const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${API_KEY.trim()}`,
+        `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent`,
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: { 
+            "Content-Type": "application/json",
+            "x-goog-api-key": API_KEY.trim()
+          },
           body: JSON.stringify({
             contents: [
               { role: "user", parts: [{ text: `Instructions: ${currentSystemInstruction}` }] },
