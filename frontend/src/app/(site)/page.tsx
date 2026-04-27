@@ -40,7 +40,7 @@ export default function HomePage() {
       fee: "₹40,000",
       slug: "commerce-program",
       category: "College",
-      imageUrl: "/assets/images/courses/course-commerce.png"
+      imageUrl: "/assets/images/Commerce Program (Class 11–12).png"
     },
     {
       tag: "#Mathematics",

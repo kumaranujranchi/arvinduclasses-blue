@@ -70,7 +70,7 @@ export default function CommerceProgramPage() {
             <div className="col-lg-8">
               <div className="courses-details-content">
                 <div className="image wow zoomIn" data-wow-duration="1s">
-                   <img src="/assets/images/courses-details.webp" className="course-detail-img" alt="Commerce Program Details" />
+                   <img src="/assets/images/Commerce Program (Class 11–12).png" className="course-detail-img" alt="Commerce Program Details" />
                 </div>
 
                 <div className="content-box mt-50 wow fadeInUp">

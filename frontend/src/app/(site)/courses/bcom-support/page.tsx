@@ -11,7 +11,7 @@ const relatedCourses = [
   {
     title: "Commerce Program (11–12)",
     fee: "₹40,000",
-    image: "/assets/images/homepage2.png",
+    image: "/assets/images/Commerce Program (Class 11–12).png",
     slug: "/courses/commerce-program",
     color: "#0C8B51"
   },
