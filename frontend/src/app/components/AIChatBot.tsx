@@ -58,7 +58,13 @@ export default function AIChatBot() {
     const saved = sessionStorage.getItem("arvindu_chat_history");
     if (saved) {
       try {
-        setMessages(JSON.parse(saved));
+        const parsed = JSON.parse(saved);
+        // Robust mapping: Convert any legacy 'model' roles to 'assistant'
+        const upgraded = parsed.map((m: any) => ({
+          role: m.role === "model" ? "assistant" : m.role,
+          text: m.text
+        }));
+        setMessages(upgraded);
       } catch (e) {
         setMessages([{ role: "assistant", text: "Hello! I am Arvindu AI. How can I help you today?" }]);
       }
