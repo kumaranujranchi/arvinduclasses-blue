@@ -67,7 +67,7 @@ export default function HomePage() {
       fee: "₹45,000",
       slug: "bcom-support",
       category: "Degree",
-      imageUrl: "/assets/images/courses/courses-6.webp"
+      imageUrl: "/assets/images/B.Com Academic Support.png"
     }
   ];
 

@@ -25,7 +25,7 @@ const relatedCourses = [
   {
     title: "B.Com Academic Support",
     fee: "₹45,000",
-    image: "/assets/images/homepage2.png",
+    image: "/assets/images/B.Com Academic Support.png",
     slug: "#",
     color: "#0C8B51"
   }

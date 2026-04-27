@@ -70,7 +70,7 @@ export default function BComSupportPage() {
             <div className="col-lg-8">
               <div className="courses-details-content">
                 <div className="image wow zoomIn" data-wow-duration="1s">
-                   <img src="/assets/images/courses-details.webp" className="course-detail-img" alt="B.Com Support Details" />
+                   <img src="/assets/images/B.Com Academic Support.png" className="course-detail-img" alt="B.Com Support Details" />
                 </div>
 
                 <div className="content-box mt-50 wow fadeInUp">
