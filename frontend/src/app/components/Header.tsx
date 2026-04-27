@@ -119,16 +119,6 @@ export default function Header() {
                         <div className={`mega-menu ${isHovered ? "show" : ""}`}>
                           <div className="container">
                             <div className="row py-5">
-                              <div className="col-12 mb-4">
-                                <div className="d-flex align-items-center mb-2">
-                                  <div className="me-3 p-2 rounded" style={{ backgroundColor: '#FFF4E5', color: '#FF9E2C' }}>
-                                    <i className="fas fa-bookmark"></i>
-                                  </div>
-                                  <h2 className="m-0 font-weight-bold text-dark" style={{ fontSize: '28px', letterSpacing: '-0.5px' }}>Our Programs</h2>
-                                </div>
-                                <p className="text-muted mb-0" style={{ fontSize: '15px' }}>Discover our curated programs designed to help students learn, grow, and achieve their goals.</p>
-                              </div>
-                              
                               {courses.map((course, idx) => (
                                 <div key={idx} className="col-lg-4 mb-4">
                                   <Link href={`/courses/${course.slug}`} className="mega-course-card-premium d-flex align-items-center p-4 rounded-2xl border border-light" style={{ '--blob-color': `${course.color}15` } as any}>
