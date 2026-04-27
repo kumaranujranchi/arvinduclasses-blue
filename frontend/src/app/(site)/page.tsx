@@ -370,7 +370,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="courses-wrapper">
-            <div className="row g-4">
+            <div className="row g-4 mobile-horizontal-scroll">
               {staticCourses.map((course, idx) => {
                 const bgColors = ["#01228D", "#0C8B51", "#2F7AD5", "#27B8A7", "#EAB830", "#753B76"];
                 const bgColor = bgColors[idx % bgColors.length];

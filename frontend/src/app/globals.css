@@ -2253,4 +2253,33 @@ html {
     }
 }
 
+/* Mobile Horizontal Scroll for Courses */
+@media (max-width: 767px) {
+  .mobile-horizontal-scroll {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    padding-bottom: 30px !important;
+    padding-top: 10px !important;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    gap: 20px !important;
+    margin-left: -15px !important;
+    margin-right: -15px !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+  .mobile-horizontal-scroll .courses-col {
+    flex: 0 0 88% !important;
+    max-width: 88% !important;
+    scroll-snap-align: center;
+    margin-top: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .mobile-horizontal-scroll::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 
