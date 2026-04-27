@@ -336,9 +336,6 @@ export default function AIChatBot() {
           .chat-window input {
             font-size: 16px !important;
           }
-          .chatbot-bubble {
-            display: none !important; /* Hide bubble when chat is open in full screen */
-          }
           .chatbot-bubble.is-open {
             display: none !important;
           }
