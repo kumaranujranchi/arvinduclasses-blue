@@ -2283,3 +2283,8 @@ html {
 }
 
 
+
+/* Hide Back to Top button as requested */
+.back-to-top {
+  display: none !important;
+}
