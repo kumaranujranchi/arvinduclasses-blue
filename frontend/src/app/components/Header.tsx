@@ -153,6 +153,11 @@ export default function Header() {
                                   </Link>
                                 </div>
                               ))}
+                              <div className="col-12 mt-3 text-center">
+                                <Link href="/courses" className="main-btn btn-sm py-2 px-4" style={{ borderRadius: '50px', fontSize: '14px' }}>
+                                  View All Courses <i className="fas fa-arrow-right ms-2"></i>
+                                </Link>
+                              </div>
                             </div>
                           </div>
                         </div>
