@@ -96,25 +96,25 @@ export default function AIChatBot() {
         throw new Error("Gemini API Key is missing. Please add NEXT_PUBLIC_GEMINI_API_KEY to your environment variables.");
       }
 
-      // Create a context of available blogs to help the AI suggest links
+      // Create a context of available blogs (limit to latest 10 to save tokens and speed up)
       const blogContext = blogs 
-        ? "\n\nAvailable Blog Posts (Suggest these links if relevant to the user's question):\n" + 
-          blogs.map(b => `- ${b.title}: /blog/${b.slug}`).join("\n")
+        ? "\n\nAvailable Blog Posts (Suggest these links if relevant):\n" + 
+          blogs.slice(0, 10).map(b => `- ${b.title}: /blog/${b.slug}`).join("\n")
         : "";
 
       const currentSystemInstruction = systemInstruction + blogContext;
 
-      // Prepare messages for Gemini API
-      // First model message is usually not in history, so we handle it
+      // Prepare history for Gemini API (limit to last 15 messages for speed)
       const history = messages
-        .slice(1) // skip the initial "Hello" model message
+        .slice(-15) // Only last 15 messages
+        .filter(m => m !== messages[0]) // skip the very first one if it's still in the slice
         .map((m) => ({
           role: m.role === "user" ? "user" : "model",
           parts: [{ text: m.text }],
         }));
 
       const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${API_KEY}`,
+        `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${API_KEY}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -124,7 +124,7 @@ export default function AIChatBot() {
             },
             contents: [...history, { role: "user", parts: [{ text: input }] }],
             generationConfig: {
-              temperature: 0.1, // Lower temperature for more factual responses
+              temperature: 0.1,
               maxOutputTokens: 800,
             },
           }),
