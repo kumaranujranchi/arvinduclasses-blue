@@ -261,54 +261,6 @@ export default function AIChatBot() {
           </form>
         </div>
       )}
-      <style jsx>{`
-        .markdown-content :global(p) { margin-bottom: 8px; }
-        .markdown-content :global(p:last-child) { margin-bottom: 0; }
-        .markdown-content :global(ul), .markdown-content :global(ol) { padding-left: 15px; margin-bottom: 8px; }
-        .markdown-content :global(li) { margin-bottom: 4px; }
-        .markdown-content :global(strong) { font-weight: 700; }
-        @media (max-width: 768px) {
-          .chat-window { 
-            top: 0 !important; 
-            left: 0 !important; 
-            right: 0 !important; 
-            bottom: 0 !important; 
-            width: 100vw !important; 
-            height: 100dvh !important; 
-            max-width: none !important; 
-            max-height: 100dvh !important; 
-            border-radius: 0 !important; 
-            z-index: 2000000 !important; 
-            display: flex !important;
-            flex-direction: column !important;
-          }
-          .chat-window input { font-size: 16px !important; }
-          .chatbot-bubble.is-open { display: none !important; }
-          .hide-on-mobile { display: none !important; }
-          .pb-safe { 
-            padding-bottom: env(safe-area-inset-bottom, 10px) !important; 
-            background: white;
-            position: sticky;
-            bottom: 0;
-          }
-          .chat-header { 
-            padding-top: env(safe-area-inset-top, 10px) !important; 
-            height: auto !important; 
-            min-height: 50px; 
-          }
-          .chatbot-messages-area {
-            flex: 1;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-          }
-          .chatbot-bubble {
-            bottom: 20px !important;
-            right: 20px !important;
-            width: 50px !important;
-            height: 50px !important;
-          }
-        }
-      `}</style>
     </div>
   );
 }

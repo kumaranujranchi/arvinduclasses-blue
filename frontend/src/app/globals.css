@@ -368,92 +368,161 @@ html, body {
   font-size: 10px;
 }
 
+/* =========================================
+   PREMIUM MEGA MENU STYLES
+   ========================================= */
 .mega-menu {
   position: absolute;
   top: 100%;
   left: 0;
   width: 100%;
   background: #fff;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-  border-top: 2px solid #ffc600;
-  z-index: 999;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  transform: translateY(20px);
-  transition: all 0.3s ease;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+  border-top: 3px solid #ffc600;
+  z-index: 9999;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
 }
 
 .mega-menu.show {
-  visibility: visible !important;
-  opacity: 1 !important;
+  visibility: visible;
+  opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
 }
 
-.mega-menu-title {
-  font-size: 18px;
-  color: #07294d;
-  font-weight: 700;
+.mega-course-card-premium {
+  background: radial-gradient(circle at top right, var(--blob-color) 0%, #fff 60%);
+  border: 1px solid #f3f3f3 !important;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+  text-decoration: none !important;
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  border-radius: 1rem;
 }
 
-.mega-course-card {
-  text-decoration: none;
-  background: #f8f9fa;
-  transition: all 0.3s ease;
-  border: 1px solid transparent;
-  opacity: 0;
-  transform: translateY(15px);
+.mega-course-card-premium:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+  border-color: transparent !important;
 }
 
-.mega-menu.show .mega-course-card {
-  animation: slideUp 0.4s ease forwards;
-  animation-delay: var(--delay);
-}
-
-.mega-course-card:hover {
-  background: #fff;
-  border-color: #ffc600;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-  transform: translateY(-3px) !important;
-}
-
-.mega-course-card .course-info h6 {
-  font-size: 14px;
-  line-height: 1.4;
-  transition: color 0.3s ease;
-}
-
-.mega-course-card:hover .course-info h6 {
-  color: #ffc600 !important;
-}
-
-@keyframes slideUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.nav-menu li {
-  margin-right: 15px;
-}
-
-.nav-menu li a {
-  padding: 25px 0;
+.category-label {
+  font-size: 12px;
   font-weight: 600;
-  color: #07294d;
+  text-transform: capitalize;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.pill-badge {
+  display: inline-block;
+  padding: 3px 14px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.arrow-circle {
+  width: 38px;
+  height: 38px;
+  border: 1.5px solid;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
   transition: all 0.3s ease;
 }
 
-.nav-menu li a:hover,
-.nav-menu li a.active {
-  color: #ffc600;
+.mega-course-card-premium:hover .arrow-circle {
+  background-color: currentColor;
+  color: #fff !important;
 }
 
-@media (min-width: 992px) {
-  .nav-toggle {
-    display: none !important;
+.view-all-premium-v2 {
+  border: 1px solid #EBE5FF;
+  transition: all 0.3s ease;
+  text-decoration: none !important;
+}
+
+.view-all-premium-v2:hover {
+  transform: scale(1.01);
+  box-shadow: 0 12px 30px rgba(125, 42, 232, 0.15);
+}
+
+.sparkle {
+  position: absolute;
+  color: #7D2AE8;
+  font-size: 10px;
+  opacity: 0.6;
+}
+
+.s1 { top: -5px; left: -10px; }
+.s2 { bottom: 10px; right: -15px; font-size: 12px; }
+
+.arrow-btn-large-v2 {
+  transition: all 0.3s ease;
+}
+
+.view-all-premium-v2:hover .arrow-btn-large-v2 {
+  transform: translateX(5px);
+}
+
+/* =========================================
+   PREMIUM CHATBOT STYLES
+   ========================================= */
+.markdown-content p { margin-bottom: 8px; }
+.markdown-content p:last-child { margin-bottom: 0; }
+.markdown-content ul, .markdown-content ol { padding-left: 15px; margin-bottom: 8px; }
+.markdown-content li { margin-bottom: 4px; }
+.markdown-content strong { font-weight: 700; }
+
+@media (max-width: 768px) {
+  .chat-window { 
+    top: 0 !important; 
+    left: 0 !important; 
+    right: 0 !important; 
+    bottom: 0 !important; 
+    width: 100vw !important; 
+    height: 100dvh !important; 
+    max-width: none !important; 
+    max-height: 100dvh !important; 
+    border-radius: 0 !important; 
+    z-index: 2000000 !important; 
+    display: flex !important;
+    flex-direction: column !important;
+    position: fixed !important;
+  }
+  .chat-window input { font-size: 16px !important; }
+  .chatbot-bubble.is-open { display: none !important; }
+  .hide-on-mobile { display: none !important; }
+  .pb-safe { 
+    padding-bottom: env(safe-area-inset-bottom, 10px) !important; 
+    background: white;
+    position: sticky;
+    bottom: 0;
+  }
+  .chat-header { 
+    padding-top: env(safe-area-inset-top, 10px) !important; 
+    height: auto !important; 
+    min-height: 50px; 
+  }
+  .chatbot-messages-area {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .chatbot-bubble {
+    bottom: 20px !important;
+    right: 20px !important;
+    width: 50px !important;
+    height: 50px !important;
   }
 }
 

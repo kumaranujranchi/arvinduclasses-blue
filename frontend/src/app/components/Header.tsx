@@ -210,67 +210,6 @@ export default function Header() {
           </nav>
         </div>
       </div>
-      <style jsx>{`
-        .mega-course-card-premium {
-          background: radial-gradient(circle at top right, var(--blob-color) 0%, #fff 60%);
-          border: 1px solid #f3f3f3 !important;
-          transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-          box-shadow: 0 2px 10px rgba(0,0,0,0.02);
-        }
-        .mega-course-card-premium:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 10px 25px rgba(0,0,0,0.06);
-          border-color: transparent !important;
-        }
-        .category-label {
-          font-size: 12px;
-          font-weight: 600;
-          text-transform: capitalize;
-        }
-        .pill-badge {
-          display: inline-block;
-          padding: 3px 14px;
-          border-radius: 100px;
-          font-size: 12px;
-          font-weight: 500;
-        }
-        .arrow-circle {
-          width: 38px;
-          height: 38px;
-          border: 1.5px solid;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 13px;
-          transition: all 0.3s ease;
-        }
-        .mega-course-card-premium:hover .arrow-circle {
-          background-color: currentColor;
-          color: #fff !important;
-        }
-        .view-all-premium-v2:hover {
-          transform: scale(1.01);
-          box-shadow: 0 12px 30px rgba(125, 42, 232, 0.15);
-        }
-        .sparkle {
-          position: absolute;
-          color: #7D2AE8;
-          font-size: 10px;
-          opacity: 0.6;
-        }
-        .s1 { top: -5px; left: -10px; }
-        .s2 { bottom: 10px; right: -15px; font-size: 12px; }
-        .arrow-btn-large-v2 {
-          transition: all 0.3s ease;
-        }
-        .view-all-premium-v2:hover .arrow-btn-large-v2 {
-          transform: translateX(5px);
-        }
-        @media (max-width: 991px) {
-          .mega-menu { display: none !important; }
-        }
-      `}</style>
     </header>
   );
 }
