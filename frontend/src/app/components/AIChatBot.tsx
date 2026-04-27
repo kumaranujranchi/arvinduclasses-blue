@@ -5,7 +5,7 @@ import ReactMarkdown from "react-markdown";
 import { useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 
-const API_KEY = process.env.NEXT_PUBLIC_GEMINI_API_KEY || "AIzaSyBJoz2NVLIH570FnuQmvPXtDTyOfSgL0Xc";
+const API_KEY = process.env.NEXT_PUBLIC_GEMINI_API_KEY || "";
 
 const systemInstruction = `
 You are "Arvindu AI", the official AI counselor for Arvindu Classes.
