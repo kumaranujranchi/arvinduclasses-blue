@@ -309,10 +309,14 @@ export default function AIChatBot() {
         
         @media (max-width: 768px) {
           .chat-window {
+            left: 15px !important;
             right: 15px !important;
+            width: auto !important;
             bottom: 140px !important;
-            width: calc(100vw - 30px) !important;
-            max-height: 70vh !important;
+            max-height: 60vh !important;
+          }
+          .chat-window input {
+            font-size: 16px !important; /* Prevents iPhone zoom */
           }
           .chatbot-bubble {
             right: 15px !important;
