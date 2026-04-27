@@ -153,12 +153,12 @@ export default function Header() {
                                   </Link>
                                 </div>
                               ))}
-                              <div className="col-lg-4 mb-3">
-                                <Link href="/courses" className="mega-course-card d-flex align-items-center p-3 rounded">
+                              <div className="col-12 mb-3">
+                                <Link href="/courses" className="mega-course-card d-flex align-items-center justify-content-center p-3 rounded">
                                   <div className="icon-box me-3 rounded-circle d-flex align-items-center justify-content-center" style={{ backgroundColor: `#01228D20`, color: "#01228D", width: "45px", height: "45px", minWidth: "45px" }}>
                                     <i className="fas fa-th-large"></i>
                                   </div>
-                                  <div className="course-info">
+                                  <div className="course-info text-center">
                                     <span className="text-muted small d-block mb-1">Explore</span>
                                     <h6 className="mb-0 text-dark font-weight-bold">View All Courses</h6>
                                   </div>
