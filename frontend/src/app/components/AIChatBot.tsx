@@ -174,17 +174,31 @@ export default function AIChatBot() {
                 <small className="opacity-75" style={{ fontSize: '10px' }}>Online | Counselor</small>
               </div>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1">
+              {/* Minimize to bubble */}
+              <button 
+                onClick={() => setIsOpen(false)}
+                className="bg-transparent border-0 text-white opacity-70 hover:opacity-100 p-1 transition-opacity"
+                title="Minimize"
+              >
+                <i className="fas fa-minus"></i>
+              </button>
+              {/* Maximize / Restore */}
               <button 
                 onClick={() => setIsLarge(!isLarge)}
-                className="bg-transparent border-0 text-white opacity-75 hover:opacity-100 p-1"
-                title={isLarge ? "Minimize" : "Maximize"}
+                className="bg-transparent border-0 text-white opacity-70 hover:opacity-100 p-1 transition-opacity"
+                title={isLarge ? "Restore" : "Maximize"}
               >
                 <i className={`fas ${isLarge ? 'fa-compress-alt' : 'fa-expand-alt'}`}></i>
               </button>
+              {/* Close (same as minimize for now, but standard UI) */}
               <button 
-                onClick={() => setIsOpen(false)}
-                className="bg-transparent border-0 text-white opacity-75 hover:opacity-100 p-1"
+                onClick={() => {
+                  setIsOpen(false);
+                  setIsLarge(false);
+                }}
+                className="bg-transparent border-0 text-white opacity-70 hover:opacity-100 p-1 transition-opacity"
+                title="Close"
               >
                 <i className="fas fa-times"></i>
               </button>
@@ -192,7 +206,7 @@ export default function AIChatBot() {
           </div>
 
           {/* Messages Area */}
-          <div className="flex-1 p-4 overflow-y-auto bg-light">
+          <div className="flex-1 p-4 overflow-y-auto bg-light chatbot-messages-area">
             {messages.map((m, i) => (
               <div key={i} className={`mb-3 flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
                 <div 
@@ -213,7 +227,7 @@ export default function AIChatBot() {
               </div>
             ))}
             {isLoading && (
-              <div className="text-muted text-xs italic mb-2">Arvindu AI is typing...</div>
+              <div className="text-muted text-xs italic mb-2 px-2">Arvindu AI is typing...</div>
             )}
             <div ref={chatEndRef} />
           </div>
@@ -225,7 +239,7 @@ export default function AIChatBot() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask anything..."
-              className="flex-1 p-2 border rounded-full text-sm outline-none focus:border-[#01228D]"
+              className="flex-1 p-3 border rounded-full text-sm outline-none focus:border-[#01228D] bg-light"
             />
             <button 
               type="submit" 
