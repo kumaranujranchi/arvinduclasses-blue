@@ -70,7 +70,7 @@ export default function PCBProgramPage() {
             <div className="col-lg-8">
               <div className="courses-details-content">
                 <div className="image wow zoomIn" data-wow-duration="1s">
-                   <img src="/assets/images/courses-details.webp" className="img-radius-shadow-w100" alt="PCB Program Details" />
+                   <img src="/assets/images/Physics, Chemistry & Biology.png" className="img-radius-shadow-w100" alt="PCB Program Details" />
                 </div>
 
                 <div className="content-box mt-50 wow fadeInUp">
