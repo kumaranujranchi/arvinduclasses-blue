@@ -117,23 +117,19 @@ export default function AIChatBot() {
       while (history.length > 0 && history[0].role !== "user") history.shift();
       while (history.length > 0 && history[history.length - 1].role !== "model") history.pop();
 
-      console.log("AIChatBot Version: 2.0.1 (Stable Fix)");
+      console.log("API Key Debug (first 4):", API_KEY.trim().substring(0, 4));
       const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${API_KEY.trim()}`,
+        `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${API_KEY.trim()}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             contents: [
-              { role: "user", parts: [{ text: `Instruction: ${currentSystemInstruction}` }] },
-              { role: "model", parts: [{ text: "Understood. I am Arvindu AI. How can I help you today?" }] },
+              { role: "user", parts: [{ text: `Instructions: ${currentSystemInstruction}` }] },
+              { role: "model", parts: [{ text: "Understood. I am Arvindu AI, how can I help you?" }] },
               ...history, 
               { role: "user", parts: [{ text: currentInput }] }
-            ],
-            generationConfig: {
-              temperature: 0.1,
-              maxOutputTokens: 800,
-            },
+            ]
           }),
         }
       );
