@@ -5,7 +5,7 @@ import ReactMarkdown from "react-markdown";
 import { useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 
-const API_KEY = process.env.NEXT_PUBLIC_GEMINI_API_KEY || "";
+const API_KEY = process.env.NEXT_PUBLIC_GEMINI_API_KEY || "AIzaSyBJoz2NVLIH570FnuQmvPXtDTyOfSgL0Xc";
 
 const systemInstruction = `
 You are "Arvindu AI", the official AI counselor for Arvindu Classes.
@@ -116,7 +116,7 @@ export default function AIChatBot() {
       // For simplicity and to avoid role errors, let's just send the whole history if it exists.
       
       const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${API_KEY.trim()}`,
+        `https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${API_KEY}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
