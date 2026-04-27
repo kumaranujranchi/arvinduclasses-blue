@@ -48,6 +48,18 @@ const LeadForm = ({ isOpen, onClose, type }: LeadFormProps) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // Scroll lock effect
+  React.useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
   return (
     <div className={`lead-form-overlay ${isOpen ? 'open' : ''}`} onClick={onClose}>
       <div className="lead-form-container" onClick={(e) => e.stopPropagation()}>
@@ -118,9 +130,9 @@ const LeadForm = ({ isOpen, onClose, type }: LeadFormProps) => {
           left: 0;
           width: 100%;
           height: 100%;
-          background: rgba(0,0,0,0.4);
-          backdrop-filter: blur(4px);
-          z-index: 10002;
+          background: rgba(0,0,0,0.6);
+          backdrop-filter: blur(8px);
+          z-index: 1000000;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -128,6 +140,7 @@ const LeadForm = ({ isOpen, onClose, type }: LeadFormProps) => {
           opacity: 0;
           transition: all 0.4s ease;
           padding: 20px;
+          overflow-y: auto;
         }
 
         .lead-form-overlay.open {
@@ -141,10 +154,11 @@ const LeadForm = ({ isOpen, onClose, type }: LeadFormProps) => {
           background: #fff;
           border-radius: 24px;
           padding: 40px;
-          transform: translateY(100px);
+          transform: translateY(40px);
           transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-          box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+          box-shadow: 0 20px 60px rgba(0,0,0,0.3);
           position: relative;
+          margin: auto;
         }
 
         .lead-form-overlay.open .lead-form-container {
@@ -167,19 +181,20 @@ const LeadForm = ({ isOpen, onClose, type }: LeadFormProps) => {
         .close-btn {
           background: #f0f2f5;
           border: none;
-          width: 32px;
-          height: 32px;
+          width: 36px;
+          height: 36px;
           border-radius: 50%;
-          font-size: 20px;
+          font-size: 24px;
           cursor: pointer;
           display: flex;
           align-items: center;
           justify-content: center;
-          transition: background 0.3s;
+          transition: all 0.3s;
         }
 
         .close-btn:hover {
           background: #e4e6e9;
+          transform: rotate(90deg);
         }
 
         .form-group {
@@ -198,11 +213,11 @@ const LeadForm = ({ isOpen, onClose, type }: LeadFormProps) => {
 
         input, select {
           width: 100%;
-          height: 50px;
+          height: 54px;
           padding: 0 15px;
           border: 2px solid #edf2f7;
-          border-radius: 12px;
-          font-size: 15px;
+          border-radius: 14px;
+          font-size: 16px;
           transition: all 0.3s;
         }
 
@@ -210,32 +225,35 @@ const LeadForm = ({ isOpen, onClose, type }: LeadFormProps) => {
           border-color: #01228D;
           outline: none;
           background: #f8fbff;
+          box-shadow: 0 0 0 4px rgba(1, 34, 141, 0.1);
         }
 
         .submit-btn {
           width: 100%;
-          height: 55px;
+          height: 60px;
           background: #01228D;
           color: #fff;
           border: none;
-          border-radius: 12px;
-          font-size: 16px;
+          border-radius: 14px;
+          font-size: 18px;
           font-weight: 700;
           cursor: pointer;
           margin-top: 10px;
           transition: all 0.3s;
+          box-shadow: 0 10px 20px rgba(1, 34, 141, 0.2);
         }
 
         .submit-btn:hover {
           background: #0a35c2;
           transform: translateY(-2px);
-          box-shadow: 0 8px 20px rgba(1, 34, 194, 0.2);
+          box-shadow: 0 15px 30px rgba(1, 34, 141, 0.3);
         }
 
         .submit-btn:disabled {
           background: #ccc;
           cursor: not-allowed;
           transform: none;
+          box-shadow: none;
         }
 
         .error-notice {
@@ -256,35 +274,52 @@ const LeadForm = ({ isOpen, onClose, type }: LeadFormProps) => {
         }
 
         .success-message .icon {
-          width: 60px;
-          height: 60px;
+          width: 80px;
+          height: 80px;
           background: #0C8B51;
           color: #fff;
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 30px;
+          font-size: 40px;
           margin: 0 auto 20px;
+          box-shadow: 0 10px 20px rgba(12, 139, 81, 0.2);
         }
 
         .success-message h4 {
-          font-size: 22px;
+          font-size: 26px;
           color: #01228D;
-          margin-bottom: 10px;
+          margin-bottom: 15px;
+          font-weight: 800;
         }
 
         .success-message p {
           color: #666;
-          font-size: 16px;
+          font-size: 18px;
+          line-height: 1.6;
         }
 
         @media (max-width: 576px) {
-          .lead-form-container {
-            padding: 30px 20px;
+          .lead-form-overlay {
+            padding: 15px;
+            align-items: flex-start; /* Start from top if content is long */
           }
-          .col-md-6 {
-            padding: 0 15px;
+          .lead-form-container {
+            padding: 25px 20px;
+            border-radius: 20px;
+            margin-top: 20px;
+          }
+          .form-header h3 {
+            font-size: 20px;
+          }
+          input, select {
+            height: 48px;
+            font-size: 14px;
+          }
+          .submit-btn {
+            height: 52px;
+            font-size: 16px;
           }
         }
       `}</style>
