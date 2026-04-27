@@ -268,12 +268,39 @@ export default function AIChatBot() {
         .markdown-content :global(li) { margin-bottom: 4px; }
         .markdown-content :global(strong) { font-weight: 700; }
         @media (max-width: 768px) {
-          .chat-window { top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important; width: 100vw !important; height: 100vh !important; max-width: none !important; max-height: none !important; border-radius: 0 !important; z-index: 2000000 !important; }
+          .chat-window { 
+            top: 0 !important; 
+            left: 0 !important; 
+            right: 0 !important; 
+            bottom: 0 !important; 
+            width: 100vw !important; 
+            height: 100dvh !important; 
+            max-width: none !important; 
+            max-height: 100dvh !important; 
+            border-radius: 0 !important; 
+            z-index: 2000000 !important; 
+            display: flex !important;
+            flex-direction: column !important;
+          }
           .chat-window input { font-size: 16px !important; }
           .chatbot-bubble.is-open { display: none !important; }
           .hide-on-mobile { display: none !important; }
-          .pb-safe { padding-bottom: env(safe-area-inset-bottom, 15px) !important; }
-          .chat-header { padding-top: env(safe-area-inset-top, 15px) !important; height: auto !important; min-height: 60px; }
+          .pb-safe { 
+            padding-bottom: env(safe-area-inset-bottom, 10px) !important; 
+            background: white;
+            position: sticky;
+            bottom: 0;
+          }
+          .chat-header { 
+            padding-top: env(safe-area-inset-top, 10px) !important; 
+            height: auto !important; 
+            min-height: 50px; 
+          }
+          .chatbot-messages-area {
+            flex: 1;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+          }
         }
       `}</style>
     </div>
