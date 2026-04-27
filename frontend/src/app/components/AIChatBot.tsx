@@ -109,7 +109,7 @@ export default function AIChatBot() {
       const history = messages
         .filter((_, i) => i > 0) 
         .map((m) => ({
-          role: m.role,
+          role: m.role === "model" ? "assistant" : m.role,
           content: m.text,
         }));
 
