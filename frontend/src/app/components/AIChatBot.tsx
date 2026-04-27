@@ -33,12 +33,32 @@ Instructions:
 
 export default function AIChatBot() {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState([
-    { role: "model", text: "Hello! I am Arvindu AI. How can I help you today with your education goals?" }
-  ]);
+  const [isLarge, setIsLarge] = useState(false);
+  const [messages, setMessages] = useState<{ role: string; text: string }[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const chatEndRef = useRef<HTMLDivElement>(null);
+
+  // Load history from sessionStorage on mount
+  useEffect(() => {
+    const saved = sessionStorage.getItem("arvindu_chat_history");
+    if (saved) {
+      try {
+        setMessages(JSON.parse(saved));
+      } catch (e) {
+        setMessages([{ role: "model", text: "Hello! I am Arvindu AI. How can I help you today?" }]);
+      }
+    } else {
+      setMessages([{ role: "model", text: "Hello! I am Arvindu AI. How can I help you today?" }]);
+    }
+  }, []);
+
+  // Save history to sessionStorage whenever messages change
+  useEffect(() => {
+    if (messages.length > 0) {
+      sessionStorage.setItem("arvindu_chat_history", JSON.stringify(messages));
+    }
+  }, [messages]);
 
   const scrollToBottom = () => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
