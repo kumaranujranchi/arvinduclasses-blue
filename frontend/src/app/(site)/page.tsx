@@ -31,7 +31,7 @@ export default function HomePage() {
       fee: "₹35,000",
       slug: "science-program",
       category: "School",
-      imageUrl: "/assets/images/courses/course-science.png"
+      imageUrl: "/assets/images/Science Program (Class 9–10).png"
     },
     {
       tag: "#Commerce",

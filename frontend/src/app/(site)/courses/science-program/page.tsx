@@ -70,7 +70,7 @@ export default function ScienceProgramPage() {
             <div className="col-lg-8">
               <div className="courses-details-content">
                 <div className="image wow zoomIn" data-wow-duration="1s">
-                   <img src="/assets/images/courses-details.webp" className="course-detail-img" alt="Science Program Details" />
+                   <img src="/assets/images/Science Program (Class 9–10).png" className="course-detail-img" alt="Science Program Details" />
                 </div>
 
                 <div className="content-box mt-50 wow fadeInUp">
