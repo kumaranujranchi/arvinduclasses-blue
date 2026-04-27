@@ -5,7 +5,7 @@ import ReactMarkdown from "react-markdown";
 import { useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 
-const API_KEY = process.env.NEXT_PUBLIC_GEMINI_API_KEY || "";
+const DEEPSEEK_API_KEY = process.env.NEXT_PUBLIC_DEEPSEEK_API_KEY || "";
 
 const systemInstruction = `
 You are "Arvindu AI", the official AI counselor for Arvindu Classes.
@@ -60,10 +60,10 @@ export default function AIChatBot() {
       try {
         setMessages(JSON.parse(saved));
       } catch (e) {
-        setMessages([{ role: "model", text: "Hello! I am Arvindu AI. How can I help you today?" }]);
+        setMessages([{ role: "assistant", text: "Hello! I am Arvindu AI. How can I help you today?" }]);
       }
     } else {
-      setMessages([{ role: "model", text: "Hello! I am Arvindu AI. How can I help you today?" }]);
+      setMessages([{ role: "assistant", text: "Hello! I am Arvindu AI. How can I help you today?" }]);
     }
   }, []);
 
@@ -93,8 +93,8 @@ export default function AIChatBot() {
     setIsLoading(true);
 
     try {
-      if (!API_KEY) {
-        throw new Error("Gemini API Key is missing. Please add NEXT_PUBLIC_GEMINI_API_KEY to your environment variables.");
+      if (!DEEPSEEK_API_KEY) {
+        throw new Error("DeepSeek API Key is missing. Please add NEXT_PUBLIC_DEEPSEEK_API_KEY to your environment variables.");
       }
 
       // Create a context of available blogs
@@ -105,52 +105,49 @@ export default function AIChatBot() {
 
       const currentSystemInstruction = systemInstruction + blogContext;
 
-      // Prepare history
-      let history = messages
+      // Prepare history for OpenAI/DeepSeek format
+      const history = messages
         .filter((_, i) => i > 0) 
         .map((m) => ({
-          role: m.role === "user" ? "user" : "model",
-          parts: [{ text: m.text }],
+          role: m.role,
+          content: m.text,
         }));
 
-      if (history.length > 10) history = history.slice(-10);
-      while (history.length > 0 && history[0].role !== "user") history.shift();
-      while (history.length > 0 && history[history.length - 1].role !== "model") history.pop();
-
-      console.log("API Key Debug (first 4):", API_KEY.trim().substring(0, 4));
       const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent`,
+        "https://api.deepseek.com/chat/completions",
         {
           method: "POST",
           headers: { 
             "Content-Type": "application/json",
-            "x-goog-api-key": API_KEY.trim()
+            "Authorization": `Bearer ${DEEPSEEK_API_KEY.trim()}`
           },
           body: JSON.stringify({
-            contents: [
-              { role: "user", parts: [{ text: `Instructions: ${currentSystemInstruction}` }] },
-              { role: "model", parts: [{ text: "Understood. I am Arvindu AI, how can I help you?" }] },
+            model: "deepseek-chat",
+            messages: [
+              { role: "system", content: currentSystemInstruction },
               ...history, 
-              { role: "user", parts: [{ text: currentInput }] }
-            ]
+              { role: "user", content: currentInput }
+            ],
+            temperature: 0.3,
+            max_tokens: 1000,
           }),
         }
       );
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.error?.message || "API Error");
+        throw new Error(errorData.error?.message || "DeepSeek API Error");
       }
 
       const data = await response.json();
-      const text = data.candidates?.[0]?.content?.parts?.[0]?.text || "I'm sorry, I couldn't get a response.";
+      const text = data.choices?.[0]?.message?.content || "I'm sorry, I couldn't get a response.";
 
-      setMessages((prev) => [...prev, { role: "model", text }]);
+      setMessages((prev) => [...prev, { role: "assistant", text }]);
     } catch (error: any) {
       console.error("ChatBot Error:", error);
       setMessages((prev) => [
         ...prev,
-        { role: "model", text: `**Debug Error:** ${error.message}\n\n*Please ensure your API key is correct and valid.*` },
+        { role: "assistant", text: `I'm sorry, I encountered an error: ${error.message}. Please try again later.` },
       ]);
     } finally {
       setIsLoading(false);
@@ -243,7 +240,7 @@ export default function AIChatBot() {
             {messages.map((m, i) => (
               <div key={i} className={`mb-3 flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
                 <div className={`p-3 rounded-lg max-w-[85%] text-sm ${m.role === "user" ? "bg-[#01228D] text-white rounded-br-none" : "bg-white text-dark shadow-sm rounded-bl-none"}`}>
-                  {m.role === "model" ? <div className="markdown-content"><ReactMarkdown>{m.text}</ReactMarkdown></div> : m.text}
+                  {m.role === "assistant" ? <div className="markdown-content"><ReactMarkdown>{m.text}</ReactMarkdown></div> : m.text}
                 </div>
               </div>
             ))}
