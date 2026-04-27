@@ -83,6 +83,10 @@ export default function AIChatBot() {
     setIsLoading(true);
 
     try {
+      if (!API_KEY) {
+        throw new Error("Gemini API Key is missing. Please add NEXT_PUBLIC_GEMINI_API_KEY to your environment variables.");
+      }
+
       // Create a context of available blogs to help the AI suggest links
       const blogContext = blogs 
         ? "\n\nAvailable Blog Posts (Suggest these links if relevant to the user's question):\n" + 
@@ -128,6 +132,7 @@ export default function AIChatBot() {
 
       if (!response.ok) {
         const errorData = await response.json();
+        console.error("Gemini API Error Detail:", errorData);
         throw new Error(errorData.error?.message || "API Error");
       }
 
@@ -136,10 +141,10 @@ export default function AIChatBot() {
 
       setMessages((prev) => [...prev, { role: "model", text }]);
     } catch (error: any) {
-      console.error("Chat Error:", error);
+      console.error("ChatBot Detailed Error:", error.message || error);
       setMessages((prev) => [
         ...prev,
-        { role: "model", text: "I'm sorry, I encountered an error. Please call us at +91 80516 96333." },
+        { role: "model", text: "I'm sorry, I encountered an error. Please ensure the API key is configured or call us at +91 80516 96333." },
       ]);
     } finally {
       setIsLoading(false);
