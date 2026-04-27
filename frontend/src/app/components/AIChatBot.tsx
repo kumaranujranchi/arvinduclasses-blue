@@ -114,7 +114,7 @@ export default function AIChatBot() {
   };
 
   return (
-    <div className="fixed-chatbot-container" style={{ zIndex: 10001 }}>
+    <div className="fixed-chatbot-container" style={{ zIndex: 999999 }}>
       {/* Floating Bubble */}
       <button 
         onClick={() => setIsOpen(!isOpen)}
@@ -135,6 +135,7 @@ export default function AIChatBot() {
           fontSize: "24px",
           cursor: "pointer",
           transition: "transform 0.3s ease",
+          zIndex: 999999,
         }}
       >
         {isOpen ? <i className="fas fa-times"></i> : <i className="fas fa-comment-dots"></i>}
@@ -155,6 +156,7 @@ export default function AIChatBot() {
             overflow: "hidden",
             display: "flex",
             flexDirection: "column",
+            zIndex: 999999,
           }}
         >
           {/* Header */}
