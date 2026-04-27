@@ -165,7 +165,7 @@ export default function AIChatBot() {
           color: "white",
           border: "none",
           position: "fixed",
-          bottom: "30px",
+          bottom: "100px",
           right: "30px",
           display: "flex",
           alignItems: "center",
@@ -185,7 +185,7 @@ export default function AIChatBot() {
           className={`chat-window shadow-2xl rounded-2xl flex flex-col transition-all duration-300 ${isLarge ? 'is-large' : ''}`}
           style={{
             position: "fixed",
-            bottom: "100px",
+            bottom: "170px",
             right: "30px",
             width: isLarge ? "450px" : "350px",
             height: isLarge ? "650px" : "500px",
