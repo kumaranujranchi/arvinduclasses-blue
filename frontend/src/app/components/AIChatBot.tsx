@@ -190,7 +190,7 @@ export default function AIChatBot() {
             right: "30px",
             width: isLarge ? "450px" : "350px",
             height: isLarge ? "650px" : "500px",
-            maxWidth: "90vw",
+            maxWidth: "calc(100vw - 30px)",
             maxHeight: "80vh",
             backgroundColor: "white",
             border: "1px solid #eee",
@@ -306,6 +306,21 @@ export default function AIChatBot() {
         }
         .markdown-content :global(li) { margin-bottom: 4px; }
         .markdown-content :global(strong) { font-weight: 700; }
+        
+        @media (max-width: 768px) {
+          .chat-window {
+            right: 15px !important;
+            bottom: 140px !important;
+            width: calc(100vw - 30px) !important;
+            max-height: 70vh !important;
+          }
+          .chatbot-bubble {
+            right: 15px !important;
+            bottom: 70px !important;
+            width: 50px !important;
+            height: 50px !important;
+          }
+        }
       `}</style>
     </div>
   );
