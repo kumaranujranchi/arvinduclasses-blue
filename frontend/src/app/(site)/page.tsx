@@ -49,7 +49,7 @@ export default function HomePage() {
       fee: "₹20,000",
       slug: "applied-mathematics",
       category: "Subject",
-      imageUrl: "/assets/images/courses/course-math.png"
+      imageUrl: "/assets/images/Applied Mathematics (Class 9–12).png"
     },
     {
       tag: "#Science",

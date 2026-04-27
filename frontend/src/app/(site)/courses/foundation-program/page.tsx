@@ -25,7 +25,7 @@ const relatedCourses = [
   {
     title: "Applied Mathematics (9-12)",
     fee: "₹20,000",
-    image: "/assets/images/course-banner.png",
+    image: "/assets/images/Applied Mathematics (Class 9–12).png",
     slug: "#",
     color: "#27B8A7"
   }

@@ -70,7 +70,7 @@ export default function AppliedMathematicsPage() {
             <div className="col-lg-8">
               <div className="courses-details-content">
                 <div className="image wow zoomIn" data-wow-duration="1s">
-                   <img src="/assets/images/courses-details.webp" className="course-detail-img" alt="Applied Mathematics Details" />
+                   <img src="/assets/images/Applied Mathematics (Class 9–12).png" className="course-detail-img" alt="Applied Mathematics Details" />
                 </div>
 
                 <div className="content-box mt-50 wow fadeInUp">
