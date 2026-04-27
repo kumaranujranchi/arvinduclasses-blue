@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 
-const API_KEY = "AIzaSyBJoz2NVLIH570FnuQmvPXtDTyOfSgL0Xc";
+const API_KEY = process.env.NEXT_PUBLIC_GEMINI_API_KEY || "";
 
 const systemInstruction = `
 You are "Arvindu AI", the official AI counselor for Arvindu Classes.
@@ -144,13 +144,15 @@ export default function AIChatBot() {
       {/* Chat Window */}
       {isOpen && (
         <div 
-          className="chat-window shadow-2xl rounded-2xl flex flex-col"
+          className={`chat-window shadow-2xl rounded-2xl flex flex-col transition-all duration-300 ${isLarge ? 'is-large' : ''}`}
           style={{
             position: "fixed",
             bottom: "100px",
             right: "30px",
-            width: "350px",
-            height: "500px",
+            width: isLarge ? "450px" : "350px",
+            height: isLarge ? "650px" : "500px",
+            maxWidth: "90vw",
+            maxHeight: "80vh",
             backgroundColor: "white",
             border: "1px solid #eee",
             overflow: "hidden",
@@ -160,15 +162,32 @@ export default function AIChatBot() {
           }}
         >
           {/* Header */}
-          <div className="chat-header p-4 flex items-center" style={{ backgroundColor: "#01228D", color: "white" }}>
-            <div className="avatar mr-3">
-               <div className="rounded-circle bg-white text-dark flex items-center justify-center" style={{ width: "35px", height: "35px" }}>
-                  <i className="fas fa-user-graduate" style={{ color: "#01228D" }}></i>
-               </div>
+          <div className="chat-header p-3 flex items-center justify-between" style={{ backgroundColor: "#01228D", color: "white" }}>
+            <div className="flex items-center">
+              <div className="avatar mr-3">
+                 <div className="rounded-circle bg-white text-dark flex items-center justify-center" style={{ width: "35px", height: "35px" }}>
+                    <i className="fas fa-user-graduate" style={{ color: "#01228D" }}></i>
+                 </div>
+              </div>
+              <div>
+                <h6 className="m-0 font-bold text-sm">Arvindu AI</h6>
+                <small className="opacity-75" style={{ fontSize: '10px' }}>Online | Counselor</small>
+              </div>
             </div>
-            <div>
-              <h6 className="m-0 font-bold">Arvindu AI</h6>
-              <small className="opacity-75">Online | Counselor</small>
+            <div className="flex items-center gap-2">
+              <button 
+                onClick={() => setIsLarge(!isLarge)}
+                className="bg-transparent border-0 text-white opacity-75 hover:opacity-100 p-1"
+                title={isLarge ? "Minimize" : "Maximize"}
+              >
+                <i className={`fas ${isLarge ? 'fa-compress-alt' : 'fa-expand-alt'}`}></i>
+              </button>
+              <button 
+                onClick={() => setIsOpen(false)}
+                className="bg-transparent border-0 text-white opacity-75 hover:opacity-100 p-1"
+              >
+                <i className="fas fa-times"></i>
+              </button>
             </div>
           </div>
 
