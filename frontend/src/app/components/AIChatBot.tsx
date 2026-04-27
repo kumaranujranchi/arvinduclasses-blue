@@ -2,6 +2,8 @@
 
 import { useState, useRef, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
+import { useQuery } from "convex/react";
+import { api } from "../../../convex/_generated/api";
 
 const API_KEY = process.env.NEXT_PUBLIC_GEMINI_API_KEY || "";
 
@@ -38,6 +40,9 @@ export default function AIChatBot() {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const chatEndRef = useRef<HTMLDivElement>(null);
+  
+  // Fetch blogs from Convex
+  const blogs = useQuery(api.posts.getAll);
 
   // Load history from sessionStorage on mount
   useEffect(() => {
@@ -78,6 +83,14 @@ export default function AIChatBot() {
     setIsLoading(true);
 
     try {
+      // Create a context of available blogs to help the AI suggest links
+      const blogContext = blogs 
+        ? "\n\nAvailable Blog Posts (Suggest these links if relevant to the user's question):\n" + 
+          blogs.map(b => `- ${b.title}: /blog/${b.slug}`).join("\n")
+        : "";
+
+      const currentSystemInstruction = systemInstruction + blogContext;
+
       // Filter out the first model message and map to Gemini format
       const history = messages
         .slice(1)
@@ -90,7 +103,7 @@ export default function AIChatBot() {
       const contents = [
         {
           role: "user",
-          parts: [{ text: "SYSTEM INSTRUCTION: " + systemInstruction + "\n\nUser: " + input }],
+          parts: [{ text: "SYSTEM INSTRUCTION: " + currentSystemInstruction + "\n\nUser: " + input }],
         },
       ];
 
