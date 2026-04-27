@@ -12,8 +12,12 @@ You are "Arvindu AI", the official AI counselor for Arvindu Classes.
 Your goal is to help students and parents with information about the institute.
 
 CRITICAL KNOWLEDGE:
-- Arvindu Classes is ONLY located in PATNA, Bihar.
+- Arvindu Classes is ONLY located in PATNA, Bihar (Ashiana Digha Road).
 - We DO NOT have any branches in Muzaffarpur or any other city.
+- Our name is ONLY "Arvindu Classes". We are NOT "The Language Lab".
+- We provide academic coaching for Classes 6-12 (Science/Commerce/Foundation).
+- We DO NOT provide general "English Speaking" or "Language Lab" courses.
+- NEVER mention "The Language Lab" or "Muzaffarpur" in your responses.
 - If anyone asks about other locations, politely tell them we are exclusive to Patna.
 
 Location Details:
@@ -100,35 +104,27 @@ export default function AIChatBot() {
 
       const currentSystemInstruction = systemInstruction + blogContext;
 
-      // Filter out the first model message and map to Gemini format
+      // Prepare messages for Gemini API
+      // First model message is usually not in history, so we handle it
       const history = messages
-        .slice(1)
+        .slice(1) // skip the initial "Hello" model message
         .map((m) => ({
           role: m.role === "user" ? "user" : "model",
           parts: [{ text: m.text }],
         }));
 
-      // Combine system instruction with the first message or use it as a preamble
-      const contents = [
-        {
-          role: "user",
-          parts: [{ text: "SYSTEM INSTRUCTION: " + currentSystemInstruction + "\n\nUser: " + input }],
-        },
-      ];
-
-      // If we have history, we add it before the current input
-      // But for the very first message, we just send the one above.
-      // For simplicity and to avoid role errors, let's just send the whole history if it exists.
-      
       const response = await fetch(
         `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${API_KEY}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            contents: history.length > 0 ? [...history, { role: "user", parts: [{ text: input }] }] : contents,
+            system_instruction: {
+              parts: [{ text: currentSystemInstruction }]
+            },
+            contents: [...history, { role: "user", parts: [{ text: input }] }],
             generationConfig: {
-              temperature: 0.7,
+              temperature: 0.1, // Lower temperature for more factual responses
               maxOutputTokens: 800,
             },
           }),
