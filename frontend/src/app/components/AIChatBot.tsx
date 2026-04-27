@@ -133,7 +133,7 @@ export default function AIChatBot() {
       }
 
       const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -161,10 +161,14 @@ export default function AIChatBot() {
 
       setMessages((prev) => [...prev, { role: "model", text }]);
     } catch (error: any) {
-      console.error("ChatBot Detailed Error:", error.message || error);
+      console.error("ChatBot Detailed Error:", error);
+      const detailedError = error.message || "Unknown error occurred";
       setMessages((prev) => [
         ...prev,
-        { role: "model", text: "I'm sorry, I encountered an error. Please ensure the API key is configured or call us at +91 80516 96333." },
+        { 
+          role: "model", 
+          text: `**Debug Error:** ${detailedError}\n\n*Please ensure the API key is configured correctly in .env.local as NEXT_PUBLIC_GEMINI_API_KEY.*` 
+        },
       ]);
     } finally {
       setIsLoading(false);
