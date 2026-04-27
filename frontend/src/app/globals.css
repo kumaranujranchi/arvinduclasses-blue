@@ -1264,8 +1264,8 @@ html, body {
 .course-cta-desc { color: rgba(255,255,255,0.95); font-size: 18px; margin-top: 10px; }
 .course-cta-btn { border-radius: 12px; background: #fff !important; color: #01228D !important; border: none; height: 55px; line-height: 55px; padding: 0 35px; font-size: 16px; fontWeight: 700; }
 
-.home-slider-bg-1 { background-image: linear-gradient(rgba(7, 41, 77, 0.7), rgba(7, 41, 77, 0.7)), url(/assets/images/homepage1.png) !important; }
-.home-slider-bg-2 { background-image: linear-gradient(rgba(7, 41, 77, 0.7), rgba(7, 41, 77, 0.7)), url(/assets/images/homepage2.png) !important; }
+.home-slider-bg-1 { background-image: none !important; }
+.home-slider-bg-2 { background-image: none !important; }
 .single-slider { 
   min-height: 800px; 
 }

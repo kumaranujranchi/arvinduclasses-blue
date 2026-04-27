@@ -19,6 +19,15 @@ export default function RootLayout({
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="shortcut icon" href="/assets/images/arvindu-favicon.png" type="image/png" />
+        
+        {/* Vendor CSS - Loaded in head for stability */}
+        <link rel="stylesheet" href="/assets/css/plugins/bootstrap.min.css" />
+        <link rel="stylesheet" href="/assets/css/plugins/fontawesome.min.css" />
+        <link rel="stylesheet" href="/assets/css/plugins/default.css" />
+        <link rel="stylesheet" href="/assets/css/plugins/animate.min.css" />
+        <link rel="stylesheet" href="/assets/css/plugins/slick.css" />
+        <link rel="stylesheet" href="/assets/css/plugins/magnific-popup.css" />
+        <link rel="stylesheet" href="/assets/css/style.min.css" />
       </head>
       <body>
         <ConvexClientProvider>

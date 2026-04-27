@@ -6,6 +6,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import FeatureScrolling from "../components/FeatureScrolling";
 import NewsletterForm from "../components/NewsletterForm";
+import Image from "next/image";
 import { useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 
@@ -210,9 +211,19 @@ export default function HomePage() {
         className="slider-area slider-03 slider-active"
       >
         <div
-          className="single-slider d-flex align-items-center bg_cover home-slider-bg-1"
+          className="single-slider d-flex align-items-center bg_cover relative overflow-hidden"
+          style={{ minHeight: '600px' }}
         >
-          <div className="container">
+          <Image 
+            src="/assets/images/homepage1.png" 
+            alt="Hero Background 1" 
+            fill 
+            priority 
+            className="object-cover z-0" 
+            quality={85}
+          />
+          <div className="absolute inset-0 z-10" style={{ backgroundColor: 'rgba(7, 41, 77, 0.7)' }}></div>
+          <div className="container relative z-20">
             <div className="slider-content slider-content-3 text-center">
               <h2 className="title" data-animation="fadeInUp" data-delay="0.2s">
                 Education is the power of Humanity
@@ -233,9 +244,18 @@ export default function HomePage() {
           </div>
         </div>
         <div
-          className="single-slider d-flex align-items-center bg_cover home-slider-bg-2"
+          className="single-slider d-flex align-items-center bg_cover relative overflow-hidden"
+          style={{ minHeight: '600px' }}
         >
-          <div className="container">
+          <Image 
+            src="/assets/images/homepage2.png" 
+            alt="Hero Background 2" 
+            fill 
+            className="object-cover z-0" 
+            quality={85}
+          />
+          <div className="absolute inset-0 z-10" style={{ backgroundColor: 'rgba(7, 41, 77, 0.7)' }}></div>
+          <div className="container relative z-20">
             <div className="slider-content slider-content-3 text-center">
               <h2 className="title" data-animation="fadeInUp" data-delay="0.2s">
                 Best Educational Environment for Your Success
@@ -277,28 +297,28 @@ export default function HomePage() {
             <div className="col-lg-7">
               <div className="about-image mt-50">
                 <div className="single-image image-1">
-                  <img src="/assets/images/about/about-1.png" width="290" height="290" alt="about" />
+                  <Image src="/assets/images/about/about-1.png" width={290} height={290} alt="about" className="rounded-lg" />
                 </div>
                 <div className="single-image image-2">
-                  <img src="/assets/images/about/about-2.png" width="225" height="225" alt="about" />
+                  <Image src="/assets/images/about/about-2.png" width={225} height={225} alt="about" className="rounded-lg" />
                 </div>
                 <div className="single-image image-3">
-                  <img src="/assets/images/about/about-3.png" width="190" height="190" alt="about" />
+                  <Image src="/assets/images/about/about-3.png" width={190} height={190} alt="about" className="rounded-lg" />
                 </div>
                 <div className="single-image image-4">
-                  <img src="/assets/images/about/about-4.png" width="140" height="140" alt="about" />
+                  <Image src="/assets/images/about/about-4.png" width={140} height={140} alt="about" className="rounded-lg" />
                 </div>
                 <div className="about-icon icon-1">
-                  <img src="/assets/images/about/icon/icon-1.webp" width="46" height="46" alt="icon" />
+                  <Image src="/assets/images/about/icon/icon-1.webp" width={46} height={46} alt="icon" />
                 </div>
                 <div className="about-icon icon-2">
-                  <img src="/assets/images/about/icon/icon-2.webp" width="46" height="46" alt="icon" />
+                  <Image src="/assets/images/about/icon/icon-2.webp" width={46} height={46} alt="icon" />
                 </div>
                 <div className="about-icon icon-3">
-                  <img src="/assets/images/about/icon/icon-3.webp" width="46" height="46" alt="icon" />
+                  <Image src="/assets/images/about/icon/icon-3.webp" width={46} height={46} alt="icon" />
                 </div>
                 <div className="about-icon icon-4">
-                  <img src="/assets/images/about/icon/icon-4.webp" width="46" height="46" alt="icon" />
+                  <Image src="/assets/images/about/icon/icon-4.webp" width={46} height={46} alt="icon" />
                 </div>
               </div>
             </div>
@@ -314,7 +334,7 @@ export default function HomePage() {
           <div className="row align-items-center">
             <div className="col-lg-4">
               <div className="features-image-2 mt-minus-45">
-                <img className="wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s" src="/assets/images/homepage_girl_v2.png" alt="Features" />
+                <Image className="wow fadeInLeft" src="/assets/images/homepage_girl_v2.png" alt="Features" width={400} height={500} priority />
               </div>
             </div>
             <div className="col-lg-8">
@@ -327,7 +347,7 @@ export default function HomePage() {
                   ].map(({ icon, text }) => (
                     <div key={icon} className="single-features-item d-flex align-items-center wow fadeInUpBig" data-wow-duration="1s" data-wow-delay="0.2s">
                       <div className="item-icon">
-                        <img src={`/assets/images/icon/${icon}`} width="70" height="70" alt="Icon" />
+                        <Image src={`/assets/images/icon/${icon}`} width={70} height={70} alt="Icon" />
                       </div>
                       <div className="item-content media-body">
                         <p>{text.split("\n")[0]}<br />{text.split("\n")[1]}</p>
@@ -343,7 +363,7 @@ export default function HomePage() {
                   ].map(({ icon, text }) => (
                     <div key={icon} className="single-features-item d-flex align-items-center wow fadeInUpBig" data-wow-duration="1s" data-wow-delay="0.4s">
                       <div className="item-icon">
-                        <img src={`/assets/images/icon/${icon}`} width="70" height="70" alt="Icon" />
+                        <Image src={`/assets/images/icon/${icon}`} width={70} height={70} alt="Icon" />
                       </div>
                       <div className="item-content media-body">
                         <p>{text.split("\n")[0]}<br />{text.split("\n")[1]}</p>
@@ -414,22 +434,22 @@ export default function HomePage() {
             <div className="campus-image-col">
               <div className="campus-image">
                 <div className="single-campus">
-                  <img src="/assets/images/campus-1 copy.webp" width="521" height="392" alt="Campus" />
+                  <Image src="/assets/images/campus-1 copy.webp" width={521} height={392} alt="Campus" />
                 </div>
                 <div className="single-campus">
-                  <img src="/assets/images/campus-2 copy.webp" width="521" height="392" alt="Campus" />
+                  <Image src="/assets/images/campus-2 copy.webp" width={521} height={392} alt="Campus" />
                 </div>
                 <div className="single-campus">
-                  <img src="/assets/images/campus-3.webp" width="521" height="392" alt="Campus" />
+                  <Image src="/assets/images/campus-3.webp" width={521} height={392} alt="Campus" />
                 </div>
                 <div className="single-campus">
-                  <img src="/assets/images/campus-4.webp" width="521" height="392" alt="Campus" />
+                  <Image src="/assets/images/campus-4.webp" width={521} height={392} alt="Campus" />
                 </div>
                 <div className="single-campus">
-                  <img src="/assets/images/campus-5.webp" width="521" height="392" alt="Campus" />
+                  <Image src="/assets/images/campus-5.webp" width={521} height={392} alt="Campus" />
                 </div>
                 <div className="single-campus">
-                  <img src="/assets/images/campus-6.webp" width="521" height="392" alt="Campus" />
+                  <Image src="/assets/images/campus-6.webp" width={521} height={392} alt="Campus" />
                 </div>
               </div>
             </div>
@@ -482,10 +502,12 @@ export default function HomePage() {
             <div className="trending-banner-active">
               {banners.map((banner) => (
                 <div key={banner._id + "-trending"} className="single-trending-banner px-2">
-                  <div className="trending-banner-img">
-                     <img 
+                  <div className="trending-banner-img relative" style={{ minHeight: '300px' }}>
+                     <Image 
                       src={banner.imageUrl} 
                       alt="Trending Banner" 
+                      width={1200}
+                      height={400}
                       className="w-full h-auto"
                       style={{ borderRadius: '25px', boxShadow: '0 15px 45px rgba(0,0,0,0.12)', border: '1px solid #eee' }}
                     />
@@ -565,21 +587,21 @@ export default function HomePage() {
                 <div className="testimonials-shape shape-2"></div>
                 <div className="testimonials-image">
                   <div className="single-testimonial-image">
-                    <img src="/assets/images/testimonial_rohan.png" width="313" height="579" alt="Testimonials" />
+                    <Image src="/assets/images/testimonial_rohan.png" width={313} height={579} alt="Testimonials" />
                     <div className="content-meta">
                       <p className="name">Rohan Sharma</p>
                       <p className="designation">JEE Advanced, AIR 342</p>
                     </div>
                   </div>
                   <div className="single-testimonial-image">
-                    <img src="/assets/images/testimonial_priya.png" width="313" height="579" alt="Testimonials" />
+                    <Image src="/assets/images/testimonial_priya.png" width={313} height={579} alt="Testimonials" />
                     <div className="content-meta">
                       <p className="name">Priya Verma</p>
                       <p className="designation">NEET Qualifier, 650+ Score</p>
                     </div>
                   </div>
                   <div className="single-testimonial-image">
-                    <img src="/assets/images/testimonial_amit.png" width="313" height="579" alt="Testimonials" />
+                    <Image src="/assets/images/testimonial_amit.png" width={313} height={579} alt="Testimonials" />
                     <div className="content-meta">
                       <p className="name">Amit Kumar</p>
                       <p className="designation">Board Topper, 97%</p>
@@ -613,10 +635,10 @@ export default function HomePage() {
                     <div className="single-blog mt-30" style={{ borderRadius: '15px', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.05)' }}>
                       <div className="blog-image" style={{ borderRadius: '15px 15px 0 0', overflow: 'hidden' }}>
                         <Link href={`/blog/${post.slug}`}>
-                          <img 
+                          <Image 
                             src={post.imageUrl || "/assets/images/blog-1.webp"} 
-                            width="370" 
-                            height="250" 
+                            width={370} 
+                            height={250} 
                             alt={post.title} 
                             style={{ height: '250px', objectFit: 'cover' }}
                           />
@@ -682,9 +704,11 @@ export default function HomePage() {
           <div className="row justify-content-center">
             <div className="col-lg-10">
               <div className="banner-img wow fadeInUp" data-wow-delay="0.2s">
-                <img 
+                <Image 
                   src="/assets/images/lower-side-banner.png" 
                   alt="Special Banner" 
+                  width={1200}
+                  height={300}
                   style={{ width: '100%', height: 'auto', borderRadius: '20px', boxShadow: '0 15px 40px rgba(0,0,0,0.1)' }} 
                 />
               </div>
