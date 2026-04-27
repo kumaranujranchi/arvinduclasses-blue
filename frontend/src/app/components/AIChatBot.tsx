@@ -117,6 +117,7 @@ export default function AIChatBot() {
       while (history.length > 0 && history[0].role !== "user") history.shift();
       while (history.length > 0 && history[history.length - 1].role !== "model") history.pop();
 
+      console.log("AIChatBot Version: 2.0.1 (Stable Fix)");
       const response = await fetch(
         `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${API_KEY}`,
         {
