@@ -124,23 +124,23 @@ export default function Header() {
                                   <div className="me-3 p-2 rounded" style={{ backgroundColor: '#FFF4E5', color: '#FF9E2C' }}>
                                     <i className="fas fa-bookmark"></i>
                                   </div>
-                                  <h2 className="m-0 font-weight-bold text-dark" style={{ fontSize: '24px' }}>Our Programs</h2>
+                                  <h2 className="m-0 font-weight-bold text-dark" style={{ fontSize: '28px', letterSpacing: '-0.5px' }}>Our Programs</h2>
                                 </div>
-                                <p className="text-muted mb-0" style={{ fontSize: '14px' }}>Discover our curated programs designed to help students learn, grow, and achieve their goals.</p>
+                                <p className="text-muted mb-0" style={{ fontSize: '15px' }}>Discover our curated programs designed to help students learn, grow, and achieve their goals.</p>
                               </div>
                               
                               {courses.map((course, idx) => (
                                 <div key={idx} className="col-lg-4 mb-4">
-                                  <Link href={`/courses/${course.slug}`} className="mega-course-card-premium d-flex align-items-center p-4 rounded-xl border border-light transition-all hover:shadow-lg">
-                                    <div className="icon-box-premium me-4 rounded-circle d-flex align-items-center justify-content-center" style={{ backgroundColor: `${course.color}15`, color: course.color, width: "60px", height: "60px", minWidth: "60px" }}>
+                                  <Link href={`/courses/${course.slug}`} className="mega-course-card-premium d-flex align-items-center p-4 rounded-2xl border border-light" style={{ '--blob-color': `${course.color}15` } as any}>
+                                    <div className="icon-box-premium me-4 rounded-circle d-flex align-items-center justify-content-center shadow-sm" style={{ backgroundColor: `${course.color}15`, color: course.color, width: "65px", height: "65px", minWidth: "65px" }}>
                                       <i className={`${course.icon} fa-lg`}></i>
                                     </div>
                                     <div className="course-info flex-grow-1">
-                                      <span className="text-muted x-small d-block mb-1" style={{ fontSize: '11px', fontWeight: '500', color: course.color }}>{course.category}</span>
-                                      <h6 className="mb-2 text-dark font-weight-bold" style={{ fontSize: '15px' }}>{course.title}</h6>
+                                      <span className="category-label d-block mb-1" style={{ color: course.color }}>{course.category}</span>
+                                      <h6 className="mb-2 text-dark font-weight-bold" style={{ fontSize: '16px' }}>{course.title}</h6>
                                       <span className="pill-badge" style={{ backgroundColor: `${course.color}10`, color: course.color }}>{course.classRange}</span>
                                     </div>
-                                    <div className="arrow-btn" style={{ color: course.color }}>
+                                    <div className="arrow-circle" style={{ borderColor: `${course.color}30`, color: course.color }}>
                                       <i className="fas fa-arrow-right"></i>
                                     </div>
                                   </Link>
@@ -148,17 +148,21 @@ export default function Header() {
                               ))}
                               
                               <div className="col-12 mt-4">
-                                <Link href="/courses" className="view-all-premium d-flex align-items-center p-4 rounded-xl transition-all hover:shadow-lg" style={{ backgroundColor: '#F3F0FF' }}>
-                                  <div className="icon-box-premium me-4 rounded-circle d-flex align-items-center justify-content-center" style={{ backgroundColor: '#EBE5FF', color: '#7D2AE8', width: "70px", height: "70px", minWidth: "70px" }}>
-                                    <i className="fas fa-th-large fa-lg"></i>
+                                <Link href="/courses" className="view-all-premium-v2 d-flex align-items-center p-4 rounded-2xl border transition-all" style={{ backgroundColor: '#F3F0FF', borderColor: '#EBE5FF' }}>
+                                  <div className="position-relative me-4">
+                                     <div className="sparkle s1"><i className="fas fa-sparkles"></i></div>
+                                     <div className="sparkle s2"><i className="fas fa-sparkles"></i></div>
+                                     <div className="icon-box-premium rounded-circle d-flex align-items-center justify-content-center" style={{ backgroundColor: '#EBE5FF', color: '#7D2AE8', width: "80px", height: "80px", minWidth: "80px" }}>
+                                        <i className="fas fa-th-large fa-2x"></i>
+                                     </div>
                                   </div>
                                   <div className="view-all-info flex-grow-1">
-                                    <span className="text-muted x-small d-block mb-1" style={{ fontSize: '12px', fontWeight: '500', color: '#7D2AE8' }}>Explore</span>
-                                    <h4 className="mb-1 text-dark font-weight-bold" style={{ fontSize: '18px' }}>View All Courses</h4>
-                                    <p className="text-muted mb-0 small">Browse our complete range of courses across all programs.</p>
+                                    <span className="text-primary-soft d-block mb-1" style={{ fontSize: '13px', fontWeight: '600', color: '#7D2AE8' }}>Explore</span>
+                                    <h4 className="mb-1 text-dark font-weight-bold" style={{ fontSize: '20px' }}>View All Courses</h4>
+                                    <p className="text-muted mb-0" style={{ fontSize: '14px' }}>Browse our complete range of courses across all programs.</p>
                                   </div>
-                                  <div className="arrow-btn-large bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style={{ width: '45px', height: '45px', backgroundColor: '#7D2AE8 !important' }}>
-                                    <i className="fas fa-arrow-right"></i>
+                                  <div className="arrow-btn-large-v2 rounded-circle d-flex align-items-center justify-content-center shadow-lg" style={{ width: '55px', height: '55px', backgroundColor: '#7D2AE8', color: '#fff' }}>
+                                    <i className="fas fa-arrow-right fa-lg"></i>
                                   </div>
                                 </Link>
                               </div>
@@ -217,47 +221,61 @@ export default function Header() {
         </div>
       </div>
       <style jsx>{`
-        .pill-badge {
-          display: inline-block;
-          padding: 2px 10px;
-          border-radius: 50px;
-          font-size: 11px;
-          font-weight: 500;
-        }
         .mega-course-card-premium {
-          background-color: #fff;
-          border-color: #f0f0f0 !important;
-          transition: all 0.3s ease;
-          position: relative;
+          background: radial-gradient(circle at top right, var(--blob-color) 0%, #fff 60%);
+          border: 1px solid #f3f3f3 !important;
+          transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+          box-shadow: 0 2px 10px rgba(0,0,0,0.02);
         }
         .mega-course-card-premium:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 25px rgba(0,0,0,0.06);
           border-color: transparent !important;
-          transform: translateY(-3px);
         }
-        .arrow-btn {
-          width: 32px;
-          height: 32px;
-          border: 1px solid #eee;
+        .category-label {
+          font-size: 12px;
+          font-weight: 600;
+          text-transform: capitalize;
+        }
+        .pill-badge {
+          display: inline-block;
+          padding: 3px 14px;
+          border-radius: 100px;
+          font-size: 12px;
+          font-weight: 500;
+        }
+        .arrow-circle {
+          width: 38px;
+          height: 38px;
+          border: 1.5px solid;
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 12px;
+          font-size: 13px;
           transition: all 0.3s ease;
         }
-        .mega-course-card-premium:hover .arrow-btn {
+        .mega-course-card-premium:hover .arrow-circle {
           background-color: currentColor;
           color: #fff !important;
-          border-color: transparent;
         }
-        .view-all-premium {
-          border: 1px solid #EBE5FF;
+        .view-all-premium-v2:hover {
+          transform: scale(1.01);
+          box-shadow: 0 12px 30px rgba(125, 42, 232, 0.15);
         }
-        .view-all-premium:hover {
-          transform: translateY(-3px);
+        .sparkle {
+          position: absolute;
+          color: #7D2AE8;
+          font-size: 10px;
+          opacity: 0.6;
         }
-        .arrow-btn-large {
-          background-color: #7D2AE8 !important;
+        .s1 { top: -5px; left: -10px; }
+        .s2 { bottom: 10px; right: -15px; font-size: 12px; }
+        .arrow-btn-large-v2 {
+          transition: all 0.3s ease;
+        }
+        .view-all-premium-v2:hover .arrow-btn-large-v2 {
+          transform: translateX(5px);
         }
         @media (max-width: 991px) {
           .mega-menu { display: none !important; }
