@@ -11,7 +11,7 @@ const relatedCourses = [
   {
     title: "Foundation Program (6–8)",
     fee: "₹25,000",
-    image: "/assets/images/homepage1.png",
+    image: "/assets/images/Foundation Program (Class 6–8).png",
     slug: "/courses/foundation-program",
     color: "#EAB830"
   },

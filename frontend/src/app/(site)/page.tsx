@@ -58,7 +58,7 @@ export default function HomePage() {
       fee: "₹30,000",
       slug: "pcb-program",
       category: "Subject",
-      imageUrl: "/assets/images/courses/courses-5.webp"
+      imageUrl: "/assets/images/Physics, Chemistry & Biology.png"
     },
     {
       tag: "#Commerce",

@@ -11,7 +11,7 @@ const relatedCourses = [
   {
     title: "Science Program (9–10)",
     fee: "₹35,000",
-    image: "/assets/images/homepage1.png",
+    image: "/assets/images/Science Program (Class 9–10).png",
     slug: "/courses/science-program",
     color: "#2F7AD5"
   },
@@ -25,7 +25,7 @@ const relatedCourses = [
   {
     title: "Physics, Chemistry & Bio",
     fee: "₹30,000",
-    image: "/assets/images/course-banner.png",
+    image: "/assets/images/Physics, Chemistry & Biology.png",
     slug: "#",
     color: "#2F7AD5"
   }
