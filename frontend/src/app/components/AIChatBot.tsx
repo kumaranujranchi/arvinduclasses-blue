@@ -104,17 +104,36 @@ export default function AIChatBot() {
 
       const currentSystemInstruction = systemInstruction + blogContext;
 
-      // Prepare history for Gemini API (limit to last 15 messages for speed)
-      const history = messages
-        .slice(-15) // Only last 15 messages
-        .filter(m => m !== messages[0]) // skip the very first one if it's still in the slice
+      // Prepare history for Gemini API (limit to last 10 messages for performance)
+      let history = messages
+        .filter((_, i) => i > 0) // Skip the initial welcome message
         .map((m) => ({
           role: m.role === "user" ? "user" : "model",
           parts: [{ text: m.text }],
         }));
 
+      // Limit history size
+      if (history.length > 10) {
+        history = history.slice(-10);
+      }
+
+      // Gemini API Requirements:
+      // 1. The first message in 'contents' MUST be from 'user'.
+      // 2. Roles MUST alternate between 'user' and 'model'.
+      // 3. Since we append the current input as 'user', history must end with 'model' or be empty.
+      
+      // Ensure history starts with 'user'
+      while (history.length > 0 && history[0].role !== "user") {
+        history.shift();
+      }
+      
+      // Ensure history ends with 'model' (so the next message we append is 'user')
+      while (history.length > 0 && history[history.length - 1].role !== "model") {
+        history.pop();
+      }
+
       const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${API_KEY}`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
