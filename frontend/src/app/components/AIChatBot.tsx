@@ -152,12 +152,25 @@ export default function AIChatBot() {
     }
   };
 
+  // Scroll lock effect for mobile
+  useEffect(() => {
+    const isMobile = window.innerWidth <= 768;
+    if (isOpen && isMobile) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
   return (
     <div className="fixed-chatbot-container" style={{ zIndex: 999999 }}>
       {/* Floating Bubble */}
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="chatbot-bubble shadow-lg"
+        className={`chatbot-bubble shadow-lg ${isOpen ? 'is-open' : ''}`}
         style={{
           width: "60px",
           height: "60px",
@@ -173,7 +186,7 @@ export default function AIChatBot() {
           justifyContent: "center",
           fontSize: "24px",
           cursor: "pointer",
-          transition: "transform 0.3s ease",
+          transition: "all 0.3s ease",
           zIndex: 999999,
         }}
       >
@@ -197,7 +210,7 @@ export default function AIChatBot() {
             overflow: "hidden",
             display: "flex",
             flexDirection: "column",
-            zIndex: 999999,
+            zIndex: 1000001,
           }}
         >
           {/* Header */}
@@ -217,7 +230,7 @@ export default function AIChatBot() {
               {/* Minimize to bubble */}
               <button 
                 onClick={() => setIsOpen(false)}
-                className="bg-transparent border-0 text-white opacity-70 hover:opacity-100 p-1 transition-opacity"
+                className="bg-transparent border-0 text-white opacity-70 hover:opacity-100 p-1 transition-opacity hide-on-mobile"
                 title="Minimize"
               >
                 <i className="fas fa-minus"></i>
@@ -225,12 +238,12 @@ export default function AIChatBot() {
               {/* Maximize / Restore */}
               <button 
                 onClick={() => setIsLarge(!isLarge)}
-                className="bg-transparent border-0 text-white opacity-70 hover:opacity-100 p-1 transition-opacity"
+                className="bg-transparent border-0 text-white opacity-70 hover:opacity-100 p-1 transition-opacity hide-on-mobile"
                 title={isLarge ? "Restore" : "Maximize"}
               >
                 <i className={`fas ${isLarge ? 'fa-compress-alt' : 'fa-expand-alt'}`}></i>
               </button>
-              {/* Close (same as minimize for now, but standard UI) */}
+              {/* Close button for mobile and desktop */}
               <button 
                 onClick={() => {
                   setIsOpen(false);
@@ -272,7 +285,7 @@ export default function AIChatBot() {
           </div>
 
           {/* Input Area */}
-          <form onSubmit={handleSendMessage} className="p-3 border-t bg-white flex items-center gap-2">
+          <form onSubmit={handleSendMessage} className="p-3 border-t bg-white flex items-center gap-2 pb-safe">
             <input 
               type="text" 
               value={input}
@@ -309,20 +322,36 @@ export default function AIChatBot() {
         
         @media (max-width: 768px) {
           .chat-window {
-            left: 15px !important;
-            right: 15px !important;
-            width: auto !important;
-            bottom: 90px !important;
-            max-height: 60vh !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            max-width: none !important;
+            max-height: none !important;
+            border-radius: 0 !important;
+            z-index: 2000000 !important;
           }
           .chat-window input {
-            font-size: 16px !important; /* Prevents iPhone zoom */
+            font-size: 16px !important;
           }
           .chatbot-bubble {
-            right: 15px !important;
-            bottom: 20px !important;
-            width: 50px !important;
-            height: 50px !important;
+            display: none !important; /* Hide bubble when chat is open in full screen */
+          }
+          .chatbot-bubble.is-open {
+            display: none !important;
+          }
+          .hide-on-mobile {
+            display: none !important;
+          }
+          .pb-safe {
+            padding-bottom: env(safe-area-inset-bottom, 15px) !important;
+          }
+          .chat-header {
+            padding-top: env(safe-area-inset-top, 15px) !important;
+            height: auto !important;
+            min-height: 60px;
           }
         }
       `}</style>
