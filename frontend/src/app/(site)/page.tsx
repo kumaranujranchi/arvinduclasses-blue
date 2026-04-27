@@ -22,7 +22,7 @@ export default function HomePage() {
       fee: "₹25,000",
       slug: "foundation-program",
       category: "School",
-      imageUrl: "/assets/images/courses/course-foundation.png"
+      imageUrl: "/assets/images/Foundation Program (Class 6–8).png"
     },
     {
       tag: "#Science",

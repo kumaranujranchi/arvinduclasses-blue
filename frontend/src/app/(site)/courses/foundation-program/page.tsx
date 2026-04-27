@@ -70,7 +70,7 @@ export default function FoundationProgramPage() {
             <div className="col-lg-8">
               <div className="courses-details-content">
                 <div className="image wow zoomIn" data-wow-duration="1s">
-                   <img src="/assets/images/courses-details.webp" className="course-detail-img" alt="Course Details" />
+                   <img src="/assets/images/Foundation Program (Class 6–8).png" className="course-detail-img" alt="Course Details" />
                 </div>
 
                 <div className="content-box mt-50 wow fadeInUp">
