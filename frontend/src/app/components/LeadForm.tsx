@@ -48,9 +48,10 @@ const LeadForm = ({ isOpen, onClose, type }: LeadFormProps) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Scroll lock effect
+  // Scroll lock effect (Mobile only)
   React.useEffect(() => {
-    if (isOpen) {
+    const isMobile = window.innerWidth <= 768;
+    if (isOpen && isMobile) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
