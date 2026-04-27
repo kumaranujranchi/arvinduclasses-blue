@@ -312,7 +312,7 @@ export default function AIChatBot() {
             left: 15px !important;
             right: 15px !important;
             width: auto !important;
-            bottom: 140px !important;
+            bottom: 90px !important;
             max-height: 60vh !important;
           }
           .chat-window input {
@@ -320,7 +320,7 @@ export default function AIChatBot() {
           }
           .chatbot-bubble {
             right: 15px !important;
-            bottom: 70px !important;
+            bottom: 20px !important;
             width: 50px !important;
             height: 50px !important;
           }
