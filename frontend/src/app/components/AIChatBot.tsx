@@ -1,10 +1,9 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import ReactMarkdown from "react-markdown";
 
 const API_KEY = "AIzaSyBJoz2NVLIH570FnuQmvPXtDTyOfSgL0Xc";
-const genAI = new GoogleGenerativeAI(API_KEY);
 
 const systemInstruction = `
 You are "Arvindu AI", the official AI counselor for Arvindu Classes.
@@ -182,7 +181,13 @@ export default function AIChatBot() {
                     : "bg-white text-dark shadow-sm rounded-bl-none"
                   }`}
                 >
-                  {m.text}
+                  {m.role === "model" ? (
+                    <div className="markdown-content">
+                      <ReactMarkdown>{m.text}</ReactMarkdown>
+                    </div>
+                  ) : (
+                    m.text
+                  )}
                 </div>
               </div>
             ))}
@@ -218,6 +223,16 @@ export default function AIChatBot() {
           </form>
         </div>
       )}
+      <style jsx>{`
+        .markdown-content :global(p) { margin-bottom: 8px; }
+        .markdown-content :global(p:last-child) { margin-bottom: 0; }
+        .markdown-content :global(ul), .markdown-content :global(ol) { 
+          padding-left: 15px; 
+          margin-bottom: 8px; 
+        }
+        .markdown-content :global(li) { margin-bottom: 4px; }
+        .markdown-content :global(strong) { font-weight: 700; }
+      `}</style>
     </div>
   );
 }
