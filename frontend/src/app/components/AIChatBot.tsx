@@ -88,6 +88,7 @@ export default function AIChatBot() {
 
     const userMessage = { role: "user", text: input };
     setMessages((prev) => [...prev, userMessage]);
+    const currentInput = input;
     setInput("");
     setIsLoading(true);
 
@@ -96,52 +97,38 @@ export default function AIChatBot() {
         throw new Error("Gemini API Key is missing. Please add NEXT_PUBLIC_GEMINI_API_KEY to your environment variables.");
       }
 
-      // Create a context of available blogs (limit to latest 10 to save tokens and speed up)
+      // Create a context of available blogs
       const blogContext = blogs 
-        ? "\n\nAvailable Blog Posts (Suggest these links if relevant):\n" + 
+        ? "\n\nAvailable Blog Posts:\n" + 
           blogs.slice(0, 10).map(b => `- ${b.title}: /blog/${b.slug}`).join("\n")
         : "";
 
       const currentSystemInstruction = systemInstruction + blogContext;
 
-      // Prepare history for Gemini API (limit to last 10 messages for performance)
+      // Prepare history
       let history = messages
-        .filter((_, i) => i > 0) // Skip the initial welcome message
+        .filter((_, i) => i > 0) 
         .map((m) => ({
           role: m.role === "user" ? "user" : "model",
           parts: [{ text: m.text }],
         }));
 
-      // Limit history size
-      if (history.length > 10) {
-        history = history.slice(-10);
-      }
-
-      // Gemini API Requirements:
-      // 1. The first message in 'contents' MUST be from 'user'.
-      // 2. Roles MUST alternate between 'user' and 'model'.
-      // 3. Since we append the current input as 'user', history must end with 'model' or be empty.
-      
-      // Ensure history starts with 'user'
-      while (history.length > 0 && history[0].role !== "user") {
-        history.shift();
-      }
-      
-      // Ensure history ends with 'model' (so the next message we append is 'user')
-      while (history.length > 0 && history[history.length - 1].role !== "model") {
-        history.pop();
-      }
+      if (history.length > 10) history = history.slice(-10);
+      while (history.length > 0 && history[0].role !== "user") history.shift();
+      while (history.length > 0 && history[history.length - 1].role !== "model") history.pop();
 
       const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${API_KEY}`,
+        `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${API_KEY}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            system_instruction: {
-              parts: [{ text: currentSystemInstruction }]
-            },
-            contents: [...history, { role: "user", parts: [{ text: input }] }],
+            contents: [
+              { role: "user", parts: [{ text: `Instruction: ${currentSystemInstruction}` }] },
+              { role: "model", parts: [{ text: "Understood. I am Arvindu AI. How can I help you today?" }] },
+              ...history, 
+              { role: "user", parts: [{ text: currentInput }] }
+            ],
             generationConfig: {
               temperature: 0.1,
               maxOutputTokens: 800,
@@ -152,23 +139,18 @@ export default function AIChatBot() {
 
       if (!response.ok) {
         const errorData = await response.json();
-        console.error("Gemini API Error Detail:", errorData);
         throw new Error(errorData.error?.message || "API Error");
       }
 
       const data = await response.json();
-      const text = data.candidates?.[0]?.content?.parts?.[0]?.text || "I'm sorry, I couldn't get a response. Please try again.";
+      const text = data.candidates?.[0]?.content?.parts?.[0]?.text || "I'm sorry, I couldn't get a response.";
 
       setMessages((prev) => [...prev, { role: "model", text }]);
     } catch (error: any) {
-      console.error("ChatBot Detailed Error:", error);
-      const detailedError = error.message || "Unknown error occurred";
+      console.error("ChatBot Error:", error);
       setMessages((prev) => [
         ...prev,
-        { 
-          role: "model", 
-          text: `**Debug Error:** ${detailedError}\n\n*Please ensure the API key is configured correctly in .env.local as NEXT_PUBLIC_GEMINI_API_KEY.*` 
-        },
+        { role: "model", text: `**Debug Error:** ${error.message}\n\n*Please ensure your API key is correct and valid.*` },
       ]);
     } finally {
       setIsLoading(false);
@@ -250,33 +232,9 @@ export default function AIChatBot() {
               </div>
             </div>
             <div className="flex items-center gap-1">
-              {/* Minimize to bubble */}
-              <button 
-                onClick={() => setIsOpen(false)}
-                className="bg-transparent border-0 text-white opacity-70 hover:opacity-100 p-1 transition-opacity hide-on-mobile"
-                title="Minimize"
-              >
-                <i className="fas fa-minus"></i>
-              </button>
-              {/* Maximize / Restore */}
-              <button 
-                onClick={() => setIsLarge(!isLarge)}
-                className="bg-transparent border-0 text-white opacity-70 hover:opacity-100 p-1 transition-opacity hide-on-mobile"
-                title={isLarge ? "Restore" : "Maximize"}
-              >
-                <i className={`fas ${isLarge ? 'fa-compress-alt' : 'fa-expand-alt'}`}></i>
-              </button>
-              {/* Close button for mobile and desktop */}
-              <button 
-                onClick={() => {
-                  setIsOpen(false);
-                  setIsLarge(false);
-                }}
-                className="bg-transparent border-0 text-white opacity-70 hover:opacity-100 p-1 transition-opacity"
-                title="Close"
-              >
-                <i className="fas fa-times"></i>
-              </button>
+              <button onClick={() => setIsOpen(false)} className="bg-transparent border-0 text-white opacity-70 hover:opacity-100 p-1 hide-on-mobile"><i className="fas fa-minus"></i></button>
+              <button onClick={() => setIsLarge(!isLarge)} className="bg-transparent border-0 text-white opacity-70 hover:opacity-100 p-1 hide-on-mobile"><i className={`fas ${isLarge ? 'fa-compress-alt' : 'fa-expand-alt'}`}></i></button>
+              <button onClick={() => { setIsOpen(false); setIsLarge(false); }} className="bg-transparent border-0 text-white opacity-70 hover:opacity-100 p-1"><i className="fas fa-times"></i></button>
             </div>
           </div>
 
@@ -284,95 +242,35 @@ export default function AIChatBot() {
           <div className="flex-1 p-4 overflow-y-auto bg-light chatbot-messages-area">
             {messages.map((m, i) => (
               <div key={i} className={`mb-3 flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
-                <div 
-                  className={`p-3 rounded-lg max-w-[85%] text-sm ${
-                    m.role === "user" 
-                    ? "bg-[#01228D] text-white rounded-br-none" 
-                    : "bg-white text-dark shadow-sm rounded-bl-none"
-                  }`}
-                >
-                  {m.role === "model" ? (
-                    <div className="markdown-content">
-                      <ReactMarkdown>{m.text}</ReactMarkdown>
-                    </div>
-                  ) : (
-                    m.text
-                  )}
+                <div className={`p-3 rounded-lg max-w-[85%] text-sm ${m.role === "user" ? "bg-[#01228D] text-white rounded-br-none" : "bg-white text-dark shadow-sm rounded-bl-none"}`}>
+                  {m.role === "model" ? <div className="markdown-content"><ReactMarkdown>{m.text}</ReactMarkdown></div> : m.text}
                 </div>
               </div>
             ))}
-            {isLoading && (
-              <div className="text-muted text-xs italic mb-2 px-2">Arvindu AI is typing...</div>
-            )}
+            {isLoading && <div className="text-muted text-xs italic mb-2 px-2">Arvindu AI is typing...</div>}
             <div ref={chatEndRef} />
           </div>
 
           {/* Input Area */}
           <form onSubmit={handleSendMessage} className="p-3 border-t bg-white flex items-center gap-2 pb-safe">
-            <input 
-              type="text" 
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask anything..."
-              className="flex-1 p-3 border rounded-full text-sm outline-none focus:border-[#01228D] bg-light"
-            />
-            <button 
-              type="submit" 
-              disabled={isLoading}
-              className="rounded-full flex items-center justify-center"
-              style={{ 
-                width: "35px", 
-                height: "35px", 
-                backgroundColor: "#01228D", 
-                color: "white",
-                border: "none"
-              }}
-            >
-              <i className="fas fa-paper-plane text-xs"></i>
-            </button>
+            <input type="text" value={input} onChange={(e) => setInput(e.target.value)} placeholder="Ask anything..." className="flex-1 p-3 border rounded-full text-sm outline-none focus:border-[#01228D] bg-light" />
+            <button type="submit" disabled={isLoading} className="rounded-full flex items-center justify-center" style={{ width: "35px", height: "35px", backgroundColor: "#01228D", color: "white", border: "none" }}><i className="fas fa-paper-plane text-xs"></i></button>
           </form>
         </div>
       )}
       <style jsx>{`
         .markdown-content :global(p) { margin-bottom: 8px; }
         .markdown-content :global(p:last-child) { margin-bottom: 0; }
-        .markdown-content :global(ul), .markdown-content :global(ol) { 
-          padding-left: 15px; 
-          margin-bottom: 8px; 
-        }
+        .markdown-content :global(ul), .markdown-content :global(ol) { padding-left: 15px; margin-bottom: 8px; }
         .markdown-content :global(li) { margin-bottom: 4px; }
         .markdown-content :global(strong) { font-weight: 700; }
-        
         @media (max-width: 768px) {
-          .chat-window {
-            top: 0 !important;
-            left: 0 !important;
-            right: 0 !important;
-            bottom: 0 !important;
-            width: 100vw !important;
-            height: 100vh !important;
-            max-width: none !important;
-            max-height: none !important;
-            border-radius: 0 !important;
-            z-index: 2000000 !important;
-          }
-          .chat-window input {
-            font-size: 16px !important;
-          }
-          .chatbot-bubble.is-open {
-            display: none !important;
-          }
-          .hide-on-mobile {
-            display: none !important;
-          }
-          .pb-safe {
-            padding-bottom: env(safe-area-inset-bottom, 15px) !important;
-          }
-          .chat-header {
-            padding-top: env(safe-area-inset-top, 15px) !important;
-            height: auto !important;
-            min-height: 60px;
-          }
+          .chat-window { top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important; width: 100vw !important; height: 100vh !important; max-width: none !important; max-height: none !important; border-radius: 0 !important; z-index: 2000000 !important; }
+          .chat-window input { font-size: 16px !important; }
+          .chatbot-bubble.is-open { display: none !important; }
+          .hide-on-mobile { display: none !important; }
+          .pb-safe { padding-bottom: env(safe-area-inset-bottom, 15px) !important; }
+          .chat-header { padding-top: env(safe-area-inset-top, 15px) !important; height: auto !important; min-height: 60px; }
         }
       `}</style>
     </div>
