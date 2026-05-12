@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { ConvexClientProvider } from "./components/ConvexClientProvider";
-import AIChatBot from "./components/AIChatBot";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -32,7 +31,6 @@ export default function RootLayout({
       <body>
         <ConvexClientProvider>
           {children}
-          <AIChatBot />
         </ConvexClientProvider>
       </body>
     </html>
